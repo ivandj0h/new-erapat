@@ -3,7 +3,6 @@
 $this->extend("layouts/layout_main");
 $this->section("contents");
 ?>
-
 <div class="container">
     <!-- start content here -->
     <div class="grid ">
@@ -27,7 +26,6 @@ $this->section("contents");
     </div>
     <!-- end content here -->
 </div>
-
 
 <?php
 $this->endSection();
