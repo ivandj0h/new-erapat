@@ -3,6 +3,13 @@ body {
     "Ubuntu", "Helvetica Neue", sans-serif;
 }
 
+.button-outline-transparent {
+  margin-right: 30px;
+  background-color: transparent;
+  border: 0px solid #eee;
+  border-radius: 3px;
+}
+
 .app-bar {
   display: -webkit-box;
   display: -ms-flexbox;

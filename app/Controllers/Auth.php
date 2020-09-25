@@ -2,11 +2,16 @@
 
 namespace App\Controllers;
 
-class Authentication extends BaseController
+use \CodeIgniter\Controller;
+
+
+class Auth extends Controller
 {
     public function index()
     {
+        helper(['navbar']);
         $data = ['page_title' => 'E-RAPAT - Authentication'];
-        return view('cpanel/auth/view_login', $data);
+
+        return view('view_login', $data);
     }
 }
