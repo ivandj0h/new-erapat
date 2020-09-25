@@ -1,3 +1,8 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif, "Roboto",
+    "Ubuntu", "Helvetica Neue", sans-serif;
+}
+
 .app-bar {
   display: -webkit-box;
   display: -ms-flexbox;
