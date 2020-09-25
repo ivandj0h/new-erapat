@@ -2,7 +2,10 @@
 
 $this->extend("layouts/layout_main");
 $this->section("contents");
+
+navbar_after_login();
 ?>
+
 <div class="container">
     <!-- start content here -->
     <div class="grid ">
