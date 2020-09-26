@@ -3,8 +3,8 @@
 ### About
 
 E-RAPAT V2 is an Application (UPDATED Version) for Meeting Administration in Research & Dev Center, Ministry of Transportation of Republic of Indonesia.
-Now this application is `DEVELOPMENT PHASE`, Nowdays we still on progress develop.
-
+Now this application is `DEVELOPMENT PHASE`, Nowdays we still on progress Development.
+This is became a portal or a center of the small services that connecting each other.
 `This Documentation would be update regularly` Beacuse this Project is still On `DEVELOPMENT PHASE`
 
 ### Changelog
@@ -17,6 +17,7 @@ The following is the development version of `e-rapat application`
 
 Here is the screenshoot of the application.
 
+![Documentation](captured/dokumentasi.png "This is the Screenshoot")
 ![Calendar Month](captured/calendar_month.png "This is the Screenshoot")
 ![Calendar Week](captured/calendar_week.png "This is the Screenshoot")
 ![Create Form Absen](captured/calendar_day.png "This is the Screenshoot")
