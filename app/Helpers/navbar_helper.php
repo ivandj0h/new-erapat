@@ -10,18 +10,19 @@ function navbar_before_login($nav_title)
         </a>
         <ul class="app-bar-menu">
             <?php if ($nav_title == 'calendar') : ?>
-                <li><a href="<?= base_url('calendar'); ?>" class="text-upper active"><span class="icon mif-calendar"></span> calendar</a></li>
+                <li><a href="<?= base_url(); ?>" class="text-upper active text-bolds"><span class="icon mif-calendar"></span> calendar</a></li>
                 <li><a href="<?= base_url('documentation'); ?>" class=" text-upper"><span class="icon mif-file-empty"></span> Documentation</a></li>
             <?php else : ?>
-                <li><a href="<?= base_url('calendar'); ?>" class="text-upper"><span class="icon mif-calendar"></span> calendar</a></li>
-                <li><a href="<?= base_url('documentation'); ?>" class=" text-upper active"><span class="icon mif-file-empty"></span> Documentation</a></li>
+                <li><a href="<?= base_url(); ?>" class="text-upper"><span class="icon mif-calendar"></span> calendar</a></li>
+                <li><a href="<?= base_url('documentation'); ?>" class=" text-upper active text-bolds"><span class="icon mif-file-empty"></span> Documentation</a></li>
             <?php endif; ?>
         </ul>
         <div class="app-bar-container ml-auto d-none d-flex-md">
-            <a href="#" class="button button-outline-transparent text-upper" style="margin-right: 30px;"><span class="icon mif-fingerprint"></span> login</a>
+            <a href="<?= base_url('login'); ?>" class="button button-outline-transparent text-upper" style="margin-right: 30px;"><span class="icon mif-fingerprint"></span> login</a>
         </div>
     </div>
-<?php }
+<?php
+}
 
 function navbar_after_login()
 { ?>
@@ -64,7 +65,7 @@ function navbar_after_login()
             </ul>
         </div>
     </div>
-<?php }
-
+<?php
+}
 
 ?>

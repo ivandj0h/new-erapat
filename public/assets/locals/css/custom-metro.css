@@ -10,6 +10,10 @@ body {
   border-radius: 3px;
 }
 
+.text-bolds {
+  color: darkgrey;
+}
+
 .app-bar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -35,7 +39,6 @@ body {
 .dropdown-toggle::before {
   display: block;
   position: absolute;
-  vertical-align: middle;
   color: transparent;
   font-size: 0;
   content: "";

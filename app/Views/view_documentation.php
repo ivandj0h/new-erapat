@@ -8,6 +8,7 @@ navbar_before_login($nav_title);
 
 <div class="container">
     <!-- start content here -->
+    <br><br>
     <h3>DOCUMENTATION</h3>
     <!-- end content here -->
 </div>
