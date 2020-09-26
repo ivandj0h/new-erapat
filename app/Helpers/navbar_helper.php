@@ -18,6 +18,10 @@ function navbar_before_login($nav_title)
             <?php endif; ?>
         </ul>
     </div>
+
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 shadow-sm fixed-top app-flatbar">
+        <h5 class="my-0 mr-md-auto font-weight-normal font-h5"><img src="<?= base_url('assets/locals/img/transport.svg'); ?>" alt="" style="width:30px"> BADAN PENELITIAN DAN PENGEMBANGAN KEMENTRIAN PERHUBUNGAN</h5>
+    </div>
 <?php
 }
 
