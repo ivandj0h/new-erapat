@@ -5,7 +5,7 @@ function navbar_before_login($nav_title)
     <div data-role="appbar" data-expand-point="md">
         <a href="<?= base_url(); ?>" class="brand no-hover">
             <span style="width: 75px;">
-                <strong><span class="icon mif-calendar"></span> E-RAPAT</strong>
+                <strong><span class="icon mif-list"></span> E-RAPAT</strong>
             </span>
         </a>
         <ul class="app-bar-menu">
@@ -29,7 +29,7 @@ function navbar_after_login()
     <div data-role="appbar" data-expand-point="md">
         <a href="<?= base_url(); ?>" class="brand no-hover">
             <span style="width: 75px;">
-                <strong><span class="icon mif-calendar"></span> E-RAPAT</strong>
+                <strong><span class="icon mif-list"></span> E-RAPAT</strong>
             </span>
         </a>
         <ul class="app-bar-menu">
