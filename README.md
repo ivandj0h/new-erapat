@@ -6,3 +6,18 @@ E-RAPAT V2 is an Application (UPDATED Version) for Meeting Administration in Res
 Now this application is `DEVELOPMENT PHASE`, Nowdays we still on progress develop.
 
 `This Documentation would be update regularly` Beacuse this Project is still On `DEVELOPMENT PHASE`
+
+### Changelog
+
+The following is the development version of `e-rapat application`
+
+**Alpha Version 0.0.0** - September 2020
+
+### The Screenshoot
+
+Here is the screenshoot of the application.
+
+![Calendar Month](captured/calendar_month.png "This is the Screenshoot")
+![Calendar Week](captured/calendar_week.png "This is the Screenshoot")
+![Create Form Absen](captured/calendar_day.png "This is the Screenshoot")
+![View Meeting](captured/calendar_list.png "This is the Screenshoot")
