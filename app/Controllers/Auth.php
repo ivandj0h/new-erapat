@@ -14,4 +14,11 @@ class Auth extends Controller
 
         return view('view_login', $data);
     }
+
+    public function login()
+    {
+        $data = ['messages' => 'Selamat datang'];
+        print_r($data);
+        die;
+    }
 }
