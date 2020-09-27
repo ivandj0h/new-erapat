@@ -64,6 +64,18 @@ body {
   transform-origin: center center 1px;
 }
 
+.image_svg_thumb {
+  width: 30px;
+  filter: invert(1) sepia(1) saturate(0);
+}
+
+.aktif {
+  background-color: #0078d4;
+  color: #ffffff !important;
+  outline: none;
+  border-radius: 0;
+}
+
 .h-menu {
   list-style: none inside;
   display: block;
@@ -84,4 +96,5 @@ body {
 .font-h5 {
   font-weight: 500;
   font-size: 14px;
+  padding: 10px 0;
 }
