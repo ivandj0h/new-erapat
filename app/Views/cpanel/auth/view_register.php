@@ -3,15 +3,15 @@
 $this->extend("layouts/layout_main");
 $this->section("contents");
 
-navbar_before_login($nav_title);
+navbar_before_login($nav_title, $navigation_title);
 ?>
 
 <div class="container">
     <!-- start content here -->
     <div class="grid ">
         <div class="row d-flex flex-column flex-justify-center h-vh-50 mt-10">
-            <div class="cell-5 offset-4 block-shadow">
-                <h1><small>CPANEL LOGIN</small></h1>
+            <div class="cell-5 mx-auto block-shadow">
+                <h1><small><span class="icon mif-unlock"></span> REGISTRASI AKUN</small></h1>
                 <hr class="thin" />
                 <form data-role="validator" method="POST" action="<?= base_url('auth/login') ?>">
                     <div class="row mb-2">
