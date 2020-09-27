@@ -17,6 +17,9 @@ function navbar_before_login($nav_title)
                 <li><a href="<?= base_url('documentation'); ?>" class=" text-upper active text-bolds"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
             <?php endif; ?>
         </ul>
+        <div class="app-bar-container ml-auto d-none d-flex-md">
+            <a href="<?= base_url('auth') ?>" class="button button-outline-transparent text-upper" style="margin-right: 30px;"><span class="icon mif-fingerprint"></span> MASUK</a>
+        </div>
     </div>
 
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 shadow-sm fixed-top app-flatbar">
