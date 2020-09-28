@@ -3,7 +3,7 @@
 $this->extend("layouts/layout_main");
 $this->section("contents");
 
-navbar_before_login($nav_title, $navigation_title);
+navbar_before_login($nav_title);
 ?>
 
 <div class="container">
@@ -32,7 +32,7 @@ navbar_before_login($nav_title, $navigation_title);
                     </div>
                     <div class="row">
                         <div class="cell">
-                            <button type="submit" class="button primary drop-shadow"><span class="icon mif-fingerprint"></span> Sign in</button>
+                            <button type="submit" class="button primary drop-shadow"><span class="icon mif-lock"></span> Masuk</button>
                         </div>
                     </div>
                 </form>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2020 at 12:58 AM
+-- Generation Time: Sep 28, 2020 at 02:43 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -658,8 +658,9 @@ CREATE TABLE `meeting` (
 --
 
 INSERT INTO `meeting` (`id`, `user_id`, `other_online_id`, `zoom_id`, `sub_type_id`, `speakers_name`, `members_name`, `files_upload`, `files_upload1`, `files_upload2`, `unique_code`, `agenda`, `date_requested`, `start_date`, `end_date`, `start_time`, `end_time`, `request_status`, `remark_status`, `meeting_status`) VALUES
-(1, 18, '', 2, 1, '', 'ivandi', '', '', '', '5f6f8f27c5aee', 'ini adalah raapat', '2020-09-27', '2020-09-27', '2020-09-27', '02:00:00', '03:00:00', 0, '', 0),
-(2, 15, '', 3, 6, '', 'ivandi', '', '', '', '5f6f9b5caadc1', 'ini adalah', '2020-09-27', '2020-09-28', '2020-09-28', '03:00:00', '04:00:00', 0, '', 0);
+(1, 15, '', 3, 5, '', 'Kepala Bagian Keuangan', '', '', '', '5f712fd7d4c00', '&lt;div xss=removed&gt;At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.&lt;/div&gt;', '2020-09-28', '2020-09-28', '2020-09-28', '08:00:00', '09:00:00', 0, '', 0),
+(2, 15, '', 3, 1, '', 'Kepala Bagian Keuangan', '', '', '', '5f713028042ca', '&lt;div xss=removed&gt;At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.&lt;/div&gt;', '2020-09-28', '2020-09-29', '2020-09-29', '08:00:00', '09:00:00', 0, '', 0),
+(3, 15, '', 3, 1, '', 'Kepala Bagian Keuangan', '', '', '', '5f7130b078a72', '&lt;div xss=removed&gt;At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.&lt;/div&gt;', '2020-09-28', '2020-09-28', '2020-09-28', '10:00:00', '11:00:00', 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -848,8 +849,8 @@ CREATE TABLE `meeting_zoom` (
 
 INSERT INTO `meeting_zoom` (`id`, `user_id`, `pemakai_id`, `idzoom`, `date_activated`, `start_time`, `end_time`, `is_active`, `status`) VALUES
 (1, 19, 18, '444 444 444 444', '2020-09-17', '13:00:00', '14:00:00', 1, 0),
-(2, 18, 18, '555 555 555 555', '2020-09-27', '02:00:00', '03:00:00', 1, 1),
-(3, 15, 15, '666 666 666 666', '2020-09-27', '01:00:00', '02:00:00', 1, 0),
+(2, 18, 18, '555 555 555 555', '2020-09-27', '02:00:00', '03:00:00', 1, 0),
+(3, 15, 15, '666 666 666 666', '2020-09-28', '10:00:00', '11:00:00', 1, 1),
 (4, 22, 15, '333 333 333 333', '2020-09-24', '19:00:00', '20:00:00', 1, 0),
 (5, 14, 14, '000 000 000 000', '2020-09-18', '09:00:00', '10:00:00', 1, 0),
 (6, 20, 20, '111 111 111 111', '2020-09-18', '05:00:00', '06:00:00', 1, 0),
@@ -1902,7 +1903,7 @@ ALTER TABLE `mail_queue`
 -- AUTO_INCREMENT for table `meeting`
 --
 ALTER TABLE `meeting`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `meeting_department`
