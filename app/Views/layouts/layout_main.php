@@ -20,7 +20,7 @@
     <link rel="shortcut icon" href="<?= base_url('assets/locals/img/transport.svg'); ?>">
 
     <!-- Metro 4 Base CSS -->
-    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/metro/css/metro-all.min.css'); ?>">
 
     <!-- Custom Metro CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/locals/css/custom-metro.css'); ?>">
@@ -31,7 +31,7 @@
     <?= $this->renderSection("contents"); ?>
 
     <!-- Metro 4 Base JS-->
-    <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
+    <script src="<?= base_url('assets/vendor/metro/js/metro.min.js'); ?>"></script>
 </body>
 
 </html>

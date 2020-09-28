@@ -12,7 +12,7 @@ function navbar_before_login($nav_title)
             <?php if ($nav_title == 'calendar') : ?>
                 <li><a href="<?= base_url(); ?>" class="text-upper active text-bolds"><span class="icon mif-calendar"></span> kalender</a></li>
                 <li><a href="<?= base_url('documentation'); ?>" class=" text-upper"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
-            <?php elseif ($nav_title == 'login' || $nav_title == 'register') : ?>
+            <?php elseif ($nav_title == 'login' || $nav_title == 'register' || $nav_title == 'zohoconnect') : ?>
                 <li><a href="<?= base_url(); ?>" class="text-upper text-bolds"><span class="icon mif-calendar"></span> kalender</a></li>
                 <li><a href="<?= base_url('documentation'); ?>" class=" text-upper"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
             <?php else : ?>
@@ -21,7 +21,11 @@ function navbar_before_login($nav_title)
             <?php endif; ?>
         </ul>
         <div class="app-bar-container ml-auto d-none d-flex-md">
-            <a href="https://accounts.zoho.com/signin?servicename=ZohoForms&signupurl=https://www.zoho.com/forms/signup.html&serviceurl=https://forms.zoho.com" class="text-upper text-bolds" style="margin-right: 56px; vertical-align: sub;" target="_blank"><img src="<?= get_zoho_svg(); ?>" alt="Logo" class="image_svg_thumb" style="width: 20px;vertical-align: sub;"> ZOHO Connect</a>
+            <?php if ($nav_title == 'zohoconnect') : ?>
+                <a href="<?= base_url('zohoconnect'); ?>" class="text-upper text-bolds" style="margin-right: 56px; vertical-align: sub; color: yellow; font-weight: bold;"><img src="<?= get_zoho_svg(); ?>" alt="Logo" class="image_svg_thumb_2" style="width: 20px;vertical-align: sub;"> Connecting....</a>
+            <?php else : ?>
+                <a href="<?= base_url('zohoconnect'); ?>" class="text-upper text-bolds" style="margin-right: 56px; vertical-align: sub;"><img src="<?= get_zoho_svg(); ?>" alt="Logo" class="image_svg_thumb" style="width: 20px;vertical-align: sub;"> ZOHO Connect</a>
+            <?php endif; ?>
         </div>
     </div>
 
@@ -30,13 +34,13 @@ function navbar_before_login($nav_title)
 
         <div class="app-bar-container ml-auto d-none d-flex-md">
             <?php if ($nav_title == 'login') : ?>
-                <a href="<?= base_url('auth') ?>" class="button button-outline-transparent text-upper aktif" style="margin-right: 5px;"><span class="icon mif-lock"></span> MASUK</a>
+                <a href="<?= base_url('auth/login') ?>" class="button button-outline-transparent text-upper aktif" style="margin-right: 5px;"><span class="icon mif-lock"></span> MASUK</a>
                 <a href="<?= base_url('auth/register') ?>" class="button button-outline-transparent text-upper" style="margin-right: 30px;"><span class="icon mif-unlock"></span> DAFTAR</a>
             <?php elseif ($nav_title == 'register') : ?>
-                <a href="<?= base_url('auth') ?>" class="button button-outline-transparent text-upper " style="margin-right: 5px;"><span class="icon mif-lock"></span> MASUK</a>
+                <a href="<?= base_url('auth/login') ?>" class="button button-outline-transparent text-upper " style="margin-right: 5px;"><span class="icon mif-lock"></span> MASUK</a>
                 <a href="<?= base_url('auth/register') ?>" class="button button-outline-transparent text-upper aktif" style="margin-right: 30px;"><span class="icon mif-unlock"></span> DAFTAR</a>
             <?php else : ?>
-                <a href="<?= base_url('auth') ?>" class="button button-outline-transparent text-upper" style="margin-right: 5px;"><span class="icon mif-lock"></span> MASUK</a>
+                <a href="<?= base_url('auth/login') ?>" class="button button-outline-transparent text-upper" style="margin-right: 5px;"><span class="icon mif-lock"></span> MASUK</a>
                 <a href="<?= base_url('auth/register') ?>" class="button button-outline-transparent text-upper" style="margin-right: 30px;"><span class="icon mif-unlock"></span> DAFTAR</a>
             <?php endif; ?>
         </div>

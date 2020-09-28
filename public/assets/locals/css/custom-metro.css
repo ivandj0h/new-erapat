@@ -64,9 +64,23 @@ body {
   transform-origin: center center 1px;
 }
 
+.cell-5,
+.col-5,
+.colspan-5 {
+  -webkit-box-flex: 0 !important;
+  -ms-flex: 0 0 41% !important;
+  flex: 0 0 41% !important;
+  max-width: 45% !important;
+}
+
 .image_svg_thumb {
   width: 30px;
   filter: invert(1) sepia(1) saturate(0);
+}
+
+.image_svg_thumb_2 {
+  width: 30px;
+  filter: brightness(3);
 }
 
 .aktif {
