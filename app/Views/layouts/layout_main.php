@@ -30,6 +30,9 @@
 
     <?= $this->renderSection("contents"); ?>
 
+    <!-- <div class="footer"> -->
+    <!-- <span>Copyright &copy; e-rapat <?= date('Y'); ?></span> -->
+    <!-- </div> -->
     <!-- Metro 4 Base JS-->
     <script src="<?= base_url('assets/vendor/metro/js/metro.min.js'); ?>"></script>
 </body>

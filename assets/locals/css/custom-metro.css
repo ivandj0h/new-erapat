@@ -111,4 +111,18 @@ body {
   font-weight: 500;
   font-size: 14px;
   padding: 10px 0;
+  color: rgb(196, 196, 196);
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-top: 1px solid #ddd;
+  padding: 10px;
+  color: rgb(170, 170, 170);
+  text-align: center;
+  z-index: 999;
 }
