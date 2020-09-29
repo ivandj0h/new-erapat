@@ -63,6 +63,7 @@ writable/uploads/*
 writable/debugbar/*
 
 php_errors.log
+NULL
 
 #-------------------------
 # User Guide Temp Files
