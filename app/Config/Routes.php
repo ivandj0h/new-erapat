@@ -32,11 +32,37 @@ $routes->setAutoRoute(false);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+
+/**
+ * --------------------------------------------------------------------
+ * FRONTEND Route Configuration
+ * --------------------------------------------------------------------
+ */
 $routes->get('/', 'Main::calendar');
 $routes->get('/documentation', 'Documentation::index');
 $routes->get('/zohoconnect', 'ZohoConnect::index');
+
+/**
+ * --------------------------------------------------------------------
+ * AUTHENTIFICATION Route Configuration
+ * --------------------------------------------------------------------
+ */
 $routes->match(['get', 'post'], '/auth/login', 'Auth::login');
 $routes->match(['get', 'post'], '/auth/register', 'Auth::register');
+
+/**
+ * --------------------------------------------------------------------
+ * CPANEL Route Configuration
+ * ADMIN SECTION
+ * --------------------------------------------------------------------
+ */
+$routes->get('/admin', 'Admin::index');
+
+
+
+
+
 
 /**
  * --------------------------------------------------------------------

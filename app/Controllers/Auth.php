@@ -51,12 +51,10 @@ class Auth extends Controller
                     if (password_verify($password, $user->password)) {
                         session()->set([
                             'fullName' => $user->name . ' ' . $user->name,
-                            'username' => $user->username,
                             'email' => $user->email,
                             'logged_in' => true
                         ]);
-
-                        return redirect('/user');
+                        return redirect()->route('admin');
                     }
                 }
                 return redirect()->back()->withInput()->with('error', 'Username/Password Salah!');
