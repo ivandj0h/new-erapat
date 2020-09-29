@@ -14,30 +14,35 @@ navbar_before_login($nav_title);
                 <span class="icon mif-lock"></span> CPANEL LOGIN
             </div>
             <div class="card-content p-2">
+
+                <?php if (session()->has('error')) : ?>
+                    <?php session()->getFlashdata('error'); ?>
+                <?php endif; ?>
                 <?php $validation = session()->getFlashdata('validation'); ?>
-                <form data-role="validator" method="POST" action="<?= current_url('auth/login') ?>">
+                <form method="POST" action="<?= current_url('auth/login') ?>">
                     <div class="row mb-2">
                         <div class="cell-sm-12">
-                            <input type="email" name="email" placeholder="Masukan Alamat Email" data-validate="required email" data-role="input" class="metro-input" autocomplete="off" autofocus>
+                            <input type="email" name="email" value="<?= old('email') ?>" placeholder="Masukan Alamat Email" autocomplete="off" autofocus>
                             <?php if ($validation && $validation->hasError('email')) : ?>
-                                <?= $validation->getError('email'); ?>
+                                <span class="invalid_feedback">
+                                    <?= $validation->getError('email'); ?>
+                                </span>
                             <?php endif; ?>
-                            <span class="invalid_feedback">
-                                Alamat Email tidak boleh kosong atau Salah!
-                            </span>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <div class="cell-sm-12">
-                            <input type="password" name="password" placeholder="Masukan Katasandi" data-validate="required" data-role="input" class="metro-input" autocomplete="off">
-                            <span class="invalid_feedback">
-                                Katasandi tidak boleh kosong atau Salah!
-                            </span>
+                            <input type="password" name="password" value="<?= old('password') ?>" placeholder="Masukan Katasandi" autocomplete="off">
+                            <?php if ($validation && $validation->hasError('email')) : ?>
+                                <span class="invalid_feedback">
+                                    <?= $validation->getError('email'); ?>
+                                </span>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="row">
                         <div class="cell">
-                            <button type="submit" class="button primary drop-shadow"><span class="icon mif-lock"></span> Masuk</button>
+                            <button type="submit" class="button loading-pulse primary drop-shadow"><span class="icon mif-lock"></span> Masuk</button>
                         </div>
                     </div>
                 </form>

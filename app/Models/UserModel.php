@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
-    protected $table = 'meeting_users';
+    protected $table = 'view_user_department';
 
     public function getUsers()
     {

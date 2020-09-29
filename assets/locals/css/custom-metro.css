@@ -111,6 +111,7 @@ body {
   font-weight: 500;
   font-size: 14px;
   padding: 10px 0;
+  color: #ddd;
 }
 
 .card {
@@ -139,4 +140,12 @@ body {
 ::-ms-input-placeholder {
   /* Microsoft Edge */
   color: #dddddd;
+}
+
+/* Responsive Screen Layout */
+@media screen and (max-width: 870px) {
+  .chksuccess {
+    margin-bottom: 15px;
+    left: 10px;
+  }
 }

@@ -27,15 +27,7 @@ class Auth extends Controller
 
     public function register()
     {
-        // $getSubDepartment = $this->modelConnect->find();
-
-        // dd($getSubDepartment);
-        $data = [
-            'page_title' => 'E-RAPAT - Register',
-            'nav_title' => 'register'
-            // 'getSubDepartment' => $getSubDepartment
-        ];
-
+        $data = ['page_title' => 'E-RAPAT - Register', 'nav_title' => 'register'];
         return view('errors/response/view_unavailable', $data);
     }
 
@@ -50,8 +42,24 @@ class Auth extends Controller
             ];
             $validate = $this->validate($rules);
             if ($validate) {
+                $email = $this->request->getPost('email');
+                $password = $this->request->getPost('password');
 
-                echo 'wwkwkwkw';
+                $userModel = new \App\Models\UserModel;
+                $user = $userModel->asObject()->where('email', $email)->first();
+                if ($user) {
+                    if (password_verify($password, $user->password)) {
+                        session()->set([
+                            'fullName' => $user->name . ' ' . $user->name,
+                            'username' => $user->username,
+                            'email' => $user->email,
+                            'logged_in' => true
+                        ]);
+
+                        return redirect('/user');
+                    }
+                }
+                return redirect()->back()->withInput()->with('error', 'Username/Password Salah!');
             } else {
                 return redirect()->back()->withInput()->with('validation', $this->validator);
             }
