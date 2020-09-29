@@ -21,7 +21,8 @@ $routes->setDefaultController('Main');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-$routes->setAutoRoute(true);
+// $routes->setAutoRoute(true);
+$routes->setAutoRoute(false);
 
 /**
  * --------------------------------------------------------------------
@@ -32,7 +33,10 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Main::calendar');
-$routes->get('/login', 'Auth::index');
+$routes->get('/documentation', 'Documentation::index');
+$routes->get('/zohoconnect', 'ZohoConnect::index');
+$routes->match(['get', 'post'], '/auth/login', 'Auth::login');
+$routes->match(['get', 'post'], '/auth/register', 'Auth::register');
 
 /**
  * --------------------------------------------------------------------

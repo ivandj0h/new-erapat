@@ -112,3 +112,31 @@ body {
   font-size: 14px;
   padding: 10px 0;
 }
+
+.card {
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: calc(40% - 1rem) !important;
+}
+.card-header {
+  border-bottom: 1px #eee solid;
+  padding: 2rem;
+  font-size: 16px;
+  border-radius: 0 0 0 0;
+  display: block;
+}
+
+::placeholder {
+  color: #dddddd;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #dddddd;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #dddddd;
+}

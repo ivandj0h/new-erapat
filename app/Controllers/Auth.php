@@ -2,10 +2,10 @@
 
 namespace App\Controllers;
 
-// use \CodeIgniter\Controller;
+use \CodeIgniter\Controller;
 // use App\Models\DepartmentModel;
 
-class Auth extends BaseController
+class Auth extends Controller
 {
     protected $modelConnect;
 
@@ -27,13 +27,13 @@ class Auth extends BaseController
 
     public function register()
     {
-        $getSubDepartment = $this->modelConnect->find();
+        // $getSubDepartment = $this->modelConnect->find();
 
         // dd($getSubDepartment);
         $data = [
             'page_title' => 'E-RAPAT - Register',
-            'nav_title' => 'register',
-            'getSubDepartment' => $getSubDepartment
+            'nav_title' => 'register'
+            // 'getSubDepartment' => $getSubDepartment
         ];
 
         return view('errors/response/view_unavailable', $data);
@@ -41,8 +41,21 @@ class Auth extends BaseController
 
     public function login()
     {
-        $data = ['page_title' => 'E-RAPAT - Login', 'nav_title' => 'login'];
+        $data = ['page_title' => 'E-RAPAT - Login', 'nav_title' => 'login', 'footer_title' => 'E-RAPAT'];
 
-        return view('cpanel/auth/view_login', $data);
+        if ($this->request->getMethod() == 'post') {
+            $rules = [
+                'email' => 'required',
+                'password' => 'required'
+            ];
+            $validate = $this->validate($rules);
+            if ($validate) {
+
+                echo 'wwkwkwkw';
+            } else {
+                return redirect()->back()->withInput()->with('validation', $this->validator);
+            }
+        }
+        echo view('cpanel/auth/view_login', $data);
     }
 }
