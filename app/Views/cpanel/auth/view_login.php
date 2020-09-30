@@ -14,28 +14,27 @@ navbar_before_login($nav_title);
                 <span class="icon mif-lock"></span> CPANEL LOGIN
             </div>
             <div class="card-content p-2">
-
                 <?php if (session()->has('error')) : ?>
-                    <?php session()->getFlashdata('error'); ?>
+                    <p class="remark alert text-center" id="sembunyi"><?= session()->getFlashdata('error') ?></p>
                 <?php endif; ?>
                 <?php $validation = session()->getFlashdata('validation'); ?>
-                <form method="POST" action="<?= current_url('auth/login') ?>">
+                <form data-role="validator" action="<?= current_url() ?>" method="POST">
                     <div class="row mb-2">
                         <div class="cell-sm-12">
-                            <input type="email" name="email" value="<?= old('email') ?>" placeholder="Masukan Alamat Email" autocomplete="off" autofocus>
+                            <input type="email" data-validate="required email" data-role="input" name="email" value="<?= old('email') ?>" placeholder="Masukan Alamat Email" class="metro-input <?= $validation && $validation->hasError('email') ? 'invalid_feedback' : '' ?>" autocomplete="off" autofocus>
                             <?php if ($validation && $validation->hasError('email')) : ?>
-                                <span class="invalid_feedback">
-                                    <?= $validation->getError('email'); ?>
-                                </span>
+                                <div class="invalid_feedback">
+                                    <?= $validation->getError('email') ?>
+                                </div>
                             <?php endif; ?>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <div class="cell-sm-12">
-                            <input type="password" name="password" value="<?= old('password') ?>" placeholder="Masukan Katasandi" autocomplete="off">
-                            <?php if ($validation && $validation->hasError('email')) : ?>
+                            <input type="password" data-validate="required" data-role="input" name="password" placeholder="Masukan Katasandi" class="<?= $validation && $validation->hasError('password') ? 'invalid_feedback' : ''; ?>" autocomplete="off">
+                            <?php if ($validation && $validation->hasError('password')) : ?>
                                 <span class="invalid_feedback">
-                                    <?= $validation->getError('email'); ?>
+                                    <?= $validation->getError('password'); ?>
                                 </span>
                             <?php endif; ?>
                         </div>
@@ -57,3 +56,14 @@ navbar_before_login($nav_title);
 
 <?php
 $this->endSection();
+?>
+
+<!-- JQuery Place -->
+<script>
+    (function($) {
+        setTimeout(function() {
+            $('#sembunyi').slideUp("slow");
+        }, 2000);
+    })(jQuery);
+</script>
+<!-- JQuery Place -->

@@ -48,15 +48,25 @@ function navbar_before_login($nav_title)
 <?php
 }
 
-function navbar_after_login()
+function navbar_after_login($nav_title)
 { ?>
     <div data-role="appbar" data-expand-point="md">
         <a href="<?= base_url(); ?>" class="brand no-hover">
-            <span style="width: 75px;">
-                <strong><span class="icon mif-list"></span> E-RAPAT</strong>
+            <span style="width: 100px;">
+                <img src="<?= get_perhub_svg(); ?>" alt="Logo" class="image_svg_thumb"><strong> E-RAPAT</strong>
             </span>
         </a>
         <ul class="app-bar-menu">
+            <?php if ($nav_title == 'calendar') : ?>
+                <li><a href="<?= base_url(); ?>" class="text-upper active text-bolds"><span class="icon mif-calendar"></span> kalender</a></li>
+                <li><a href="<?= base_url('documentation'); ?>" class=" text-upper"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
+            <?php elseif ($nav_title == 'login' || $nav_title == 'register' || $nav_title == 'zohoconnect') : ?>
+                <li><a href="<?= base_url(); ?>" class="text-upper text-bolds"><span class="icon mif-calendar"></span> kalender</a></li>
+                <li><a href="<?= base_url('documentation'); ?>" class=" text-upper"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
+            <?php else : ?>
+                <li><a href="<?= base_url(); ?>" class="text-upper"><span class="icon mif-calendar"></span> kalender</a></li>
+                <li><a href="<?= base_url('documentation'); ?>" class=" text-upper active text-bolds"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
+            <?php endif; ?>
             <li>
                 <a href="#" class="dropdown-toggle text-upper"><span class="icon mif-cabinet"></span> Master Data</a>
                 <ul class="d-menu" data-role="dropdown">
@@ -77,9 +87,17 @@ function navbar_after_login()
                     <li><a href="#"> Skype</a></li>
                 </ul>
             </li>
-            <li><a href="#" class=" text-upper">Documentation</a></li>
         </ul>
         <div class="app-bar-container ml-auto d-none d-flex-md">
+            <?php if ($nav_title == 'zohoconnect') : ?>
+                <a href="<?= base_url('zohoconnect'); ?>" class="text-upper text-bolds" style="margin-right: 56px; vertical-align: sub; color: yellow; font-weight: bold;"><img src="<?= get_zoho_svg(); ?>" alt="Logo" class="image_svg_thumb_2" style="width: 20px;vertical-align: sub;"> Connecting....</a>
+            <?php else : ?>
+                <a href="<?= base_url('zohoconnect'); ?>" class="text-upper text-bolds" style="margin-right: 56px; vertical-align: sub;"><img src="<?= get_zoho_svg(); ?>" alt="Logo" class="image_svg_thumb" style="width: 20px;vertical-align: sub;"> ZOHO Connect</a>
+            <?php endif; ?>
+        </div>
+
+
+        <!-- <div class="app-bar-container ml-auto d-none d-flex-md">
             <a href="#" class="dropdown-toggle text-upper" style="margin-right: 30px;"><span class="icon mif-user-check"></span> Ivandi Djoh Gah</a>
             <ul class="d-menu" data-role="dropdown">
                 <li><a href="#"> Profil</a></li>
@@ -87,7 +105,26 @@ function navbar_after_login()
                 <li><a href="#"> Ganti Password</a></li>
                 <li><a href="#"> Logout</a></li>
             </ul>
+        </div> -->
+
+        <div class="d-flex flex-row align-items-center p-3 px-md-4 shadow-sm fixed-top app-flatbar">
+            <h5 class="my-0 mr-md-auto font-weight-normal font-h5">BADAN PENELITIAN DAN PENGEMBANGAN KEMENTRIAN PERHUBUNGAN</h5>
+
+            <div class="app-bar-container ml-auto d-none d-flex-md">
+                <strong class="text-bolds-public"> <?php session()->get('name'); ?> </strong>
+                <a class="app-bar-item dropdown-toggle marker-light pl-1 pr-5" href="#" style="margin-right: 20px;">
+                    <img class="rounded" data-role="gravatar" data-email="sergey@pimenov.com.ua" data-size="25">
+                </a>
+                <ul class="v-menu place-right" data-role="dropdown">
+                    <li class="divider"></li>
+                    <li><a href="#"> Profil</a></li>
+                    <li class="divider bg-lightGray"></li>
+                    <li><a href="#"> Ganti Password</a></li>
+                    <li><a href="<?= base_url('auth/logout'); ?>"> Logout</a></li>
+                </ul>
+            </div>
         </div>
+
     </div>
 <?php
 }
