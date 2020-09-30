@@ -11,8 +11,9 @@ class Admin extends BaseController
     public function index()
     {
         helper(['navbar']);
-        $session = session();
-        $data = ['page_title' => 'E-RAPAT - Calendar', 'nav_title' => 'calendar'];
+
+        $data = ['page_title' => 'E-RAPAT - Admin', 'nav_title' => 'admin'];
+
 
         return view('cpanel/admin/view_admin', $data);
     }

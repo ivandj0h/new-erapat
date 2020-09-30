@@ -13,7 +13,9 @@ navbar_($nav_title);
             Your browser doesn't support iframes
         </iframe> -->
         <br> <br> <br> <br>
-        <h1>Hello, <?= $email->get('view_data'); ?></h1>
+
+        <h1>Hello, <?= session()->get('fullName') ?></h1>
+
     </div>
     <!-- end content here -->
 </div>
