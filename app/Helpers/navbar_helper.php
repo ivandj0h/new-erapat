@@ -44,6 +44,7 @@ function navbar_($nav_title)
             <h5 class="my-0 mr-md-auto font-weight-normal font-h5">BADAN PENELITIAN DAN PENGEMBANGAN KEMENTRIAN PERHUBUNGAN</h5>
 
             <div class="app-bar-container ml-auto d-none d-flex-md">
+
                 <?php if (session('role_id') == 1) : ?>
                     <?php if ($nav_title == 'admin') : ?>
                         <a href="<?= base_url('admin') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
@@ -58,6 +59,7 @@ function navbar_($nav_title)
                     <?php endif; ?>
                 <?php endif; ?>
                 <a href="<?= base_url('auth/logout') ?>" class="button button-outline-transparent text-upper" style="margin-right: 5px;"><span class="icon mif-settings-power"></span> LOGOUT</a>
+
             </div>
         </div>
     <?php } else { ?>

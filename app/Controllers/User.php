@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 class User extends BaseController
 {
+
     public function __construct()
     {
         $this->session = session();
@@ -13,6 +14,6 @@ class User extends BaseController
         helper(['navbar']);
         $data = ['page_title' => 'E-RAPAT - User', 'nav_title' => 'user'];
 
-        return view('cpanel/user/view_user', $data);
+
     }
 }
