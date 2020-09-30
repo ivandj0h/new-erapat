@@ -60,6 +60,7 @@ $routes->get('/auth/logout', 'Auth::logout');
  * --------------------------------------------------------------------
  */
 $routes->get('/admin', 'Admin::index');
+$routes->get('/user', 'User::index');
 
 
 

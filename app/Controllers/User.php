@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class Admin extends BaseController
+class User extends BaseController
 {
     public function __construct()
     {
@@ -11,8 +11,8 @@ class Admin extends BaseController
     public function index()
     {
         helper(['navbar']);
-        $data = ['page_title' => 'E-RAPAT - Admin', 'nav_title' => 'admin'];
+        $data = ['page_title' => 'E-RAPAT - User', 'nav_title' => 'user'];
 
-        return view('cpanel/admin/view_admin', $data);
+        return view('cpanel/user/view_user', $data);
     }
 }
