@@ -7,10 +7,10 @@ class Admin extends BaseController
     public function __construct()
     {
         $this->session = session();
+        helper(['navbar', 'alerts']);
     }
     public function index()
     {
-        helper(['navbar']);
 
         $data = ['page_title' => 'E-RAPAT - Admin', 'nav_title' => 'admin'];
 
