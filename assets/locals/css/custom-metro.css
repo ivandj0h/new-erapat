@@ -14,6 +14,12 @@ body {
   color: darkgrey;
 }
 
+.text-bolds-public {
+  color: #0078d4;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 .app-bar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -90,6 +96,14 @@ body {
   border-radius: 0;
 }
 
+.cpanel-aktif {
+  border: 1px solid rgb(243, 243, 243);
+  color: #0078d4 !important;
+  outline: none;
+  border-radius: 0;
+  font-weight: bold;
+}
+
 .h-menu {
   list-style: none inside;
   display: block;
@@ -111,6 +125,7 @@ body {
   font-weight: 500;
   font-size: 14px;
   padding: 10px 0;
+<<<<<<< HEAD
   color: rgb(196, 196, 196);
 }
 
@@ -125,4 +140,94 @@ body {
   color: rgb(170, 170, 170);
   text-align: center;
   z-index: 999;
+=======
+  color: #ddd;
+}
+
+.card {
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: calc(40% - 1rem) !important;
+}
+.card-header {
+  border-bottom: 1px #eee solid;
+  padding: 2rem;
+  font-size: 16px;
+  border-radius: 0 0 0 0;
+  display: block;
+}
+
+::placeholder {
+  color: #dddddd;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #dddddd;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #dddddd;
+}
+
+/* Responsive Screen Layout */
+@media screen and (max-width: 870px) {
+  .chksuccess {
+    margin-bottom: 15px;
+    left: 10px;
+  }
+}
+
+.tabs ul li {
+  background-color: #f8f8f8;
+  white-space: nowrap;
+  font-size: 14px;
+}
+.tabs ul li.active {
+  border-top: 2px solid orange;
+}
+
+table {
+  font-size: 14px;
+}
+
+table td [class*="mif-"] {
+  margin: 0 4px;
+}
+
+code {
+  background-color: #f7f7f7;
+  cursor: pointer;
+}
+code:hover {
+  background-color: #ededed;
+}
+
+#hero {
+  background-color: #ffffff !important;
+}
+
+.tabs {
+  min-height: auto;
+}
+
+@media all and (min-width: 768px) {
+  #hero {
+    border-bottom: 1px solid #dfdfdf;
+    background-color: #f8f8f8 !important ;
+  }
+
+  .tabs {
+    top: 2px;
+  }
+}
+
+.tabs li {
+  background-color: #f8f8f8 !important;
+}
+.tabs li.active {
+  background-color: #ffffff !important;
+>>>>>>> b17860fc903d9275820bc14af28549e9ff456bc4
 }

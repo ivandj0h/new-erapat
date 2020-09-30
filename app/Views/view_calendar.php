@@ -3,7 +3,7 @@
 $this->extend("layouts/layout_main");
 $this->section("contents");
 
-navbar_before_login($nav_title);
+navbar_($nav_title);
 ?>
 
 <div class="container">

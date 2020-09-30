@@ -1,4 +1,6 @@
-<?php namespace Config;
+<?php
+
+namespace Config;
 
 class Validation
 {
@@ -33,4 +35,54 @@ class Validation
 	//--------------------------------------------------------------------
 	// Rules
 	//--------------------------------------------------------------------
+	public $register = [
+		'username' => [
+			'rules' => 'required|min_length[5]',
+		],
+		'password' => [
+			'rules' => 'required',
+		],
+		'email'        => [
+			'rules' => 'required|valid_email',
+		],
+		'repeatPassword' => [
+			'rules' => 'required|matches[password]',
+		],
+	];
+
+	public $register_errors = [
+		'username' => [
+			'required' => '{field} Harus Diisi',
+			'min_length' => '{field} Minimal 5 Karakter',
+		],
+		'email'    => [
+			'valid_email' => 'Email tidak Valid.'
+		],
+		'password' => [
+			'required' => '{field} Harus Diisi',
+		],
+		'repeatPassword' => [
+			'required' => '{field} Harus Diisi',
+			'matches' => '{field} Tidak Match Dengan Password'
+		],
+	];
+
+	public $login = [
+		'email' => [
+			'rules' => 'required|valid_email',
+		],
+		'password' => [
+			'rules' => 'required',
+		],
+	];
+
+	public $login_errors = [
+		'email' => [
+			'required' => '{field} Harus Diisi',
+			'valid_email' => '{field} tidak Valid',
+		],
+		'password' => [
+			'required' => '{field} Harus Diisi',
+		],
+	];
 }

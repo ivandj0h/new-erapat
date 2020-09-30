@@ -6,7 +6,10 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
-    protected $table = 'meeting_users';
+    protected $table = 'view_user_department';
+    protected $primaryKey = 'id';
+    protected $returnType = 'App\Entities\User';
+    protected $useTimestamps = false;
 
     public function getUsers()
     {
