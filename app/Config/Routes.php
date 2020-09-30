@@ -51,6 +51,8 @@ $routes->get('/zohoconnect', 'ZohoConnect::index');
 $routes->match(['get', 'post'], '/auth/login', 'Auth::login');
 $routes->match(['get', 'post'], '/auth/register', 'Auth::register');
 
+$routes->get('/auth/logout', 'Auth::logout');
+
 /**
  * --------------------------------------------------------------------
  * CPANEL Route Configuration

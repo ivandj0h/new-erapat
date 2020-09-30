@@ -57,11 +57,17 @@ class Auth extends Controller
                         return redirect()->route('admin');
                     }
                 }
-                return redirect()->back()->withInput()->with('error', 'Username/Password Salah!');
+                return redirect()->back()->withInput()->with('error', 'Username atau Password Salah!');
             } else {
                 return redirect()->back()->withInput()->with('validation', $this->validator);
             }
         }
         echo view('cpanel/auth/view_login', $data);
+    }
+
+    public function logout()
+    {
+        session()->destroy();
+        return redirect('/');
     }
 }
