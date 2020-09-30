@@ -49,6 +49,7 @@ class Auth extends BaseController
                 if ($user) {
                     if (password_verify($password, $user->password)) {
                         session()->set([
+                            'id' => $user->id,
                             'fullName' => $user->name,
                             'email' => $user->email,
                             'role_id' => $user->role_id,

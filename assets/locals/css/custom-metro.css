@@ -163,3 +163,54 @@ body {
     left: 10px;
   }
 }
+
+.tabs ul li {
+  background-color: #f8f8f8;
+  white-space: nowrap;
+  font-size: 14px;
+}
+.tabs ul li.active {
+  border-top: 2px solid orange;
+}
+
+table {
+  font-size: 14px;
+}
+
+table td [class*="mif-"] {
+  margin: 0 4px;
+}
+
+code {
+  background-color: #f7f7f7;
+  cursor: pointer;
+}
+code:hover {
+  background-color: #ededed;
+}
+
+#hero {
+  background-color: #ffffff !important;
+}
+
+.tabs {
+  min-height: auto;
+}
+
+@media all and (min-width: 768px) {
+  #hero {
+    border-bottom: 1px solid #dfdfdf;
+    background-color: #f8f8f8 !important ;
+  }
+
+  .tabs {
+    top: 2px;
+  }
+}
+
+.tabs li {
+  background-color: #f8f8f8 !important;
+}
+.tabs li.active {
+  background-color: #ffffff !important;
+}

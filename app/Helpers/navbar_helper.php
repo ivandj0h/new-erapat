@@ -57,7 +57,7 @@ function navbar_($nav_title)
                         <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper" style="margin-right: 5px;"><span class="icon mif-notification"></span> CPANEL <?= session('fullName'); ?></a>
                     <?php endif; ?>
                 <?php endif; ?>
-                <a href="<?= base_url('auth/logout') ?>" class="button button-outline-transparent text-upper" style="margin-right: 5px;"><span class="icon mif-settings-power"></span> LOGOUT</a>
+                <a href="<?= base_url('auth/logout') ?>" class="button button-outline-transparent text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
             </div>
         </div>
     <?php } else { ?>
