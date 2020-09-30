@@ -17,7 +17,7 @@ The following is the development version of `e-rapat application`
 
 Here is the screenshoot of the application.
 
-![Documentation](captured/dokumentasi.png "This is the Screenshoot")
+![Documentation](captured/dokumentation.png "This is the Screenshoot")
 ![Calendar Month](captured/calendar_month.png "This is the Screenshoot")
 ![Calendar Week](captured/calendar_week.png "This is the Screenshoot")
 ![Create Form Absen](captured/calendar_day.png "This is the Screenshoot")
