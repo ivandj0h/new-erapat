@@ -1,6 +1,6 @@
 <?php
 
-function userTabMenu()
+function userTabMenu($tabs)
 { ?>
     <div class="bg-light" id="hero" style="padding-top: 125px!important;">
         <div class="container">
@@ -18,10 +18,39 @@ function userTabMenu()
         <div class="container-fluid pt-4 pl-0 pr-0 pl-3-md pr-3-md">
             <div class="container">
                 <ul data-role="tabs" class="bg-light w-100 pl-0 pr-0" data-expand-point="md">
-                    <li><a href="#"><span class="mif-user"></span> Profil</a></li>
-                    <li><a href="#"><span class="mif-info"></span> Master Data Rapat</a></li>
-                    <li><a href="#"><span class="mif-loop2"></span> Pembaharuan Data</a></li>
-                    <li><a href="#"><span class="mif-books"></span> Riwayat Rapat</a></li>
+
+                    <?php
+                    $navtab = $tabs;
+
+                    switch ($navtab) {
+                        case "user": ?>
+                            <li class="active"><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
+                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Master Data Rapat</a></li>
+                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Pembaharuan Data</a></li>
+                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Riwayat Rapat</a></li>
+                        <?php break;
+                        case "rapat": ?>
+                            <li><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
+                            <li class="active"><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Master Data Rapat</a></li>
+                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Pembaharuan Data</a></li>
+                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Riwayat Rapat</a></li>
+                        <?php break;
+                        case "feed": ?>
+                            <li><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
+                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Master Data Rapat</a></li>
+                            <li class="active"><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Pembaharuan Data</a></li>
+                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Riwayat Rapat</a></li>
+                        <?php break;
+                        case "riwayat": ?>
+                            <li><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
+                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Master Data Rapat</a></li>
+                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Pembaharuan Data</a></li>
+                            <li class="active"><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Riwayat Rapat</a></li>
+                    <?php break;
+                        default:
+                            echo "Your favorite color is neither red, blue, nor green!";
+                    }
+                    ?>
                 </ul>
             </div>
         </div>

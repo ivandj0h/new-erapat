@@ -4,12 +4,12 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class MeetingModel extends Model
+class RapatModel extends Model
 {
     /**
      * table name
      */
-    protected $table = "meeting";
+    protected $table = "view_user_meeting";
 
     /**
      * allowed Field
