@@ -22,6 +22,10 @@
     <!-- Metro 4 Base CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/vendor/metro/css/metro-all.min.css'); ?>">
 
+    <!-- Vendors CSS -->
+    <link href="<?= base_url('assets/vendor/datatables/jquery-1.10.21.dataTables.css'); ?>" rel="stylesheet">
+    <link href="<?= base_url('assets/vendor/datatables/buttons.dataTables.min.css'); ?>" rel="stylesheet">
+
     <!-- Custom Metro CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/locals/css/custom-metro.css'); ?>">
 </head>
@@ -30,8 +34,15 @@
 
     <?= $this->renderSection("contents"); ?>
 
+
+    <!-- JQuey -->
+    <script src="<?= base_url('assets/locals/js/jquery-3.5.1.min.js'); ?>"></script>
+
     <!-- Metro 4 Base JS-->
     <script src="<?= base_url('assets/vendor/metro/js/metro.min.js'); ?>"></script>
+
+    <!-- Vendors JS -->
+    <script src="<?= base_url('assets/vendor/datatables/jquery.dataTables.js'); ?>"></script>
 </body>
 
 </html>

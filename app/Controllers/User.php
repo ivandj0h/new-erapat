@@ -12,6 +12,7 @@ class User extends BaseController
         $this->session = session();
         helper(['navbar', 'alerts', 'menu']);
     }
+
     public function index()
     {
 
@@ -22,11 +23,10 @@ class User extends BaseController
 
         $data['page_title'] = 'E-RAPAT - User';
         $data['nav_title'] = 'user';
-        $data['page_title'] = 'E-RAPAT - User';
+        $data['tabs'] = 'user';
         $data['user'] = $userModel->where('id', session()->get('id'))->first();
-
-        // dd($data['user']);
-
-
+        // var_dump($data['user']);
+        // die;
+        return view('cpanel/user/view_user', $data);
     }
 }
