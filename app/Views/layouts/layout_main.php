@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/vendor/metro/css/metro-all.min.css'); ?>">
 
     <!-- Vendors CSS -->
-    <link href="<?= base_url('assets/vendor/datatables/jquery-1.10.21.dataTables.css'); ?>" rel="stylesheet">
+    <link href="<?= base_url('assets/vendor/datatables/css/jquery.dataTables.min.css'); ?>" rel="stylesheet">
     <link href="<?= base_url('assets/vendor/datatables/buttons.dataTables.min.css'); ?>" rel="stylesheet">
 
     <!-- Custom Metro CSS -->
@@ -42,7 +42,10 @@
     <script src="<?= base_url('assets/vendor/metro/js/metro.min.js'); ?>"></script>
 
     <!-- Vendors JS -->
-    <script src="<?= base_url('assets/vendor/datatables/jquery.dataTables.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/datatables/js/jquery.dataTables.min.js'); ?>"></script>
+
+    <!-- Custom Metro JS -->
+    <script src="<?= base_url('assets/locals/js/custom-metro.js'); ?>"></script>
 </body>
 
 </html>

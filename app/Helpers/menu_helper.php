@@ -25,27 +25,27 @@ function userTabMenu($tabs)
                     switch ($navtab) {
                         case "user": ?>
                             <li class="active"><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
-                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Master Data Rapat</a></li>
-                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Pembaharuan Data</a></li>
-                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Riwayat Rapat</a></li>
+                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-stackoverflow"></span> Master Data Rapat</a></li>
+                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-loop2"></span> Pembaharuan Data</a></li>
+                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-books"></span> Riwayat Rapat</a></li>
                         <?php break;
                         case "rapat": ?>
                             <li><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
-                            <li class="active"><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Master Data Rapat</a></li>
-                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Pembaharuan Data</a></li>
-                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Riwayat Rapat</a></li>
+                            <li class="active"><a href="<?= base_url('rapat') ?>"><span class="mif-stackoverflow"></span> Master Data Rapat</a></li>
+                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-loop2"></span> Pembaharuan Data</a></li>
+                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-books"></span> Riwayat Rapat</a></li>
                         <?php break;
                         case "feed": ?>
                             <li><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
-                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Master Data Rapat</a></li>
-                            <li class="active"><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Pembaharuan Data</a></li>
-                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Riwayat Rapat</a></li>
+                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-stackoverflow"></span> Master Data Rapat</a></li>
+                            <li class="active"><a href="<?= base_url('rapat') ?>"><span class="mif-loop2"></span> Pembaharuan Data</a></li>
+                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-books"></span> Riwayat Rapat</a></li>
                         <?php break;
                         case "riwayat": ?>
                             <li><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
-                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Master Data Rapat</a></li>
-                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Pembaharuan Data</a></li>
-                            <li class="active"><a href="<?= base_url('rapat') ?>"><span class="mif-info"></span> Riwayat Rapat</a></li>
+                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-stackoverflow"></span> Master Data Rapat</a></li>
+                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-loop2"></span> Pembaharuan Data</a></li>
+                            <li class="active"><a href="<?= base_url('rapat') ?>"><span class="mif-books"></span> Riwayat Rapat</a></li>
                     <?php break;
                         default:
                             echo "Your favorite color is neither red, blue, nor green!";

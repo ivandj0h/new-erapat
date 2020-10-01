@@ -50,4 +50,3 @@ navbar_($nav_title);
 
 <?php
 $this->endSection();
-?>

@@ -15,14 +15,13 @@ function navbar_($nav_title)
             <?php elseif ($nav_title == 'login' || $nav_title == 'register' || $nav_title == 'zohoconnect') : ?>
                 <li><a href="<?= base_url(); ?>" class="text-upper"><span class="icon mif-calendar"></span> kalender</a></li>
                 <li><a href="<?= base_url('documentation'); ?>" class=" text-upper"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
-                <?php
-            elseif (session('logged_in')) :
+                <?php elseif (session('logged_in')) :
                 if ($nav_title == 'admin') : ?>
                     <li><a href="<?= base_url(); ?>" class="text-upper"><span class="icon mif-calendar"></span> kalender</a></li>
-                    <li><a href="<?= base_url('documentation'); ?>" class=" text-upper"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
+                    <li><a href="<?= base_url('documentation'); ?>" class="text-upper"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
                 <?php else : ?>
                     <li><a href="<?= base_url(); ?>" class="text-upper"><span class="icon mif-calendar"></span> kalender</a></li>
-                    <li><a href="<?= base_url('documentation'); ?>" class=" text-upper"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
+                    <li><a href="<?= base_url('documentation'); ?>" class="text-upper"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
                 <?php endif; ?>
             <?php else : ?>
                 <li><a href="<?= base_url(); ?>" class="text-upper"><span class="icon mif-calendar"></span> kalender</a></li>
