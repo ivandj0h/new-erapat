@@ -18,4 +18,6 @@ class RapatModel extends Model
     //     'title',
     //     'content'
     // ];
+
+
 }

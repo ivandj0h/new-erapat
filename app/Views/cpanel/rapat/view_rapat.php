@@ -9,10 +9,15 @@ navbar_($nav_title);
 
 <!-- start content here -->
 <?= userTabMenu($tabs); ?>
-
+<!-- Content -->
 <div class="container">
-
-    <table class="table table-striped table-condensed" id="meeting" cellspacing="0">
+    <div class="toolbar my-5">
+        <strong> Tabel Master Data Rapat</strong>
+    </div>
+    <div class="toolbar my-5 place-right">
+        <a href="<?php echo base_url('rapat/baru') ?>" class="button primary outline"><span class="mif-file-text"></span> Tambah Rapat Baru</a>
+    </div>
+    <table class="table table-condensed hover" id="rapat" cellspacing="0">
         <thead>
             <tr>
                 <th class="text-center w-20">Tanggal</th>
@@ -21,7 +26,6 @@ navbar_($nav_title);
                 <th class="text-center w-20">Nama Bidang</th>
                 <th class="text-center w-20">Media</th>
                 <th class="text-center w-20">ID Media</th>
-                <th class="text-center w-20">File Upload</th>
                 <th class="text-center w-20">Aksi</th>
             </tr>
         </thead>
@@ -46,8 +50,16 @@ navbar_($nav_title);
                         }
                         ?>
                     </td>
-                    <td>no</td>
-                    <td>no</td>
+                    <td>
+                        <div class="dropdown-button">
+                            <button class="button dropdown-toggle primary"><span class="mif-fire"></span> Aksi</button>
+                            <ul class="d-menu" data-role="dropdown">
+                                <li><a href="#"><span class="mif-eye"></span> Detail</a></li>
+                                <li><a href="#"><span class="mif-copy"></span> Ubah</a></li>
+                                <li><a href="#"><span class="mif-flow-branch"></span> Reschedule</a></li>
+                            </ul>
+                        </div>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

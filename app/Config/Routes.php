@@ -62,6 +62,8 @@ $routes->get('/auth/logout', 'Auth::logout');
 $routes->get('/admin', 'Admin::index');
 $routes->get('/user', 'User::index');
 $routes->get('/rapat', 'Rapat::index');
+$routes->get('/rapat/baru', 'Rapat::baru');
+$routes->post('/rapat/get_media_meeting', 'Rapat::get_media_meeting');
 
 
 
