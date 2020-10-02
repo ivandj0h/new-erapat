@@ -14,7 +14,7 @@ class Rapat extends BaseController
     public function __construct()
     {
         $this->session = session();
-        helper(['navbar', 'alerts', 'menu', 'zoom']);
+        helper(['navbar', 'alerts', 'menu', 'zoom', 'form']);
     }
 
     public function index()

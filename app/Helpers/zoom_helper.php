@@ -16,7 +16,7 @@ function get_available_zoomid()
         <li class="pz">
             <label class="radio-inline">
                 <input type="radio" id="pro-chx-residential" name="zoomid" class="pro-chx" value="<?= $d['id']; ?>" disabled>
-                <div class="notavail text-danger">
+                <div class="notavail fg-crimson">
                     <i class="fas fa-times"></i> <?= $d['idzoom']; ?>
                     - (Zoom ID Default)
                 </div>
@@ -27,7 +27,7 @@ function get_available_zoomid()
         <li class="pz">
             <label class="radio-inline">
                 <input type="radio" id="pro-chx-residential" name="zoomid" class="pro-chx" value="<?= $d['id']; ?>" checked>
-                <div class="avail text-primary">
+                <div class="avail fg-cobalt">
                     <i class="fas fa-check"></i> <?= $d['idzoom']; ?>
                     - (Zoom ID Default)
                 </div>
@@ -42,7 +42,7 @@ function get_available_zoomid()
             <li class="pz">
                 <label class="radio-inline">
                     <input type="radio" id="pro-chx-residential" name="zoomid" class="pro-chx" value="<?= $zm['id']; ?>" disabled>
-                    <div class="notavail text-danger">
+                    <div class="notavail fg-crimson">
                         <i class="fas fa-times"></i> <?= $zm['idzoom']; ?>
                         - (<?= $zm['pemilik_zoom']; ?>)
                     </div>
@@ -54,7 +54,7 @@ function get_available_zoomid()
             <li class="pz">
                 <label class="radio-inline">
                     <input type="radio" id="pro-chx-residential" name="zoomid" class="pro-chx" value="<?= $zm['id']; ?>" disabled>
-                    <div class="notavail text-danger">
+                    <div class="notavail fg-crimson">
                         <i class="fas fa-times"></i> <?= $zm['idzoom']; ?>
                         - (<?= $zm['pemilik_zoom']; ?>)
                     </div>
@@ -66,7 +66,7 @@ function get_available_zoomid()
             <li class="pz">
                 <label class="radio-inline">
                     <input type="radio" id="pro-chx-residential" name="zoomid" class="pro-chx" value="<?= $zm['id']; ?>" disabled>
-                    <div class="notavail text-danger">
+                    <div class="notavail fg-crimson">
                         <i class="fas fa-times"></i> <?= $zm['idzoom']; ?>
                         - (<?= $zm['pemilik_zoom']; ?>)
                     </div>
@@ -78,7 +78,7 @@ function get_available_zoomid()
             <li class="pz">
                 <label class="radio-inline">
                     <input type="radio" id="pro-chx-residential" name="zoomid" class="pro-chx" value="<?= $zm['id']; ?>">
-                    <div class="clab text-success">
+                    <div class="clab fg-emerald">
                         <i class="fas fa-check"></i> <?= $zm['idzoom']; ?>
                         - (<?= $zm['pemilik_zoom']; ?>)
                     </div>
