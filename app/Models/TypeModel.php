@@ -17,7 +17,14 @@ class TypeModel extends Model
 
     public function get_byid_type($id)
     {
-        $this->where('type_id', $id);
-        // $this->db->get('view_sub_type');
+
+        $builder = $this->db->table('view_sub_type');
+        $builder->select('*');
+        $result = $builder->get();
+        if (count($result->getResultArray()) > 0) {
+            return $result->getResult();
+        } else {
+            return false;
+        }
     }
 }
