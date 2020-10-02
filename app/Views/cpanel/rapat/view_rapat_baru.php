@@ -60,9 +60,18 @@ navbar_($nav_title);
                         </select>
                     </div>
                 </div>
+                <div class="row mb-4">
+                    <label class="cell-sm-3">ZOOM ID</label>
+                    <div class="cell-sm-8">
+                        <ul class="chec-radio">
+                            <!-- Radio Button Here -->
+
+                        </ul>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="cell">
-                        <button type="submit" class="button primary">Sign in</button>
+                        <button type="submit" class="button success"><span class="mif-file-text"></span> Tambah Rapat Baru</button>
                     </div>
                 </div>
 

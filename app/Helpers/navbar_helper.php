@@ -57,7 +57,7 @@ function navbar_($nav_title)
                         <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper" style="margin-right: 5px;"><span class="icon mif-notification"></span> CPANEL <?= session('fullName'); ?></a>
                     <?php endif; ?>
                 <?php endif; ?>
-                <a href="<?= base_url('auth/logout') ?>" class="button button-outline-transparent text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
+                <a href="<?= base_url('logout') ?>" class="button button-outline-transparent text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
             </div>
         </div>
     <?php } else { ?>
@@ -66,13 +66,13 @@ function navbar_($nav_title)
 
             <div class="app-bar-container ml-auto d-none d-flex-md">
                 <?php if ($nav_title == 'login') : ?>
-                    <a href="<?= base_url('auth/login') ?>" class="button button-outline-transparent text-upper aktif" style="margin-right: 5px;"><span class="icon mif-lock"></span> MASUK</a>
+                    <a href="<?= base_url('login') ?>" class="button button-outline-transparent text-upper aktif" style="margin-right: 5px;"><span class="icon mif-lock"></span> MASUK</a>
                     <a href="<?= base_url('auth/register') ?>" class="button button-outline-transparent text-upper" style="margin-right: 30px;"><span class="icon mif-unlock"></span> DAFTAR</a>
                 <?php elseif ($nav_title == 'register') : ?>
-                    <a href="<?= base_url('auth/login') ?>" class="button button-outline-transparent text-upper " style="margin-right: 5px;"><span class="icon mif-lock"></span> MASUK</a>
+                    <a href="<?= base_url('login') ?>" class="button button-outline-transparent text-upper " style="margin-right: 5px;"><span class="icon mif-lock"></span> MASUK</a>
                     <a href="<?= base_url('auth/register') ?>" class="button button-outline-transparent text-upper aktif" style="margin-right: 30px;"><span class="icon mif-unlock"></span> DAFTAR</a>
                 <?php else : ?>
-                    <a href="<?= base_url('auth/login') ?>" class="button button-outline-transparent text-upper" style="margin-right: 5px;"><span class="icon mif-lock"></span> MASUK</a>
+                    <a href="<?= base_url('login') ?>" class="button button-outline-transparent text-upper" style="margin-right: 5px;"><span class="icon mif-lock"></span> MASUK</a>
                     <a href="<?= base_url('auth/register') ?>" class="button button-outline-transparent text-upper" style="margin-right: 30px;"><span class="icon mif-unlock"></span> DAFTAR</a>
                 <?php endif; ?>
             </div>

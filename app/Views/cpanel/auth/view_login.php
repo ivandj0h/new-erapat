@@ -18,7 +18,7 @@ navbar_($nav_title);
                     <p class="remark alert text-center" id="sembunyi"><?= session()->getFlashdata('error') ?></p>
                 <?php endif; ?>
                 <?php $validation = session()->getFlashdata('validation'); ?>
-                <form data-role="validator" action="<?= current_url() ?>" method="POST">
+                <form data-role="validator" action="<?= base_url('login/proses') ?>" method="POST">
                     <div class="row mb-2">
                         <div class="cell-sm-12">
                             <input type="email" data-validate="required email" data-role="input" name="email" value="<?= old('email') ?>" placeholder="Masukan Alamat Email" class="metro-input <?= $validation && $validation->hasError('email') ? 'invalid_feedback' : '' ?>" autocomplete="off" autofocus>
