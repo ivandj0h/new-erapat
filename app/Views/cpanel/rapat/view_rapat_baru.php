@@ -17,7 +17,7 @@ navbar_($nav_title);
     <div class="toolbar my-5 place-right">
         <a href="<?php echo base_url('rapat') ?>" class="button primary outline"><span class="mif-undo"></span> Kembali</a>
     </div>
-
+    <hr>
     <div class="row">
         <div class="cell-12 my-5 box-shadow">
             <form action="<?php echo base_url('rapat/tambah') ?>" method="POST">
@@ -86,6 +86,18 @@ navbar_($nav_title);
                         <span id="agenda_error" class="text-danger"></span>
                     </div>
                 </div>
+                <div class="row mb-4">
+                    <label class="cell-sm-3">Pimpinan Rapat</label>
+                    <div class="cell-sm-8">
+                        <input data-role="tagsinput" type="text" name="participants_name" class="form-control form-control-user" id="participants_name" value="<?= set_value('participants_name'); ?>" placeholder="Tambah Pimpinan Rapat">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <label class="cell-sm-3">Narasumber</label>
+                    <div class="cell-sm-8">
+                        <input data-role="tagsinput" type="text" name="speakers_name" class="form-control form-control-user" id="speakers_name" value="<?= set_value('speakers_name'); ?>" placeholder="Tambah Narasumber">
+                    </div>
+                </div>
                 <div class="row">
                     <div class="cell">
                         <button type="submit" class="button success"><span class="mif-file-text"></span> Tambah Rapat Baru</button>
@@ -97,8 +109,5 @@ navbar_($nav_title);
     </div>
 </div>
 
-
 <!-- end content here -->
-
-
 <?php $this->endSection(); ?>

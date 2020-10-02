@@ -41,12 +41,12 @@ navbar_($nav_title);
                         <?php
                         if ($r['type_id'] == 1) {
                             if ($r['sub_type_id'] == 1) {
-                                echo "<strong><span class='text-success'>" . $r['zoomid'] . "</span></strong>";
+                                echo "<strong><span class='fg-emerald'>" . $r['zoomid'] . "</span></strong>";
                             } else {
-                                echo "<strong><span class='text-primary'>" . $r['other_online_id'] . "</span></strong>";
+                                echo "<strong><span class='fg-cobalt'>" . $r['other_online_id'] . "</span></strong>";
                             }
                         } else {
-                            echo "<span class='text-danger'>Offline</span>";
+                            echo "<strong><span class='fg-crimson'>Offline</span></strong>";
                         }
                         ?>
                     </td>

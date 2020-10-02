@@ -226,7 +226,9 @@ ul.chec-radio {
   display: contents;
 }
 ul.chec-radio li.pz {
-  display: inline;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 .chec-radio label.radio-inline input[type="checkbox"] {
   display: none;
@@ -240,7 +242,7 @@ ul.chec-radio li.pz {
   background: #ffffff;
   padding: 4px 20px;
   text-align: center;
-  border: #c5ffc9 1px solid;
+  border: #5dc464 1px solid;
   position: relative;
   height: 34px;
   float: left;
@@ -278,5 +280,5 @@ ul.chec-radio li.pz {
 }
 .chec-radio label.radio-inline input[type="radio"]:checked + div {
   color: #fff;
-  border: #1e8b10 2px solid;
+  border: #008a00 2px solid;
 }

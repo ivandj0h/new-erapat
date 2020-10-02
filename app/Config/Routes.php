@@ -48,8 +48,8 @@ $routes->get('/zohoconnect', 'ZohoConnect::index');
  * AUTHENTIFICATION Route Configuration
  * --------------------------------------------------------------------
  */
-$routes->match(['get', 'post'], '/auth/register', 'Auth::register');
 
+$routes->get('register', 'Register::index');
 $routes->get('login', 'Login::index');
 $routes->post('login/proses', 'Login::proses');
 $routes->get('/logout', 'Login::logout', ['filter' => 'ceklogin']);
