@@ -70,6 +70,12 @@ body {
   transform-origin: center center 1px;
 }
 
+.box-shadow {
+  border: 1px solid #eee;
+  padding: 25px;
+  box-shadow: 3px 3px 2px #dadada;
+}
+
 .cell-5,
 .col-5,
 .colspan-5 {
@@ -213,4 +219,64 @@ code:hover {
 }
 .tabs li.active {
   background-color: #ffffff !important;
+}
+
+/* Radio Button Custom CSS - Bootsnipp */
+ul.chec-radio {
+  display: contents;
+}
+ul.chec-radio li.pz {
+  display: inline;
+}
+.chec-radio label.radio-inline input[type="checkbox"] {
+  display: none;
+}
+.chec-radio label.radio-inline input[type="checkbox"]:checked + div {
+  color: #fff;
+  background-color: rgb(212, 212, 212);
+}
+.chec-radio .radio-inline .clab {
+  cursor: pointer;
+  background: #ffffff;
+  padding: 4px 20px;
+  text-align: center;
+  border: #c5ffc9 1px solid;
+  position: relative;
+  height: 34px;
+  float: left;
+  margin: 0;
+}
+.chec-radio .radio-inline .avail {
+  cursor: pointer;
+  background: #ffffff;
+  padding: 4px 20px;
+  text-align: center;
+  border: #bbc8ff 1px solid;
+  position: relative;
+  height: 34px;
+  float: left;
+  margin: 0;
+}
+
+.chec-radio .radio-inline .notavail {
+  cursor: pointer;
+  background: #ffffff;
+  padding: 4px 20px;
+  text-align: center;
+  border: #ffc5c5 1px solid;
+  position: relative;
+  height: 34px;
+  float: left;
+  margin: 0;
+}
+
+.chec-radio label.radio-inline input[type="checkbox"]:checked + div:before {
+  margin-right: 5px;
+}
+.chec-radio label.radio-inline input[type="radio"] {
+  display: none;
+}
+.chec-radio label.radio-inline input[type="radio"]:checked + div {
+  color: #fff;
+  border: #1e8b10 2px solid;
 }

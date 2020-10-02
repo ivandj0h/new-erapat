@@ -61,10 +61,45 @@ $routes->get('/logout', 'Login::logout', ['filter' => 'ceklogin']);
  * --------------------------------------------------------------------
  */
 $routes->get('/admin', 'Admin::index', ['filter' => 'ceklogin']);
+
+/**
+ * --------------------------------------------------------------------
+ * CPANEL Route Configuration
+ * USER SECTION
+ * --------------------------------------------------------------------
+ */
 $routes->get('/user', 'User::index', ['filter' => 'ceklogin']);
+
+/**
+ * --------------------------------------------------------------------
+ * CPANEL Route Configuration
+ * RAPAT SECTION
+ * --------------------------------------------------------------------
+ */
 $routes->get('/rapat', 'Rapat::index', ['filter' => 'ceklogin']);
 $routes->get('/rapat/baru', 'Rapat::baru', ['filter' => 'ceklogin']);
 $routes->match(['get', 'post'], '/rapat/getmm', 'Rapat::get_media_meeting');
+$routes->match(['get', 'post'], '/rapat/getmmm', 'Rapat::get_zoomid');
+
+/**
+ * --------------------------------------------------------------------
+ * CPANEL Route Configuration
+ * PEMBAHARUAN SECTION
+ * --------------------------------------------------------------------
+ */
+$routes->get('/pembaharuan', 'Pembaharuan::index', ['filter' => 'ceklogin']);
+
+
+/**
+ * --------------------------------------------------------------------
+ * CPANEL Route Configuration
+ * RIWAYAT SECTION
+ * --------------------------------------------------------------------
+ */
+$routes->get('/riwayat', 'Riwayat::index', ['filter' => 'ceklogin']);
+
+
+
 
 
 

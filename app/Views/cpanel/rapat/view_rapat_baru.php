@@ -19,7 +19,7 @@ navbar_($nav_title);
     </div>
 
     <div class="row">
-        <div class="cell-8 offset-2 my-5">
+        <div class="cell-12 my-5 box-shadow">
             <form action="<?php echo base_url('rapat/tambah') ?>" method="POST">
                 <div class="row mb-4">
                     <label class="cell-sm-3">Tanggal Rapat</label>
@@ -60,13 +60,30 @@ navbar_($nav_title);
                         </select>
                     </div>
                 </div>
-                <div class="row mb-4">
+                <div class="row mb-4" id="zoom_id" style='display:none;'>
                     <label class="cell-sm-3">ZOOM ID</label>
                     <div class="cell-sm-8">
                         <ul class="chec-radio">
                             <!-- Radio Button Here -->
-
+                            <?php get_available_zoomid(); ?>
                         </ul>
+                    </div>
+                </div>
+                <div class="row mb-4" id="other_online_id" style='display:none;'>
+                    <label class="cell-sm-3">ID Rapat lain</label>
+                    <div class="cell-sm-8">
+                        <input type="text" id="onlineId" name="other_online_id" class="border" placeholder="ID Rapat" autocomplete="off" disabled>
+                        <!-- <br /> -->
+                        <input type="checkbox" class="dissable" id="yourBox" />
+                        <small class="text-danger"> Aktifkan CkeckBox Jika tidak menggunakan ZOOM Meeting</small>
+                    </div>
+                </div>
+                <!-- https://ilmucoding.com/middleware-filters-codeigniter-4/ -->
+                <div class="row mb-4">
+                    <label class="cell-sm-3">Agenda Rapat</label>
+                    <div class="cell-sm-8">
+                        <textarea class="form-control form-control-user" name="agenda" id="default" placeholder="Tuliskan Agenda Rapatnya disini..."><?= set_value('agenda', ''); ?></textarea>
+                        <span id="agenda_error" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="row">
