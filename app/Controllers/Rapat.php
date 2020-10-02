@@ -9,6 +9,8 @@ use App\Models\TypeModel;
 class Rapat extends BaseController
 {
 
+    private $typeModel;
+
     public function __construct()
     {
         $this->session = session();
@@ -49,13 +51,17 @@ class Rapat extends BaseController
         return view('cpanel/rapat/view_rapat_baru', $data);
     }
 
-    function get_media_meeting()
+    public function get_media_meeting()
     {
-        $typeModel = new TypeModel();
-        $id_type = $this->request->getPost('id_type');
-        // var_dump($id_type);
-        // die;
-        $data = $typeModel->get_byid_type($id_type);
-        echo json_encode($data);
+        $id = $this->request->getPost('id_type');
+
+        $db      = \Config\Database::connect();
+        $builder = $db->table('view_sub_type');
+        $result = $builder->getWhere(['type_id' => $id]);
+        if (count($result->getResultArray()) > 0) {
+            echo json_encode($result->getResult());
+        } else {
+            return false;
+        }
     }
 }

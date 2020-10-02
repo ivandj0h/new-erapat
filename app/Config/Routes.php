@@ -21,7 +21,7 @@ $routes->setDefaultController('Main');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-// $routes->setAutoRoute(true);
+$routes->setAutoRoute(true);
 $routes->setAutoRoute(false);
 
 /**
@@ -63,9 +63,7 @@ $routes->get('/admin', 'Admin::index');
 $routes->get('/user', 'User::index');
 $routes->get('/rapat', 'Rapat::index');
 $routes->get('/rapat/baru', 'Rapat::baru');
-$routes->post('/rapat/get_media_meeting', 'Rapat::get_media_meeting');
-
-
+$routes->match(['get', 'post'], '/rapat/getmm', 'Rapat::get_media_meeting');
 
 
 
