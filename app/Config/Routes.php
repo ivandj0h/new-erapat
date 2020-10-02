@@ -48,10 +48,11 @@ $routes->get('/zohoconnect', 'ZohoConnect::index');
  * AUTHENTIFICATION Route Configuration
  * --------------------------------------------------------------------
  */
-$routes->match(['get', 'post'], '/auth/login', 'Auth::login');
 $routes->match(['get', 'post'], '/auth/register', 'Auth::register');
 
-$routes->get('/auth/logout', 'Auth::logout');
+$routes->get('login', 'Login::index');
+$routes->post('login/proses', 'Login::proses');
+$routes->get('/logout', 'Login::logout', ['filter' => 'ceklogin']);
 
 /**
  * --------------------------------------------------------------------
@@ -59,10 +60,10 @@ $routes->get('/auth/logout', 'Auth::logout');
  * ADMIN SECTION
  * --------------------------------------------------------------------
  */
-$routes->get('/admin', 'Admin::index');
-$routes->get('/user', 'User::index');
-$routes->get('/rapat', 'Rapat::index');
-$routes->get('/rapat/baru', 'Rapat::baru');
+$routes->get('/admin', 'Admin::index', ['filter' => 'ceklogin']);
+$routes->get('/user', 'User::index', ['filter' => 'ceklogin']);
+$routes->get('/rapat', 'Rapat::index', ['filter' => 'ceklogin']);
+$routes->get('/rapat/baru', 'Rapat::baru', ['filter' => 'ceklogin']);
 $routes->match(['get', 'post'], '/rapat/getmm', 'Rapat::get_media_meeting');
 
 
