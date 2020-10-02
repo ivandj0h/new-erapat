@@ -24,6 +24,7 @@
 
     <!-- Vendors CSS -->
     <link href="<?= base_url('assets/vendor/datatables/css/jquery.dataTables.min.css'); ?>" rel="stylesheet">
+    <link href="<?= base_url('assets/vendor/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet" type="text/css">
 
     <!-- Custom Metro CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/locals/css/custom-metro.css'); ?>">
@@ -76,6 +77,78 @@
                         $("#meeting_subtype").html(html);
                     },
                 });
+            });
+
+            //    Media types Edit
+            $("#type_id2").change(function() {
+                var id_type = $("#type_id2").val();
+                var dataJson = {
+                    id_type: id_type,
+                };
+                $.ajax({
+                    url: "<?php echo base_url(); ?>/rapat/getmmm",
+                    method: "POST",
+                    data: dataJson,
+                    async: false,
+                    dataType: "json",
+                    success: function(data) {
+                        var html = "";
+                        var i;
+
+                        for (i = 0; i < data.length; i++) {
+                            html +=
+                                "<option value=" +
+                                data[i].id +
+                                ">" +
+                                data[i].meeting_subtype +
+                                "</option>";
+                        }
+                        $("#meeting_subtype2").html(html);
+                    },
+                });
+            });
+
+            $('#type_id').on('change', function() {
+                if (this.value === '1') {
+                    $("#other_online_id").hide();
+                    $("#zoom_id").show();
+                } else {
+                    $("#other_online_id").hide();
+                    $("#zoom_id").hide();
+                }
+            });
+
+            $('#meeting_subtype').on('change', function() {
+                if (this.value !== '1') {
+                    $("#other_online_id").show();
+                    $("#zoom_id").hide();
+                }
+                if (this.value === '5' || this.value === '6' || this.value === '7' || this.value === '8') {
+                    $("#other_online_id").hide();
+                    $("#zoom_id").hide();
+                }
+                if (this.value === '1') {
+                    $("#other_online_id").hide();
+                    $("#zoom_id").show();
+                }
+            });
+
+            $("#yourBox").click(function() {
+                if ($(this).is(":checked")) {
+                    $("#onlineId").removeAttr("disabled");
+                    $("#onlineId").focus();
+                } else {
+                    $("#onlineId").attr("disabled", "disabled");
+                }
+            });
+
+            $(".dissable").attr("disabled", "disabled");
+            $("#type_id").on("change", function() {
+                if ($(this).val() === "2") {
+                    $(".dissable").attr("disabled", "disabled");
+                } else {
+                    $(".dissable").removeAttr("disabled");
+                }
             });
         });
     </script>

@@ -14,7 +14,7 @@ class Rapat extends BaseController
     public function __construct()
     {
         $this->session = session();
-        helper(['navbar', 'alerts', 'menu']);
+        helper(['navbar', 'alerts', 'menu', 'zoom']);
     }
 
     public function index()
@@ -52,6 +52,20 @@ class Rapat extends BaseController
     }
 
     public function get_media_meeting()
+    {
+        $id = $this->request->getPost('id_type');
+
+        $db      = \Config\Database::connect();
+        $builder = $db->table('view_sub_type');
+        $result = $builder->getWhere(['type_id' => $id]);
+        if (count($result->getResultArray()) > 0) {
+            echo json_encode($result->getResult());
+        } else {
+            return false;
+        }
+    }
+
+    public function get_zoomid()
     {
         $id = $this->request->getPost('id_type');
 
