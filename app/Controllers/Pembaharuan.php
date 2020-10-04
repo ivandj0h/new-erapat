@@ -36,10 +36,7 @@ class Pembaharuan extends BaseController
     {
 
         $now = date('Y-m-d');
-        // $date = new DateTime("now");
-        // $curr_date = $date->format('Y-m-d ');
         $typeId = 1;
-
 
         $db      = \Config\Database::connect();
         $builder = $db->table('view_zoom_meeting');

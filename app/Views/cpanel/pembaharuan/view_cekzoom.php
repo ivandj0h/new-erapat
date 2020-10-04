@@ -18,13 +18,13 @@ navbar_($nav_title);
             </button>
             <ul class="navview-menu">
                 <li class="active">
-                    <a href="<?= base_url('cekzoom'); ?>" data-role="popover" data-popover-text="Cek Ketersediaan ZoomID" data-popover-position="right" data-cls-popover="bg-white fg-cobalt drop-shadow pop-over-width" data-popover-hide="0">
+                    <a href="<?= base_url('cekzoom'); ?>">
                         <span class="icon"><span class="mif-video-camera"></span></span>
                         <span class="caption">Cek Ketersediaan ZoomID</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('cekoffline'); ?>" data-role="popover" data-popover-text="Cek Rapat Offline" data-popover-position="right" data-cls-popover="bg-white fg-cobalt drop-shadow pop-over-width" data-popover-hide="0">
+                    <a href="<?= base_url('cekoffline'); ?>">
                         <span class="icon"><span class="mif-organization"></span></span>
                         <span class="caption">Cek Rapat Offline</span>
                     </a>
@@ -86,11 +86,11 @@ navbar_($nav_title);
 
                                 $endtime = $endtime <= $starttime ? $endtime + 2400 : $endtime;
                                 if (($currenttime >= $starttime) && ($currenttime <= $endtime)) {
-                                    echo '<span class="text-danger"><i class="fas fa-times"></i> Sedang Berlangsung</span>';
+                                    echo '<span class="fg-crimson"><i class="fas fa-times"></i> Sedang Berlangsung</span>';
                                 } else if (($currenttime < $starttime) && ($currenttime < $endtime)) {
-                                    echo '<span class="text-primary"><i class="fas fa-check"></i> Belum Mulai</span>';
+                                    echo '<span class="fg-cobalt"><i class="fas fa-check"></i> Belum Mulai</span>';
                                 } else {
-                                    echo '<span class="text-success"><i class="fas fa-check"></i> Telah Selesai</span>';
+                                    echo '<span class="fg-emerald"><i class="fas fa-check"></i> Telah Selesai</span>';
                                 }
                                 ?>
                             </td>
@@ -106,14 +106,14 @@ navbar_($nav_title);
                                         <span class="text-secondary"><i class="fas fa-times"></i> Terbatas</span>
                                     <?php
                                     } else {
-                                        echo '<span class="text-danger"><i class="fas fa-times"></i> Dipakai</span>';
+                                        echo '<span class="fg-crimson"><i class="fas fa-times"></i> Dipakai</span>';
                                     }
                                 } else {
                                     if ($a['user_id'] == 20 || $a['user_id'] == 21 || $a['user_id'] == 14) { ?>
                                         <span class="text-secondary"><i class="fas fa-times"></i> Terbatas</span>
                                 <?php
                                     } else {
-                                        echo '<span class="text-success"><i class="fas fa-check"></i> Tersedia</span>';
+                                        echo '<span class="fg-emerald"><i class="fas fa-check"></i> Tersedia</span>';
                                     }
                                 }
                                 ?>
