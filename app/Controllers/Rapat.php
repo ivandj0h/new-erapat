@@ -21,8 +21,8 @@ class Rapat extends BaseController
         $userModel = new UserModel();
         $rapatModel = new RapatModel();
         $data = [
-            'page_title' => 'E-RAPAT - Calendar',
-            'nav_title' => 'calendar',
+            'page_title' => 'E-RAPAT - Rapat',
+            'nav_title' => 'rapat',
             'tabs' => 'rapat',
             'user' => $userModel,
             'rapat' => $rapatModel
@@ -45,6 +45,24 @@ class Rapat extends BaseController
         ];
 
         return view('cpanel/rapat/view_rapat_baru', $data);
+    }
+
+    public function detail($code = '')
+    {
+        $db   = \Config\Database::connect();
+        $builder = $db->table('view_user_meeting');
+        $result = $builder->getWhere(['unique_code' => $code]);
+
+        // var_dump($result->getResultArray());
+        // die;
+        $data = [
+            'page_title' => 'E-RAPAT - Detail',
+            'nav_title' => 'detail',
+            'tabs' => 'rapat',
+            'rapat' => $result->getRow()
+        ];
+
+        return view('cpanel/rapat/view_rapat_detail', $data);
     }
 
     public function get_media_meeting()

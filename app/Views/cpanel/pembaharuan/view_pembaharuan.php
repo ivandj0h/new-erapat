@@ -13,6 +13,9 @@ navbar_($nav_title);
 <div class="container">
     <div data-role="navview" class="navview navview-compact-md navview-expand-lg compacted js-compact">
         <div class="navview-pane">
+            <button class="pull-button">
+                <span class="default-icon-menu"></span>
+            </button>
             <ul class="navview-menu">
                 <li>
                     <a href="#" data-role="popover" data-popover-text="Cek Ketersediaan ZoomID" data-popover-position="right" data-cls-popover="bg-white fg-cobalt drop-shadow pop-over-width" data-popover-hide="0">
@@ -33,11 +36,12 @@ navbar_($nav_title);
             <strong> Tabel Pembaharuan Rapat</strong>
         </div>
         <div class="toolbar my-5 place-right">
-            Data Rapat Hari ini Tanggal : <strong><?= date("d-m-Y"); ?></strong>
+            Data Rapat Hari ini Tanggal : &nbsp;<strong><?= date("d-m-Y"); ?></strong>
+        </div>
+        <div class="red-div-alert">
+            <?= red_div_alert(); ?>
         </div>
         <div class="navview-content d-flex flex-align-center flex-justify-center h-500">
-
-
             <table class="table table-condensed hover display" id="rapat" cellspacing="0">
                 <thead>
                     <tr>
@@ -73,7 +77,7 @@ navbar_($nav_title);
                             </td>
                             <td>
                                 <div class="dropdown-button">
-                                    <button class="button"><span class="mif-eye"></span> Details</button>
+                                    <a href="<?= base_url('rapat/' . $r['unique_code']); ?>" class="button"><span class="mif-eye"></span> Detail</a>
                                 </div>
                             </td>
                         </tr>

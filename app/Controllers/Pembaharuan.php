@@ -23,8 +23,8 @@ class Pembaharuan extends BaseController
         $result = $builder->where(['end_date' => $now])->get();
 
         $data = [
-            'page_title' => 'E-RAPAT - Calendar',
-            'nav_title' => 'calendar',
+            'page_title' => 'E-RAPAT - Pembaharuan',
+            'nav_title' => 'pembaharuan',
             'tabs' => 'pembaharuan',
             'rapat' => $result->getResultArray()
         ];

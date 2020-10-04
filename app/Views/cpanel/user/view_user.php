@@ -46,7 +46,15 @@ navbar_($nav_title);
 
 <!-- end content here -->
 <?php
+// echo red_alert();
+
 foreach ($rapat as $r) :
-    echo empty_upload_alert($r['files_upload']);
+    if (empty($r['files_upload'])) {
+        echo empty_upload_alert($r['files_upload']);
+    } elseif (empty($r['files_upload1'])) {
+        echo empty_upload_alert($r['files_upload1']);
+    } else {
+        echo empty_upload_alert($r['files_upload2']);
+    }
 endforeach;
 $this->endSection();

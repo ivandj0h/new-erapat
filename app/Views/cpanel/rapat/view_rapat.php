@@ -54,7 +54,7 @@ navbar_($nav_title);
                         <div class="dropdown-button">
                             <button class="button dropdown-toggle primary"><span class="mif-fire"></span> Aksi</button>
                             <ul class="d-menu" data-role="dropdown">
-                                <li><a href="#"><span class="mif-eye"></span> Detail</a></li>
+                                <li><a href="<?= base_url('rapat/' . $r['unique_code']); ?>"><span class="mif-eye"></span> Detail</a></li>
                                 <li><a href="#"><span class="mif-copy"></span> Ubah</a></li>
                                 <li><a href="#"><span class="mif-flow-branch"></span> Reschedule</a></li>
                             </ul>

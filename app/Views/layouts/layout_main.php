@@ -55,6 +55,11 @@
 
             $("#rapat").DataTable();
 
+            // Red Alert
+            $("#hideEl").on('click', function() {
+                $("#redAlert").fadeOut()
+            })
+
             //    Media types Add
             $("#type_id").change(function() {
                 var id_type = $("#type_id").val();

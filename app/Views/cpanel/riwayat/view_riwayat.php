@@ -50,7 +50,7 @@ navbar_($nav_title);
                     </td>
                     <td>
                         <div class="dropdown-button">
-                            <button class="button"><span class="mif-eye"></span> Details</button>
+                            <a href="<?= base_url('rapat/' . $r['unique_code']); ?>" class="button"><span class="mif-eye"></span> Detail</a>
                         </div>
                     </td>
                 </tr>
@@ -61,7 +61,8 @@ navbar_($nav_title);
 
 
 <!-- end content here -->
-
-
 <?php
+foreach ($rapat as $r) :
+    echo empty_upload_alert($r['files_upload']);
+endforeach;
 $this->endSection();

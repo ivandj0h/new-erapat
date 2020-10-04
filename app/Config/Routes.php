@@ -78,6 +78,7 @@ $routes->get('/user', 'User::index', ['filter' => 'ceklogin']);
  */
 $routes->get('/rapat', 'Rapat::index', ['filter' => 'ceklogin']);
 $routes->get('/rapat/baru', 'Rapat::baru', ['filter' => 'ceklogin']);
+$routes->get('/rapat/(:any)', 'Rapat::detail/$1', ['filter' => 'ceklogin']);
 $routes->match(['get', 'post'], '/rapat/getmm', 'Rapat::get_media_meeting');
 $routes->match(['get', 'post'], '/rapat/getmmm', 'Rapat::get_zoomid');
 
