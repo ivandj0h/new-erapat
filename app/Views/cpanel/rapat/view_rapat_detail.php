@@ -12,19 +12,26 @@ navbar_($nav_title);
 
 <!-- Start Main Content -->
 <div class="container">
+    <div class="red-div-alert-2">
+        <?php if (session()->get('id') == true) : ?>
+            <?= red_div_alert_2(); ?>
+        <?php else : ?>
+            <?= ''; ?>
+        <?php endif; ?>
+    </div>
     <div class="toolbar my-5" style="margin-left: 2px;">
         <strong> Tabel Detail Rapat</strong>&nbsp; - &nbsp;<i><?= $rapat->sub_department_name ?></i>
     </div>
-    <div class="toolbar my-5 place-right">
+    <div class="toolbar my-3 place-right">
         Data Rapat Tanggal : &nbsp;<strong><?= date("d-m-Y", strtotime($rapat->end_date)); ?></strong>
     </div>
     <div class="row detail-tab">
         <div class="col-md-2">
             <ul data-tabs-position="vertical h-100" data-role="tabs" data-expand="sm">
-                <li><a href="#_target_1">Base Profile</a></li>
-                <li><a href="#_target_2">Media Rapat</a></li>
-                <li><a href="#_target_3">Data Rapat</a></li>
-                <li><a href="#_target_4">File Pendukung</a></li>
+                <li><a href="#_target_1"><span class="mif-profile"></span> Base Profile</a></li>
+                <li><a href="#_target_2"><span class="mif-windows"></span> Media Rapat</a></li>
+                <li><a href="#_target_3"><span class="mif-stackoverflow"></span> Data Rapat</a></li>
+                <li><a href="#_target_4"><span class="mif-file-upload"></span> File Pendukung</a></li>
             </ul>
         </div>
         <div class="col-md-10">
@@ -71,7 +78,7 @@ navbar_($nav_title);
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <label class="cell-sm-2" style="padding: 10px;">Rapat diajukan oleh</label>
+                        <label class="cell-sm-2" style="padding: 10px;">Diajukan Oleh</label>
                         <div class="cell-sm-10">
                             <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
                                 <strong><?= $rapat->name ?></strong>.

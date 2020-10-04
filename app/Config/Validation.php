@@ -85,4 +85,21 @@ class Validation
 			'required' => '{field} Harus Diisi',
 		],
 	];
+
+	// Validasi untuk Pencarian Riwayat dar Data Rapat
+	// Base Validaton
+	public $riwayat = [
+		'from_date' => ['rules' => 'required'],
+		'to_date' => ['rules' => 'required'],
+	];
+
+	// The Rules
+	public $riwayat_errors = [
+		'from_date' => [
+			'required' => 'Tanggal Awal Harus diisi'
+		],
+		'to_date' => [
+			'required' => 'Tanggal Akhir Harus diisi'
+		]
+	];
 }

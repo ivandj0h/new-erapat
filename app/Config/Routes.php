@@ -99,7 +99,8 @@ $routes->get('/cekoffline', 'Pembaharuan::cekoffline', ['filter' => 'ceklogin'])
  * RIWAYAT SECTION
  * --------------------------------------------------------------------
  */
-$routes->get('/riwayat', 'Riwayat::index', ['filter' => 'ceklogin']);
+$routes->match(['get', 'post'], '/riwayat', 'Riwayat::index', ['filter' => 'ceklogin']);
+$routes->match(['get', 'post'], '/riwayats', 'Riwayat::get_riwayat', ['filter' => 'ceklogin']);
 
 
 
