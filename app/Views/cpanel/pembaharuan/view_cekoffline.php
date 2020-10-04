@@ -18,13 +18,13 @@ navbar_($nav_title);
             </button>
             <ul class="navview-menu">
                 <li>
-                    <a href="<?= base_url('cekzoom'); ?>" data-role="popover" data-popover-text="Cek Ketersediaan ZoomID" data-popover-position="right" data-popover-trigger="click" data-cls-popover="bg-white fg-cobalt drop-shadow pop-over-width" data-popover-hide="0">
+                    <a href="<?= base_url('cekzoom'); ?>">
                         <span class="icon"><span class="mif-video-camera"></span></span>
                         <span class="caption">Cek Ketersediaan ZoomID</span>
                     </a>
                 </li>
                 <li class="active">
-                    <a href="<?= base_url('cekoffline'); ?>" data-role="popover" data-popover-text="Cek Rapat Offline" data-popover-position="right" data-popover-trigger="click" data-cls-popover="bg-white fg-cobalt drop-shadow pop-over-width" data-popover-hide="0">
+                    <a href="<?= base_url('cekoffline'); ?>">
                         <span class="icon"><span class="mif-organization"></span></span>
                         <span class="caption">Cek Rapat Offline</span>
                     </a>
