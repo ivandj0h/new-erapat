@@ -18,13 +18,13 @@ navbar_($nav_title);
             </button>
             <ul class="navview-menu">
                 <li>
-                    <a href="<?= base_url('cekzoom'); ?>" data-role="popover" data-popover-text="Cek Ketersediaan ZoomID" data-popover-position="right" data-cls-popover="bg-white fg-cobalt drop-shadow pop-over-width" data-popover-hide="0">
+                    <a href="<?= base_url('cekzoom'); ?>" data-role="popover" data-popover-text="Cek Ketersediaan ZoomID" data-popover-position="right" data-popover-trigger="click" data-cls-popover="bg-white fg-cobalt drop-shadow pop-over-width" data-popover-hide="0">
                         <span class="icon"><span class="mif-video-camera"></span></span>
                         <span class="caption">Cek Ketersediaan ZoomID</span>
                     </a>
                 </li>
-                <li>
-                    <a href="<?= base_url('cekoffline'); ?>" data-role="popover" data-popover-text="Cek Rapat Offline" data-popover-position="right" data-cls-popover="bg-white fg-cobalt drop-shadow pop-over-width" data-popover-hide="0">
+                <li class="active">
+                    <a href="<?= base_url('cekoffline'); ?>" data-role="popover" data-popover-text="Cek Rapat Offline" data-popover-position="right" data-popover-trigger="click" data-cls-popover="bg-white fg-cobalt drop-shadow pop-over-width" data-popover-hide="0">
                         <span class="icon"><span class="mif-organization"></span></span>
                         <span class="caption">Cek Rapat Offline</span>
                     </a>
@@ -33,17 +33,10 @@ navbar_($nav_title);
         </div>
 
         <div class="toolbar my-5" style="margin-left: 65px;">
-            <strong> Tabel Pembaharuan Rapat</strong>
+            <strong> Tabel Rapat Offline</strong>
         </div>
         <div class="toolbar my-5 place-right">
-            Data Rapat Hari ini Tanggal : &nbsp;<strong><?= date("d-m-Y"); ?></strong>
-        </div>
-        <div class="red-div-alert">
-            <?php if (session()->get('id') == true) : ?>
-                <?= red_div_alert(); ?>
-            <?php else : ?>
-                <?= ''; ?>
-            <?php endif; ?>
+            Tabel Data Rapat Offline Hari ini Tanggal : &nbsp;<strong><?= date("d-m-Y"); ?></strong>
         </div>
         <div class="navview-content d-flex flex-align-center flex-justify-center h-500">
             <table class="table table-condensed hover display" id="rapat" cellspacing="0">
