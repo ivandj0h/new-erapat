@@ -44,9 +44,9 @@ navbar_($nav_title);
     </div>
 </div>
 
-
 <!-- end content here -->
-
-
 <?php
+foreach ($rapat as $r) :
+    echo empty_upload_alert($r['files_upload']);
+endforeach;
 $this->endSection();

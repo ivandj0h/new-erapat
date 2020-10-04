@@ -9,20 +9,15 @@ use App\Models\TypeModel;
 class Rapat extends BaseController
 {
 
-    private $typeModel;
-
     public function __construct()
     {
         $this->session = session();
-        helper(['navbar', 'alerts', 'menu', 'zoom', 'form']);
+        helper(['navbar', 'alerts', 'menu', 'zoom', 'form', 'date']);
     }
 
     public function index()
     {
 
-        /**
-         * model initialize
-         */
         $userModel = new UserModel();
         $rapatModel = new RapatModel();
         $data = [
@@ -30,8 +25,11 @@ class Rapat extends BaseController
             'nav_title' => 'calendar',
             'tabs' => 'rapat',
             'user' => $userModel,
-            'rapat' => $rapatModel->orderBy('id', 'DESC')->findAll()
+            'rapat' => $rapatModel
+                ->getWhere(['user_id' => session()->get('id')])
+                ->getResultArray()
         ];
+
 
         return view('cpanel/rapat/view_rapat', $data);
     }
@@ -46,8 +44,6 @@ class Rapat extends BaseController
             'alltype' => $typeModel->orderBy('id', 'DESC')->findAll()
         ];
 
-        // var_dump($data['alltype']);
-        // die;
         return view('cpanel/rapat/view_rapat_baru', $data);
     }
 

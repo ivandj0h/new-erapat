@@ -3,6 +3,13 @@ body {
     "Ubuntu", "Helvetica Neue", sans-serif;
 }
 
+@media (min-width: 1200px) {
+  .container,
+  .container2 {
+    max-width: 1300px !important;
+  }
+}
+
 .button-outline-transparent {
   margin-right: 30px;
   background-color: transparent;
@@ -132,6 +139,22 @@ body {
   font-size: 14px;
   padding: 10px 0;
   color: #ddd;
+}
+
+.pop-over-width {
+  width: 100px !important;
+}
+
+.d-menu li a,
+.v-menu li a {
+  font-size: 0.875rem;
+  padding: 0 41px 0 0;
+  line-height: 45px;
+  height: 45px;
+  text-decoration: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  border: none;
 }
 
 .card {
@@ -281,4 +304,8 @@ ul.chec-radio li.pz {
 .chec-radio label.radio-inline input[type="radio"]:checked + div {
   color: #fff;
   border: #008a00 2px solid;
+}
+
+.dataTables_wrapper {
+  margin-left: 15px !important;
 }

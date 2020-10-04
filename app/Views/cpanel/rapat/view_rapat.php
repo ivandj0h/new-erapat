@@ -15,9 +15,9 @@ navbar_($nav_title);
         <strong> Tabel Master Data Rapat</strong>
     </div>
     <div class="toolbar my-5 place-right">
-        <a href="<?php echo base_url('rapat/baru') ?>" class="button primary outline"><span class="mif-file-text"></span> Tambah Rapat Baru</a>
+        <a href="<?php echo base_url('rapat/baru') ?>" class="button success"><span class="mif-file-text"></span> Tambah Rapat Baru</a>
     </div>
-    <table class="table table-condensed hover" id="rapat" cellspacing="0">
+    <table class="table table-condensed hover display" id="rapat" cellspacing="0">
         <thead>
             <tr>
                 <th class="text-center w-20">Tanggal</th>

@@ -2,35 +2,31 @@
 
 namespace App\Controllers;
 
-use App\Models\UserModel;
-use App\Models\RapatModel;
-use App\Models\TypeModel;
+use App\Models\PembaharuanModel;
 
 class Pembaharuan extends BaseController
 {
 
-    private $typeModel;
-
     public function __construct()
     {
         $this->session = session();
-        helper(['navbar', 'alerts', 'menu']);
+        helper(['navbar', 'alerts', 'menu', 'date']);
     }
 
     public function index()
     {
 
-        /**
-         * model initialize
-         */
-        $userModel = new UserModel();
-        $rapatModel = new RapatModel();
+        $now = date('Y-m-d');
+
+        $db      = \Config\Database::connect();
+        $builder = $db->table('view_user_meeting');
+        $result = $builder->where(['end_date' => $now])->get();
+
         $data = [
             'page_title' => 'E-RAPAT - Calendar',
             'nav_title' => 'calendar',
             'tabs' => 'pembaharuan',
-            'user' => $userModel,
-            'rapat' => $rapatModel->orderBy('id', 'DESC')->findAll()
+            'rapat' => $result->getResultArray()
         ];
 
         return view('cpanel/pembaharuan/view_pembaharuan', $data);
