@@ -22,8 +22,9 @@ navbar_($nav_title);
         <div class="col-md-2">
             <ul data-tabs-position="vertical h-100" data-role="tabs" data-expand="sm">
                 <li><a href="#_target_1">Base Profile</a></li>
-                <li><a href="#_target_2">Data Rapat</a></li>
-                <li><a href="#_target_3">File Pendukung</a></li>
+                <li><a href="#_target_2">Media Rapat</a></li>
+                <li><a href="#_target_3">Data Rapat</a></li>
+                <li><a href="#_target_4">File Pendukung</a></li>
             </ul>
         </div>
         <div class="col-md-10">
@@ -69,8 +70,58 @@ navbar_($nav_title);
                             <?php endif; ?>
                         </div>
                     </div>
+                    <div class="row mb-2">
+                        <label class="cell-sm-2" style="padding: 10px;">Rapat diajukan oleh</label>
+                        <div class="cell-sm-10">
+                            <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                <strong><?= $rapat->name ?></strong>.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="cell-sm-2" style="padding: 10px;">Tanggal Pengajuan</label>
+                        <div class="cell-sm-10">
+                            <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                <strong><?= date("d-m-Y", strtotime($rapat->date_requested)); ?></strong>.
+                            </span>
+                        </div>
+                    </div>
                 </div>
                 <div id="_target_2">
+                    <div class="row mb-2">
+                        <label class="cell-sm-2" style="padding: 10px;">Tipe Media</label>
+                        <div class="cell-sm-10">
+                            <?php
+                            if ($rapat->type_id == 1) : ?>
+                                <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                    <strong><?= $rapat->meeting_type; ?></strong>
+                                </span>
+                            <?php
+                            else : ?>
+                                <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
+                                    <strong><?= $rapat->meeting_type; ?></strong>.
+                                </span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="cell-sm-2" style="padding: 10px;">Media yang dipakai</label>
+                        <div class="cell-sm-10">
+                            <?php
+                            if ($rapat->type_id == 1) : ?>
+                                <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                    <strong><?= $rapat->meeting_subtype; ?></strong>
+                                </span>
+                            <?php
+                            else : ?>
+                                <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
+                                    <strong><?= $rapat->meeting_subtype; ?></strong>.
+                                </span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+                <div id="_target_3">
                     <div class="row mb-2">
                         <label class="cell-sm-2" style="padding: 10px;">Tanggal Rapat</label>
                         <div class="cell-sm-10">
@@ -104,7 +155,7 @@ navbar_($nav_title);
                         </div>
                     </div>
                 </div>
-                <div id="_target_3">
+                <div id="_target_4">
                     <div class="row mb-2">
                         <label class="cell-sm-2" style="padding: 10px;">Undangan Rapat</label>
                         <div class="cell-sm-10">

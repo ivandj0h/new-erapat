@@ -19,7 +19,7 @@ body {
 .closer {
   position: absolute;
   z-index: 10;
-  right: -763px;
+  right: -818px;
   top: 4px;
   color: brown;
 }

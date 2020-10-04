@@ -39,7 +39,11 @@ navbar_($nav_title);
             Data Rapat Hari ini Tanggal : &nbsp;<strong><?= date("d-m-Y"); ?></strong>
         </div>
         <div class="red-div-alert">
-            <?= red_div_alert(); ?>
+            <?php if (session()->get('id') == true) : ?>
+                <?= red_div_alert(); ?>
+            <?php else : ?>
+                <?= ''; ?>
+            <?php endif; ?>
         </div>
         <div class="navview-content d-flex flex-align-center flex-justify-center h-500">
             <table class="table table-condensed hover display" id="rapat" cellspacing="0">
