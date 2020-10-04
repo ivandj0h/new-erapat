@@ -34,7 +34,7 @@ function red_div_alert()
 { ?>
     <p class="remark alert" id="redAlert">
         <a href="#" id="hideEl"><i class="fas fa-times closer"></i></a>
-        M4Q is not a complete jquery equivalent and there are differences.
+        <strong>Anda belum menunggah File-file kelengkapan Rapat, Mohon Segera dilengkapi!</strong> .
     </p>
 <?php
 }
