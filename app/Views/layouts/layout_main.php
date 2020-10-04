@@ -42,7 +42,7 @@
     <script src="<?= base_url('assets/vendor/metro/js/metro.min.js'); ?>"></script>
 
     <!-- Vendors JS -->
-    <script src="<?= base_url('assets/vendor/datatables/js/jquery.dataTables.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/datatables/js/jquery.dataTables.js'); ?>"></script>
 
     <!-- Tinymce Scripts -->
     <script src="<?= base_url('assets/vendor/tinymce/tinymce.min.js'); ?>"></script>
@@ -52,6 +52,7 @@
 
     <script>
         $(document).ready(function() {
+
             $("#rapat").DataTable();
 
             //    Media types Add
