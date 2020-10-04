@@ -10,6 +10,31 @@ body {
   }
 }
 
+.red-div-alert {
+  margin: 0 auto !important;
+  left: 68px !important;
+  text-align: center !important;
+}
+
+.closer {
+  position: absolute;
+  z-index: 10;
+  right: -763px;
+  top: 4px;
+  color: brown;
+}
+
+.detail-tab {
+  width: 101% !important;
+  margin-left: -3px !important;
+}
+
+.detail-tab-content {
+  margin-left: -13px !important;
+  margin-top: 2px !important;
+  border-left: none !important;
+}
+
 .button-outline-transparent {
   margin-right: 30px;
   background-color: transparent;
