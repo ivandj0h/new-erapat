@@ -32,8 +32,17 @@ function empty_upload_alert($data)
 
 function red_div_alert()
 { ?>
-    <p class="remark alert" id="redAlert">
+    <p class="remark alert" id="redAlert" style="margin-bottom: -15px;">
         <a href="#" id="hideEl"><i class="fas fa-times closer"></i></a>
+        <strong>Anda belum menunggah File-file kelengkapan Rapat, Mohon Segera dilengkapi!</strong> .
+    </p>
+<?php
+}
+
+function red_div_alert_2()
+{ ?>
+    <p class="remark alert" id="redAlert" style="margin-bottom: -25px;">
+        <a href="#" id="hideEl"><i class="fas fa-times closer-2"></i></a>
         <strong>Anda belum menunggah File-file kelengkapan Rapat, Mohon Segera dilengkapi!</strong> .
     </p>
 <?php

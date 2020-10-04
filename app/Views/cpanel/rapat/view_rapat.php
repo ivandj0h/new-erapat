@@ -11,10 +11,17 @@ navbar_($nav_title);
 <?= userTabMenu($tabs); ?>
 <!-- Content -->
 <div class="container">
+    <div class="red-div-alert-2">
+        <?php if (session()->get('id') == true) : ?>
+            <?= red_div_alert_2(); ?>
+        <?php else : ?>
+            <?= ''; ?>
+        <?php endif; ?>
+    </div>
     <div class="toolbar my-5">
         <strong> Tabel Master Data Rapat</strong>
     </div>
-    <div class="toolbar my-5 place-right">
+    <div class="toolbar my-3 place-right">
         <a href="<?php echo base_url('rapat/baru') ?>" class="button success"><span class="mif-file-text"></span> Tambah Rapat Baru</a>
     </div>
     <table class="table table-condensed hover display" id="rapat" cellspacing="0">

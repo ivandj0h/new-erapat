@@ -16,11 +16,48 @@ body {
   text-align: center !important;
 }
 
+.red-div-alert-2 {
+  left: 8px !important;
+  margin: 10px !important;
+}
+
+.my-5 {
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+  left: 15px !important;
+}
+
+.my-4 {
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+  left: 1px !important;
+}
+
+.my-3 {
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+  left: -2px !important;
+}
+
+.my-2 {
+  margin-top: 20px !important;
+  margin-bottom: 0px !important;
+  left: 15px !important;
+}
+
 .closer {
   position: absolute;
   z-index: 10;
   right: -818px;
   top: 4px;
+  color: brown;
+}
+
+.closer-2 {
+  position: absolute;
+  z-index: 10;
+  right: -1215px;
+  top: 2px;
   color: brown;
 }
 
@@ -33,6 +70,10 @@ body {
   margin-left: -13px !important;
   margin-top: 2px !important;
   border-left: none !important;
+}
+
+.tabs > ul.tabs-list > li > a {
+  justify-content: left !important;
 }
 
 .button-outline-transparent {
@@ -265,6 +306,7 @@ code:hover {
 .tabs li {
   background-color: #f8f8f8 !important;
 }
+
 .tabs li.active {
   background-color: #ffffff !important;
 }
@@ -273,18 +315,22 @@ code:hover {
 ul.chec-radio {
   display: contents;
 }
+
 ul.chec-radio li.pz {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
+
 .chec-radio label.radio-inline input[type="checkbox"] {
   display: none;
 }
+
 .chec-radio label.radio-inline input[type="checkbox"]:checked + div {
   color: #fff;
   background-color: rgb(212, 212, 212);
 }
+
 .chec-radio .radio-inline .clab {
   cursor: pointer;
   background: #ffffff;
@@ -296,6 +342,7 @@ ul.chec-radio li.pz {
   float: left;
   margin: 0;
 }
+
 .chec-radio .radio-inline .avail {
   cursor: pointer;
   background: #ffffff;
@@ -323,9 +370,11 @@ ul.chec-radio li.pz {
 .chec-radio label.radio-inline input[type="checkbox"]:checked + div:before {
   margin-right: 5px;
 }
+
 .chec-radio label.radio-inline input[type="radio"] {
   display: none;
 }
+
 .chec-radio label.radio-inline input[type="radio"]:checked + div {
   color: #fff;
   border: #008a00 2px solid;
@@ -333,4 +382,20 @@ ul.chec-radio li.pz {
 
 .dataTables_wrapper {
   margin-left: 15px !important;
+}
+
+.navview .navview-menu li.active::before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 24px;
+  top: 8px;
+  left: 0;
+  width: 4px;
+  background-color: #1ba1e2;
+  z-index: 1;
+}
+
+li.active {
+  background-color: #d6d6d6 !important;
 }

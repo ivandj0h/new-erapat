@@ -60,6 +60,10 @@
                 $("#redAlert").fadeOut()
             })
 
+            setTimeout(function() {
+                $('#hideMe').slideUp("slow");
+            }, 3000);
+
             //    Media types Add
             $("#type_id").change(function() {
                 var id_type = $("#type_id").val();

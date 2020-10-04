@@ -12,11 +12,24 @@ navbar_($nav_title);
 <!-- Start Main Content -->
 <div class="container">
     <div data-role="navview" class="navview navview-compact-md navview-expand-lg compacted js-compact">
+        <div class="red-div-alert">
+            <?php if (session()->get('id') == true) : ?>
+                <?= red_div_alert(); ?>
+            <?php else : ?>
+                <?= ''; ?>
+            <?php endif; ?>
+        </div>
         <div class="navview-pane">
             <button class="pull-button">
                 <span class="default-icon-menu"></span>
             </button>
             <ul class="navview-menu">
+                <li>
+                    <a href="<?= base_url('pembaharuan'); ?>">
+                        <span class="icon"><span class="mif-loop2"></span></span>
+                        <span class="caption">Cek Pembaharuan Rapat</span>
+                    </a>
+                </li>
                 <li>
                     <a href="<?= base_url('cekzoom'); ?>">
                         <span class="icon"><span class="mif-video-camera"></span></span>
@@ -32,10 +45,10 @@ navbar_($nav_title);
             </ul>
         </div>
 
-        <div class="toolbar my-5" style="margin-left: 65px;">
+        <div class="toolbar my-4" style="margin-left: 65px;">
             <strong> Tabel Rapat Offline</strong>
         </div>
-        <div class="toolbar my-5 place-right">
+        <div class="toolbar my-3 place-right">
             Tabel Data Rapat Offline Hari ini Tanggal : &nbsp;<strong><?= date("d-m-Y"); ?></strong>
         </div>
         <div class="navview-content d-flex flex-align-center flex-justify-center h-500">
