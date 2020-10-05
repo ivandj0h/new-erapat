@@ -9,8 +9,6 @@ use App\Models\RiwayatModel;
 class Riwayat extends BaseController
 {
 
-    private $typeModel;
-
     public function __construct()
     {
         $this->session = session();
@@ -78,8 +76,6 @@ class Riwayat extends BaseController
                     ])->getResultArray(),
             ];
 
-            // var_dump($data);
-            // die;
             return view('cpanel/riwayat/view_riwayat', $data);
         }
     }

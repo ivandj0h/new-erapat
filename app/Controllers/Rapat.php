@@ -13,6 +13,7 @@ class Rapat extends BaseController
     {
         $this->session = session();
         helper(['navbar', 'alerts', 'menu', 'zoom', 'form', 'date']);
+        $this->form_validation = \Config\Services::validation();
     }
 
     public function index()
@@ -45,6 +46,24 @@ class Rapat extends BaseController
         ];
 
         return view('cpanel/rapat/view_rapat_baru', $data);
+    }
+
+    public function store()
+    {
+        if ($this->request->getMethod() == 'post') {
+            // Validation
+            $data = array(
+                // 'error'   => true,
+                // 'agenda_error' => form_error('agenda'),
+                // 'start_date_error' => form_error('start_date'),
+                // 'participants_name_error' => form_error('participants_name'),
+                // 'start_time_error' => form_error('start_time'),
+                // 'end_time_error' => form_error('end_time')
+            );
+        }
+
+        var_dump($data);
+        die;
     }
 
     public function detail($code = '')

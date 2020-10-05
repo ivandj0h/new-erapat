@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\PembaharuanModel;
+use App\Models\TypeModel;
+use App\Models\RapatModel;
 
 class Pembaharuan extends BaseController
 {
@@ -10,7 +12,8 @@ class Pembaharuan extends BaseController
     public function __construct()
     {
         $this->session = session();
-        helper(['navbar', 'alerts', 'menu', 'date']);
+        helper(['navbar', 'alerts', 'menu', 'date', 'form']);
+        $this->form_validation = \Config\Services::validation();
     }
 
     public function index()
@@ -58,7 +61,6 @@ class Pembaharuan extends BaseController
 
     public function cekoffline()
     {
-
         $now = date('Y-m-d');
 
         $db      = \Config\Database::connect();
@@ -73,5 +75,33 @@ class Pembaharuan extends BaseController
         ];
 
         return view('cpanel/pembaharuan/view_cekoffline', $data);
+    }
+
+    public function rapatoffline()
+    {
+
+        $typemodel = new TypeModel();
+
+        $where = ['sub_type_id' => $this->request->getPost('sub_type_id')];
+
+        if ($this->form_validation->run($where, 'rapat_offline') == FALSE) {
+
+            session()->setFlashdata('inputs', $this->request->getPost());
+            session()->setFlashdata('errors', $this->form_validation->getErrors());
+            $rapatModel = new RapatModel();
+
+            $data = [
+                'page_title' => 'E-RAPAT - Riwayat',
+                'nav_title' => 'riwayat',
+                'tabs' => 'riwayat',
+                'riwayat' => $rapatModel
+                    ->getWhere([
+                        'email' => session()->get('email')
+                    ])
+                    ->getResultArray()
+            ];
+
+            return view('cpanel/pembaharuan/view_cekoffline', $data);
+        }
     }
 }
