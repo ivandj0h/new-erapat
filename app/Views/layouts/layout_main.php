@@ -20,7 +20,7 @@
     <link rel="shortcut icon" href="<?= base_url('assets/locals/img/transport.svg'); ?>">
 
     <!-- Metro 4 Base CSS -->
-    <link rel="stylesheet" href="<?= base_url('assets/vendor/metro/css/metro-all.min.css'); ?>">
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
 
     <!-- Vendors CSS -->
     <link href="<?= base_url('assets/vendor/datatables/css/jquery.dataTables.min.css'); ?>" rel="stylesheet">
@@ -28,6 +28,7 @@
 
     <!-- Custom Metro CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/locals/css/custom-metro.css'); ?>">
+    <style class="init"> </style>
 </head>
 
 <body>
@@ -39,7 +40,7 @@
     <script src="<?= base_url('assets/locals/js/jquery-3.5.1.min.js'); ?>"></script>
 
     <!-- Metro 4 Base JS-->
-    <script src="<?= base_url('assets/vendor/metro/js/metro.min.js'); ?>"></script>
+    <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
 
     <!-- Vendors JS -->
     <script src="<?= base_url('assets/vendor/datatables/js/jquery.dataTables.js'); ?>"></script>
@@ -63,6 +64,13 @@
             setTimeout(function() {
                 $('#hideMe').slideUp("slow");
             }, 3000);
+
+            // var form = $(".need-validation");
+            // form.on("submit", function(event) {
+            //     event.preventDefault();
+            //     event.stopPropagation();
+            // }, false);
+
 
             //    Media types Add
             $("#type_id").change(function() {
@@ -201,6 +209,112 @@
                     $("textarea").text(ed.getContent());
                 });
             },
+        });
+
+        // RapatCore
+        $("#btnSave").click(function(e) {
+            e.preventDefault();
+
+            var typeId = $("#type_id").val();
+            var subTypeId = $("#meeting_subtype").val();
+            var zoomId = $("input[name='zoomid']:checked").val();
+            var otherId = $("#onlineId").val();
+            var participantsName = $("#participants_name").val();
+            var narasumberRapat = $("#speakers_name").val();
+            var agenda = $("textarea[name='agenda']").val();
+            //    var agenda = $('textarea#agenda').val();
+            var startDate = $("input[name='start_date']").val();
+            var endDate = $("input[name='start_date']").val();
+            var startTime = $("input[name='start_time']").val();
+            var endTime = $("input[name='end_time']").val();
+
+            var dataJson = {
+                meeting_subtype: subTypeId,
+                zoomid: zoomId,
+                other_online_id: otherId,
+                participants_name: participantsName,
+                speakers_name: narasumberRapat,
+                agenda: agenda,
+                start_date: startDate,
+                end_date: startDate,
+                start_time: startTime,
+                end_time: endTime,
+            };
+
+            $.ajax({
+                url: "<?php echo base_url(); ?>" + "/addrapat",
+                method: "POST",
+                fileElementId: 'files',
+                data: dataJson,
+                dataType: "JSON",
+                async: true,
+                cache: false,
+                //    beforeSend: function() {},
+                success: function(data) {
+                    if (data.error) {
+                        $('#btnSave').attr('disabled', true);
+                        if (data.agenda_error != '') {
+                            $('#agenda_error').html(data.agenda_error);
+                        } else {
+                            $('#agenda_error').html('');
+                        }
+                        if (data.participants_name_error != '') {
+                            $('#participants_name_error').html(data.participants_name_error);
+                        } else {
+                            $('#participants_name_error').html('');
+                        }
+                        if (data.speakers_name_error != '') {
+                            $('#speakers_name_error').html(data.speakers_name_error);
+                        } else {
+                            $('#speakers_name_error').html('');
+                        }
+                        if (data.start_date_error != '') {
+                            $('#start_date_error').html(data.start_date_error);
+                        } else {
+                            $('#start_date_error').html('');
+                        }
+                        if (data.start_time_error != '') {
+                            $('#start_time_error').html(data.start_time_error);
+                        } else {
+                            $('#start_time_error').html('');
+                        }
+                        if (data.end_time_error != '') {
+                            $('#end_time_error').html(data.end_time_error);
+                        } else {
+                            $('#end_time_error').html('');
+                        }
+
+                        if ($('input[name=participants_name]').val() == '') {
+                            $('input[name=participants_name]').change(function() {
+                                if ($('input[name=participants_name]').val() == '') {
+                                    $('button[type=submit]').attr('disabled', true);
+                                } else {
+                                    $('button[type=submit]').attr('disabled', false);
+                                }
+                            })
+                            $('button[type=submit]').attr('disabled', true);
+                        }
+                    }
+                    if (data.success) {
+                        $('#success_message').html(data.success);
+                        setTimeout(function() {
+                            location.reload(true);
+                        }, 5000);
+                        var timeleft = 5;
+                        var downloadTimer = setInterval(function() {
+                            if (timeleft <= 0) {
+                                clearInterval(downloadTimer);
+                                document.getElementById("countdown").innerHTML = "Finished";
+                            } else {
+                                document.getElementById("countdown").innerHTML = "Form ini akan tutup dalam " + timeleft + " detik...";
+                            }
+                            timeleft -= 1;
+                        }, 2000);
+                        $('#btnSave').attr('disabled', true);
+                    }
+                }
+            });
+            return false;
         });
     </script>
 </body>

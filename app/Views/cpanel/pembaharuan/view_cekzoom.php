@@ -12,7 +12,7 @@ navbar_($nav_title);
 <!-- Start Main Content -->
 <div class="container">
     <div data-role="navview" class="navview navview-compact-md navview-expand-lg compacted js-compact">
-        <div class="red-div-alert">
+        <div class="red-div-alert" id="hideMe">
             <?php if (session()->get('id') == true) : ?>
                 <?= red_div_alert(); ?>
             <?php else : ?>

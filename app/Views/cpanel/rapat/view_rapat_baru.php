@@ -20,29 +20,30 @@ navbar_($nav_title);
     <hr>
     <div class="row">
         <div class="cell-12 my-5 box-shadow">
-            <form action="<?php echo base_url('rapat/tambah') ?>" method="POST">
+            <form id="addMeeting" method="POST" data-role="Validator" data-role-validator="true" novalidate="novalidate">
                 <div class="row mb-4">
                     <label class="cell-sm-3">Tanggal Rapat</label>
-                    <div class="cell-sm-8">
-                        <input type="text" id="start_date" name="start_date" data-role="calendarpicker" data-dialog-mode="true" autocomplete="off">
+                    <div class="cell-sm-8 calendarpicker required">
+                        <input type="text" data-validate="required" id="start_date" name="start_date" data-role="calendarpicker" data-dialog-mode="true" autocomplete="off">
+                        <span class="help-block"><?= esc($error) ?></span>
                     </div>
                 </div>
                 <div class="row mb-4">
                     <label class="cell-sm-3">Jam Awal Rapat</label>
                     <div class="cell-sm-8">
-                        <input type="text" id="start_date" name="start_time" data-role="timepicker" data-dialog-mode="true" data-seconds="false" autocomplete="off">
+                        <input type="text" data-validate="required" id="start_time" name="start_time" data-role="timepicker" data-dialog-mode="true" data-seconds="false" autocomplete="off">
                     </div>
                 </div>
                 <div class="row mb-4">
                     <label class="cell-sm-3">Jam Akhir Rapat</label>
                     <div class="cell-sm-8">
-                        <input type="text" id="start_date" name="end_time" data-role="timepicker" data-dialog-mode="true" data-seconds="false" autocomplete="off">
+                        <input type="text" data-validate="required" id="end_time" name="end_time" data-role="timepicker" data-dialog-mode="true" data-seconds="false" autocomplete="off">
                     </div>
                 </div>
                 <div class="row mb-4">
                     <label class="cell-sm-3">Tipe Rapat</label>
                     <div class="cell-sm-8">
-                        <select name="type_id" id="type_id" data-role="select">
+                        <select name="type_id" id="type_id" data-role="select" data-validate="required">
                             <option value='0'>-- Pilih Tipe Rapat --</option>
                             <?php $i = 1; ?>
                             <?php foreach ($alltype as $p) : ?>
@@ -54,7 +55,7 @@ navbar_($nav_title);
                 <div class="row mb-4">
                     <label class="cell-sm-3">Media Rapat</label>
                     <div class="cell-sm-8">
-                        <select name="meeting_subtype" id="meeting_subtype">
+                        <select name="meeting_subtype" id="meeting_subtype" data-validate="required">
                             <option value='0'>-- Pilih Media Rapat --</option>
                             <!-- SubMedia Rapat akan diload menggunakan ajax, dan ditampilkan disini -->
                         </select>
@@ -82,25 +83,25 @@ navbar_($nav_title);
                 <div class="row mb-4">
                     <label class="cell-sm-3">Agenda Rapat</label>
                     <div class="cell-sm-8">
-                        <textarea class="form-control form-control-user" name="agenda" id="default" placeholder="Tuliskan Agenda Rapatnya disini..."><?= set_value('agenda', ''); ?></textarea>
+                        <textarea name="agenda" data-validate="required" id="default" placeholder="Tuliskan Agenda Rapatnya disini..."><?= set_value('agenda', ''); ?></textarea>
                         <span id="agenda_error" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="row mb-4">
                     <label class="cell-sm-3">Pimpinan Rapat</label>
                     <div class="cell-sm-8">
-                        <input data-role="tagsinput" type="text" name="participants_name" class="form-control form-control-user" id="participants_name" value="<?= set_value('participants_name'); ?>" placeholder="Tambah Pimpinan Rapat">
+                        <input data-role="tagsinput" data-validate="required" type="text" name="participants_name" id="participants_name" value="<?= set_value('participants_name'); ?>" placeholder="Tambah Pimpinan Rapat">
                     </div>
                 </div>
                 <div class="row mb-4">
                     <label class="cell-sm-3">Narasumber</label>
                     <div class="cell-sm-8">
-                        <input data-role="tagsinput" type="text" name="speakers_name" class="form-control form-control-user" id="speakers_name" value="<?= set_value('speakers_name'); ?>" placeholder="Tambah Narasumber">
+                        <input type="text" data-validate="required" data-role="taginput" data-tag-trigger="Space" name="speakers_name" id="speakers_name" value="<?= set_value('speakers_name'); ?>" placeholder="Tambah Narasumber">
                     </div>
                 </div>
                 <div class="row">
                     <div class="cell">
-                        <button type="submit" class="button success"><span class="mif-file-text"></span> Tambah Rapat Baru</button>
+                        <button type="submit" id="btnSave" class="button success"><span class="mif-file-text"></span> Tambah Rapat Baru</button>
                     </div>
                 </div>
 
