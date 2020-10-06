@@ -77,7 +77,7 @@ navbar_child($nav_title);
                             </td>
                             <td>
                                 <div class="dropdown-button">
-                                    <a href="<?= base_url('rapat/' . $r['unique_code']); ?>" class="button"><span class="mif-eye"></span> Detail</a>
+                                    <a href="<?= base_url('detail/' . $r['unique_code']); ?>" class="button"><span class="mif-eye"></span> Detail</a>
                                 </div>
                             </td>
                         </tr>

@@ -3,6 +3,7 @@
 $this->extend("layouts/layout_main");
 $this->section("contents");
 
+navbar_($nav_title);
 navbar_child($nav_title);
 ?>
 
@@ -12,7 +13,7 @@ navbar_child($nav_title);
 
 <!-- Start Main Content -->
 <div class="container">
-    <div class="red-div-alert-2">
+    <div class="red-div-alert-2" id="hideMe">
         <?php if (session()->get('id') == true) : ?>
             <?= red_div_alert_2(); ?>
         <?php else : ?>

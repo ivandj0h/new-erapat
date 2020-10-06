@@ -36,7 +36,6 @@
 
     <?= $this->renderSection("contents"); ?>
 
-
     <!-- JQuey -->
     <script src="<?= base_url('assets/locals/js/jquery-3.5.1.min.js'); ?>"></script>
 
@@ -66,14 +65,7 @@
                 $('#hideMe').slideUp("slow");
             }, 3000);
 
-            // $("#login").click(function() {
-            //     $("#login").val("value", "Please wait..");
-            //     $(this).attr("disabled", true);
-            //     setTimeout(function() {
-            //         $("#login").val("value", "cek..");
-            //         $(this).attr("disabled", true);
-            //     }, 1000);
-            // });
+
 
             //    Media types Add
             $("#type_id").change(function() {
