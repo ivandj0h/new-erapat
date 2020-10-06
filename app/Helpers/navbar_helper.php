@@ -15,15 +15,18 @@ function navbar_($nav_title)
             <?php elseif ($nav_title == 'login' || $nav_title == 'register' || $nav_title == 'zohoconnect') : ?>
                 <li><a href="<?= base_url(); ?>" class="text-upper"><span class="icon mif-calendar"></span> kalender</a></li>
                 <li><a href="<?= base_url('documentation'); ?>" class=" text-upper"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
-                <?php elseif (session('logged_in')) :
-                if ($nav_title == 'admin') : ?>
+                <?php if (session('logged_in')) :
+                elseif ($nav_title == 'admin') : ?>
                     <li><a href="<?= base_url(); ?>" class="text-upper"><span class="icon mif-calendar"></span> kalender</a></li>
                     <li><a href="<?= base_url('documentation'); ?>" class="text-upper"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
                 <?php else : ?>
-                    <li><a href="<?= base_url(); ?>" class="text-upper"><span class="icon mif-calendar"></span> kalender</a></li>
-                    <li><a href="<?= base_url('documentation'); ?>" class="text-upper"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
                 <?php endif; ?>
             <?php else : ?>
+                <?php if (!session('logged_in')) :
+                elseif ($nav_title == 'user') : ?>
+                <?php else : ?>
+
+                <?php endif; ?>
                 <li><a href="<?= base_url(); ?>" class="text-upper"><span class="icon mif-calendar"></span> kalender</a></li>
                 <li><a href="<?= base_url('documentation'); ?>" class="text-upper active text-bolds"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
             <?php endif; ?>
@@ -52,6 +55,11 @@ function navbar_($nav_title)
                     <?php endif; ?>
                 <?php else : ?>
                     <?php if ($nav_title == 'user') : ?>
+                        <?php if ($nav_title == 'cek') : ?>
+                            <a href="<?= base_url('login') ?>" class="button button-outline-transparent text-upper aktif" style="margin-right: 5px;"><span class="icon mif-lock"></span> MASUK</a>
+                            <a href="<?= base_url('register') ?>" class="button button-outline-transparent text-upper" style="margin-right: 30px;"><span class="icon mif-unlock"></span> DAFTAR</a>
+                        <?php else : ?>
+                        <?php endif; ?>
                         <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
                     <?php else : ?>
                         <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper" style="margin-right: 5px;"><span class="icon mif-notification"></span> CPANEL <?= session('fullName'); ?></a>
@@ -79,11 +87,9 @@ function navbar_($nav_title)
         </div>
     <?php
     }
-    ?>
-
-
-<?php
 }
+
+
 
 function get_perhub_svg()
 { ?>
@@ -96,4 +102,3 @@ function get_zoho_svg()
     <?= base_url('assets/locals/img/zoho.svg'); ?>
 <?php
 }
-?>

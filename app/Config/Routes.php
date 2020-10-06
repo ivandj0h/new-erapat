@@ -52,6 +52,7 @@ $routes->get('/zohoconnect', 'ZohoConnect::index');
 $routes->get('register', 'Register::index');
 $routes->get('login', 'Login::index');
 $routes->post('login/proses', 'Login::proses');
+$routes->match(['get', 'post'], '/cek', 'Login::cek', ['filter' => 'ceklogin']);
 $routes->get('/logout', 'Login::logout', ['filter' => 'ceklogin']);
 
 /**
