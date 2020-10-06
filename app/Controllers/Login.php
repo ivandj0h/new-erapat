@@ -12,7 +12,7 @@ class Login extends BaseController
         $this->validation = \Config\Services::validation();
         $this->auth = new Auth_model;
         $this->session = session();
-        helper(['form', 'navbar']);
+        helper(['form', 'navbar', 'proses']);
     }
 
     public function index()
@@ -50,7 +50,8 @@ class Login extends BaseController
                         if (session()->get('role_id') == 1) {
                             return redirect()->route('admin');
                         } else {
-                            return redirect()->route('user');
+                            return redirect()->route('cek');
+                            // return login_animate();
                         }
                     }
                 }
@@ -60,6 +61,12 @@ class Login extends BaseController
             }
         }
         echo view('cpanel/auth/view_login', $data);
+    }
+
+    public function cek()
+    {
+        $data = ['page_title' => 'E-RAPAT - Cek', 'nav_title' => 'cek', 'footer_title' => 'E-RAPAT'];
+        echo view('cpanel/auth/view_cek', $data);
     }
 
     public function logout()

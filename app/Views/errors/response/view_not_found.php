@@ -8,7 +8,7 @@ navbar_($nav_title);
 
 <div class="container">
     <!-- start content here -->
-    <div class="grid ">
+    <div class="grid animate__animated animate__fadeIn animate__delay-1s">
         <div class="row d-flex flex-column flex-justify-center h-vh-50 mt-10">
             <div class="cell-5 mx-auto block-shadow">
                 <h1><small><span class="icon mif-blocked"></span> Error 404: Server Not Found</small></h1>

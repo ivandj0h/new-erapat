@@ -23,12 +23,13 @@
     <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
 
     <!-- Vendors CSS -->
-    <link href="<?= base_url('assets/vendor/datatables/css/jquery.dataTables.min.css'); ?>" rel="stylesheet">
-    <link href="<?= base_url('assets/vendor/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet" type="text/css">
+    <link href="<?= base_url('assets/vendor/datatables/css/jquery.dataTables.min.css'); ?>" rel="stylesheet" />
+    <link href="<?= base_url('assets/vendor/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
 
     <!-- Custom Metro CSS -->
-    <link rel="stylesheet" href="<?= base_url('assets/locals/css/custom-metro.css'); ?>">
-    <style class="init"> </style>
+    <link href="<?= base_url('assets/locals/css/custom-metro.css'); ?>" rel="stylesheet" />
+    <link href="<?= base_url('assets/locals/css/customs-popup.css'); ?>" rel="stylesheet">
 </head>
 
 <body>
@@ -65,12 +66,14 @@
                 $('#hideMe').slideUp("slow");
             }, 3000);
 
-            // var form = $(".need-validation");
-            // form.on("submit", function(event) {
-            //     event.preventDefault();
-            //     event.stopPropagation();
-            // }, false);
-
+            // $("#login").click(function() {
+            //     $("#login").val("value", "Please wait..");
+            //     $(this).attr("disabled", true);
+            //     setTimeout(function() {
+            //         $("#login").val("value", "cek..");
+            //         $(this).attr("disabled", true);
+            //     }, 1000);
+            // });
 
             //    Media types Add
             $("#type_id").change(function() {
