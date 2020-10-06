@@ -18,10 +18,8 @@ function userTabMenu($tabs)
         <div class="container-fluid pt-4 pl-0 pr-0 pl-3-md pr-3-md">
             <div class="container">
                 <ul data-role="tabs" class="bg-light w-100 pl-0 pr-0" data-expand-point="md">
-
                     <?php
                     $navtab = $tabs;
-
                     switch ($navtab) {
                         case "user": ?>
                             <li class="active"><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
