@@ -85,4 +85,36 @@ class Validation
 			'required' => '{field} Harus Diisi',
 		],
 	];
+
+	// Validasi untuk Pencarian Riwayat dari Data Rapat
+	// Base Validaton
+	public $riwayat = [
+		'from_date' => ['rules' => 'required'],
+		'to_date' => ['rules' => 'required'],
+	];
+
+	// The Rules
+	public $riwayat_errors = [
+		'from_date' => [
+			'required' => 'Tanggal Awal Harus diisi'
+		],
+		'to_date' => [
+			'required' => 'Tanggal Akhir Harus diisi'
+		]
+	];
+
+	// Validasi untuk Pencarian Rapat Offline
+	// Base Validaton
+	public $rapat_offline = [
+		'sub_type_id' => [
+			'required' => ['rules' => 'required'],
+		],
+	];
+
+	//  The Rules
+	public $rapat_offline_errors = [
+		'sub_type_id' => [
+			'required' => 'SubTypeId tidak boleh kosong'
+		],
+	];
 }

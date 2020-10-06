@@ -2,37 +2,29 @@
 
 namespace App\Controllers;
 
+use App\Models\Auth_model;
 
-class Auth extends BaseController
+class Login extends BaseController
 {
-    protected $modelConnect;
 
     public function __construct()
     {
-        helper(['form', 'navbar']);
         $this->validation = \Config\Services::validation();
+        $this->auth = new Auth_model;
         $this->session = session();
+        helper(['form', 'navbar', 'navbar_child', 'proses']);
     }
 
     public function index()
     {
-        $data = [
-            'page_title' => 'No Direct Access',
-            'nav_title' => 'forbidden'
-        ];
-
-        echo view('errors/response/view_forbidden', $data);
+        $data = ['page_title' => 'E-RAPAT - Login', 'nav_title' => 'login', 'footer_title' => 'E-RAPAT'];
+        return view('cpanel/auth/view_login', $data);
     }
 
-    public function register()
-    {
-        $data = ['page_title' => 'E-RAPAT - Register', 'nav_title' => 'register'];
-        return view('errors/response/view_unavailable', $data);
-    }
-
-    public function login()
+    public function proses()
     {
         $data = ['page_title' => 'E-RAPAT - Login', 'nav_title' => 'login', 'footer_title' => 'E-RAPAT'];
+
         if ($this->request->getMethod() == 'post') {
             $rules = [
                 'email' => 'required',
@@ -58,7 +50,8 @@ class Auth extends BaseController
                         if (session()->get('role_id') == 1) {
                             return redirect()->route('admin');
                         } else {
-                            return redirect()->route('user');
+                            return redirect()->route('cek');
+                            // return login_animate();
                         }
                     }
                 }
@@ -67,8 +60,13 @@ class Auth extends BaseController
                 return redirect()->back()->withInput()->with('validation', $this->validator);
             }
         }
-
         echo view('cpanel/auth/view_login', $data);
+    }
+
+    public function cek()
+    {
+        $data = ['page_title' => 'E-RAPAT - Cek', 'nav_title' => 'cek', 'footer_title' => 'E-RAPAT'];
+        echo view('cpanel/auth/view_cek', $data);
     }
 
     public function logout()

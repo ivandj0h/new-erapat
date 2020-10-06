@@ -6,6 +6,7 @@
 .DS_Store
 .AppleDouble
 .LSOverride
+.github
 
 # OS X Thumbnails
 ._*
@@ -85,6 +86,8 @@ phpunit
 # Composer
 #-------------------------
 vendor/
+writable/
+tests/
 
 #-------------------------
 # IDE / Development Files
