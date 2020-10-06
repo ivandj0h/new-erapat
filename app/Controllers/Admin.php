@@ -7,7 +7,7 @@ class Admin extends BaseController
     public function __construct()
     {
         $this->session = session();
-        helper(['navbar', 'alerts']);
+        helper(['navbar', 'navbar_child', 'alerts']);
     }
     public function index()
     {

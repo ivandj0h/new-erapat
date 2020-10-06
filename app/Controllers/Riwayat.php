@@ -12,7 +12,7 @@ class Riwayat extends BaseController
     public function __construct()
     {
         $this->session = session();
-        helper(['navbar', 'alerts', 'menu', 'date', 'form']);
+        helper(['navbar', 'navbar_child', 'alerts', 'menu', 'date', 'form']);
         $this->form_validation = \Config\Services::validation();
     }
 
