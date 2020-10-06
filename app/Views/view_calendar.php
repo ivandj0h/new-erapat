@@ -4,6 +4,8 @@ $this->extend("layouts/layout_main");
 $this->section("contents");
 
 navbar_($nav_title);
+navbar_child($nav_title);
+
 ?>
 
 <div class="container">

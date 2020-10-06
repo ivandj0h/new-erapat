@@ -12,7 +12,7 @@ class Login extends BaseController
         $this->validation = \Config\Services::validation();
         $this->auth = new Auth_model;
         $this->session = session();
-        helper(['form', 'navbar', 'proses']);
+        helper(['form', 'navbar', 'navbar_child', 'proses']);
     }
 
     public function index()

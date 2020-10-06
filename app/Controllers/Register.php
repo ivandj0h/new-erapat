@@ -9,7 +9,7 @@ class Register extends BaseController
 
     public function __construct()
     {
-        helper(['form', 'navbar']);
+        helper(['form', 'navbar', 'navbar_child']);
     }
 
     public function index()

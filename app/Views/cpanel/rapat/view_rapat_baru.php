@@ -4,6 +4,7 @@ $this->extend("layouts/layout_main");
 $this->section("contents");
 
 navbar_($nav_title);
+navbar_child($nav_title);
 ?>
 
 
@@ -25,7 +26,6 @@ navbar_($nav_title);
                     <label class="cell-sm-3">Tanggal Rapat</label>
                     <div class="cell-sm-8 calendarpicker required">
                         <input type="text" data-validate="required" id="start_date" name="start_date" data-role="calendarpicker" data-dialog-mode="true" autocomplete="off">
-                        <span class="help-block"><?= esc($error) ?></span>
                     </div>
                 </div>
                 <div class="row mb-4">

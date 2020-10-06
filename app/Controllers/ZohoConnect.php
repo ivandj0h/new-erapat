@@ -6,7 +6,7 @@ class ZohoConnect extends BaseController
 {
     public function __construct()
     {
-        helper(['navbar']);
+        helper(['navbar', 'navbar_child']);
     }
 
     public function index()
