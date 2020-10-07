@@ -40,12 +40,12 @@ navbar_child($nav_title);
         <tbody>
             <?php foreach ($rapat as $r) : ?>
                 <tr>
-                    <td><?= date("d-m-Y", strtotime($r['end_date'])); ?></td>
-                    <td><?= date("H:i", strtotime($r['start_time'])); ?></td>
-                    <td><?= date("H:i", strtotime($r['end_time'])); ?></td>
+                    <td class="text-center"><?= date("d-m-Y", strtotime($r['end_date'])); ?></td>
+                    <td class="text-center"><?= date("H:i", strtotime($r['start_time'])); ?></td>
+                    <td class="text-center"><?= date("H:i", strtotime($r['end_time'])); ?></td>
                     <td><?= $r['sub_department_name']; ?></td>
                     <td><?= $r['meeting_subtype']; ?></td>
-                    <td>
+                    <td class="text-center">
                         <?php
                         if ($r['type_id'] == 1) {
                             if ($r['sub_type_id'] == 1) {
@@ -58,9 +58,9 @@ navbar_child($nav_title);
                         }
                         ?>
                     </td>
-                    <td>
+                    <td class="text-center">
                         <div class="dropdown-button">
-                            <button class="button dropdown-toggle primary"><span class="mif-fire"></span> Aksi</button>
+                            <button class="button dropdown-toggle primary"><span class="mif-wrench"></span> Aksi</button>
                             <ul class="d-menu" data-role="dropdown">
                                 <li><a href="<?= base_url('detail/' . $r['unique_code']); ?>"><span class="mif-eye"></span> Detail</a></li>
                                 <li><a href="#"><span class="mif-copy"></span> Ubah</a></li>

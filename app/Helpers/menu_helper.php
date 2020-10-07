@@ -46,7 +46,7 @@ function userTabMenu($tabs)
                             <li class="active"><a href="<?= base_url('riwayat') ?>"><span class="mif-books"></span> Riwayat Rapat</a></li>
                     <?php break;
                         default:
-                            echo "Your favorite color is neither red, blue, nor green!";
+                            echo "No Menu";
                     }
                     ?>
                 </ul>

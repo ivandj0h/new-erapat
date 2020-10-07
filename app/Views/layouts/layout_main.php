@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="Ivandi Djoh Gah">
     <meta name="generator" content="e-rapat v0.0.1">
@@ -26,6 +26,7 @@
     <link href="<?= base_url('assets/vendor/datatables/css/jquery.dataTables.min.css'); ?>" rel="stylesheet" />
     <link href="<?= base_url('assets/vendor/fontawesome-free/css/all.min.css'); ?>" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom Metro CSS -->
     <link href="<?= base_url('assets/locals/css/custom-metro.css'); ?>" rel="stylesheet" />
@@ -64,8 +65,6 @@
             setTimeout(function() {
                 $('#hideMe').slideUp("slow");
             }, 3000);
-
-
 
             //    Media types Add
             $("#type_id").change(function() {
@@ -204,112 +203,6 @@
                     $("textarea").text(ed.getContent());
                 });
             },
-        });
-
-        // RapatCore
-        $("#btnSave").click(function(e) {
-            e.preventDefault();
-
-            var typeId = $("#type_id").val();
-            var subTypeId = $("#meeting_subtype").val();
-            var zoomId = $("input[name='zoomid']:checked").val();
-            var otherId = $("#onlineId").val();
-            var participantsName = $("#participants_name").val();
-            var narasumberRapat = $("#speakers_name").val();
-            var agenda = $("textarea[name='agenda']").val();
-            //    var agenda = $('textarea#agenda').val();
-            var startDate = $("input[name='start_date']").val();
-            var endDate = $("input[name='start_date']").val();
-            var startTime = $("input[name='start_time']").val();
-            var endTime = $("input[name='end_time']").val();
-
-            var dataJson = {
-                meeting_subtype: subTypeId,
-                zoomid: zoomId,
-                other_online_id: otherId,
-                participants_name: participantsName,
-                speakers_name: narasumberRapat,
-                agenda: agenda,
-                start_date: startDate,
-                end_date: startDate,
-                start_time: startTime,
-                end_time: endTime,
-            };
-
-            $.ajax({
-                url: "<?php echo base_url(); ?>" + "/addrapat",
-                method: "POST",
-                fileElementId: 'files',
-                data: dataJson,
-                dataType: "JSON",
-                async: true,
-                cache: false,
-                //    beforeSend: function() {},
-                success: function(data) {
-                    if (data.error) {
-                        $('#btnSave').attr('disabled', true);
-                        if (data.agenda_error != '') {
-                            $('#agenda_error').html(data.agenda_error);
-                        } else {
-                            $('#agenda_error').html('');
-                        }
-                        if (data.participants_name_error != '') {
-                            $('#participants_name_error').html(data.participants_name_error);
-                        } else {
-                            $('#participants_name_error').html('');
-                        }
-                        if (data.speakers_name_error != '') {
-                            $('#speakers_name_error').html(data.speakers_name_error);
-                        } else {
-                            $('#speakers_name_error').html('');
-                        }
-                        if (data.start_date_error != '') {
-                            $('#start_date_error').html(data.start_date_error);
-                        } else {
-                            $('#start_date_error').html('');
-                        }
-                        if (data.start_time_error != '') {
-                            $('#start_time_error').html(data.start_time_error);
-                        } else {
-                            $('#start_time_error').html('');
-                        }
-                        if (data.end_time_error != '') {
-                            $('#end_time_error').html(data.end_time_error);
-                        } else {
-                            $('#end_time_error').html('');
-                        }
-
-                        if ($('input[name=participants_name]').val() == '') {
-                            $('input[name=participants_name]').change(function() {
-                                if ($('input[name=participants_name]').val() == '') {
-                                    $('button[type=submit]').attr('disabled', true);
-                                } else {
-                                    $('button[type=submit]').attr('disabled', false);
-                                }
-                            })
-                            $('button[type=submit]').attr('disabled', true);
-                        }
-                    }
-                    if (data.success) {
-                        $('#success_message').html(data.success);
-                        setTimeout(function() {
-                            location.reload(true);
-                        }, 5000);
-                        var timeleft = 5;
-                        var downloadTimer = setInterval(function() {
-                            if (timeleft <= 0) {
-                                clearInterval(downloadTimer);
-                                document.getElementById("countdown").innerHTML = "Finished";
-                            } else {
-                                document.getElementById("countdown").innerHTML = "Form ini akan tutup dalam " + timeleft + " detik...";
-                            }
-                            timeleft -= 1;
-                        }, 2000);
-                        $('#btnSave').attr('disabled', true);
-                    }
-                }
-            });
-            return false;
         });
     </script>
 </body>
