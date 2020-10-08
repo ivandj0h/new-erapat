@@ -14,12 +14,9 @@ navbar_child($nav_title);
         <h1>&nbsp;</h1>
         <hr>
         <div class="row">
-            <blockquote>
-                <p>Klik Tombol dibawah ini untuk membuka Zoho Form.</p>
-                <br>
-                <hr>
-                <button class="button primary" onclick="zohoOpen()">Zoho Form</button>
-            </blockquote>
+            <iframe src="http://localhost/app/form" style="position: fixed; left:0;bottom:0; right: 0; width: 101%; height: 101%; border: none; margin:0; overflow:hidden;z-index:1;">
+                Your browser doesn't support iframes
+            </iframe>
         </div>
     </div>
 </div>
