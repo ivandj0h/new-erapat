@@ -5,8 +5,8 @@ function get_available_zoomid()
 {
     $ci = \Config\Database::connect();
     $builder = $ci->table('view_zoom_users');
-    $zoomid = $builder->getWhere(['id !=' => session()->get('id')])->getResultArray();
-    $d = $builder->getWhere(['id !=' => session()->get('id')])->getRowArray();
+    $zoomid = $builder->getWhere(['user_id !=' => session()->get('id')])->getResultArray();
+    $d = $builder->getWhere(['user_id =' => session()->get('id')])->getRowArray();
 
     $currenttime = strtotime(date("H:i:s"));
     $starttime = strtotime(date($d['start_time']));

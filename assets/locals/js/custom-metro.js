@@ -47,5 +47,5 @@ function callback() {
   Metro.infobox.create(html_content);
   setTimeout(function () {
     newWin.close();
-  }, 10);
+  }, 3);
 }

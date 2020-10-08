@@ -116,7 +116,6 @@
                     success: function(data) {
                         var html = "";
                         var i;
-
                         for (i = 0; i < data.length; i++) {
                             html +=
                                 "<option value=" +
