@@ -13,13 +13,13 @@ setTimeout(function () {
             setTimeout(function () {
               $("#login").text("Proses Pengecekan Berhasil...");
               $("#login").text("Mohon menunggu...");
-            }, 1100);
-          }, 1500);
-        }, 1100);
-      }, 1100);
-    }, 1100);
-  }, 1100);
-}, 1100);
+            }, 500);
+          }, 500);
+        }, 500);
+      }, 500);
+    }, 500);
+  }, 500);
+}, 500);
 
 (function () {
   var counter = 100;
