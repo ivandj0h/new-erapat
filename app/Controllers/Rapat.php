@@ -92,8 +92,6 @@ class Rapat extends BaseController
                 'request_status' => $request_status
             ];
 
-            // var_dump($data);
-            // die;
             $db      = \Config\Database::connect();
             $builder = $db->table('meeting_zoom');
 

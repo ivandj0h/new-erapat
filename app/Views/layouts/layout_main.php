@@ -140,6 +140,20 @@
                 }
             });
 
+            // Offline SubTypeId
+            $("#getSubTypeId").change(function() {
+                // var value = $("#getSubTypeId").val();
+                var value = $(this).find(':selected').val();
+                var csrfName = $('input[name=csrf_test_name]').val(),
+                    csrfHash = $('#getSubTypeId').val();
+                var dataJson = {
+                    [csrfName]: csrfHash,
+                    id_type: value,
+                };
+                alert(JSON.stringify(dataJson));
+                console.log(JSON.stringify(dataJson));
+            })
+
             $('#meeting_subtype').on('change', function() {
                 if (this.value !== '1') {
                     $("#other_online_id").show();
