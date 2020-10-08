@@ -30,7 +30,7 @@ navbar_child($nav_title);
             </div>
             <div class="row">
                 <div class="cell">
-                    <button type="submit" class="button loading-pulse block-cek"><span class="icon mif-unlock"></span> Loading...<span id="count">100</span></button>
+                    <button type="submit" class="button loading-pulse block-cek"><span class="icon mif-unlock"></span> Loading...<span id="count">50</span></button>
                 </div>
             </div>
             </form>

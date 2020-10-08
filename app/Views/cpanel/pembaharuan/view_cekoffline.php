@@ -49,7 +49,7 @@ navbar_child($nav_title);
             <?= form_open('feed/searchoffline'); ?>
             <div class="cell-lg-12" style="margin-left: 65px;">
                 <select name="type_id" id="getSubTypeId" data-role="select" data-validate="required not=0">
-                    <option value='0'>-- Pilih Media Rapat --</option>
+                    <option value='0'>0. -- Pilih Media Rapat --</option>
                     <?php $i = 1; ?>
                     <?php foreach ($tipe as $p) : ?>
                         <option value="<?= $p['id']; ?>"><?= $i++; ?>. <?= $p['meeting_subtype']; ?></option>

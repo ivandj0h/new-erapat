@@ -17,8 +17,14 @@ class Login extends BaseController
 
     public function index()
     {
-        $data = ['page_title' => 'E-RAPAT - Login', 'nav_title' => 'login', 'footer_title' => 'E-RAPAT'];
-        return view('cpanel/auth/view_login', $data);
+        if (session()->get('role_id') == 1) {
+            return redirect()->route('admin');
+        } elseif (session()->get('role_id') == 2) {
+            return redirect()->route('user');
+        } else {
+            $data = ['page_title' => 'E-RAPAT - Login', 'nav_title' => 'login', 'footer_title' => 'E-RAPAT'];
+            return view('cpanel/auth/view_login', $data);
+        }
     }
 
     public function proses()
@@ -51,7 +57,6 @@ class Login extends BaseController
                             return redirect()->route('admin');
                         } else {
                             return redirect()->route('cek');
-                            // return login_animate();
                         }
                     }
                 }
