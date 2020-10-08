@@ -13,13 +13,6 @@ navbar_child($nav_title);
 <!-- Start Main Content -->
 <div class="container">
     <div data-role="navview" class="navview navview-compact-md navview-expand-lg compacted js-compact">
-        <div class="red-div-alert" id="hideMe">
-            <?php if (session()->get('id') == true) : ?>
-                <?= red_div_alert(); ?>
-            <?php else : ?>
-                <?= ''; ?>
-            <?php endif; ?>
-        </div>
         <div class="navview-pane">
             <button class="pull-button">
                 <span class="default-icon-menu"></span>
@@ -47,10 +40,23 @@ navbar_child($nav_title);
         </div>
 
         <div class="toolbar my-4" style="margin-left: 65px;">
-            <strong> Tabel Rapat Offline</strong>
+            <strong> Tabel Data Rapat Offline Hari ini</strong>
         </div>
         <div class="toolbar my-3 place-right">
-            Tabel Data Rapat Offline Hari ini Tanggal : &nbsp;<strong><?= date("d-m-Y"); ?></strong>
+            Tanggal : &nbsp;<strong><?= date("d-m-Y"); ?></strong>
+        </div>
+        <div class="row mb-4">
+            <?= form_open('feed/searchoffline'); ?>
+            <div class="cell-lg-12" style="margin-left: 65px;">
+                <select name="type_id" id="getSubTypeId" data-role="select" data-validate="required not=0">
+                    <option value='0'>-- Pilih Media Rapat --</option>
+                    <?php $i = 1; ?>
+                    <?php foreach ($tipe as $p) : ?>
+                        <option value="<?= $p['id']; ?>"><?= $i++; ?>. <?= $p['meeting_subtype']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <?= form_close(); ?>
         </div>
         <div class="navview-content d-flex flex-align-center flex-justify-center h-500">
             <table class="table table-condensed hover display" id="rapat" cellspacing="0">

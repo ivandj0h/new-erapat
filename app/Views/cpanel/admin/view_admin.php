@@ -4,18 +4,23 @@ $this->extend("layouts/layout_main");
 $this->section("contents");
 
 navbar_($nav_title);
+navbar_child($nav_title);
 ?>
 
 <div class="container">
     <!-- start content here -->
     <div class="col-lg-12" style="float:none;margin:auto;">
-        <!-- <iframe src="http://localhost/github/" style="position: fixed; padding-top:55px; left:0;bottom:0; right: 0; width: 100%; height: 100%; border: none; margin:0; overflow-x: hidden; z-index:1;">
-            Your browser doesn't support iframes
-        </iframe> -->
-        <br> <br> <br> <br>
-        <h1>Hello, <?= session()->get('fullName') ?></h1>
+        <br> <br> <br> <br><br> <br> <br> <br>
+        <h1>&nbsp;</h1>
+        <hr>
+        <div class="row">
+            <iframe src="http://localhost/rapat" style="position: fixed; left:0;bottom:0; right: 0; width: 101%; height: 101%; border: none; margin:0; overflow:hidden;z-index:1;">
+                Your browser doesn't support iframes
+            </iframe>
+        </div>
     </div>
-    <!-- end content here -->
+</div>
+<!-- end content here -->
 </div>
 
 <?php
