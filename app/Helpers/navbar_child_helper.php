@@ -38,8 +38,7 @@ function navbar_child($nav)
                     <a href="<?= base_url('register') ?>" class="button button-outline-transparent text-upper aktif" style="margin-right: 30px;"><span class="icon mif-unlock"></span> DAFTAR</a>
                 <?php break;
                 case "cek": ?>
-                    <a href="<?= base_url('login') ?>" class="button button-outline-transparent text-upper" style="margin-right: 5px;"><span class="icon mif-lock"></span> Login Proses...</a>
-                    <a href="<?= base_url('register') ?>" class="button button-outline-transparent text-upper" style="margin-right: 30px;"><span class="icon mif-unlock"></span> DAFTAR</a>
+                    <a href="<?= base_url('login') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-lock"></span> UNLOCK PROCESS... <img src="<?= base_url('assets/locals/img/loading.gif'); ?>" style="width: 15px;"></a>
                 <?php break;
                 case "admin": ?>
                     <a href="<?= base_url('admin') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
@@ -50,6 +49,10 @@ function navbar_child($nav)
                     <a href="<?= base_url('logout') ?>" class="button alert outline text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
                 <?php break;
                 case "rapat": ?>
+                    <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <a href="<?= base_url('logout') ?>" class="button alert outline text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
+                <?php break;
+                case "baru": ?>
                     <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
                     <a href="<?= base_url('logout') ?>" class="button alert outline text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
                 <?php break;

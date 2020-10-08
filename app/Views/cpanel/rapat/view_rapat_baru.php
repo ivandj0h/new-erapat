@@ -21,6 +21,7 @@ navbar_child($nav_title);
     <div class="row">
         <div class="cell-12 my-5">
             <form data-role="validator" action="<?= base_url('addrapat') ?>" method="POST">
+                <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
                 <div class="row mb-4">
                     <label class="cell-sm-2">Tanggal Rapat</label>
                     <div class="cell-sm-2 calendarpicker required">

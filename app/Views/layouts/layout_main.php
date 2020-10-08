@@ -69,7 +69,10 @@
             //    Media types Add
             $("#type_id").change(function() {
                 var id_type = $("#type_id").val();
+                var csrfName = $('input[name=csrf_test_name]').val(),
+                    csrfHash = $('#type_id').val();
                 var dataJson = {
+                    [csrfName]: csrfHash,
                     id_type: id_type,
                 };
                 $.ajax({
@@ -98,7 +101,10 @@
             //    Media types Edit
             $("#type_id2").change(function() {
                 var id_type = $("#type_id2").val();
+                var csrfName = $('input[name=csrf_test_name]').val(),
+                    csrfHash = $('#type_id').val();
                 var dataJson = {
+                    [csrfName]: csrfHash,
                     id_type: id_type,
                 };
                 $.ajax({
