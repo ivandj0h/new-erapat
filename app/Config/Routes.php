@@ -94,7 +94,7 @@ $routes->match(['get', 'post'], '/rapat/getmmm', 'Rapat::get_zoomid');
 $routes->get('/pembaharuan', 'Pembaharuan::index', ['filter' => 'ceklogin']);
 $routes->get('/cekzoom', 'Pembaharuan::cekzoom', ['filter' => 'ceklogin']);
 $routes->get('/cekoffline', 'Pembaharuan::cekoffline', ['filter' => 'ceklogin']);
-
+$routes->post('/cekrapatoffline', 'Pembaharuan::cekrapatoffline');
 
 /**
  * --------------------------------------------------------------------
