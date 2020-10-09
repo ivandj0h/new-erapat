@@ -117,8 +117,6 @@ class Rapat extends BaseController
         $builder = $db->table('view_user_meeting');
         $result = $builder->getWhere(['unique_code' => $code]);
 
-        // var_dump($result->getResultArray());
-        // die;
         $data = [
             'page_title' => 'E-RAPAT - Detail',
             'nav_title' => 'detail',

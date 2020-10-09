@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\PembaharuanModel;
-use App\Models\TypeModel;
 use App\Models\SubtypeModel;
 use App\Models\RapatModel;
 
@@ -54,8 +52,6 @@ class Pembaharuan extends BaseController
             'zoom' => $result->getResultArray()
         ];
 
-        // var_dump($data['zoom']);
-        // die;
         return view('cpanel/pembaharuan/view_cekzoom', $data);
     }
 

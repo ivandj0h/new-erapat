@@ -16,10 +16,6 @@ class User extends BaseController
 
     public function index()
     {
-
-        /**
-         * model initialize
-         */
         $userModel = new UserModel();
         $rapatModel = new RapatModel();
         $data = [

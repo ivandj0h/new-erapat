@@ -12,7 +12,11 @@ class ErapatFormConnect extends BaseController
     public function index()
     {
         $data = ['page_title' => 'E-RAPAT - Erapat Connect', 'nav_title' => 'erapatconnect'];
-        // return view('errors/response/view_unavailable', $data);
-        return view('cpanel/erapat/view_erapat', $data);
+
+        if (session()->get('email')) {
+            return view('cpanel/erapat/view_erapat', $data);
+        } else {
+            return view('errors/response/view_forbidden_user_auth', $data);
+        }
     }
 }

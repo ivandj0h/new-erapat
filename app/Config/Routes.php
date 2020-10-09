@@ -41,7 +41,21 @@ $routes->setAutoRoute(false);
  */
 $routes->get('/', 'Main::calendar');
 $routes->get('/documentation', 'Documentation::index');
+
+/**
+ * --------------------------------------------------------------------
+ * ZOHO Route Configuration
+ * --------------------------------------------------------------------
+ */
 $routes->get('/zohoconnect', 'ZohoConnect::index');
+$routes->get('/zohoforms', 'ZohoConnect::zohoforms');
+$routes->get('/zohoreports', 'ZohoConnect::zohoreports');
+
+/**
+ * --------------------------------------------------------------------
+ * E-RAPAT Route Configuration
+ * --------------------------------------------------------------------
+ */
 $routes->get('/erapatconnect', 'ErapatFormConnect::index');
 
 /**
