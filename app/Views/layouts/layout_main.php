@@ -75,6 +75,7 @@
                     [csrfName]: csrfHash,
                     id_type: id_type,
                 };
+                console.log(dataJson);
                 $.ajax({
                     url: "<?php echo base_url(); ?>/rapat/getmm",
                     method: "POST",
@@ -107,6 +108,7 @@
                     [csrfName]: csrfHash,
                     id_type: id_type,
                 };
+
                 $.ajax({
                     url: "<?php echo base_url(); ?>/rapat/getmmm",
                     method: "POST",
@@ -141,16 +143,27 @@
 
             // Offline SubTypeId
             $("#getSubTypeId").change(function() {
-                // var value = $("#getSubTypeId").val();
-                var value = $(this).find(':selected').val();
+                var BASE_URL = '<?php echo base_url(); ?>';
+                var id_type = $("#getSubTypeId").val();
                 var csrfName = $('input[name=csrf_test_name]').val(),
                     csrfHash = $('#getSubTypeId').val();
                 var dataJson = {
                     [csrfName]: csrfHash,
-                    id_type: value,
+                    type_id: id_type,
                 };
-                alert(JSON.stringify(dataJson));
-                console.log(JSON.stringify(dataJson));
+                // alert(JSON.stringify(dataJson));
+                console.log(dataJson);
+                $.ajax({
+                    type: "POST",
+                    url: BASE_URL + "/pembaharuan/cekrapatoffline",
+                    data: dataJson,
+                    async: false,
+                    dataType: "json",
+                    success: function(data) {
+                        console.log(data)
+                        // $("#show").html(result);
+                    }
+                });
             })
 
             $('#meeting_subtype').on('change', function() {

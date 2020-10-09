@@ -38,7 +38,6 @@ class Pembaharuan extends BaseController
 
     public function cekzoom()
     {
-
         $now = date('Y-m-d');
         $typeId = 1;
 
@@ -66,10 +65,6 @@ class Pembaharuan extends BaseController
         $subtypemodel = new SubtypeModel();
         $rapatModel = new RapatModel();
 
-        // $db      = \Config\Database::connect();
-        // $builder = $db->table('view_user_meeting');
-        // $result = $builder->where(['end_date' => $now])->get();
-
         $data = [
             'page_title' => 'E-RAPAT - Pembaharuan',
             'nav_title' => 'pembaharuan',
@@ -88,36 +83,32 @@ class Pembaharuan extends BaseController
                 ->getResultArray()
         ];
 
-        // var_dump($data['rapat']);
-        // die;
         return view('cpanel/pembaharuan/view_cekoffline', $data);
     }
 
-    public function rapatoffline()
+    public function cekrapatoffline()
     {
-        $typemodel = new TypeModel();
-        $where = ['sub_type_id' => $this->request->getPost('sub_type_id')];
+        $id = $this->request->getPost('id');
+        $subtypemodel = new SubtypeModel();
+        $rapatModel = new RapatModel();
 
-        if ($this->form_validation->run($where, 'rapat_offline') == FALSE) {
+        $data = [
+            'page_title' => 'E-RAPAT - Pembaharuan',
+            'nav_title' => 'pembaharuan',
+            'tabs' => 'pembaharuan',
+            'tipe' => $subtypemodel
+                ->getWhere([
+                    'type_id' => 2
+                ])
+                ->getResultArray(),
+            'rapat' => $rapatModel
+                ->getWhere([
+                    'sub_type_id' => $id,
+                    'email' => session()->get('email')
+                ])
+                ->getResultArray()
+        ];
 
-            session()->setFlashdata('inputs', $this->request->getPost());
-            session()->setFlashdata('errors', $this->form_validation->getErrors());
-            $rapatModel = new RapatModel();
-
-            $data = [
-                'page_title' => 'E-RAPAT - Riwayat',
-                'nav_title' => 'riwayat',
-                'tabs' => 'riwayat',
-                'tipe' => $typemodel,
-                'riwayat' => $rapatModel
-                    ->getWhere([
-                        'type_id' => 2,
-                        'email' => session()->get('email')
-                    ])
-                    ->getResultArray()
-            ];
-
-            return view('cpanel/pembaharuan/view_cekoffline', $data);
-        }
+        return view('cpanel/pembaharuan/view_cekoffline', $data);
     }
 }
