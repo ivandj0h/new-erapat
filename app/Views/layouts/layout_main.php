@@ -240,6 +240,13 @@
         function zohoOpen() {
             var myWindow = window.open("https://accounts.zoho.com/signin?servicename=ZohoForms&signupurl=https://www.zoho.com/forms/signup.html", "", "width=900,height=500");
         }
+
+        var windowObjectReference;
+        var strWindowFeatures = "menubar=no,location=no,resizable=no,scrollbars=no,status=yes,width=400,height=350";
+
+        function openRequestedPopup() {
+            windowObjectReference = window.open("https://accounts.zoho.com/signin?servicename=ZohoForms&signupurl=https://www.zoho.com/forms/signup.html", "CNN_WindowName", strWindowFeatures);
+        }
     </script>
 </body>
 

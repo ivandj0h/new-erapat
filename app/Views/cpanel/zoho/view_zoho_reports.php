@@ -13,18 +13,14 @@ navbar_child($nav_title);
         <div class="row" style="margin-top: 104px;">
             <div class="row" style="display: flex;flex-wrap: wrap;margin-left: -52px;margin-right: -6px;margin-top: -15px;">
                 <div class="cell order-2" style="margin-top: 77px;">
-                    <button class="command-button primary outline rounded" onclick="zohoOpen()">
-                        <span class="mif-wifi-connect icon"></span>
-                        <span class="caption">
-                            Yes, Connect
-                            <small>get me into my account</small>
-                        </span>
-                    </button>
+                    <iframe src="https://forms.zoho.com/projectlitbang/home#myreports" style="position: fixed;left: 249px;bottom:0;right: 0px;width: 82%;height: 97%;border: none;margin:0;overflow:hidden;z-index:1;">
+                        Your browser doesn't support iframes
+                    </iframe>
                 </div>
                 <div class="cell order-1">
                     <ul class="sidenav-m3">
                         <li class="title">ZOHO FORM BUILDER</li>
-                        <li class="stick-right bg-blue"><a href="<?= base_url('zohoconnect'); ?>"><span class="mif-lock icon"></span> Login</a></li>
+                        <li><a href="<?= base_url('zohoconnect'); ?>"><span class="mif-lock icon"></span> Login</a></li>
                         <li><a href="<?= base_url('zohoforms'); ?>"><span class="mif-file-text icon"></span>All Forms</a></li>
                         <li><a href="<?= base_url('zohoreports'); ?>"><span class="mif-file-pdf icon"></span>All Reports</a></li>
                     </ul>
