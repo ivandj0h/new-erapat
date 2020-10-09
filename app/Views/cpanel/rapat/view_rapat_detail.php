@@ -13,13 +13,6 @@ navbar_child($nav_title);
 
 <!-- Start Main Content -->
 <div class="container">
-    <div class="red-div-alert-2" id="hideMe">
-        <?php if (session()->get('id') == true) : ?>
-            <?= red_div_alert_2(); ?>
-        <?php else : ?>
-            <?= ''; ?>
-        <?php endif; ?>
-    </div>
     <div class="toolbar my-5" style="margin-left: 2px;">
         <strong> Tabel Detail Rapat</strong>&nbsp; - &nbsp;<i><?= $rapat->sub_department_name ?></i>
     </div>

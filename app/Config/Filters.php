@@ -20,6 +20,12 @@ class Filters extends BaseConfig
 		'before' => [
 			//'honeypot'
 			// 'csrf',
+			'csrf' => [
+				'except' => [
+					'/rapat/getmm',
+					'/rapat/getmmm'
+				]
+			]
 		],
 		'after'  => [
 			'toolbar',

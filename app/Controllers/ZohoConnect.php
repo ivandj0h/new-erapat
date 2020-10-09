@@ -12,7 +12,33 @@ class ZohoConnect extends BaseController
     public function index()
     {
         $data = ['page_title' => 'E-RAPAT - Zoho Connect', 'nav_title' => 'zohoconnect'];
-        // return view('errors/response/view_unavailable', $data);
-        return view('cpanel/zoho/view_zoho', $data);
+
+        if (session()->get('email')) {
+            return view('cpanel/zoho/view_zoho', $data);
+        } else {
+            return view('errors/response/view_forbidden_user_auth', $data);
+        }
+    }
+
+    public function zohoforms()
+    {
+        $data = ['page_title' => 'E-RAPAT - Zoho Connect', 'nav_title' => 'zohoconnect'];
+
+        if (session()->get('email')) {
+            return view('cpanel/zoho/view_zoho_forms', $data);
+        } else {
+            return view('errors/response/view_forbidden_user_auth', $data);
+        }
+    }
+
+    public function zohoreports()
+    {
+        $data = ['page_title' => 'E-RAPAT - Zoho Connect', 'nav_title' => 'zohoconnect'];
+
+        if (session()->get('email')) {
+            return view('cpanel/zoho/view_zoho_reports', $data);
+        } else {
+            return view('errors/response/view_forbidden_user_auth', $data);
+        }
     }
 }

@@ -3,6 +3,17 @@ body {
     "Ubuntu", "Helvetica Neue", sans-serif;
 }
 
+/* .row {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -ms-flex-wrap: wrap !important;
+  flex-wrap: wrap !important;
+  margin-left: -6px !important;
+  margin-right: -6px !important;
+  width: 100% !important;
+} */
+
 @media (min-width: 1200px) {
   .container,
   .container2 {
@@ -149,6 +160,11 @@ body {
   box-shadow: 3px 3px 2px #dadada;
 }
 
+.box-without-shadow {
+  border: 1px solid #eee;
+  padding: 25px;
+}
+
 .cell-5,
 .col-5,
 .colspan-5 {
@@ -197,7 +213,7 @@ body {
   z-index: 90;
   background: white;
   border-bottom: 1px solid #eeeeee;
-  box-shadow: 0px 1px 5px #eeeeee;
+  /* box-shadow: 0px 1px 5px #eeeeee; */
 }
 
 .font-h5 {
@@ -466,4 +482,15 @@ ul.chec-radio li.pz {
 
 li.active {
   background-color: #d6d6d6 !important;
+}
+
+.sidenav-m3 {
+  width: 250px !important;
+}
+
+.sidenav-m3 .title {
+  padding: 20px 20px 10px 20px !important;
+  font-size: 20px !important;
+  border: 0 !important;
+  color: indigo !important;
 }

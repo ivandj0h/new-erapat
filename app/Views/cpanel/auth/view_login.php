@@ -42,6 +42,7 @@ navbar_child($nav_title);
                 <?php endif; ?>
                 <?php $validation = session()->getFlashdata('validation'); ?>
                 <form data-role="validator" action="<?= base_url('login/proses') ?>" method="POST">
+                    <?= csrf_field() ?>
                     <div class="row mb-2">
                         <div class="cell-sm-12">
                             <input type="email" data-validate="required" data-role="input" name="email" value="<?= old('email') ?>" placeholder="Masukan Alamat Email" class="metro-input <?= $validation && $validation->hasError('email') ? 'invalid_feedback' : '' ?>" autocomplete="off" autofocus>

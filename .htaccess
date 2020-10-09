@@ -49,3 +49,4 @@ Options All -Indexes
 
 # Enabled or Disable The CI_ENVIRONMENT
 SetEnv CI_ENVIRONMENT development
+# SetEnv CI_ENVIRONMENT production

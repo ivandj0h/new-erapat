@@ -11,8 +11,8 @@ navbar_child($nav_title);
     <!-- start content here -->
     <div class="grid animate__animated animate__fadeIn animate__delay-1s">
         <div class="row d-flex flex-column flex-justify-center h-vh-50 mt-10">
-            <div class="cell-5 mx-auto block-shadow">
-                <h1><small><span class="icon mif-blocked"></span> Error 401: Unauthorized</small></h1>
+            <div class="cell-5 mx-auto block-shadow" style="text-align: center;">
+                <h1><small><span class="icon mif-not"></span> Error 401: Unauthorized</small></h1>
                 <hr class="thin" />
                 <p class="remark alert text-center">
                     Maaf, Anda tidak memiliki Akses ke Layanan(Services) ini! <br />

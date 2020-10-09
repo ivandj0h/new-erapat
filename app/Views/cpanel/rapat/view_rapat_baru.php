@@ -18,32 +18,32 @@ navbar_child($nav_title);
     <div class="toolbar my-5 place-right">
         <a href="<?php echo base_url('rapat') ?>" class="button primary outline"><span class="mif-undo"></span> Kembali</a>
     </div>
-    <hr>
     <div class="row">
-        <div class="cell-12 my-5 box-shadow">
-            <form id="addMeeting" method="POST" data-role="Validator" data-role-validator="true" novalidate="novalidate">
+        <div class="cell-12 my-5">
+            <form data-role="validator" action="<?= base_url('addrapat') ?>" method="POST">
+                <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
                 <div class="row mb-4">
-                    <label class="cell-sm-3">Tanggal Rapat</label>
-                    <div class="cell-sm-8 calendarpicker required">
-                        <input type="text" data-validate="required" id="start_date" name="start_date" data-role="calendarpicker" data-dialog-mode="true" autocomplete="off">
+                    <label class="cell-sm-2">Tanggal Rapat</label>
+                    <div class="cell-sm-2 calendarpicker required">
+                        <input type="text" data-validate="required" id="start_date" name="start_date" data-role="calendarpicker" data-dialog-mode="true">
                     </div>
                 </div>
                 <div class="row mb-4">
-                    <label class="cell-sm-3">Jam Awal Rapat</label>
-                    <div class="cell-sm-8">
-                        <input type="text" data-validate="required" id="start_time" name="start_time" data-role="timepicker" data-dialog-mode="true" data-seconds="false" autocomplete="off">
+                    <label class="cell-sm-2">Jam Awal Rapat</label>
+                    <div class="cell-sm-2">
+                        <input type="time" data-validate="required" id="start_time" name="start_time">
                     </div>
                 </div>
                 <div class="row mb-4">
-                    <label class="cell-sm-3">Jam Akhir Rapat</label>
-                    <div class="cell-sm-8">
-                        <input type="text" data-validate="required" id="end_time" name="end_time" data-role="timepicker" data-dialog-mode="true" data-seconds="false" autocomplete="off">
+                    <label class="cell-sm-2">Jam Akhir Rapat</label>
+                    <div class="cell-sm-2">
+                        <input type="time" data-validate="required" id="end_time" name="end_time">
                     </div>
                 </div>
                 <div class="row mb-4">
-                    <label class="cell-sm-3">Tipe Rapat</label>
-                    <div class="cell-sm-8">
-                        <select name="type_id" id="type_id" data-role="select" data-validate="required">
+                    <label class="cell-sm-2">Tipe Rapat</label>
+                    <div class="cell-sm-4">
+                        <select name="type_id" id="type_id" data-role="select" data-validate="required not=0">
                             <option value='0'>-- Pilih Tipe Rapat --</option>
                             <?php $i = 1; ?>
                             <?php foreach ($alltype as $p) : ?>
@@ -53,17 +53,17 @@ navbar_child($nav_title);
                     </div>
                 </div>
                 <div class="row mb-4">
-                    <label class="cell-sm-3">Media Rapat</label>
-                    <div class="cell-sm-8">
-                        <select name="meeting_subtype" id="meeting_subtype" data-validate="required">
+                    <label class="cell-sm-2">Media Rapat</label>
+                    <div class="cell-sm-4">
+                        <select name="meeting_subtype" id="meeting_subtype" data-validate="required not=0">
                             <option value='0'>-- Pilih Media Rapat --</option>
                             <!-- SubMedia Rapat akan diload menggunakan ajax, dan ditampilkan disini -->
                         </select>
                     </div>
                 </div>
                 <div class="row mb-4" id="zoom_id" style='display:none;'>
-                    <label class="cell-sm-3">ZOOM ID</label>
-                    <div class="cell-sm-8">
+                    <label class="cell-sm-2">ZOOM ID</label>
+                    <div class="cell-sm-6">
                         <ul class="chec-radio">
                             <!-- Radio Button Here -->
                             <?php get_available_zoomid(); ?>
@@ -71,8 +71,8 @@ navbar_child($nav_title);
                     </div>
                 </div>
                 <div class="row mb-4" id="other_online_id" style='display:none;'>
-                    <label class="cell-sm-3">ID Rapat lain</label>
-                    <div class="cell-sm-8">
+                    <label class="cell-sm-2">ID Rapat lain</label>
+                    <div class="cell-sm-6">
                         <input type="text" id="onlineId" name="other_online_id" class="border" placeholder="ID Rapat" autocomplete="off" disabled>
                         <!-- <br /> -->
                         <input type="checkbox" class="dissable" id="yourBox" />
@@ -81,27 +81,27 @@ navbar_child($nav_title);
                 </div>
                 <!-- https://ilmucoding.com/middleware-filters-codeigniter-4/ -->
                 <div class="row mb-4">
-                    <label class="cell-sm-3">Agenda Rapat</label>
-                    <div class="cell-sm-8">
+                    <label class="cell-sm-2">Agenda Rapat</label>
+                    <div class="cell-sm-10">
                         <textarea name="agenda" data-validate="required" id="default" placeholder="Tuliskan Agenda Rapatnya disini..."><?= set_value('agenda', ''); ?></textarea>
-                        <span id="agenda_error" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="row mb-4">
-                    <label class="cell-sm-3">Pimpinan Rapat</label>
+                    <label class="cell-sm-2">Pimpinan Rapat</label>
                     <div class="cell-sm-8">
                         <input data-role="tagsinput" data-validate="required" type="text" name="participants_name" id="participants_name" value="<?= set_value('participants_name'); ?>" placeholder="Tambah Pimpinan Rapat">
                     </div>
                 </div>
                 <div class="row mb-4">
-                    <label class="cell-sm-3">Narasumber</label>
+                    <label class="cell-sm-2">Narasumber</label>
                     <div class="cell-sm-8">
-                        <input type="text" data-validate="required" data-role="taginput" data-tag-trigger="Space" name="speakers_name" id="speakers_name" value="<?= set_value('speakers_name'); ?>" placeholder="Tambah Narasumber">
+                        <input type="text" data-validate="required" data-role="tagsinput min=2" data-tag-trigger="Space" name="speakers_name" id="speakers_name" value="<?= set_value('speakers_name'); ?>" placeholder="Tambah Narasumber">
                     </div>
                 </div>
                 <div class="row">
                     <div class="cell">
                         <button type="submit" id="btnSave" class="button success"><span class="mif-file-text"></span> Tambah Rapat Baru</button>
+                        <button type="reset" class="button info"><span class="mif-undo"></span> Reset Form</button>
                     </div>
                 </div>
 

@@ -13,13 +13,6 @@ navbar_child($nav_title);
 <!-- Start Main Content -->
 <div class="container">
     <div data-role="navview" class="navview navview-compact-md navview-expand-lg compacted js-compact">
-        <div class="red-div-alert" id="hideMe">
-            <?php if (session()->get('id') == true) : ?>
-                <?= red_div_alert(); ?>
-            <?php else : ?>
-                <?= ''; ?>
-            <?php endif; ?>
-        </div>
         <div class="navview-pane">
             <button class="pull-button">
                 <span class="default-icon-menu"></span>
@@ -47,10 +40,10 @@ navbar_child($nav_title);
         </div>
 
         <div class="toolbar my-4" style="margin-left: 65px;">
-            <strong> Ketersediaan ZoomID</strong>
+            <strong> Tabel Ketersediaan ZoomID Hari ini</strong>
         </div>
         <div class="toolbar my-3 place-right">
-            Tabel Data Zoom Hari ini Tanggal : &nbsp;<strong><?= date("d-m-Y"); ?></strong>
+            Tanggal : &nbsp;<strong><?= date("d-m-Y"); ?></strong>
         </div>
         <div class="navview-content d-flex flex-align-center flex-justify-center h-500">
             <table class="table table-condensed hover display" id="rapat" cellspacing="0">

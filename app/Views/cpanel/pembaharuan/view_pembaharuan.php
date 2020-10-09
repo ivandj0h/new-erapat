@@ -13,13 +13,13 @@ navbar_child($nav_title);
 <!-- Start Main Content -->
 <div class="container">
     <div data-role="navview" class="navview navview-compact-md navview-expand-lg compacted js-compact">
-        <div class="red-div-alert" id="hideMe">
-            <?php if (session()->get('id') == true) : ?>
-                <?= red_div_alert(); ?>
-            <?php else : ?>
-                <?= ''; ?>
-            <?php endif; ?>
-        </div>
+        <!-- <div class="red-div-alert" id="hideMe">
+             //if (session()->get('id') == true) : 
+         //red_div_alert(); 
+             //else : 
+         //''; 
+             //endif; 
+        </div> -->
         <div class="navview-pane">
             <button class="pull-button">
                 <span class="default-icon-menu"></span>
@@ -47,10 +47,10 @@ navbar_child($nav_title);
         </div>
 
         <div class="toolbar my-4" style="margin-left: 65px;">
-            <strong> Tabel Pembaharuan Rapat</strong>
+            <strong> Tabel Pembaharuan Rapat Hari ini</strong>
         </div>
         <div class="toolbar my-3 place-right">
-            Data Rapat Hari ini Tanggal : &nbsp;<strong><?= date("d-m-Y"); ?></strong>
+            Tanggal : &nbsp;<strong><?= date("d-m-Y"); ?></strong>
         </div>
 
         <div class="navview-content d-flex flex-align-center flex-justify-center h-500">

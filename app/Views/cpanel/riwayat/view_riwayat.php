@@ -23,10 +23,7 @@ navbar_child($nav_title);
                 <div id='hideMe'>
                     <ul>
                         <?php foreach ($errors as $error) : ?>
-                            <li class="remark alert" id="redAlert">
-                                <strong><?= esc($error) ?></strong>
-                                <i class="fas fa-times" style="margin-left: 1025px;color: brown;"></i>
-                            </li>
+                            <div class="red">ff</div>
                         <?php endforeach ?>
                     </ul>
                 </div>
@@ -95,3 +92,8 @@ navbar_child($nav_title);
 // echo empty_upload_alert($r['files_upload']);
 // endforeach;
 $this->endSection();
+?>
+
+<script>
+    $(".red").css("color", "red");
+</script>

@@ -13,13 +13,25 @@ setTimeout(function () {
             setTimeout(function () {
               $("#login").text("Proses Pengecekan Berhasil...");
               $("#login").text("Mohon menunggu...");
-            }, 1100);
-          }, 1500);
-        }, 1100);
-      }, 1100);
-    }, 1100);
-  }, 1100);
-}, 1100);
+            }, 500);
+          }, 500);
+        }, 500);
+      }, 500);
+    }, 500);
+  }, 500);
+}, 500);
+
+function callback() {
+  var html_content =
+    "<h3>Selamat Datang</h3>" +
+    "<p>Proses Pengecekan Akun Anda Telah Berhasil</p>" +
+    "<p>Anda akan segera dialihkan...<img src='assets/locals/img/loading.gif' style='width: 17px;'></p>";
+
+  Metro.infobox.create(html_content);
+  setTimeout(function () {
+    newWin.close();
+  }, 3);
+}
 
 (function () {
   var counter = 100;
@@ -37,15 +49,3 @@ setTimeout(function () {
     }, 100);
   }, 10);
 })();
-
-function callback() {
-  var html_content =
-    "<h3>Selamat Datang</h3>" +
-    "<p>Proses Pengecekan Akun Anda Telah Berhasil</p>" +
-    "<p>Anda akan segera dialihkan...<img src='assets/locals/img/loading.gif' style='width: 17px;'></p>";
-
-  Metro.infobox.create(html_content);
-  setTimeout(function () {
-    newWin.close();
-  }, 10);
-}

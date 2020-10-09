@@ -33,6 +33,10 @@ function navbar_($nav)
                     <li><a href="<?= base_url(); ?>" class="text-upper"><span class="icon mif-calendar"></span> kalender</a></li>
                     <li><a href="<?= base_url('documentation'); ?>" class="text-upper"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
                 <?php break;
+                case "erapatconnect": ?>
+                    <li><a href="<?= base_url(); ?>" class="text-upper"><span class="icon mif-calendar"></span> kalender</a></li>
+                    <li><a href="<?= base_url('documentation'); ?>" class="text-upper"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
+                <?php break;
                 case "cek": ?>
                     <li><a href="<?= base_url(); ?>" class="text-upper"><span class="icon mif-calendar"></span> kalender</a></li>
                     <li><a href="<?= base_url('documentation'); ?>" class="text-upper"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
@@ -42,6 +46,10 @@ function navbar_($nav)
                     <li><a href="<?= base_url('documentation'); ?>" class="text-upper"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
                 <?php break;
                 case "user": ?>
+                    <li><a href="<?= base_url(); ?>" class="text-upper"><span class="icon mif-calendar"></span> kalender</a></li>
+                    <li><a href="<?= base_url('documentation'); ?>" class="text-upper"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
+                <?php break;
+                case "baru": ?>
                     <li><a href="<?= base_url(); ?>" class="text-upper"><span class="icon mif-calendar"></span> kalender</a></li>
                     <li><a href="<?= base_url('documentation'); ?>" class="text-upper"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
                 <?php break;
@@ -75,11 +83,24 @@ function navbar_($nav)
             ?>
         </ul>
         <div class="app-bar-container ml-auto d-none d-flex-md">
-            <?php if ($nav_title == 'zohoconnect') : ?>
-                <a href="<?= base_url('zohoconnect'); ?>" class="text-upper text-bolds" style="margin-right: 56px; vertical-align: sub; color: yellow; font-weight: bold;"><img src="<?= get_zoho_svg(); ?>" alt="Logo" class="image_svg_thumb_2" style="width: 20px;vertical-align: sub;"> Connecting....</a>
-            <?php else : ?>
-                <a href="<?= base_url('zohoconnect'); ?>" class="text-upper text-bolds" style="margin-right: 56px; vertical-align: sub;"><img src="<?= get_zoho_svg(); ?>" alt="Logo" class="image_svg_thumb" style="width: 20px;vertical-align: sub;"> ZOHO Connect</a>
-            <?php endif; ?>
+            <?php
+            $nav_title = $nav;
+
+            switch ($nav_title) {
+                case "zohoconnect": ?>
+                    <a href="<?= base_url('zohoconnect'); ?>" class="text-upper text-bolds" style="margin-right: 15px; vertical-align: sub; color: yellow; font-weight: bold;"><img src="<?= get_zoho_svg(); ?>" alt="Logo" class="image_svg_thumb_2" style="width: 20px;vertical-align: sub;"> ZOHO Form Builder</a>
+                    <a href="<?= base_url('erapatconnect'); ?>" class="text-upper text-bolds" style="margin-right: 53px; vertical-align: sub;"><img src="<?= get_perhub_svg(); ?>" alt="Logo" class="image_svg_thumb" style="width: 20px;vertical-align: sub;"> E-RAPAT Form Builder</a>
+                <?php break;
+                case "erapatconnect": ?>
+                    <a href="<?= base_url('zohoconnect'); ?>" class="text-upper text-bolds" style="margin-right: 15px; vertical-align: sub;"><img src="<?= get_zoho_svg(); ?>" alt="Logo" class="image_svg_thumb" style="width: 20px;vertical-align: sub;"> ZOHO Form Builder</a>
+                    <a href="<?= base_url('erapatconnect'); ?>" class="text-upper text-bolds" style="margin-right: 53px; vertical-align: sub; color: yellow; font-weight: bold;"><img src="<?= get_perhub_svg(); ?>" alt="Logo" class="image_svg_thumb_2" style="width: 20px;vertical-align: sub;"> E-RAPAT Form Builder</a>
+                <?php break;
+                default: ?>
+                    <a href="<?= base_url('zohoconnect'); ?>" class="text-upper text-bolds" style="margin-right: 15px; vertical-align: sub;"><img src="<?= get_zoho_svg(); ?>" alt="Logo" class="image_svg_thumb" style="width: 20px;vertical-align: sub;"> ZOHO Form Builder</a>
+                    <a href="<?= base_url('erapatconnect'); ?>" class="text-upper text-bolds" style="margin-right: 53px; vertical-align: sub;"><img src="<?= get_perhub_svg(); ?>" alt="Logo" class="image_svg_thumb" style="width: 20px;vertical-align: sub;"> E-RAPAT Form Builder</a>
+            <?php
+            }
+            ?>
         </div>
     </div>
 <?php
@@ -94,5 +115,11 @@ function get_perhub_svg()
 function get_zoho_svg()
 { ?>
     <?= base_url('assets/locals/img/zoho.svg'); ?>
+<?php
+}
+
+function get_erapat_svg()
+{ ?>
+    <?= base_url('assets/locals/img/perhub.svg'); ?>
 <?php
 }
