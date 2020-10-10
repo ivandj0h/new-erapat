@@ -51,17 +51,14 @@ function change_status_button($rapat)
     if ($rapat['request_status'] == 0) :
         $status = 'alert';
         $request_status = 'Booked';
-        $icon = 'mif-pin';
     elseif ($rapat['request_status'] == 1) :
         $status = 'dark';
         $request_status = 'Pembatalan';
-        $icon = 'mif-not';
     else :
         $status = 'primary';
         $request_status = 'Perubahan Jadwal';
-        $icon = 'mif-sync-problem';
     endif;
 ?>
-    <button class="button dropdown-toggle <?= $status; ?>"><span class="<?= $icon; ?>"></span> <?= $request_status; ?></button>
+    <button class="button dropdown-toggle <?= $status; ?>"><?= $request_status; ?></button>
 <?php
 }

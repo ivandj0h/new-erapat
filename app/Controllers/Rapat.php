@@ -28,6 +28,7 @@ class Rapat extends BaseController
             'tabs' => 'rapat',
             'user' => $userModel,
             'rapat' => $rapatModel
+                ->orderBy('id', 'DESC')
                 ->getWhere(['user_id' => session()->get('id')])
                 ->getResultArray()
         ];
@@ -83,7 +84,7 @@ class Rapat extends BaseController
                 'speakers_name' => $speakers,
                 'members_name' => $participants,
                 'unique_code' => uniqid(),
-                'agenda' => htmlspecialchars($this->request->getPost('agenda')),
+                'agenda' => htmlspecialchars(strip_tags($this->request->getPost('agenda'))),
                 'start_date' => $this->request->getPost('start_date'),
                 'end_date' => $this->request->getPost('start_date'),
                 'date_requested' =>  date('Y-m-d'),
@@ -165,7 +166,7 @@ class Rapat extends BaseController
                     'start_time' => $this->request->getPost('start_time'),
                     'start_time' => $this->request->getPost('start_time'),
                     'end_time' => $this->request->getPost('end_time'),
-                    'remark_status' => $this->request->getPost('remark_status'),
+                    'remark_status' => htmlspecialchars(strip_tags($this->request->getPost('remark_status'))),
                 ];
 
                 $db      = \Config\Database::connect();

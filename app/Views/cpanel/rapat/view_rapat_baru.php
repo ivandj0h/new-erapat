@@ -25,7 +25,7 @@ navbar_child($nav_title);
                 <div class="row mb-4">
                     <label class="cell-sm-2">Tanggal Rapat</label>
                     <div class="cell-sm-2 calendarpicker required">
-                        <input type="date" data-validate="required" id="start_date" name="start_date" data-role="calendarpicker" data-dialog-mode="true">
+                        <input type="text" data-validate="required" id="start_date" name="start_date" data-role="calendarpicker" data-dialog-mode="true" placeholder="Masukan Tanggal Rapat">
                     </div>
                 </div>
                 <div class="row mb-4">
@@ -96,6 +96,7 @@ navbar_child($nav_title);
                     <label class="cell-sm-2">Narasumber</label>
                     <div class="cell-sm-8">
                         <input type="text" data-validate="required" data-role="tagsinput min=2" data-tag-trigger="Space" name="speakers_name" id="speakers_name" value="<?= set_value('speakers_name'); ?>" placeholder="Tambah Narasumber">
+                        <span style="color: red;"><small>Jika Narasumber lebih dari 1 orang, maka tambahkan koma(,) diakhir nama dan tambahkan spasi</small></span>
                     </div>
                 </div>
                 <div class="row">

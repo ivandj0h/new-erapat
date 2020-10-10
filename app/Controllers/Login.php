@@ -56,7 +56,8 @@ class Login extends BaseController
                         if (session()->get('role_id') == 1) {
                             return redirect()->route('admin');
                         } else {
-                            return redirect()->route('cek');
+                            // return redirect()->route('cek');
+                            return redirect()->route('user');
                         }
                     }
                 }

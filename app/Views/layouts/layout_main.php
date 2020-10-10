@@ -58,7 +58,7 @@
 
             var table = $("#rapat").DataTable();
             table
-                .order([0, 'desc'], [1, 'desc'], [2, 'desc'], [6, 'desc'])
+                .order([0, 'desc'], [5, 'desc'])
                 .draw();
 
 
