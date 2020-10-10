@@ -7,10 +7,10 @@ navbar_($nav_title);
 navbar_child($nav_title);
 ?>
 
-
-<!-- start content here -->
+<!-- Start of Content -->
 <?= userTabMenu($tabs); ?>
-<!-- Content -->
+
+<!-- Start of Form -->
 <div class="container">
     <div class="toolbar my-5">
         <strong> Tambah Data Rapat</strong>
@@ -25,7 +25,7 @@ navbar_child($nav_title);
                 <div class="row mb-4">
                     <label class="cell-sm-2">Tanggal Rapat</label>
                     <div class="cell-sm-2 calendarpicker required">
-                        <input type="text" data-validate="required" id="start_date" name="start_date" data-role="calendarpicker" data-dialog-mode="true">
+                        <input type="date" data-validate="required" id="start_date" name="start_date" data-role="calendarpicker" data-dialog-mode="true">
                     </div>
                 </div>
                 <div class="row mb-4">
@@ -83,7 +83,7 @@ navbar_child($nav_title);
                 <div class="row mb-4">
                     <label class="cell-sm-2">Agenda Rapat</label>
                     <div class="cell-sm-10">
-                        <textarea name="agenda" data-validate="required" id="default" placeholder="Tuliskan Agenda Rapatnya disini..."><?= set_value('agenda', ''); ?></textarea>
+                        <textarea name="agenda" data-validate="required" id="context-form" placeholder="Tuliskan Agenda Rapatnya disini..."><?= set_value('agenda', ''); ?></textarea>
                     </div>
                 </div>
                 <div class="row mb-4">
@@ -109,6 +109,7 @@ navbar_child($nav_title);
         </div>
     </div>
 </div>
+<!-- End of Form -->
 
-<!-- end content here -->
+<!-- End of Content -->
 <?php $this->endSection(); ?>
