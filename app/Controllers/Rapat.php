@@ -14,7 +14,7 @@ class Rapat extends BaseController
     {
         $this->session = session();
         $this->form_validation = \Config\Services::validation();
-        helper(['navbar', 'navbar_child', 'alerts', 'menu', 'zoom', 'form', 'date']);
+        helper(['navbar', 'navbar_child', 'alerts', 'menu', 'zoom', 'form', 'date', 'myforms']);
     }
 
     public function index()
@@ -105,26 +105,98 @@ class Rapat extends BaseController
                 $builder->update();
             }
 
-            $rapatAddModel->insert($data);
+            if ($rapatAddModel->insert($data)) {
+                session()->setFlashdata('message', 'Data Rapat Berhasil di Simpan!');
+                session()->setFlashdata('alert-class', 'success');
 
-            return redirect()->to(base_url('rapat'));
+                return redirect()->to(base_url('rapat'));
+            } else {
+                session()->setFlashdata('message', 'Data Rapat Gagal disimpan!');
+                session()->setFlashdata('alert-class', 'alert');
+
+                return redirect()->route('baru')->withInput();
+            }
         }
     }
 
     public function detail($code = '')
     {
-        $db   = \Config\Database::connect();
-        $builder = $db->table('view_user_meeting');
-        $result = $builder->getWhere(['unique_code' => $code]);
-
+        $rapatModel = new RapatModel();
         $data = [
             'page_title' => 'E-RAPAT - Detail',
             'nav_title' => 'detail',
             'tabs' => 'rapat',
-            'rapat' => $result->getRow()
+            'rapat' => $rapatModel
+                ->getWhere(['unique_code' => $code])
+                ->getRow()
         ];
 
         return view('cpanel/rapat/view_rapat_detail', $data);
+    }
+
+    public function reschedulle($code = '')
+    {
+        $rapatModel = new RapatModel();
+        $data = [
+            'page_title' => 'E-RAPAT - Detail',
+            'nav_title' => 'detail',
+            'tabs' => 'rapat',
+            'rapat' => $rapatModel
+                ->getWhere(['unique_code' => $code])
+                ->getRow()
+        ];
+
+        return view('cpanel/rapat/view_rapat_reschedulle', $data);
+    }
+
+    public function updatestatus($id = 0, $code = '')
+    {
+        if ($this->request->getMethod() == 'post') {
+
+            $input = $this->validate(['remark_status' => 'required']);
+
+            if (!$input) {
+                return redirect()->route('reschedulle/' . $code)->withInput()->with('validation', $this->validator);
+            } else {
+                $id = $this->request->getPost('id');
+                $data = [
+                    'request_status' => $this->request->getPost('request_status'),
+                    'end_date' => $this->request->getPost('end_date'),
+                    'start_time' => $this->request->getPost('start_time'),
+                    'start_time' => $this->request->getPost('start_time'),
+                    'end_time' => $this->request->getPost('end_time'),
+                    'remark_status' => $this->request->getPost('remark_status'),
+                ];
+
+                $db      = \Config\Database::connect();
+                $builder = $db->table('meeting');
+                $builder->set('request_status', $data['request_status']);
+                $builder->set('end_date', $data['end_date']);
+                $builder->set('start_time', $data['start_time']);
+                $builder->set('end_time', $data['end_time']);
+                $builder->set('remark_status', $data['remark_status']);
+                $builder->where('id', $id);
+                $updates = $builder->update();
+                if ($updates) {
+                    session()->setFlashdata('message', 'Reschedulle Rapat Berhasil di Update!');
+                    session()->setFlashdata('alert-class', 'success');
+
+                    return redirect()->to(base_url('rapat'));
+                } else {
+                    session()->setFlashdata('message', 'Data Gagal disimpan!');
+                    session()->setFlashdata('alert-class', 'alert');
+
+                    return redirect()->route('reschedulle/' . $code)->withInput();
+                }
+            }
+        }
+    }
+
+    public function rapatcancel()
+    {
+        $data = ['page_title' => 'E-RAPAT - Buat Rapat Baru', 'nav_title' => 'baru', 'tabs' => 'rapat'];
+
+        return view('errors/response/view_forbidden_cancel_meeting', $data);
     }
 
     public function get_media_meeting()

@@ -7,18 +7,19 @@ navbar_($nav_title);
 navbar_child($nav_title);
 ?>
 
-
 <!-- start content here -->
 <?= userTabMenu($tabs); ?>
 <!-- Content -->
 <div class="container">
-    <div class="red-div-alert-2" id="hideMe">
-        <?php if (session()->get('id') == true) : ?>
-            <?= red_div_alert_2(); ?>
-        <?php else : ?>
-            <?= ''; ?>
-        <?php endif; ?>
-    </div>
+    <?php
+    if (session()->has('message')) {
+    ?>
+        <div class="remark <?= session()->getFlashdata('alert-class') ?>" id="hideMe">
+            <?= session()->getFlashdata('message') ?>
+        </div>
+    <?php
+    }
+    ?>
     <div class="toolbar my-5">
         <strong> Tabel Master Data Rapat</strong>
     </div>
@@ -34,6 +35,7 @@ navbar_child($nav_title);
                 <th class="text-center w-20">Nama Bidang</th>
                 <th class="text-center w-20">Media</th>
                 <th class="text-center w-20">ID Media</th>
+                <th class="text-center w-20">Status</th>
                 <th class="text-center w-20">Aksi</th>
             </tr>
         </thead>
@@ -60,11 +62,22 @@ navbar_child($nav_title);
                     </td>
                     <td class="text-center">
                         <div class="dropdown-button">
-                            <button class="button dropdown-toggle primary"><span class="mif-wrench"></span> Aksi</button>
+                            <?= change_status_button($r); ?>
                             <ul class="d-menu" data-role="dropdown">
+                                <?php if ($r['request_status'] == 1) : ?>
+                                    <li><a href="<?= base_url('/rapatcancel'); ?>"><span class="mif-flow-branch"></span> Reschedule</a></li>
+                                <?php else : ?>
+                                    <li><a href="<?= base_url('reschedulle/' . $r['unique_code']); ?>"><span class="mif-flow-branch"></span> Reschedule</a></li>
+                                <?php endif; ?>
+                            </ul>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <div class="dropdown-button">
+                            <button class="button dropdown-toggle primary"><span class="mif-wrench"></span> Aksi</button>
+                            <ul class="d-menu place-right" data-role="dropdown">
                                 <li><a href="<?= base_url('detail/' . $r['unique_code']); ?>"><span class="mif-eye"></span> Detail</a></li>
                                 <li><a href="#"><span class="mif-copy"></span> Ubah</a></li>
-                                <li><a href="#"><span class="mif-flow-branch"></span> Reschedule</a></li>
                             </ul>
                         </div>
                     </td>
