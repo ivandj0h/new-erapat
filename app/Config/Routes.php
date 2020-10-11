@@ -102,10 +102,12 @@ $routes->get('/rapat', 'Rapat::index', ['filter' => 'ceklogin']);
 $routes->get('/baru', 'Rapat::baru', ['filter' => 'ceklogin']);
 $routes->post('/addrapat', 'Rapat::store', ['filter' => 'ceklogin']);
 $routes->post('/updaterapat', 'Rapat::save', ['filter' => 'ceklogin']);
+$routes->post('/undanganaction', 'Rapat::undanganaction', ['filter' => 'ceklogin']);
 $routes->post('/updatestatus/(:any)', 'Rapat::updatestatus/$1', ['filter' => 'ceklogin']);
 $routes->get('/edit/(:any)', 'Rapat::edit/$1', ['filter' => 'ceklogin']);
 $routes->get('/detail/(:any)', 'Rapat::detail/$1', ['filter' => 'ceklogin']);
 $routes->get('/reschedulle/(:any)', 'Rapat::reschedulle/$1', ['filter' => 'ceklogin']);
+$routes->get('/uploadundangan/(:any)', 'Rapat::uploadundangan/$1', ['filter' => 'ceklogin']);
 $routes->match(['get', 'post'], '/rapat/getmm', 'Rapat::get_media_meeting');
 $routes->match(['get', 'post'], '/rapat/getmmm', 'Rapat::get_zoomid');
 

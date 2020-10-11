@@ -65,7 +65,8 @@ navbar_child($nav_title);
                             <?php elseif (!empty($r['files_upload']) && !empty($r['files_upload1']) && empty($r['files_upload2'])) : ?>
                                 <strong><span class="fg-red"> File Absensi belum ada</span></strong>
                             <?php else : ?>
-                                <strong><span class="fg-red"> Belum ada file yang diunggah</span></strong>
+                                <a href="<?= base_url('uploadundangan/' . $r['unique_code']) ?>"><strong><span class="fg-red"> Belum ada file yang diunggah</span></strong></a>
+
                             <?php endif; ?>
                         <?php endif; ?>
                     </td>

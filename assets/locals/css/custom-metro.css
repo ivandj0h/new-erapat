@@ -3,16 +3,10 @@ body {
     "Ubuntu", "Helvetica Neue", sans-serif;
 }
 
-/* .row {
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-  -ms-flex-wrap: wrap !important;
-  flex-wrap: wrap !important;
-  margin-left: -6px !important;
-  margin-right: -6px !important;
-  width: 100% !important;
-} */
+a,
+a:hover {
+  text-decoration: none;
+}
 
 @media (min-width: 1200px) {
   .container,
