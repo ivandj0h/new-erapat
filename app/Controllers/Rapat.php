@@ -325,7 +325,6 @@ class Rapat extends BaseController
         $input = $this->validate([
             'file' => [
                 'uploaded[file]',
-                // 'mime_in[file,image/jpg,image/jpeg,image/png,file/pdf]',
                 'mime_in[file,application/pdf,application/zip,application/msword,application/x-tar]',
                 'max_size[file,1024]',
             ]
@@ -357,6 +356,121 @@ class Rapat extends BaseController
         }
     }
 
+    public function uploadnotulen($code = '')
+    {
+        $rapatModel = new RapatModel();
+        $data = [
+            'page_title' => 'E-RAPAT - Rapat',
+            'nav_title' => 'rapat',
+            'tabs' => 'rapat',
+            'rapat' => $rapatModel
+                ->orderBy('id', 'DESC')
+                ->getWhere(['unique_code' => $code, 'user_id' => session()->get('id')])
+                ->getRow()
+        ];
+
+        return view('cpanel/rapat/view_upload_notulen', $data);
+    }
+
+    public function notulenaction()
+    {
+        $database = \Config\Database::connect();
+        $db = $database->table('meeting');
+
+        $code = $this->request->getPost('code');
+        $id = $this->request->getPost('id');
+
+        $input = $this->validate([
+            'file' => [
+                'uploaded[file]',
+                'mime_in[file,application/pdf,application/zip,application/msword,application/x-tar]',
+                'max_size[file,1024]',
+            ]
+        ]);
+
+        if (!$input) {
+            session()->setFlashdata('message', 'Notulen Gagal di Upload!');
+            session()->setFlashdata('alert-class', 'alert');
+
+            return redirect()->route('uploadundangan/' . $code)->withInput();
+        } else {
+            $img = $this->request->getFile('file');
+            $img->move(ROOTPATH . 'uploads');
+
+            $data = [
+                'files_upload1' =>  $img->getName(),
+                'type'  => $img->getClientMimeType()
+            ];
+
+            // var_dump($data);
+            // die;
+            $db->set('files_upload1', $data['files_upload1']);
+            $db->where('id', $id);
+            $db->update();
+            session()->setFlashdata('message', 'Notulen Berhasil di Upload!');
+            session()->setFlashdata('alert-class', 'success');
+
+            return redirect()->to(base_url('rapat'));
+        }
+    }
+
+    public function uploadabsensi($code = '')
+    {
+        $rapatModel = new RapatModel();
+        $data = [
+            'page_title' => 'E-RAPAT - Rapat',
+            'nav_title' => 'rapat',
+            'tabs' => 'rapat',
+            'rapat' => $rapatModel
+                ->orderBy('id', 'DESC')
+                ->getWhere(['unique_code' => $code, 'user_id' => session()->get('id')])
+                ->getRow()
+        ];
+
+        return view('cpanel/rapat/view_upload_absensi', $data);
+    }
+
+    public function absensiaction()
+    {
+        $database = \Config\Database::connect();
+        $db = $database->table('meeting');
+
+        $code = $this->request->getPost('code');
+        $id = $this->request->getPost('id');
+
+        $input = $this->validate([
+            'file' => [
+                'uploaded[file]',
+                'mime_in[file,application/pdf,application/zip,application/msword,application/x-tar]',
+                'max_size[file,1024]',
+            ]
+        ]);
+
+        if (!$input) {
+            session()->setFlashdata('message', 'Notulen Gagal di Upload!');
+            session()->setFlashdata('alert-class', 'alert');
+
+            return redirect()->route('uploadundangan/' . $code)->withInput();
+        } else {
+            $img = $this->request->getFile('file');
+            $img->move(ROOTPATH . 'uploads');
+
+            $data = [
+                'files_upload1' =>  $img->getName(),
+                'type'  => $img->getClientMimeType()
+            ];
+
+            // var_dump($data);
+            // die;
+            $db->set('files_upload1', $data['files_upload1']);
+            $db->where('id', $id);
+            $db->update();
+            session()->setFlashdata('message', 'Notulen Berhasil di Upload!');
+            session()->setFlashdata('alert-class', 'success');
+
+            return redirect()->to(base_url('rapat'));
+        }
+    }
 
     public function get_media_meeting()
     {
