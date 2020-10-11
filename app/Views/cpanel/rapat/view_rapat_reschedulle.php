@@ -24,6 +24,8 @@ navbar_child($nav_title);
             <form data-role="validator" action="<?= base_url('updatestatus/' . $rapat->unique_code) ?>" method="POST">
                 <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
                 <input type="hidden" name="id" value="<?= $rapat->id ?>" />
+                <input type="hidden" name="zoomid" value="<?= $rapat->zoomid ?>" />
+                <input type="hidden" name="sub_type_id" value="<?= $rapat->sub_type_id ?>" />
                 <div class="row mb-4">
                     <label class="cell-sm-2">Status Rapat</label>
                     <div class="cell-sm-4">

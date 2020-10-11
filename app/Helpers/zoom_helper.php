@@ -12,7 +12,7 @@ function get_available_zoomid()
     $starttime = strtotime(date($d['start_time']));
     $endtime = strtotime(date($d['end_time']));
 
-    if (($currenttime >= $starttime) && ($currenttime <= $endtime) && $d['id'] == session()->get('id') && $d['status'] == 1) { ?>
+    if (($currenttime >= $starttime) && ($currenttime <= $endtime) && $d['user_id'] === session()->get('id') && $d['status'] == 1) { ?>
         <li class="pz">
             <label class="radio-inline">
                 <input type="radio" id="pro-chx-residential" name="zoomid" class="pro-chx" value="<?= $d['id']; ?>" disabled>

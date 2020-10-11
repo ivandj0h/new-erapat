@@ -34,57 +34,96 @@ navbar_child($nav_title);
                     <div class="row mb-2">
                         <label class="cell-sm-2" style="padding: 10px;">Sekretariat</label>
                         <div class="cell-sm-10">
-                            <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                <strong><?= $rapat->department_name ?></strong>.
-                            </span>
+                            <?php if ($rapat->request_status == '1') : ?>
+                                <span class="remark dark" style="margin: 0;padding: 5px;color: black;">
+                                    <strong><?= $rapat->department_name ?></strong>.
+                                </span>
+                            <?php else : ?>
+                                <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                    <strong><?= $rapat->department_name ?></strong>.
+                                </span>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label class="cell-sm-2" style="padding: 10px;">Bagian</label>
                         <div class="cell-sm-10">
-                            <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                <strong><?= $rapat->sub_department_name ?></strong>.
-                            </span>
+                            <?php if ($rapat->request_status == '1') : ?>
+                                <span class="remark dark" style="margin: 0;padding: 5px;color: black;">
+                                    <strong><?= $rapat->sub_department_name ?></strong>.
+                                </span>
+                            <?php else : ?>
+                                <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                    <strong><?= $rapat->sub_department_name ?></strong>.
+                                </span>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label class="cell-sm-2" style="padding: 10px;">Pimpinan Rapat</label>
                         <div class="cell-sm-10">
-                            <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                <strong><?= $rapat->members_name ?></strong>.
-                            </span>
+                            <?php if ($rapat->request_status == '1') : ?>
+                                <span class="remark dark" style="margin: 0;padding: 5px;color: black;">
+                                    <strong><?= $rapat->members_name ?></strong>.
+                                </span>
+                            <?php else : ?>
+                                <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                    <strong><?= $rapat->members_name ?></strong>.
+                                </span>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label class="cell-sm-2" style="padding: 10px;">Narasumber</label>
                         <div class="cell-sm-10">
                             <?php
-                            if (empty($rapat->speakers_name)) : ?>
-                                <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
-                                    <strong>Narasumber</strong> tidak ada.
-                                </span>
-                            <?php
-                            else : ?>
-                                <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                            if ($rapat->request_status == '1') : ?>
+                                <span class="remark dark" style="margin: 0;padding: 5px;color: black;">
                                     <strong><?= $rapat->speakers_name ?></strong>.
                                 </span>
-                            <?php endif; ?>
+                                <?php
+                            else :
+                                if (empty($rapat->speakers_name)) : ?>
+                                    <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
+                                        <strong>Narasumber</strong> tidak ada.
+                                    </span>
+                                <?php
+                                else : ?>
+                                    <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                        <strong><?= $rapat->speakers_name ?></strong>.
+                                    </span>
+                            <?php
+                                endif;
+                            endif;
+                            ?>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label class="cell-sm-2" style="padding: 10px;">Diajukan Oleh</label>
                         <div class="cell-sm-10">
-                            <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                <strong><?= $rapat->name ?></strong>.
-                            </span>
+                            <?php if ($rapat->request_status == '1') : ?>
+                                <span class="remark dark" style="margin: 0;padding: 5px;color: black;">
+                                    <strong><?= $rapat->name ?></strong>.
+                                </span>
+                            <?php else : ?>
+                                <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                    <strong><?= $rapat->name ?></strong>.
+                                </span>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label class="cell-sm-2" style="padding: 10px;">Tanggal Pengajuan</label>
                         <div class="cell-sm-10">
-                            <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                <strong><?= date("d-m-Y", strtotime($rapat->date_requested)); ?></strong>.
-                            </span>
+                            <?php if ($rapat->request_status == '1') : ?>
+                                <span class="remark dark" style="margin: 0;padding: 5px;color: black;">
+                                    <strong><?= date("d-m-Y", strtotime($rapat->date_requested)) ?></strong>.
+                                </span>
+                            <?php else : ?>
+                                <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                    <strong><?= date("d-m-Y", strtotime($rapat->date_requested)); ?></strong>.
+                                </span>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -93,32 +132,50 @@ navbar_child($nav_title);
                         <label class="cell-sm-2" style="padding: 10px;">Tipe Media</label>
                         <div class="cell-sm-10">
                             <?php
-                            if ($rapat->type_id == 1) : ?>
-                                <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                    <strong><?= $rapat->meeting_type; ?></strong>
-                                </span>
-                            <?php
-                            else : ?>
-                                <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
+                            if ($rapat->request_status == '1') : ?>
+                                <span class="remark dark" style="margin: 0;padding: 5px;color: black;">
                                     <strong><?= $rapat->meeting_type; ?></strong>.
                                 </span>
-                            <?php endif; ?>
+                                <?php
+                            else :
+                                if ($rapat->type_id == 1) : ?>
+                                    <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                        <strong><?= $rapat->meeting_type; ?></strong>
+                                    </span>
+                                <?php
+                                else : ?>
+                                    <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
+                                        <strong><?= $rapat->meeting_type; ?></strong>.
+                                    </span>
+                            <?php
+                                endif;
+                            endif;
+                            ?>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label class="cell-sm-2" style="padding: 10px;">Media yang dipakai</label>
                         <div class="cell-sm-10">
                             <?php
-                            if ($rapat->type_id == 1) : ?>
-                                <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                    <strong><?= $rapat->meeting_subtype; ?></strong>
-                                </span>
-                            <?php
-                            else : ?>
-                                <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
+                            if ($rapat->request_status == '1') : ?>
+                                <span class="remark dark" style="margin: 0;padding: 5px;color: black;">
                                     <strong><?= $rapat->meeting_subtype; ?></strong>.
                                 </span>
-                            <?php endif; ?>
+                                <?php
+                            else :
+                                if ($rapat->type_id == 1) : ?>
+                                    <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                        <strong><?= $rapat->meeting_subtype; ?></strong>
+                                    </span>
+                                <?php
+                                else : ?>
+                                    <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
+                                        <strong><?= $rapat->meeting_subtype; ?></strong>.
+                                    </span>
+                            <?php
+                                endif;
+                            endif;
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -126,33 +183,83 @@ navbar_child($nav_title);
                     <div class="row mb-2">
                         <label class="cell-sm-2" style="padding: 10px;">Tanggal Rapat</label>
                         <div class="cell-sm-10">
-                            <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                <strong><?= date("d-m-Y", strtotime($rapat->end_date)); ?></strong>.
-                            </span>
+                            <?php
+                            if ($rapat->request_status == '1') : ?>
+                                <span class="remark dark" style="margin: 0;padding: 5px;color: black;">
+                                    <strong><?= $rapat->meeting_type; ?></strong>.
+                                </span>
+                                <?php
+                            else :
+                                if ($rapat->type_id == 1) : ?>
+                                    <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                        <strong><?= date("d-m-Y", strtotime($rapat->end_date)); ?></strong>
+                                    </span>
+                                <?php
+                                else : ?>
+                                    <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                        <strong><?= date("d-m-Y", strtotime($rapat->end_date)); ?></strong>.
+                                    </span>
+                            <?php
+                                endif;
+                            endif;
+                            ?>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label class="cell-sm-2" style="padding: 10px;">Jam Mulai</label>
                         <div class="cell-sm-10">
-                            <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                <strong><?= date("H:i", strtotime($rapat->start_time)); ?></strong>.
-                            </span>
+                            <?php
+                            if ($rapat->request_status == '1') : ?>
+                                <span class="remark dark" style="margin: 0;padding: 5px;color: black;">
+                                    <strong><?= date("H:i", strtotime($rapat->start_time)); ?></strong>.
+                                </span>
+                            <?php
+                            else :
+                            ?>
+                                <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                    <strong><?= date("H:i", strtotime($rapat->start_time)); ?></strong>.
+                                </span>
+                            <?php
+                            endif;
+                            ?>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label class="cell-sm-2" style="padding: 10px;">Jam Akhir</label>
                         <div class="cell-sm-10">
-                            <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                <strong><?= date("H:i", strtotime($rapat->end_time)); ?></strong>.
-                            </span>
+                            <?php
+                            if ($rapat->request_status == '1') : ?>
+                                <span class="remark dark" style="margin: 0;padding: 5px;color: black;">
+                                    <strong><?= date("H:i", strtotime($rapat->end_time)); ?></strong>.
+                                </span>
+                            <?php
+                            else :
+                            ?>
+                                <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                    <strong><?= date("H:i", strtotime($rapat->end_time)); ?></strong>.
+                                </span>
+                            <?php
+                            endif;
+                            ?>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label class="cell-sm-2" style="padding: 10px;">Agenda</label>
                         <div class="cell-sm-10">
-                            <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                <strong><?= $rapat->agenda ?></strong>.
-                            </span>
+                            <?php
+                            if ($rapat->request_status == '1') : ?>
+                                <span class="remark dark" style="margin: 0;padding: 5px;color: black;">
+                                    <strong><?= $rapat->agenda ?></strong>.
+                                </span>
+                            <?php
+                            else :
+                            ?>
+                                <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                    <strong><?= $rapat->agenda ?></strong>.
+                                </span>
+                            <?php
+                            endif;
+                            ?>
                         </div>
                     </div>
                 </div>
