@@ -13,13 +13,6 @@ navbar_child($nav_title);
 <!-- Start Main Content -->
 <div class="container">
     <div data-role="navview" class="navview navview-compact-md navview-expand-lg compacted js-compact">
-        <!-- <div class="red-div-alert" id="hideMe">
-             //if (session()->get('id') == true) : 
-         //red_div_alert(); 
-             //else : 
-         //''; 
-             //endif; 
-        </div> -->
         <div class="navview-pane">
             <button class="pull-button">
                 <span class="default-icon-menu"></span>

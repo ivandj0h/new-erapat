@@ -84,12 +84,13 @@ $routes->get('/admin', 'Admin::index', ['filter' => 'ceklogin']);
 
 /**
  * --------------------------------------------------------------------
- * CPANEL Route Configuration
+ * CPANEL Route Configuration 
  * USER SECTION
  * --------------------------------------------------------------------
  */
 
 $routes->get('/user', 'User::index', ['filter' => 'ceklogin']);
+$routes->get('/changepassword/(:any)', 'User::changepassword/$1', ['filter' => 'ceklogin']);
 
 /**
  * --------------------------------------------------------------------
