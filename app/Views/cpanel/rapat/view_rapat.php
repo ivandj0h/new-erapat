@@ -61,7 +61,7 @@ navbar_child($nav_title);
                             <?php if (!empty($r['files_upload']) && !empty($r['files_upload1']) && !empty($r['files_upload2'])) : ?>
                                 <strong><span class="fg-emerald"> File Upload Komplit</span></strong>
                             <?php elseif (!empty($r['files_upload']) && empty($r['files_upload1']) && empty($r['files_upload2'])) : ?>
-                                <strong><span class="fg-red"> File Notulen belum ada</span></strong>
+                                <a href="<?= base_url('uploadnotulen/' . $r['unique_code']) ?>"><strong><span class="fg-red"> File Notulen belum ada</span></strong></a>
                             <?php elseif (!empty($r['files_upload']) && !empty($r['files_upload1']) && empty($r['files_upload2'])) : ?>
                                 <strong><span class="fg-red"> File Absensi belum ada</span></strong>
                             <?php else : ?>
