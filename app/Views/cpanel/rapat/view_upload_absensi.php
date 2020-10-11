@@ -25,6 +25,7 @@ navbar_child($nav_title);
                 <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
                 <input type="hidden" name="id" value="<?= $rapat->id ?>" />
                 <input type="hidden" name="code" value="<?= $rapat->unique_code ?>" />
+                <input type="hidden" name="idzoom" value="<?= $rapat->zoomid ?>" />
                 <div class="row mb-2">
                     <label class="cell-sm-2 text-right">Rapat Pukul</label>
                     <div class="cell-sm-6">
@@ -50,12 +51,27 @@ navbar_child($nav_title);
                         </span>
                     </div>
                 </div>
-                <div class="row mb-2">
-                    <label class="cell-sm-2">&nbsp;</label>
-                    <div class="cell-sm-10">
-                        <button type="submit" class="button secondary"><span class="mif-cloud-upload"></span> Upload Absensi</button>
+                <?php if ($rapat->sub_type_id == 1) : ?>
+                    <div class="row mb-2">
+                        <label class="cell-sm-2">&nbsp;</label>
+                        <div class="cell-sm-10">
+                            <input type="checkbox" data-role="checkbox" id="changeZoom" type="checkbox" name="changeZoom" value="1"> <label class="cell-sm-12 fg-crimson" style="margin: -36px;left: 63px;">Centang box ini untuk mengakhiri Rapat (Pemakai Google Zoom)</label>
+                        </div>
                     </div>
-                </div>
+                    <div class="row mb-2">
+                        <label class="cell-sm-2">&nbsp;</label>
+                        <div class="cell-sm-10">
+                            <button type="submit" class="button secondary" disabled><span class="mif-cloud-upload"></span> Upload Absensi</button>
+                        </div>
+                    </div>
+                <?php else : ?>
+                    <div class="row mb-2">
+                        <label class="cell-sm-2">&nbsp;</label>
+                        <div class="cell-sm-10">
+                            <button type="submit" class="button secondary"><span class="mif-cloud-upload"></span> Upload Absensi</button>
+                        </div>
+                    </div>
+                <?php endif; ?>
             </form>
         </div>
     </div>

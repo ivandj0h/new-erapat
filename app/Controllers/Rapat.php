@@ -392,7 +392,7 @@ class Rapat extends BaseController
             session()->setFlashdata('message', 'Notulen Gagal di Upload!');
             session()->setFlashdata('alert-class', 'alert');
 
-            return redirect()->route('uploadundangan/' . $code)->withInput();
+            return redirect()->route('uploadnotulen/' . $code)->withInput();
         } else {
             $img = $this->request->getFile('file');
             $img->move(ROOTPATH . 'uploads');
@@ -437,6 +437,7 @@ class Rapat extends BaseController
 
         $code = $this->request->getPost('code');
         $id = $this->request->getPost('id');
+        $idzoom = $this->request->getPost('idzoom');
 
         $input = $this->validate([
             'file' => [
@@ -450,23 +451,27 @@ class Rapat extends BaseController
             session()->setFlashdata('message', 'Notulen Gagal di Upload!');
             session()->setFlashdata('alert-class', 'alert');
 
-            return redirect()->route('uploadundangan/' . $code)->withInput();
+            return redirect()->route('uploadabsensi/' . $code)->withInput();
         } else {
             $img = $this->request->getFile('file');
             $img->move(ROOTPATH . 'uploads');
 
             $data = [
-                'files_upload1' =>  $img->getName(),
+                'files_upload2' =>  $img->getName(),
                 'type'  => $img->getClientMimeType()
             ];
 
-            // var_dump($data);
-            // die;
-            $db->set('files_upload1', $data['files_upload1']);
+            $db->set('files_upload2', $data['files_upload2']);
             $db->where('id', $id);
             $db->update();
             session()->setFlashdata('message', 'Notulen Berhasil di Upload!');
             session()->setFlashdata('alert-class', 'success');
+
+            $db      = \Config\Database::connect();
+            $builder = $db->table('meeting_zoom');
+            $builder->set('status', 0);
+            $builder->where('idzoom', $idzoom);
+            $builder->update();
 
             return redirect()->to(base_url('rapat'));
         }

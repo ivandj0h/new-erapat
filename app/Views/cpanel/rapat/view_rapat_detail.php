@@ -178,6 +178,38 @@ navbar_child($nav_title);
                             ?>
                         </div>
                     </div>
+                    <div class="row mb-2">
+                        <label class="cell-sm-2" style="padding: 10px;">ID Media</label>
+                        <div class="cell-sm-10">
+                            <?php
+                            if ($rapat->request_status == '1') : ?>
+                                <span class="remark dark" style="margin: 0;padding: 5px;color: black;">
+                                    <strong><?= $rapat->meeting_subtype; ?></strong>.
+                                </span>
+                                <?php
+                            else :
+                                if ($rapat->type_id == 1) :
+                                    if ($rapat->sub_type_id == 1) : ?>
+                                        <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                            <strong><?= $rapat->zoomid; ?> - Zoom ID</strong>
+                                        </span>
+                                    <?php
+                                    else : ?>
+                                        <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                            <strong><?= $rapat->other_online_id; ?></strong>.
+                                        </span>
+                                    <?php endif; ?>
+                                <?php elseif ($rapat->type_id == 2) : ?>
+                                    <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
+                                        <strong> - </strong>.
+                                    </span>
+                                <?php else : ?>
+                            <?php
+                                endif;
+                            endif;
+                            ?>
+                        </div>
+                    </div>
                 </div>
                 <div id="_target_3">
                     <div class="row mb-2">
