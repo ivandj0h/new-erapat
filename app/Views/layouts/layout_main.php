@@ -37,15 +37,9 @@
 
     <?= $this->renderSection("contents"); ?>
 
-<<<<<<< HEAD
-    <!-- <div class="footer"> -->
-    <!-- <span>Copyright &copy; e-rapat <?= date('Y'); ?></span> -->
-    <!-- </div> -->
-=======
     <!-- JQuey -->
     <script src="<?= base_url('assets/locals/js/jquery-3.5.1.min.js'); ?>"></script>
 
->>>>>>> 1f03c91739fb9acbe842a0ac1476864e6d2f5786
     <!-- Metro 4 Base JS-->
     <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
 

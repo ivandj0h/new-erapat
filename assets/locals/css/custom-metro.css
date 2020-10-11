@@ -3,16 +3,13 @@ body {
     "Ubuntu", "Helvetica Neue", sans-serif;
 }
 
-/* .row {
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-  -ms-flex-wrap: wrap !important;
-  flex-wrap: wrap !important;
-  margin-left: -6px !important;
-  margin-right: -6px !important;
-  width: 100% !important;
-} */
+a {
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: none;
+}
 
 @media (min-width: 1200px) {
   .container,
@@ -220,22 +217,6 @@ body {
   font-weight: 500;
   font-size: 14px;
   padding: 10px 0;
-<<<<<<< HEAD
-  color: rgb(196, 196, 196);
-}
-
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #ffffff;
-  border-top: 1px solid #ddd;
-  padding: 10px;
-  color: rgb(170, 170, 170);
-  text-align: center;
-  z-index: 999;
-=======
   color: #ddd;
 }
 
@@ -392,7 +373,6 @@ code:hover {
 
 .tabs li.active {
   background-color: #ffffff !important;
->>>>>>> b17860fc903d9275820bc14af28549e9ff456bc4
 }
 
 /* Radio Button Custom CSS - Bootsnipp */
