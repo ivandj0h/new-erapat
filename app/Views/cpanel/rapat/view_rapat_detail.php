@@ -46,7 +46,7 @@ navbar_child($nav_title);
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <label class="cell-sm-2" style="padding: 10px;">Bagian</label>
+                        <label class="cell-sm-2" style="padding: 10px;">Nama Bagian</label>
                         <div class="cell-sm-10">
                             <?php if ($rapat->request_status == '1') : ?>
                                 <span class="remark dark" style="margin: 0;padding: 5px;color: black;">
@@ -248,9 +248,11 @@ navbar_child($nav_title);
                         <div class="cell-sm-10">
                             <?php
                             if ($rapat->request_status == '1') : ?>
+
                                 <span class="remark dark" style="margin: 0;padding: 5px;color: black;">
                                     <strong><?= $rapat->agenda ?></strong>.
                                 </span>
+
                             <?php
                             else :
                             ?>
@@ -269,9 +271,11 @@ navbar_child($nav_title);
                         <div class="cell-sm-10">
                             <?php
                             if (empty($rapat->files_upload)) : ?>
-                                <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
-                                    File <strong>Undangan Rapat</strong> tidak ditemukan, Mohon segera dilengkapi.
-                                </span>
+                                <a href="<?= base_url('uploadundangan/' . $rapat->unique_code) ?>">
+                                    <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
+                                        File <strong>Undangan Rapat</strong> tidak ditemukan, Mohon segera dilengkapi.
+                                    </span>
+                                </a>
                             <?php
                             else : ?>
                                 <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
