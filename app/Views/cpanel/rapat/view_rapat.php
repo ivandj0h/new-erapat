@@ -59,11 +59,11 @@ navbar_child($nav_title);
                             <strong><span class="fg-black"> Rapat Dibatalkan</span></strong>
                         <?php else : ?>
                             <?php if (!empty($r['files_upload']) && !empty($r['files_upload1']) && !empty($r['files_upload2'])) : ?>
-                                <strong><span class="fg-emerald"> File Upload Komplit</span></strong>
+                                <a href="<?= base_url('detail/' . $r['unique_code']) ?>"><strong><span class="fg-emerald"> File Upload Komplit</span></strong></a>
                             <?php elseif (!empty($r['files_upload']) && empty($r['files_upload1']) && empty($r['files_upload2'])) : ?>
                                 <a href="<?= base_url('uploadnotulen/' . $r['unique_code']) ?>"><strong><span class="fg-red"> File Notulen belum ada</span></strong></a>
                             <?php elseif (!empty($r['files_upload']) && !empty($r['files_upload1']) && empty($r['files_upload2'])) : ?>
-                                <strong><span class="fg-red"> File Absensi belum ada</span></strong>
+                                <a href="<?= base_url('uploadabsensi/' . $r['unique_code']) ?>"><strong><span class="fg-red"> File Absensi belum ada</span></strong></a>
                             <?php else : ?>
                                 <a href="<?= base_url('uploadundangan/' . $r['unique_code']) ?>"><strong><span class="fg-red"> Belum ada file yang diunggah</span></strong></a>
 
