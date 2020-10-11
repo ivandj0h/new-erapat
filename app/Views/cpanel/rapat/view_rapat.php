@@ -46,7 +46,7 @@ navbar_child($nav_title);
                     <td class="text-center"><?= date("H:i", strtotime($r['start_time'])); ?></td>
                     <td class="text-center"><?= date("H:i", strtotime($r['end_time'])); ?></td>
                     <td><?= $r['sub_department_name']; ?></td>
-                    <td>
+                    <td class="text-center">
                         <?php
                         if ($r['meeting_type'] == 'Online') : ?>
                             <strong><span class="fg-emerald"> Rapat Online</span></strong>
@@ -56,16 +56,16 @@ navbar_child($nav_title);
                     </td>
                     <td class="text-center">
                         <?php if ($r['request_status'] == '1') : ?>
-                            <strong><span class="mif-keyboard-voice"> cancel </span></strong>
+                            <strong><span class="fg-black"> Rapat Dibatalkan</span></strong>
                         <?php else : ?>
                             <?php if (!empty($r['files_upload']) && !empty($r['files_upload1']) && !empty($r['files_upload2'])) : ?>
-                                <strong><span class="fg-emerald"> all sucess </span></strong>
+                                <strong><span class="fg-emerald"> File Upload Komplit</span></strong>
                             <?php elseif (!empty($r['files_upload']) && empty($r['files_upload1']) && empty($r['files_upload2'])) : ?>
-                                <strong><span class="fg-red"> notulen_upload </span></strong>
+                                <strong><span class="fg-red"> File Notulen belum ada</span></strong>
                             <?php elseif (!empty($r['files_upload']) && !empty($r['files_upload1']) && empty($r['files_upload2'])) : ?>
-                                <strong><span class="fg-red"> absensi_upload </span></strong>
+                                <strong><span class="fg-red"> File Absensi belum ada</span></strong>
                             <?php else : ?>
-                                <strong><span class="fg-red"> Belum ada file terupload </span></strong>
+                                <strong><span class="fg-red"> Belum ada file yang diunggah</span></strong>
                             <?php endif; ?>
                         <?php endif; ?>
                     </td>
@@ -83,11 +83,12 @@ navbar_child($nav_title);
                     </td>
                     <td class="text-center">
                         <div class="split-button">
-                            <button class="button"><span class="mif-sort-desc"></span></button>
+                            <button class="button"><span class="mif-sort-desc"></span> Aksi</button>
+                            <!-- <span class="fg-red"> Aksi</span> -->
                             <button class="split rounded dropdown-toggle"></button>
                             <ul class="d-menu place-right" data-role="dropdown">
                                 <li><a href="<?= base_url('detail/' . $r['unique_code']); ?>"><span class="mif-eye"></span> Detail</a></li>
-                                <li><a href="#"><span class="mif-copy"></span> Ubah</a></li>
+                                <li><a href="<?= base_url('edit/' . $r['unique_code']); ?>"><span class="mif-copy"></span> Ubah</a></li>
                             </ul>
                         </div>
                     </td>

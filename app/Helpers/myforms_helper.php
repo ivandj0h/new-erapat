@@ -3,6 +3,7 @@
 // CHANGE STATUS HELPER
 function form_change_status_online($rapat)
 {
+
     if ($rapat->request_status == 0) : ?>
         <option value="<?= $rapat->request_status; ?>">Booked</option>
     <?php elseif ($rapat->request_status == 1) : ?>
@@ -11,11 +12,14 @@ function form_change_status_online($rapat)
         <option value="<?= $rapat->request_status; ?>">Perubahan Jadwal</option>
     <?php endif; ?>
 
-    <option value="" disabled>---------</option>
-    <option value="0">Booked</option>
-    <option value="1">Pembatalan</option>
-    <option value="2">Perubahan Jadwal</option>
     <?php
+    $ci = \Config\Database::connect();
+    $builder = $ci->table('meeting_status')->get();
+    $query = $builder->getResultArray();
+
+    foreach ($query as $r) : ?>
+        <option value="<?= $r['id']; ?>"><?= $r['status_name']; ?></option>
+    <?php endforeach;
 }
 
 function form_change_status_offline($rapat)
@@ -28,7 +32,7 @@ function form_change_status_offline($rapat)
         <option value="<?= $rapat->request_status; ?>">Perubahan Jadwal</option>
     <?php endif; ?>
 
-    <option value="" disabled>---------</option>
+    <option value=""> -- Pilih Status --</option>
     <option value="0">Booked</option>
     <option value="1">Pembatalan</option>
     <option value="2">Perubahan Jadwal</option>
