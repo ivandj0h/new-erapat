@@ -39,6 +39,7 @@ $routes->setAutoRoute(false);
  * FRONTEND Route Configuration
  * --------------------------------------------------------------------
  */
+
 $routes->get('/', 'Main::calendar');
 $routes->get('/documentation', 'Documentation::index');
 
@@ -47,6 +48,7 @@ $routes->get('/documentation', 'Documentation::index');
  * ZOHO Route Configuration
  * --------------------------------------------------------------------
  */
+
 $routes->get('/zohoconnect', 'ZohoConnect::index');
 $routes->get('/zohoforms', 'ZohoConnect::zohoforms');
 $routes->get('/zohoreports', 'ZohoConnect::zohoreports');
@@ -56,6 +58,7 @@ $routes->get('/zohoreports', 'ZohoConnect::zohoreports');
  * E-RAPAT Route Configuration
  * --------------------------------------------------------------------
  */
+
 $routes->get('/erapatconnect', 'ErapatFormConnect::index');
 
 /**
@@ -76,6 +79,7 @@ $routes->get('/logout', 'Login::logout', ['filter' => 'ceklogin']);
  * ADMIN SECTION
  * --------------------------------------------------------------------
  */
+
 $routes->get('/admin', 'Admin::index', ['filter' => 'ceklogin']);
 
 /**
@@ -84,6 +88,7 @@ $routes->get('/admin', 'Admin::index', ['filter' => 'ceklogin']);
  * USER SECTION
  * --------------------------------------------------------------------
  */
+
 $routes->get('/user', 'User::index', ['filter' => 'ceklogin']);
 
 /**
@@ -92,10 +97,15 @@ $routes->get('/user', 'User::index', ['filter' => 'ceklogin']);
  * RAPAT SECTION
  * --------------------------------------------------------------------
  */
+
 $routes->get('/rapat', 'Rapat::index', ['filter' => 'ceklogin']);
 $routes->get('/baru', 'Rapat::baru', ['filter' => 'ceklogin']);
 $routes->post('/addrapat', 'Rapat::store', ['filter' => 'ceklogin']);
+$routes->post('/updaterapat', 'Rapat::save', ['filter' => 'ceklogin']);
+$routes->post('/updatestatus/(:any)', 'Rapat::updatestatus/$1', ['filter' => 'ceklogin']);
+$routes->get('/edit/(:any)', 'Rapat::edit/$1', ['filter' => 'ceklogin']);
 $routes->get('/detail/(:any)', 'Rapat::detail/$1', ['filter' => 'ceklogin']);
+$routes->get('/reschedulle/(:any)', 'Rapat::reschedulle/$1', ['filter' => 'ceklogin']);
 $routes->match(['get', 'post'], '/rapat/getmm', 'Rapat::get_media_meeting');
 $routes->match(['get', 'post'], '/rapat/getmmm', 'Rapat::get_zoomid');
 
@@ -105,6 +115,7 @@ $routes->match(['get', 'post'], '/rapat/getmmm', 'Rapat::get_zoomid');
  * PEMBAHARUAN SECTION
  * --------------------------------------------------------------------
  */
+
 $routes->get('/pembaharuan', 'Pembaharuan::index', ['filter' => 'ceklogin']);
 $routes->get('/cekzoom', 'Pembaharuan::cekzoom', ['filter' => 'ceklogin']);
 $routes->get('/cekoffline', 'Pembaharuan::cekoffline', ['filter' => 'ceklogin']);
@@ -116,8 +127,18 @@ $routes->post('/cekrapatoffline', 'Pembaharuan::cekrapatoffline');
  * RIWAYAT SECTION
  * --------------------------------------------------------------------
  */
+
 $routes->match(['get', 'post'], '/riwayat', 'Riwayat::index', ['filter' => 'ceklogin']);
 $routes->match(['get', 'post'], '/riwayats', 'Riwayat::get_riwayat', ['filter' => 'ceklogin']);
+
+/**
+ * --------------------------------------------------------------------
+ * CPANEL Route Configuration
+ * ERROR HANDLING SECTION
+ * --------------------------------------------------------------------
+ */
+
+$routes->get('/rapatcancel', 'Rapat::rapatcancel', ['filter' => 'ceklogin']);
 
 
 

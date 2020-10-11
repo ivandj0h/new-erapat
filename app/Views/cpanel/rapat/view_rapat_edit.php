@@ -20,33 +20,31 @@ navbar_child($nav_title);
     </div>
     <div class="row">
         <div class="cell-12 my-5">
-            <form data-role="validator" action="<?= base_url('addrapat') ?>" method="POST">
+            <form data-role="validator" action="<?= base_url('updaterapat') ?>" method="POST">
                 <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
+                <input type="hidden" name="id" value="<?= $rapat->id ?>" />
+                <input type="hidden" name="code" value="<?= $rapat->unique_code ?>" />
                 <div class="row mb-4">
-                    <label class="cell-sm-2">Tanggal Rapat</label>
-                    <div class="cell-sm-2 calendarpicker required">
-                        <input type="text" data-validate="required" id="end_date" name="end_date" data-role="calendarpicker" data-dialog-mode="true" placeholder="Masukan Tanggal Rapat">
+                    <label class="cell-sm-2">Pimpinan Rapat</label>
+                    <div class="cell-sm-4">
+                        <input data-role="tagsinput" data-validate="required" type="text" name="members_name" id="members_name" value="<?= $rapat->members_name ?>" placeholder="Tambah Pimpinan Rapat">
                     </div>
                 </div>
                 <div class="row mb-4">
-                    <label class="cell-sm-2">Jam Awal Rapat</label>
-                    <div class="cell-sm-2">
-                        <input type="time" data-validate="required" id="start_time" name="start_time">
-                    </div>
-                </div>
-                <div class="row mb-4">
-                    <label class="cell-sm-2">Jam Akhir Rapat</label>
-                    <div class="cell-sm-2">
-                        <input type="time" data-validate="required" id="end_time" name="end_time">
+                    <label class="cell-sm-2">Narasumber</label>
+                    <div class="cell-sm-4">
+                        <input type="text" data-validate="required" data-role="tagsinput min=2" data-tag-trigger="Space" name="speakers_name" id="speakers_name" value="<?= $rapat->speakers_name ?>" placeholder="Tambah Narasumber">
+                        <span style="color: red;"><small>Jika Narasumber lebih dari 1 orang, maka tambahkan koma(,) diakhir nama dan tambahkan spasi</small></span>
                     </div>
                 </div>
                 <div class="row mb-4">
                     <label class="cell-sm-2">Tipe Rapat</label>
                     <div class="cell-sm-4">
                         <select name="type_id" id="type_id" data-role="select" data-validate="required not=0">
-                            <option value='0'>-- Pilih Tipe Rapat --</option>
                             <?php $i = 1; ?>
-                            <?php foreach ($alltype as $p) : ?>
+                            <option value="<?= $rapat->id; ?>"><?= $i++; ?>. <?= $rapat->meeting_type; ?>
+                            <option value='0' disabled>-- Pilih Media Rapat --</option>
+                            <?php foreach ($types as $p) : ?>
                                 <option value="<?= $p['id']; ?>"><?= $i++; ?>. <?= $p['meeting_type']; ?></option>
                             <?php endforeach; ?>
                         </select>
@@ -56,7 +54,9 @@ navbar_child($nav_title);
                     <label class="cell-sm-2">Media Rapat</label>
                     <div class="cell-sm-4">
                         <select name="meeting_subtype" id="meeting_subtype" data-validate="required not=0">
-                            <option value='0'>-- Pilih Media Rapat --</option>
+                            <?php $i = 1; ?>
+                            <option value="<?= $rapat->id; ?>"><?= $i++; ?>. <?= $rapat->meeting_subtype; ?>
+                            <option value='0' disabled>-- Pilih Media Rapat --</option>
                             <!-- SubMedia Rapat akan diload menggunakan ajax, dan ditampilkan disini -->
                         </select>
                     </div>
@@ -83,26 +83,13 @@ navbar_child($nav_title);
                 <div class="row mb-4">
                     <label class="cell-sm-2">Agenda Rapat</label>
                     <div class="cell-sm-10">
-                        <textarea name="agenda" data-validate="required" id="context-form" placeholder="Tuliskan Agenda Rapatnya disini..."><?= set_value('agenda', ''); ?></textarea>
+                        <textarea name="agenda" data-validate="required" id="context-form" placeholder="Tuliskan Agenda Rapatnya disini..."><?= $rapat->agenda ?></textarea>
                     </div>
                 </div>
-                <div class="row mb-4">
-                    <label class="cell-sm-2">Pimpinan Rapat</label>
-                    <div class="cell-sm-8">
-                        <input data-role="tagsinput" data-validate="required" type="text" name="participants_name" id="participants_name" value="<?= set_value('participants_name'); ?>" placeholder="Tambah Pimpinan Rapat">
-                    </div>
-                </div>
-                <div class="row mb-4">
-                    <label class="cell-sm-2">Narasumber</label>
-                    <div class="cell-sm-8">
-                        <input type="text" data-validate="required" data-role="tagsinput min=2" data-tag-trigger="Space" name="speakers_name" id="speakers_name" value="<?= set_value('speakers_name'); ?>" placeholder="Tambah Narasumber">
-                        <span style="color: red;"><small>Jika Narasumber lebih dari 1 orang, maka tambahkan koma(,) diakhir nama dan tambahkan spasi</small></span>
-                    </div>
-                </div>
+
                 <div class="row">
                     <div class="cell">
-                        <button type="submit" id="btnSave" class="button success"><span class="mif-file-text"></span> Tambah Rapat Baru</button>
-                        <button type="reset" class="button info"><span class="mif-undo"></span> Reset Form</button>
+                        <button type="submit" id="btnSave" class="button success"><span class="mif-file-text"></span> Ubah Rapat</button>
                     </div>
                 </div>
 

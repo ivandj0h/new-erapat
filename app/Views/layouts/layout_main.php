@@ -53,7 +53,8 @@
     <script src="<?= base_url('assets/vendor/datatables/js/jquery.dataTables.js'); ?>"></script>
 
     <!-- Tinymce Scripts -->
-    <script src="<?= base_url('assets/vendor/tinymce/tinymce.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/tinymce/tinymce-5.4.2-90.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/locals/js/custom-tinymce.js'); ?>"></script>
 
     <!-- Custom Metro JS -->
     <script src="<?= base_url('assets/locals/js/custom-metro.js'); ?>"></script>
@@ -61,7 +62,11 @@
     <script>
         $(document).ready(function() {
 
-            $("#rapat").DataTable();
+            var table = $("#rapat").DataTable();
+            table
+                .order([0, 'desc'], [5, 'desc'])
+                .draw();
+
 
             // Red Alert
             $("#hideEl").on('click', function() {
@@ -204,43 +209,6 @@
                     $(".dissable").removeAttr("disabled");
                 }
             });
-        });
-
-        // Tinymce Section
-        tinymce.init({
-            selector: "#default",
-            height: 400,
-            forced_root_block: "",
-            force_br_newlines: true,
-            force_p_newlines: false,
-            theme: "modern",
-            plugins: [
-                "autolink lists link image charmap print preview hr anchor pagebreak",
-                "searchreplace wordcount visualblocks visualchars code fullscreen",
-                "insertdatetime media nonbreaking save table contextmenu directionality",
-                "emoticons template paste textcolor colorpicker textpattern imagetools codesample toc",
-            ],
-            toolbar1: "undo redo | insert | styleselect table | bold italic | hr alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media ",
-            toolbar2: "print preview | forecolor backcolor emoticons | fontselect | fontsizeselect | codesample code fullscreen",
-            templates: [{
-                    title: "Test template 1",
-                    content: "",
-                },
-                {
-                    title: "Test template 2",
-                    content: "",
-                },
-            ],
-            content_css: [
-                "//fonts.googleapis.com/css?family=Lato:300,300i,400,400i",
-                "//www.tinymce.com/css/codepen.min.css",
-            ],
-            setup: function(ed) {
-                ed.on("change", function(e) {
-                    console.log("the content " + ed.getContent());
-                    $("textarea").text(ed.getContent());
-                });
-            },
         });
 
         function zohoOpen() {

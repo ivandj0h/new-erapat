@@ -7,18 +7,19 @@ navbar_($nav_title);
 navbar_child($nav_title);
 ?>
 
-
 <!-- start content here -->
 <?= userTabMenu($tabs); ?>
 <!-- Content -->
 <div class="container">
-    <div class="red-div-alert-2" id="hideMe">
-        <?php if (session()->get('id') == true) : ?>
-            <?= red_div_alert_2(); ?>
-        <?php else : ?>
-            <?= ''; ?>
-        <?php endif; ?>
-    </div>
+    <?php
+    if (session()->has('message')) {
+    ?>
+        <div class="remark <?= session()->getFlashdata('alert-class') ?>" id="hideMe">
+            <?= session()->getFlashdata('message') ?>
+        </div>
+    <?php
+    }
+    ?>
     <div class="toolbar my-5">
         <strong> Tabel Master Data Rapat</strong>
     </div>
@@ -32,8 +33,9 @@ navbar_child($nav_title);
                 <th class="text-center w-20">Mulai</th>
                 <th class="text-center w-20">Akhir</th>
                 <th class="text-center w-20">Nama Bidang</th>
-                <th class="text-center w-20">Media</th>
-                <th class="text-center w-20">ID Media</th>
+                <th class="text-center w-20">Tipe Rapat</th>
+                <th class="text-center w-20">File Upload</th>
+                <th class="text-center w-20">Status</th>
                 <th class="text-center w-20">Aksi</th>
             </tr>
         </thead>
@@ -44,27 +46,49 @@ navbar_child($nav_title);
                     <td class="text-center"><?= date("H:i", strtotime($r['start_time'])); ?></td>
                     <td class="text-center"><?= date("H:i", strtotime($r['end_time'])); ?></td>
                     <td><?= $r['sub_department_name']; ?></td>
-                    <td><?= $r['meeting_subtype']; ?></td>
                     <td class="text-center">
                         <?php
-                        if ($r['type_id'] == 1) {
-                            if ($r['sub_type_id'] == 1) {
-                                echo "<strong><span class='fg-emerald'>" . $r['zoomid'] . "</span></strong>";
-                            } else {
-                                echo "<strong><span class='fg-cobalt'>" . $r['other_online_id'] . "</span></strong>";
-                            }
-                        } else {
-                            echo "<strong><span class='fg-crimson'>Offline</span></strong>";
-                        }
-                        ?>
+                        if ($r['meeting_type'] == 'Online') : ?>
+                            <strong><span class="fg-emerald"> Rapat Online</span></strong>
+                        <?php else : ?>
+                            <strong><span class="fg-red"> Rapat Offline</span></strong>
+                        <?php endif; ?>
                     </td>
                     <td class="text-center">
-                        <div class="dropdown-button">
-                            <button class="button dropdown-toggle primary"><span class="mif-wrench"></span> Aksi</button>
+                        <?php if ($r['request_status'] == '1') : ?>
+                            <strong><span class="fg-black"> Rapat Dibatalkan</span></strong>
+                        <?php else : ?>
+                            <?php if (!empty($r['files_upload']) && !empty($r['files_upload1']) && !empty($r['files_upload2'])) : ?>
+                                <strong><span class="fg-emerald"> File Upload Komplit</span></strong>
+                            <?php elseif (!empty($r['files_upload']) && empty($r['files_upload1']) && empty($r['files_upload2'])) : ?>
+                                <strong><span class="fg-red"> File Notulen belum ada</span></strong>
+                            <?php elseif (!empty($r['files_upload']) && !empty($r['files_upload1']) && empty($r['files_upload2'])) : ?>
+                                <strong><span class="fg-red"> File Absensi belum ada</span></strong>
+                            <?php else : ?>
+                                <strong><span class="fg-red"> Belum ada file yang diunggah</span></strong>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </td>
+                    <td class="text-center">
+                        <div class="split-button">
+                            <?= change_status_button($r); ?>
                             <ul class="d-menu" data-role="dropdown">
+                                <?php if ($r['request_status'] == 1) : ?>
+                                    <li><a href="<?= base_url('/rapatcancel'); ?>"> Reschedule</a></li>
+                                <?php else : ?>
+                                    <li><a href="<?= base_url('reschedulle/' . $r['unique_code']); ?>"> Reschedule</a></li>
+                                <?php endif; ?>
+                            </ul>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <div class="split-button">
+                            <button class="button"><span class="mif-sort-desc"></span> Aksi</button>
+                            <!-- <span class="fg-red"> Aksi</span> -->
+                            <button class="split rounded dropdown-toggle"></button>
+                            <ul class="d-menu place-right" data-role="dropdown">
                                 <li><a href="<?= base_url('detail/' . $r['unique_code']); ?>"><span class="mif-eye"></span> Detail</a></li>
-                                <li><a href="#"><span class="mif-copy"></span> Ubah</a></li>
-                                <li><a href="#"><span class="mif-flow-branch"></span> Reschedule</a></li>
+                                <li><a href="<?= base_url('edit/' . $r['unique_code']); ?>"><span class="mif-copy"></span> Ubah</a></li>
                             </ul>
                         </div>
                     </td>
