@@ -28,9 +28,23 @@ class User extends BaseController
                 ->getResultArray()
         ];
 
-
-        // var_dump($data['rapat']);
-        // die;
         return view('cpanel/user/view_user', $data);
+    }
+
+    public function changepassword()
+    {
+        $userModel = new UserModel();
+        $rapatModel = new RapatModel();
+        $data = [
+            'page_title' => 'E-RAPAT - User',
+            'nav_title' => 'user',
+            'tabs' => 'user',
+            'user' => $userModel->where('id', session()->get('id'))->first(),
+            'rapat' => $rapatModel
+                ->getWhere(['user_id' => session()->get('id')])
+                ->getResultArray()
+        ];
+
+        return view('cpanel/user/view_change_password', $data);
     }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2020 at 06:32 AM
+-- Generation Time: Oct 12, 2020 at 12:01 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -600,15 +600,6 @@ CREATE TABLE `meeting` (
   `meeting_status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `meeting`
---
-
-INSERT INTO `meeting` (`id`, `user_id`, `other_online_id`, `zoom_id`, `sub_type_id`, `speakers_name`, `members_name`, `files_upload`, `files_upload1`, `files_upload2`, `unique_code`, `agenda`, `date_requested`, `start_date`, `end_date`, `start_time`, `end_time`, `request_status`, `remark_status`, `meeting_status`) VALUES
-(1, 18, '', 1, 1, 'arjuna djoh', 'dave ibrahimovic djoh gah', '', '', '', '5f7d0a6eba609', 'Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak', '2020-10-10', '2020-10-10', '2020-10-11', '09:21:00', '11:21:00', 1, '<p>www</p>', 0),
-(2, 18, '', 1, 7, 'dave', 'ivandi', '', '', '', '5f7e95654eab1', 'Sebuah platform bisnis yang menyediakan berbagai layanan social media marketing yang bergerak terutama di Indonesia.&lt;br /&gt;Dengan bergabung bersama kami,', '2020-10-10', '2020-10-10', '2020-10-11', '12:28:00', '13:28:00', 2, '<p>sabu</p>', 0),
-(3, 18, '', 2, 1, 'dave', 'ivandi', '', '', '', '5f812dc04f01f', '&lt;p&gt;ini adalah Rapat&lt;/p&gt;', '2020-10-10', '2020-10-11', '2020-10-11', '11:42:00', '12:42:00', 0, '', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -658,6 +649,26 @@ INSERT INTO `meeting_place` (`id`, `place_name`, `user_id`, `sub_type_id`, `date
 (2, 'Ruangan Rapat LRT', NULL, 6, NULL, 0),
 (3, 'Ruangan Rapat Rajawali', NULL, 7, NULL, 0),
 (4, 'Ruangan Rapat Perpustakaan', NULL, 8, NULL, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `meeting_status`
+--
+
+CREATE TABLE `meeting_status` (
+  `id` int(11) NOT NULL,
+  `status_name` varchar(200) NOT NULL,
+  `is_active` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `meeting_status`
+--
+
+INSERT INTO `meeting_status` (`id`, `status_name`, `is_active`) VALUES
+(1, 'Pembatalan', 1),
+(2, 'Perubahan Jadwal', 1);
 
 -- --------------------------------------------------------
 
@@ -796,7 +807,7 @@ CREATE TABLE `meeting_zoom` (
 
 INSERT INTO `meeting_zoom` (`id`, `user_id`, `pemakai_id`, `idzoom`, `date_activated`, `start_time`, `end_time`, `is_active`, `status`) VALUES
 (1, 19, 18, '444 444 444 444', '2020-10-08', '20:21:00', '21:21:00', 1, 0),
-(2, 18, 18, '555 555 555 555', '2020-10-11', '11:42:00', '12:42:00', 1, 1),
+(2, 18, 18, '555 555 555 555', '2020-10-11', '17:31:00', '19:47:00', 1, 0),
 (3, 15, 15, '666 666 666 666', '2020-10-05', '02:00:00', '03:00:00', 1, 0),
 (4, 22, 15, '333 333 333 333', '2020-09-24', '19:00:00', '20:00:00', 1, 0),
 (5, 14, 14, '000 000 000 000', '2020-09-18', '09:00:00', '10:00:00', 1, 0),
@@ -1630,6 +1641,12 @@ ALTER TABLE `meeting_place`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `meeting_status`
+--
+ALTER TABLE `meeting_status`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `meeting_sub_department`
 --
 ALTER TABLE `meeting_sub_department`
@@ -1850,7 +1867,7 @@ ALTER TABLE `mail_queue`
 -- AUTO_INCREMENT for table `meeting`
 --
 ALTER TABLE `meeting`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `meeting_department`
@@ -1863,6 +1880,12 @@ ALTER TABLE `meeting_department`
 --
 ALTER TABLE `meeting_place`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `meeting_status`
+--
+ALTER TABLE `meeting_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `meeting_sub_department`

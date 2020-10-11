@@ -15,7 +15,7 @@ class Rapat extends BaseController
     {
         $this->session = session();
         $this->form_validation = \Config\Services::validation();
-        helper(['navbar', 'navbar_child', 'alerts', 'menu', 'zoom', 'form', 'date', 'myforms']);
+        helper(['navbar', 'navbar_child', 'alerts', 'menu', 'zoom', 'form', 'date', 'myforms', 'download']);
     }
 
     public function index()
@@ -422,7 +422,6 @@ class Rapat extends BaseController
             'nav_title' => 'rapat',
             'tabs' => 'rapat',
             'rapat' => $rapatModel
-                ->orderBy('id', 'DESC')
                 ->getWhere(['unique_code' => $code, 'user_id' => session()->get('id')])
                 ->getRow()
         ];
@@ -476,6 +475,12 @@ class Rapat extends BaseController
             return redirect()->to(base_url('rapat'));
         }
     }
+
+    public function downloadundangan($code = '')
+    {
+        echo $code;
+    }
+
 
     public function get_media_meeting()
     {
