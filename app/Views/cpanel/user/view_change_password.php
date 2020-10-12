@@ -25,7 +25,7 @@ navbar_child($nav_title);
                     </a>
                 </li>
                 <li class="active">
-                    <a href="<?= base_url('changepassword/' . $user->id); ?>">
+                    <a href="<?= base_url('changepassword/' . $user->token); ?>">
                         <span class="icon"><span class="mif-key"></span></span>
                         <span class="caption">Ganti Password</span>
                     </a>
@@ -44,27 +44,41 @@ navbar_child($nav_title);
                 <div class="cell order-2"><img src="<?= base_url('assets/data/profile/') . '/' . $user->image; ?>" class="avatar" style="width: 280px;"></div>
                 <div class="cell order-1" style="margin-left: 18px;">
                     <ul class="skills">
-                        <li></li>
-                        <li>
-                            <div class="row mb-2">
-                                <label class="cell-sm-4">Email</label>
-                                <div class="cell-sm-8">
-                                    <strong><?= $user->email; ?></strong>
+                        <form data-role="validator" action="<?= base_url('updateuser/' . $user->token) ?>" method="POST">
+                            <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
+                            <input type="hidden" name="token" value="<?= $user->token ?>" />
+                            <input type="hidden" name="id" value="<?= $user->id ?>" />
+                            <li>
+                                <div class="row mb-2">
+                                    <label class="cell-sm-4">Nama Sekretariat</label>
+                                    <div class="cell-sm-8">
+                                        <strong><?= $user->department_name; ?></strong>
+                                    </div>
+                                    <label class="cell-sm-4">Nama Bagian</label>
+                                    <div class="cell-sm-8">
+                                        <strong><?= $user->sub_department_name; ?></strong>
+                                    </div>
+                                    <label class="cell-sm-4">Password Baru</label>
+                                    <div class="cell-sm-8">
+                                        <input data-role="input" data-validate="required" type="password" name="password" placeholder="isikan Password Baru">
+                                        <span class="invalid_feedback">
+                                            Inputan Password tidak boleh Kosong!
+                                        </span>
+                                    </div>
+                                    <label class="cell-sm-4">Ulangi Password</label>
+                                    <div class="cell-sm-8">
+                                        <input data-role="input" data-validate="required" type="password" name="password" placeholder="Ulangi Password Baru">
+                                        <span class="invalid_feedback">
+                                            Inputan Password Baru tidak boleh Kosong!
+                                        </span>
+                                    </div>
+                                    <label class="cell-sm-4">&nbsp;</label>
+                                    <div class="cell-sm-8">
+                                        <button type="submit" id="btnSave" class="button primary"><span class="mif-key"></span> Ubah Password</button>
+                                    </div>
                                 </div>
-                                <label class="cell-sm-4">Nama Sekretariat</label>
-                                <div class="cell-sm-8">
-                                    <strong><?= $user->department_name; ?></strong>
-                                </div>
-                                <label class="cell-sm-4">Nama Bagian</label>
-                                <div class="cell-sm-8">
-                                    <strong><?= $user->sub_department_name; ?></strong>
-                                </div>
-                                <label class="cell-sm-4">Zoom ID</label>
-                                <div class="cell-sm-8">
-                                    <strong><?= $user->zoomid; ?></strong>
-                                </div>
-                            </div>
-                        </li>
+                            </li>
+                        </form>
                     </ul>
                 </div>
             </div>

@@ -39,7 +39,7 @@ navbar_child($nav_title);
                     </div>
                     <div class="row">
                         <div class="cell">
-                            <button type="submit" class="button loading-pulse block drop-shadow"><span class="icon mif-lock"></span> Masuk</button>
+                            <button type="submit" class="button loading-pulse block drop-shadow" onclick="Metro.activity.open({autoHide: 3000})"><span class="icon mif-lock"></span> Masuk</button>
                         </div>
                     </div>
                 </form>
