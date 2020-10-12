@@ -47,4 +47,9 @@ class User extends BaseController
 
         return view('cpanel/user/view_change_password', $data);
     }
+
+    public function edituser($code = '')
+    {
+        echo $code;
+    }
 }
