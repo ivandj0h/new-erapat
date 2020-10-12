@@ -12,6 +12,15 @@ navbar_child($nav_title);
 
 <!-- Start Main Content -->
 <div class="container">
+    <?php
+    if (session()->has('message')) {
+    ?>
+        <div class="remark <?= session()->getFlashdata('alert-class') ?>" id="hideMe">
+            <?= session()->getFlashdata('message') ?>
+        </div>
+    <?php
+    }
+    ?>
     <div data-role="navview" class="navview navview-compact-md navview-expand-lg">
         <div class="navview-pane mt-6">
             <button class="pull-button">
@@ -25,7 +34,7 @@ navbar_child($nav_title);
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('changepassword/' . $user->id); ?>">
+                    <a href="<?= base_url('changepassword/' . $user->token); ?>">
                         <span class="icon"><span class="mif-key"></span></span>
                         <span class="caption">Ganti Password</span>
                     </a>
@@ -44,13 +53,8 @@ navbar_child($nav_title);
                 <div class="cell order-2"><img src="<?= base_url('assets/data/profile/') . '/' . $user->image; ?>" class="avatar" style="width: 280px;"></div>
                 <div class="cell order-1" style="margin-left: 18px;">
                     <ul class="skills">
-                        <li></li>
                         <li>
                             <div class="row mb-2">
-                                <label class="cell-sm-4">Email</label>
-                                <div class="cell-sm-8">
-                                    <strong><?= $user->email; ?></strong>
-                                </div>
                                 <label class="cell-sm-4">Nama Sekretariat</label>
                                 <div class="cell-sm-8">
                                     <strong><?= $user->department_name; ?></strong>
@@ -59,13 +63,17 @@ navbar_child($nav_title);
                                 <div class="cell-sm-8">
                                     <strong><?= $user->sub_department_name; ?></strong>
                                 </div>
+                                <label class="cell-sm-4">Email</label>
+                                <div class="cell-sm-8">
+                                    <strong><?= $user->email; ?></strong>
+                                </div>
                                 <label class="cell-sm-4">Zoom ID</label>
                                 <div class="cell-sm-8">
-                                    <strong><?= $user->unique_code; ?></strong>
+                                    <strong><?= $user->zoomid; ?></strong>
                                 </div>
                                 <label class="cell-sm-4">&nbsp;</label>
                                 <div class="cell-sm-8">
-                                    <a class="button " href="<?= base_url('edit/' . $user->unique_code) ?>" role="button"><span class="mif-info"></span> Edit Profil</a>
+                                    <a class="button primary" href="<?= base_url('edit/' . $user->token) ?>" role="button"><span class="mif-wrench"></span> Edit Profile</a>
                                 </div>
                             </div>
                         </li>

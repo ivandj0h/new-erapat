@@ -11,7 +11,7 @@ class User extends BaseController
     public function __construct()
     {
         $this->session = session();
-        helper(['navbar', 'navbar_child', 'alerts', 'menu']);
+        helper(['navbar', 'navbar_child', 'alerts', 'menu', 'form', 'url']);
     }
 
     public function index()
@@ -50,6 +50,46 @@ class User extends BaseController
 
     public function edituser($code = '')
     {
-        echo $code;
+        $userModel = new UserModel();
+        $rapatModel = new RapatModel();
+        $data = [
+            'page_title' => 'E-RAPAT - User',
+            'nav_title' => 'user',
+            'tabs' => 'user',
+            'user' => $userModel->where('id', session()->get('id'))->first(),
+            'rapat' => $rapatModel
+                ->getWhere(['user_id' => session()->get('id')])
+                ->getResultArray()
+        ];
+
+        return view('cpanel/user/view_edit_user', $data);
+    }
+
+    public function updateuser()
+    {
+        $userModel = new UserModel();
+
+        $email  = $this->request->getPost('email');
+        $zoomid = htmlspecialchars(strip_tags($this->request->getPost('zoomid')));
+
+        if ($this->request->getMethod() == 'post') {
+
+            $data = [
+                'email' => $email,
+                'zoomid' => $zoomid
+            ];
+
+            if ($userModel->update($this->request->getPost('id'), $data)) {
+                session()->setFlashdata('message', 'Profile User Berhasil di Ubah!');
+                session()->setFlashdata('alert-class', 'success');
+
+                return redirect()->to(base_url('user'));
+            } else {
+                session()->setFlashdata('message', 'Profile User Gagal disimpan!');
+                session()->setFlashdata('alert-class', 'alert');
+
+                return redirect()->route('edit')->withInput();
+            }
+        }
     }
 }
