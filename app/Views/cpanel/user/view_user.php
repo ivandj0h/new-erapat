@@ -61,7 +61,11 @@ navbar_child($nav_title);
                                 </div>
                                 <label class="cell-sm-4">Zoom ID</label>
                                 <div class="cell-sm-8">
-                                    <strong><?= $user->zoomid; ?></strong>
+                                    <strong><?= $user->unique_code; ?></strong>
+                                </div>
+                                <label class="cell-sm-4">&nbsp;</label>
+                                <div class="cell-sm-8">
+                                    <a class="button " href="<?= base_url('edit/' . $user->unique_code) ?>" role="button"><span class="mif-info"></span> Edit Profil</a>
                                 </div>
                             </div>
                         </li>
