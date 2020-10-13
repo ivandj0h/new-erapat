@@ -36,7 +36,7 @@ function form_change_status_offline($rapat)
     <option value="0">Booked</option>
     <option value="1">Pembatalan</option>
     <option value="2">Perubahan Jadwal</option>
-<?php
+    <?php
 }
 
 function form_expired_status($rapat)
@@ -58,21 +58,23 @@ function change_status_button($rapat)
     $endtime = $endtime <= $starttime ? $endtime + 2400 : $endtime;
 
     if (($currenttime >= $starttime) && ($currenttime <= $endtime)) :
-        if ($rapat['request_status'] == 0) :
-            $status = 'alert';
-            $request_status = 'Booked';
-        elseif ($rapat['request_status'] == 1) :
-            $status = 'dark';
-            $request_status = 'Pembatalan';
-        else :
-            $status = 'primary';
-            $request_status = 'Perubahan Jadwal';
+        if ($rapat['request_status'] == 0) : ?>
+            <button class="button dropdown-toggle alert">Booked</button>
+        <?php
+        elseif ($rapat['request_status'] == 1) : ?>
+            <button class="button dropdown-toggle dark">Pembatalan</button>
+        <?php
+        else : ?>
+            <button class="button dropdown-toggle primary">Perubahan Jadwal</button>
+        <?php
         endif;
     else :
-        $status = 'secondary';
-        $request_status = 'Telah Berakhir';
+        $status1 = 'secondary';
+        $request_status1 = 'Telah Berakhir'; ?>
+        <button class="button <?= $status1; ?>" disabled><span class="mif-done_all"></span> <?= $request_status1; ?></button>
+    <?php
     endif;
-?>
-    <button class="button dropdown-toggle <?= $status; ?>"><?= $request_status; ?></button>
+    ?>
+
 <?php
 }
