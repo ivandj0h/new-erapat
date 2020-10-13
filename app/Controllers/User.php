@@ -11,6 +11,7 @@ class User extends BaseController
     public function __construct()
     {
         $this->session = session();
+        $this->validation = \Config\Services::validation();
         helper(['navbar', 'navbar_child', 'alerts', 'menu', 'form', 'url']);
     }
 
@@ -89,6 +90,37 @@ class User extends BaseController
                 session()->setFlashdata('alert-class', 'alert');
 
                 return redirect()->route('edit')->withInput();
+            }
+        }
+    }
+
+    public function updatepassword()
+    {
+
+        if ($this->request->getMethod() == 'post') {
+
+            $pwd = $this->request->getPost('pass1');
+            $password = password_hash($pwd, PASSWORD_DEFAULT);
+
+            $data = ['password' => $password];
+
+            $db      = \Config\Database::connect();
+            $builder = $db->table('meeting_users');
+
+            $builder->set('password', $data['password']);
+            $builder->where('id', session()->get('id'));
+            $updates = $builder->update();
+
+            if ($updates) {
+                session()->setFlashdata('message', 'Kata Sandi Berhasil di Ubah!');
+                session()->setFlashdata('alert-class', 'success');
+
+                return redirect()->to(base_url('user'));
+            } else {
+                session()->setFlashdata('message', 'Kata Sandi Gagal disimpan!');
+                session()->setFlashdata('alert-class', 'alert');
+
+                return redirect()->route('changepassword')->withInput();
             }
         }
     }

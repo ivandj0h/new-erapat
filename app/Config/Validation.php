@@ -117,4 +117,20 @@ class Validation
 			'required' => 'SubTypeId tidak boleh kosong'
 		],
 	];
+
+	// Validasi untuk Ganti Password
+	// Base Validation
+	public $ganti_password = [
+		'password'     => 'required',
+		'pass_confirm' => 'required|matches[password]',
+	];
+
+	public $ganti_password_errors = [
+		'password' => [
+			'required'    => 'Kata sandi tidak boleh kosong.',
+		],
+		'pass_confirm'    => [
+			'required' => 'Kata sandi tidak sama.'
+		]
+	];
 }

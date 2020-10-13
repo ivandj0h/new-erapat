@@ -478,3 +478,33 @@ li.active {
   width: auto !important;
   line-height: 1 !important;
 }
+
+.navview .navview-pane {
+  width: 280px !important;
+  background-color: #f0f0f0 !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  height: 100% !important;
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+  z-index: 2;
+}
+
+.navview .navview-menu {
+  background-color: #f0f0f0 !important;
+  display: block !important;
+  position: relative !important;
+  list-style: none inside !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  border-top: 1px solid #dfdfdf !important;
+  border-left: 1px solid #dfdfdf !important;
+  border-right: 1px solid #dfdfdf !important;
+  border-bottom: none !important;
+  border-radius: 2px !important;
+  overflow-y: auto !important;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  overflow: -moz-scrollbars-none;
+}
