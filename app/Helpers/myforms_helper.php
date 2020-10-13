@@ -57,21 +57,17 @@ function change_status_button($rapat)
     $endtime = date($rapat['end_time']);
     $endtime = $endtime <= $starttime ? $endtime + 2400 : $endtime;
 
-    if (($currenttime >= $starttime) && ($currenttime <= $endtime)) :
-        if ($rapat['request_status'] == 0) : ?>
-            <button class="button dropdown-toggle alert">Booked</button>
-        <?php
-        elseif ($rapat['request_status'] == 1) : ?>
-            <button class="button dropdown-toggle dark">Pembatalan</button>
-        <?php
-        else : ?>
-            <button class="button dropdown-toggle primary">Perubahan Jadwal</button>
-        <?php
-        endif;
-    else :
-        $status1 = 'secondary';
-        $request_status1 = 'Telah Berakhir'; ?>
-        <button class="button <?= $status1; ?>" disabled><span class="mif-done_all"></span> <?= $request_status1; ?></button>
+    if ($rapat['request_status'] == 0 || ($currenttime >= $starttime) && ($currenttime <= $endtime)) : ?>
+        <button class="button dropdown-toggle alert"><span class="mif-libreoffice"></span> Booked</button>
+    <?php
+    elseif ($rapat['request_status'] == 1 || ($currenttime >= $starttime) && ($currenttime <= $endtime)) : ?>
+        <button class="button dropdown-toggle dark"><span class="mif-done_all"></span> Pembatalan</button>
+    <?php
+    elseif ($rapat['request_status'] == 2 || ($currenttime >= $starttime) && ($currenttime <= $endtime)) : ?>
+        <button class="button dropdown-toggle primary"><span class="mif-done_all"></span> Perubahan Jadwal</button>
+    <?php
+    else : ?>
+        <button class="button secondary" disabled><span class="mif-done_all"></span> Telah Berakhir</button>
     <?php
     endif;
     ?>

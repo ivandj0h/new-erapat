@@ -29,6 +29,9 @@ class User extends BaseController
                 ->getRow()
         ];
 
+        // var_dump($data['rapat']);
+        // die;
+
         return view('cpanel/user/view_user', $data);
     }
 

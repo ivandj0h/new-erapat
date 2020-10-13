@@ -83,7 +83,6 @@ class Riwayat extends BaseController
 
     public function cekhistoffline()
     {
-        $now = date('Y-m-d');
         $subtypemodel = new SubtypeModel();
         $rapatModel = new RapatModel();
 
@@ -99,7 +98,32 @@ class Riwayat extends BaseController
             'rapat' => $rapatModel
                 ->getWhere([
                     'type_id' => 2,
-                    'end_date' => $now,
+                    'email' => session()->get('email')
+                ])
+                ->getResultArray()
+        ];
+
+        return view('cpanel/riwayat/view_offline', $data);
+    }
+
+    public function gethistoffline()
+    {
+        $id = $this->request->getPost('id');
+        $subtypemodel = new SubtypeModel();
+        $rapatModel = new RapatModel();
+
+        $data = [
+            'page_title' => 'E-RAPAT - Riwayat',
+            'nav_title' => 'riwayat',
+            'tabs' => 'riwayat',
+            'tipe' => $subtypemodel
+                ->getWhere([
+                    'type_id' => 2
+                ])
+                ->getResultArray(),
+            'rapat' => $rapatModel
+                ->getWhere([
+                    'sub_type_id' => $id,
                     'email' => session()->get('email')
                 ])
                 ->getResultArray()
@@ -120,13 +144,40 @@ class Riwayat extends BaseController
             'tabs' => 'riwayat',
             'tipe' => $subtypemodel
                 ->getWhere([
-                    'type_id' => 2
+                    'type_id' => 1
                 ])
                 ->getResultArray(),
             'rapat' => $rapatModel
                 ->getWhere([
-                    'type_id' => 2,
+                    'type_id' => 1,
                     'end_date' => $now,
+                    'email' => session()->get('email')
+                ])
+                ->getResultArray()
+        ];
+
+        return view('cpanel/riwayat/view_online', $data);
+    }
+
+
+    public function gethistonline()
+    {
+        $id = $this->request->getPost('id');
+        $subtypemodel = new SubtypeModel();
+        $rapatModel = new RapatModel();
+
+        $data = [
+            'page_title' => 'E-RAPAT - Riwayat',
+            'nav_title' => 'riwayat',
+            'tabs' => 'riwayat',
+            'tipe' => $subtypemodel
+                ->getWhere([
+                    'type_id' => 1
+                ])
+                ->getResultArray(),
+            'rapat' => $rapatModel
+                ->getWhere([
+                    'sub_type_id' => $id,
                     'email' => session()->get('email')
                 ])
                 ->getResultArray()

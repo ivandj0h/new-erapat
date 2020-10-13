@@ -40,12 +40,12 @@ navbar_child($nav_title);
         </div>
 
         <div class="toolbar my-4" style="margin-left: 61px;">
-            <strong> Tabel Data Rapat Offline Hari ini</strong>
+            <strong> Tabel Data Rapat Offline</strong>
         </div>
         <div class="toolbar my-3 place-right">
             Tanggal : &nbsp;<strong><?= date("d-m-Y"); ?></strong>
         </div>
-        <?= form_open('cekrapatoffline'); ?>
+        <?= form_open('getriwayatoffline'); ?>
         <div class="d-flex flex-nowrap" style="margin-left: 62px;margin-top: -8px;margin-bottom: 25px;">
             <div class="order-1">
                 <select name="id" id="getSubTypeId" data-role="select" data-validate="required not=0">
