@@ -44,6 +44,17 @@ navbar_child($nav_title);
                 <div class="cell order-2"><img src="<?= base_url('assets/data/profile/') . '/' . $user->image; ?>" class="avatar" style="width: 280px;"></div>
                 <div class="cell order-1" style="margin-left: 18px;">
                     <ul class="skills">
+                        <?php if (!empty($rapat->files_upload)) : ?>
+                            <li>
+                                <div class="row">
+                                    <div class="cell-sm-12">
+                                        <p class="remark alert">
+                                            M4Q is not a complete jquery equivalent and there are differences.
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        <?php endif; ?>
                         <form data-role="validator" action="<?= base_url('updateuser/' . $user->token) ?>" method="POST">
                             <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
                             <input type="hidden" name="token" value="<?= $user->token ?>" />

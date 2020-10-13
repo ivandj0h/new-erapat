@@ -48,13 +48,27 @@ navbar_child($nav_title);
         <div class="toolbar my-3 place-right">
             Tanggal : &nbsp;<strong><?= date("d-m-Y"); ?></strong>
         </div>
+
         <div class="navview-content d-flex flex-align-center flex-justify-center h-500">
             <div class="row">
                 <div class="cell order-2"><img src="<?= base_url('assets/data/profile/') . '/' . $user->image; ?>" class="avatar" style="width: 280px;"></div>
                 <div class="cell order-1" style="margin-left: 18px;">
                     <ul class="skills">
+                        <?php
+                        if (empty($rapat->files_upload) && empty($rapat->files_upload1) && empty($rapat->files_upload2)) : ?>
+                            <?= upload_undangan($rapat->unique_code); ?>
+                        <?php elseif (!empty($rapat->files_upload) && empty($rapat->files_upload1) && empty($rapat->files_upload2)) : ?>
+                            <?= upload_notulen($rapat->unique_code); ?>
+                        <?php elseif (!empty($rapat->files_upload) && !empty($rapat->files_upload1) && empty($rapat->files_upload2)) : ?>
+                            <?= upload_absensi($rapat->unique_code); ?>
+                        <?php elseif (!empty($rapat->files_upload) && !empty($rapat->files_upload1) && !empty($rapat->files_upload2)) : ?>
+                            <?= upload_finish($rapat->unique_code); ?>
+                        <?php else : ?>
+                            <?= upload_empty($rapat->unique_code); ?>
+                        <?php endif;
+                        ?>
                         <li>
-                            <div class="row mb-2">
+                            <div class="row">
                                 <label class="cell-sm-4">Nama Sekretariat</label>
                                 <div class="cell-sm-8">
                                     <strong><?= $user->department_name; ?></strong>
