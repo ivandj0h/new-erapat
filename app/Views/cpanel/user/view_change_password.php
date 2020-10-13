@@ -44,7 +44,7 @@ navbar_child($nav_title);
                 <div class="cell order-2"><img src="<?= base_url('assets/data/profile/') . '/' . $user->image; ?>" class="avatar" style="width: 280px;"></div>
                 <div class="cell order-1" style="margin-left: 18px;">
                     <ul class="skills">
-                        <form data-role="validator" action="<?= base_url('updateuser/' . $user->token) ?>" method="POST">
+                        <form data-role="validator" action="<?= base_url('updatepassword') ?>" method="POST">
                             <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
                             <input type="hidden" name="token" value="<?= $user->token ?>" />
                             <input type="hidden" name="id" value="<?= $user->id ?>" />
@@ -60,14 +60,14 @@ navbar_child($nav_title);
                                     </div>
                                     <label class="cell-sm-4">Password Baru</label>
                                     <div class="cell-sm-8">
-                                        <input data-role="input" data-validate="required" type="password" name="password" placeholder="isikan Password Baru">
+                                        <input data-role="input" data-validate="required" type="password" name="pass1" placeholder="isikan Password Baru">
                                         <span class="invalid_feedback">
                                             Inputan Password tidak boleh Kosong!
                                         </span>
                                     </div>
                                     <label class="cell-sm-4">Ulangi Password</label>
                                     <div class="cell-sm-8">
-                                        <input data-role="input" data-validate="required" type="password" name="password" placeholder="Ulangi Password Baru">
+                                        <input data-role="input" data-validate="required compare=pass1" type="password" name="pass2" placeholder="Ulangi Password Baru">
                                         <span class="invalid_feedback">
                                             Inputan Password Baru tidak boleh Kosong!
                                         </span>
