@@ -52,15 +52,25 @@ function form_cancel_status($rapat)
 // REQUEST STATUS HELPER
 function change_status_button($rapat)
 {
-    if ($rapat['request_status'] == 0) :
-        $status = 'alert';
-        $request_status = 'Booked';
-    elseif ($rapat['request_status'] == 1) :
-        $status = 'dark';
-        $request_status = 'Pembatalan';
+    $currenttime = date("H:i:s");
+    $starttime = date($rapat['start_time']);
+    $endtime = date($rapat['end_time']);
+    $endtime = $endtime <= $starttime ? $endtime + 2400 : $endtime;
+
+    if (($currenttime >= $starttime) && ($currenttime <= $endtime)) :
+        if ($rapat['request_status'] == 0) :
+            $status = 'alert';
+            $request_status = 'Booked';
+        elseif ($rapat['request_status'] == 1) :
+            $status = 'dark';
+            $request_status = 'Pembatalan';
+        else :
+            $status = 'primary';
+            $request_status = 'Perubahan Jadwal';
+        endif;
     else :
-        $status = 'primary';
-        $request_status = 'Perubahan Jadwal';
+        $status = 'secondary';
+        $request_status = 'Telah Berakhir';
     endif;
 ?>
     <button class="button dropdown-toggle <?= $status; ?>"><?= $request_status; ?></button>

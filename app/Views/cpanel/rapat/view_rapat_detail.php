@@ -19,6 +19,23 @@ navbar_child($nav_title);
     <div class="toolbar my-3 place-right">
         Data Rapat Tanggal : &nbsp;<strong><?= date("d-m-Y", strtotime($rapat->end_date)); ?></strong>
     </div>
+    <?php
+    $currenttime = date("H:i:s");
+    $starttime = date($rapat->start_time);
+    $endtime = date($rapat->end_time);
+
+    $endtime = $endtime <= $starttime ? $endtime + 2400 : $endtime;
+    if (($currenttime >= $starttime) && ($currenttime <= $endtime)) {
+        echo '';
+    } else { ?>
+        <div class="cell-sm-12 fg-alert">
+            <p class="remark secondary">
+                Maaf, <strong>Data Rapat</strong> ini tidak bisa di Re-schedulle, karena Rapat Tanggal <?= $rapat->end_date; ?> ini Telah Berakhir, Silahkan Klik <a href="<?= base_url('rapat') ?>"><strong>Disini</strong></a> untuk kembali ke Master Data Rapat.
+            </p>
+        </div>
+    <?php
+    }
+    ?>
     <div class="row detail-tab">
         <div class="col-md-2">
             <ul data-tabs-position="vertical h-100" data-role="tabs" data-expand="sm">
