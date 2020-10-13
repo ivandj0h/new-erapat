@@ -89,7 +89,7 @@ navbar_child($nav_title);
 
 <!-- end content here -->
 <?php
-foreach ($rapat as $r) :
+// foreach ($rapat as $r) :
 // echo empty_upload_alert($r['files_upload']);
-endforeach;
+// endforeach;
 $this->endSection();

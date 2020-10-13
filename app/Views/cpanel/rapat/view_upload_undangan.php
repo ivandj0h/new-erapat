@@ -25,6 +25,7 @@ navbar_child($nav_title);
                 <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
                 <input type="hidden" name="id" value="<?= $rapat->id ?>" />
                 <input type="hidden" name="code" value="<?= $rapat->unique_code ?>" />
+                <input type="hidden" name="nama" value="<?= $rapat->name ?>" />
                 <div class="row mb-2">
                     <label class="cell-sm-2 text-right">Rapat Pukul</label>
                     <div class="cell-sm-6">
@@ -54,6 +55,7 @@ navbar_child($nav_title);
                     <label class="cell-sm-2">&nbsp;</label>
                     <div class="cell-sm-10">
                         <button type="submit" class="button secondary"><span class="mif-cloud-upload"></span> Upload Undangan</button>
+                        <a href="<?= base_url('detail/' . $rapat->unique_code) ?>" class="button dark"><span class="mif-undo"></span> Kembali</a>
                     </div>
                 </div>
             </form>

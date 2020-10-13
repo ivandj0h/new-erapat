@@ -116,6 +116,9 @@ $routes->get('/reschedulle/(:any)', 'Rapat::reschedulle/$1', ['filter' => 'ceklo
 $routes->get('/uploadundangan/(:any)', 'Rapat::uploadundangan/$1', ['filter' => 'ceklogin']);
 $routes->get('/uploadnotulen/(:any)', 'Rapat::uploadnotulen/$1', ['filter' => 'ceklogin']);
 $routes->get('/uploadabsensi/(:any)', 'Rapat::uploadabsensi/$1', ['filter' => 'ceklogin']);
+$routes->get('/uploadtambahan1/(:any)', 'Rapat::uploadtambahan1/$1', ['filter' => 'ceklogin']);
+$routes->get('/uploadtambahan2/(:any)', 'Rapat::uploadtambahan2/$1', ['filter' => 'ceklogin']);
+$routes->get('/uploadtambahan3/(:any)', 'Rapat::uploadtambahan3/$1', ['filter' => 'ceklogin']);
 $routes->match(['get', 'post'], '/rapat/getmm', 'Rapat::get_media_meeting');
 $routes->match(['get', 'post'], '/rapat/getmmm', 'Rapat::get_zoomid');
 
