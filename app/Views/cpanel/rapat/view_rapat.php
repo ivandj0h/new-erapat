@@ -66,7 +66,6 @@ navbar_child($nav_title);
                                 <a href="<?= base_url('uploadabsensi/' . $r['unique_code']) ?>"><strong><span class="fg-red"> File Absensi belum ada</span></strong></a>
                             <?php else : ?>
                                 <a href="<?= base_url('uploadundangan/' . $r['unique_code']) ?>"><strong><span class="fg-red"> Belum ada file yang diunggah</span></strong></a>
-
                             <?php endif; ?>
                         <?php endif; ?>
                     </td>
@@ -89,7 +88,7 @@ navbar_child($nav_title);
                             <button class="split rounded dropdown-toggle"></button>
                             <ul class="d-menu place-right" data-role="dropdown">
                                 <li><a href="<?= base_url('detail/' . $r['unique_code']); ?>"><span class="mif-eye"></span> Detail</a></li>
-                                <li><a href="<?= base_url('edit/' . $r['unique_code']); ?>"><span class="mif-copy"></span> Ubah</a></li>
+                                <li><a href="<?= base_url('editrapat/' . $r['unique_code']); ?>"><span class="mif-copy"></span> Ubah</a></li>
                             </ul>
                         </div>
                     </td>

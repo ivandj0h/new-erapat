@@ -12,7 +12,7 @@ class User extends BaseController
     {
         $this->session = session();
         $this->validation = \Config\Services::validation();
-        helper(['navbar', 'navbar_child', 'alerts', 'menu', 'form', 'url']);
+        helper(['navbar', 'navbar_child', 'alerts', 'menu', 'form', 'url', 'unggah']);
     }
 
     public function index()
@@ -26,7 +26,7 @@ class User extends BaseController
             'user' => $userModel->where('id', session()->get('id'))->first(),
             'rapat' => $rapatModel
                 ->getWhere(['user_id' => session()->get('id')])
-                ->getResultArray()
+                ->getRow()
         ];
 
         return view('cpanel/user/view_user', $data);
