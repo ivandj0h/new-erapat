@@ -141,7 +141,9 @@ $routes->post('/cekrapatoffline', 'Pembaharuan::cekrapatoffline');
 $routes->match(['get', 'post'], '/riwayat', 'Riwayat::index', ['filter' => 'ceklogin']);
 $routes->match(['get', 'post'], '/riwayats', 'Riwayat::get_riwayat', ['filter' => 'ceklogin']);
 $routes->match(['get', 'post'], '/riwayatoffline', 'Riwayat::cekhistoffline', ['filter' => 'ceklogin']);
+$routes->match(['get', 'post'], '/getriwayatoffline', 'Riwayat::gethistoffline', ['filter' => 'ceklogin']);
 $routes->match(['get', 'post'], '/riwayatonline', 'Riwayat::cekhistonline', ['filter' => 'ceklogin']);
+$routes->match(['get', 'post'], '/getriwayatonline', 'Riwayat::gethistonline', ['filter' => 'ceklogin']);
 
 /**
  * --------------------------------------------------------------------
