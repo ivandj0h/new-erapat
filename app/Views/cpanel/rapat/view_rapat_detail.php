@@ -28,9 +28,9 @@ navbar_child($nav_title);
     if (($currenttime >= $starttime) && ($currenttime <= $endtime)) {
         echo '';
     } else { ?>
-        <div class="cell-sm-12 fg-alert">
-            <p class="remark secondary">
-                Maaf, <strong>Data Rapat</strong> ini tidak bisa di Re-schedulle, karena Rapat Tanggal <?= $rapat->end_date; ?> ini Telah Berakhir, Silahkan Klik <a href="<?= base_url('rapat') ?>"><strong>Disini</strong></a> untuk kembali ke Master Data Rapat.
+        <div class="cell-sm-12">
+            <p class="remark dark">
+                <span class="mif-notification"></span> Maaf, <strong>Data Rapat</strong> ini tidak bisa di Re-schedulle, karena Rapat Tanggal <strong><?= date("d-m-Y", strtotime($rapat->end_date)); ?></strong> ini Telah Berakhir, Silahkan Klik <a href="<?= base_url('rapat') ?>"><strong>Disini</strong></a> untuk kembali ke Master Data Rapat.
             </p>
         </div>
     <?php
