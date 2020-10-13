@@ -15,6 +15,11 @@ a:hover {
   }
 }
 
+/* #docs iframe {
+  float: left;
+  margin: 600px 20px;
+} */
+
 .red-div-alert {
   margin: 0 auto !important;
   left: 68px !important;

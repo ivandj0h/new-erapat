@@ -73,10 +73,20 @@ navbar_child($nav_title);
                         <div class="split-button">
                             <?= change_status_button($r); ?>
                             <ul class="d-menu" data-role="dropdown">
-                                <?php if ($r['request_status'] == 1) : ?>
-                                    <li><a href="<?= base_url('/rapatcancel'); ?>"> Reschedule</a></li>
+                                <?php
+                                $currenttime = date("H:i:s");
+                                $starttime = date($r['start_time']);
+                                $endtime = date($r['end_time']);
+                                $endtime = $endtime <= $starttime ? $endtime + 2400 : $endtime;
+                                ?>
+                                <?php if (($currenttime >= $starttime) && ($currenttime <= $endtime)) : ?>
+                                    <?php if ($r['request_status'] == 1) : ?>
+                                        <li><a href="<?= base_url('/rapatcancel'); ?>"> Reschedule</a></li>
+                                    <?php else : ?>
+                                        <li><a href="<?= base_url('reschedulle/' . $r['unique_code']); ?>"> Reschedule</a></li>
+                                    <?php endif; ?>
                                 <?php else : ?>
-                                    <li><a href="<?= base_url('reschedulle/' . $r['unique_code']); ?>"> Reschedule</a></li>
+                                    <li><a href="<?= base_url('detail/' . $r['unique_code']); ?>"> Reschedule</a></li>
                                 <?php endif; ?>
                             </ul>
                         </div>
