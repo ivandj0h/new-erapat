@@ -327,9 +327,11 @@ navbar_child($nav_title);
                                 </a>
                             <?php
                             else : ?>
-                                <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                    <strong><?= $rapat->files_upload; ?></strong>.
-                                </span>
+                                <a href="<?= base_url('downloadundangan/' . $rapat->unique_code) ?>">
+                                    <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                        <strong><?= $rapat->files_upload; ?></strong>.
+                                    </span>
+                                </a>
                             <?php endif; ?>
                         </div>
                     </div>

@@ -109,6 +109,9 @@ $routes->post('/updaterapat', 'Rapat::save', ['filter' => 'ceklogin']);
 $routes->post('/undanganaction', 'Rapat::undanganaction', ['filter' => 'ceklogin']);
 $routes->post('/notulenaction', 'Rapat::notulenaction', ['filter' => 'ceklogin']);
 $routes->post('/absensiaction', 'Rapat::absensiaction', ['filter' => 'ceklogin']);
+$routes->post('/tambahanaction1', 'Rapat::tambahanaction1', ['filter' => 'ceklogin']);
+$routes->post('/tambahanaction2', 'Rapat::tambahanaction2', ['filter' => 'ceklogin']);
+$routes->post('/tambahanaction3', 'Rapat::tambahanaction3', ['filter' => 'ceklogin']);
 $routes->post('/updatestatus/(:any)', 'Rapat::updatestatus/$1', ['filter' => 'ceklogin']);
 $routes->get('/editrapat/(:any)', 'Rapat::edit/$1', ['filter' => 'ceklogin']);
 $routes->get('/detail/(:any)', 'Rapat::detail/$1', ['filter' => 'ceklogin']);
@@ -119,6 +122,7 @@ $routes->get('/uploadabsensi/(:any)', 'Rapat::uploadabsensi/$1', ['filter' => 'c
 $routes->get('/uploadtambahan1/(:any)', 'Rapat::uploadtambahan1/$1', ['filter' => 'ceklogin']);
 $routes->get('/uploadtambahan2/(:any)', 'Rapat::uploadtambahan2/$1', ['filter' => 'ceklogin']);
 $routes->get('/uploadtambahan3/(:any)', 'Rapat::uploadtambahan3/$1', ['filter' => 'ceklogin']);
+$routes->get('/downloadundangan/(:any)', 'Rapat::downloadundangan/$1', ['filter' => 'ceklogin']);
 $routes->match(['get', 'post'], '/rapat/getmm', 'Rapat::get_media_meeting');
 $routes->match(['get', 'post'], '/rapat/getmmm', 'Rapat::get_zoomid');
 
