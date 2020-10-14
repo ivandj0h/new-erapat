@@ -11,7 +11,8 @@ class LoginFilter implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         $auth = 'logged_in';
-        if (!session($auth)) {
+        $isActive = 1;
+        if (!session($auth && $isActive)) {
             return redirect('login');
         }
     }

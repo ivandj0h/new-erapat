@@ -51,15 +51,32 @@ class Login extends BaseController
                             'fullName' => $user->name,
                             'email' => $user->email,
                             'role_id' => $user->role_id,
-                            'logged_in' => true
+                            'logged_in' => true,
+                            'is_active' => 1
                         ]);
-                        if (session()->get('role_id') == 1) {
-                            return redirect()->route('admin');
-                        } else {
-                            // return redirect()->route('cek');
-                            return redirect()->route('user');
+
+                        $sesi = session()->get('role_id');
+                        switch ($sesi) {
+                            case "1":
+                                return redirect()->route('admin');
+                                break;
+                            case "2":
+                                return redirect()->route('user');
+                                break;
+                            case "3":
+                                return redirect()->route('report');
+                                break;
+                            case "4":
+                                return redirect()->route('kaban');
+                                break;
+                            case "5":
+                                return redirect()->route('sesban');
+                                break;
+                            default:
+                                return redirect()->route('login');
                         }
                     }
+                    return redirect()->back()->withInput()->with('error', 'Username atau Password Salah!');
                 }
                 return redirect()->back()->withInput()->with('error', 'Username atau Password Salah!');
             } else {
