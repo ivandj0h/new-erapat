@@ -14,7 +14,6 @@ function userTabMenu($tabs)
                 <div class="cell-md-8 text-center-fs text-right-md pt-2"></div>
             </div>
         </div>
-
         <div class="container-fluid pt-4 pl-0 pr-0 pl-3-md pr-3-md">
             <div class="container">
                 <ul data-role="tabs" class="bg-light w-100 pl-0 pr-0" data-expand-point="md">
