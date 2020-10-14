@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2020 at 12:21 AM
+-- Generation Time: Oct 14, 2020 at 07:26 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -588,6 +588,9 @@ CREATE TABLE `meeting` (
   `files_upload` varchar(225) NOT NULL,
   `files_upload1` varchar(225) NOT NULL,
   `files_upload2` varchar(225) NOT NULL,
+  `files_upload3` varchar(225) NOT NULL,
+  `files_upload4` varchar(225) NOT NULL,
+  `files_upload5` varchar(225) NOT NULL,
   `unique_code` varchar(100) NOT NULL,
   `agenda` text NOT NULL,
   `date_requested` date NOT NULL,
@@ -599,6 +602,14 @@ CREATE TABLE `meeting` (
   `remark_status` text NOT NULL,
   `meeting_status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `meeting`
+--
+
+INSERT INTO `meeting` (`id`, `user_id`, `other_online_id`, `zoom_id`, `sub_type_id`, `speakers_name`, `members_name`, `files_upload`, `files_upload1`, `files_upload2`, `files_upload3`, `files_upload4`, `files_upload5`, `unique_code`, `agenda`, `date_requested`, `start_date`, `end_date`, `start_time`, `end_time`, `request_status`, `remark_status`, `meeting_status`) VALUES
+(1, 18, '', 2, 1, '', 'ivandi djoh gah', 'UNDANGAN_RAPAT.pdf', 'NOTULENSI_RAPAT.pdf', 'ABSENSI_RAPAT.pdf', 'Und_Kick_off_Meeting_Roadmap_Kerjasama_Balitbang_13_Agustus.pdf', '', '', '5f861a31915c9', 'but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '2020-10-14', '2020-10-14', '2020-10-14', '04:20:00', '05:20:00', 0, '', 0),
+(2, 18, '', 1, 1, '', 'dave', '', '', '', '', '', '', '5f861a8d6dd5b', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary,', '2020-10-14', '2020-10-14', '2020-10-14', '07:21:00', '08:21:00', 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -776,9 +787,9 @@ CREATE TABLE `meeting_users` (
 --
 
 INSERT INTO `meeting_users` (`id`, `token`, `zoomid`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `sub_department_id`, `date_created`, `date_updated`) VALUES
-(14, '5f84b1d3f0336', '000 000 000 000', 'administrator', 'admin@erapat.com', 'default.png', '$2y$10$pcXovYvhzZDvmXoOXEskcuHtdSvZOUBy6o9FXGRSrFsOAUfbhwdTS', 1, 1, 1, 1595188759, 1600115535),
+(14, '5f84b1d3f0336', '000 000 000 0000', 'administrator', 'admin@erapat.com', 'default.png', '$2y$10$pcXovYvhzZDvmXoOXEskcuHtdSvZOUBy6o9FXGRSrFsOAUfbhwdTS', 1, 1, 1, 1595188759, 1600115535),
 (15, '5f84b1f402199', '666 666 666 666', 'Admin Keuangan', 'keuangan@erapat.com', 'default.png', '$2y$10$icYu3J.bfvdocnSNdxPUheArwlUhq80r1N3T7p.ZzgJO48lB1ne6O', 2, 1, 2, 1595195583, 1597380790),
-(18, '5f84b2020a238', '555 555 555 5555', 'Admin Humas', 'humas@erapat.com', 'default.png', '$2y$10$5Kud5rfLqdf.7vApjirzNuWjVLKqFqpZt6hGDH/d/5vtjoCcssqRy', 2, 1, 5, 1597213397, 1599549994),
+(18, '5f84b2020a238', '555 555 555 5555', 'Admin Humas', 'humas@erapat.com', 'default.png', '$2y$10$vb9cPXqV9oKGCZCB9WvCau9RUn.cvaL5MjShKBHtg.ZHLWoTLEXre', 2, 1, 5, 1597213397, 1599549994),
 (19, '5f84b20f02ea5', '444 444 444 444', 'Admin Perencanaan', 'perencanaan@erapat.com', 'default.png', '$2y$10$X/U5/ZLzBP60TO6aDsqp3eWpXLevpxVvTSKy0nLGrzCa31osP4xoK', 2, 1, 3, 1598467083, 0),
 (20, '5f84b21a71601', '111 111 111 111', 'Kaban Litbang Perhubungan', 'kaban@erapat.com', 'default.png', '$2y$10$w5k9sGFC7SMC8whAPIp/dOknnlHLA.nOP1IypYw6JNVu2aDz0oEse', 4, 1, 14, 1599060092, 1599061311),
 (21, '5f84b22c21a4b', '222 222 222 222', 'Sesban Litbang Perhubungan', 'sesban@erapat.com', 'default.png', '$2y$10$7iKaePzZkNyVg37xciRbUOzFSQ58N92P8L95KwtgXGkzV8u8yBTge', 5, 1, 15, 1599060131, 1599061333),
@@ -808,8 +819,8 @@ CREATE TABLE `meeting_zoom` (
 --
 
 INSERT INTO `meeting_zoom` (`id`, `user_id`, `pemakai_id`, `idzoom`, `date_activated`, `start_time`, `end_time`, `is_active`, `status`) VALUES
-(1, 19, 18, '444 444 444 444', '2020-10-08', '20:21:00', '21:21:00', 1, 0),
-(2, 18, 18, '555 555 555 555', '2020-10-11', '17:31:00', '19:47:00', 1, 0),
+(1, 19, 18, '444 444 444 444', '2020-10-14', '07:21:00', '08:21:00', 1, 1),
+(2, 18, 18, '555 555 555 555', '2020-10-14', '04:20:00', '05:20:00', 1, 0),
 (3, 15, 15, '666 666 666 666', '2020-10-05', '02:00:00', '03:00:00', 1, 0),
 (4, 22, 15, '333 333 333 333', '2020-09-24', '19:00:00', '20:00:00', 1, 0),
 (5, 14, 14, '000 000 000 000', '2020-09-18', '09:00:00', '10:00:00', 1, 0),
@@ -1407,6 +1418,9 @@ CREATE TABLE `view_user_meeting` (
 ,`files_upload` varchar(225)
 ,`files_upload1` varchar(225)
 ,`files_upload2` varchar(225)
+,`files_upload3` varchar(225)
+,`files_upload4` varchar(225)
+,`files_upload5` varchar(225)
 ,`unique_code` varchar(100)
 ,`agenda` text
 ,`start_time` time
@@ -1498,7 +1512,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_user_meeting`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_user_meeting`  AS  select `meeting`.`id` AS `id`,`meeting`.`user_id` AS `user_id`,`view_user_department`.`name` AS `name`,`view_user_department`.`email` AS `email`,`view_user_department`.`role_id` AS `role_id`,`view_user_department`.`sub_department_id` AS `sub_department_id`,`view_user_department`.`sub_department_name` AS `sub_department_name`,`view_user_department`.`department_id` AS `department_id`,`view_user_department`.`department_name` AS `department_name`,`meeting`.`speakers_name` AS `speakers_name`,`meeting`.`members_name` AS `members_name`,`meeting`.`files_upload` AS `files_upload`,`meeting`.`files_upload1` AS `files_upload1`,`meeting`.`files_upload2` AS `files_upload2`,`meeting`.`unique_code` AS `unique_code`,`meeting`.`agenda` AS `agenda`,`meeting`.`start_time` AS `start_time`,`meeting`.`end_time` AS `end_time`,`meeting`.`request_status` AS `request_status`,`meeting`.`sub_type_id` AS `sub_type_id`,`meeting_sub_type`.`type_id` AS `type_id`,`meeting`.`other_online_id` AS `other_online_id`,`meeting_sub_type`.`meeting_subtype` AS `meeting_subtype`,`meeting_type`.`meeting_type` AS `meeting_type`,`meeting`.`start_date` AS `start_date`,`meeting`.`end_date` AS `end_date`,`meeting`.`date_requested` AS `date_requested`,`meeting`.`remark_status` AS `remark_status`,`meeting`.`zoom_id` AS `zoom_id`,`meeting_zoom`.`idzoom` AS `zoomid`,`meeting`.`meeting_status` AS `meeting_status` from ((((`meeting` join `view_user_department` on(`meeting`.`user_id` = `view_user_department`.`id`)) join `meeting_sub_type` on(`meeting`.`sub_type_id` = `meeting_sub_type`.`id`)) join `meeting_type` on(`meeting_sub_type`.`type_id` = `meeting_type`.`id`)) join `meeting_zoom` on(`meeting`.`zoom_id` = `meeting_zoom`.`id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_user_meeting`  AS  select `meeting`.`id` AS `id`,`meeting`.`user_id` AS `user_id`,`view_user_department`.`name` AS `name`,`view_user_department`.`email` AS `email`,`view_user_department`.`role_id` AS `role_id`,`view_user_department`.`sub_department_id` AS `sub_department_id`,`view_user_department`.`sub_department_name` AS `sub_department_name`,`view_user_department`.`department_id` AS `department_id`,`view_user_department`.`department_name` AS `department_name`,`meeting`.`speakers_name` AS `speakers_name`,`meeting`.`members_name` AS `members_name`,`meeting`.`files_upload` AS `files_upload`,`meeting`.`files_upload1` AS `files_upload1`,`meeting`.`files_upload2` AS `files_upload2`,`meeting`.`files_upload3` AS `files_upload3`,`meeting`.`files_upload4` AS `files_upload4`,`meeting`.`files_upload5` AS `files_upload5`,`meeting`.`unique_code` AS `unique_code`,`meeting`.`agenda` AS `agenda`,`meeting`.`start_time` AS `start_time`,`meeting`.`end_time` AS `end_time`,`meeting`.`request_status` AS `request_status`,`meeting`.`sub_type_id` AS `sub_type_id`,`meeting_sub_type`.`type_id` AS `type_id`,`meeting`.`other_online_id` AS `other_online_id`,`meeting_sub_type`.`meeting_subtype` AS `meeting_subtype`,`meeting_type`.`meeting_type` AS `meeting_type`,`meeting`.`start_date` AS `start_date`,`meeting`.`end_date` AS `end_date`,`meeting`.`date_requested` AS `date_requested`,`meeting`.`remark_status` AS `remark_status`,`meeting`.`zoom_id` AS `zoom_id`,`meeting_zoom`.`idzoom` AS `zoomid`,`meeting`.`meeting_status` AS `meeting_status` from ((((`meeting` join `view_user_department` on(`meeting`.`user_id` = `view_user_department`.`id`)) join `meeting_sub_type` on(`meeting`.`sub_type_id` = `meeting_sub_type`.`id`)) join `meeting_type` on(`meeting_sub_type`.`type_id` = `meeting_type`.`id`)) join `meeting_zoom` on(`meeting`.`zoom_id` = `meeting_zoom`.`id`)) ;
 
 -- --------------------------------------------------------
 
@@ -1871,7 +1885,7 @@ ALTER TABLE `mail_queue`
 -- AUTO_INCREMENT for table `meeting`
 --
 ALTER TABLE `meeting`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `meeting_department`
