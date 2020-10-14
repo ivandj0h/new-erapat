@@ -14,14 +14,14 @@ navbar_child($nav_title);
 <!-- Start Main Content -->
 <div class="container">
     <div class="toolbar my-5" style="margin-left: 2px;">
-        <strong> Form Upload Undangan</strong>&nbsp; - &nbsp;<i><?= $rapat->sub_department_name ?></i>
+        <strong> Form Upload File Tambahan 1</strong>&nbsp; - &nbsp;<i><?= $rapat->sub_department_name ?></i>
     </div>
     <div class="toolbar my-3 place-right">
         Data Rapat Tanggal : &nbsp;<strong><?= date("d-m-Y", strtotime($rapat->end_date)); ?></strong>
     </div>
     <div class="row">
         <div class="cell-12 my-5">
-            <form data-role="validator" action="<?= base_url('undanganaction') ?>" method="post" enctype="multipart/form-data">
+            <form data-role="validator" action="<?= base_url('tambahanaction1') ?>" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
                 <input type="hidden" name="id" value="<?= $rapat->id ?>" />
                 <input type="hidden" name="code" value="<?= $rapat->unique_code ?>" />

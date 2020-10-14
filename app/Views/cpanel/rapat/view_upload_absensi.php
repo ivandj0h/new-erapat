@@ -62,6 +62,7 @@ navbar_child($nav_title);
                         <label class="cell-sm-2">&nbsp;</label>
                         <div class="cell-sm-10">
                             <button type="submit" class="button secondary" disabled><span class="mif-cloud-upload"></span> Upload Absensi</button>
+                            <a href="<?= base_url('detail/' . $rapat->unique_code) ?>" class="button dark"><span class="mif-undo"></span> Kembali</a>
                         </div>
                     </div>
                 <?php else : ?>
