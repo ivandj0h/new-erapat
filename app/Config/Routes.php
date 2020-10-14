@@ -98,6 +98,15 @@ $routes->get('/changepassword/(:any)', 'User::changepassword/$1', ['filter' => '
 /**
  * --------------------------------------------------------------------
  * CPANEL Route Configuration
+ * ADMIN SECTION
+ * --------------------------------------------------------------------
+ */
+
+$routes->get('/account', 'Account::index', ['filter' => 'ceklogin']);
+
+/**
+ * --------------------------------------------------------------------
+ * CPANEL Route Configuration
  * RAPAT SECTION
  * --------------------------------------------------------------------
  */
