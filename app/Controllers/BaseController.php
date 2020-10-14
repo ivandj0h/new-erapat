@@ -44,9 +44,14 @@ class BaseController extends Controller
 		// $this->session = \Config\Services::session();
 
 		//--------------------------------------------------------------------
-		// get Sub department data
+		// The Model Collections
 		//--------------------------------------------------------------------
+
+		$this->conn = \Config\Database::connect();
+		$this->user = new \App\Models\UserModel();
+		$this->account = new \App\Models\AccountModel();
 		$this->modelConnect = new \App\Models\DepartmentModel();
+
 		//--------------------------------------------------------------------
 	}
 }
