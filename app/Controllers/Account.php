@@ -23,7 +23,9 @@ class Account extends BaseController
             'page_title' => 'E-RAPAT - Account',
             'nav_title' => 'account',
             'tabs' => 'account',
-            'account' => $account,
+            'account' => $account
+                ->orderBy('id', 'DESC')
+                ->getResultArray(),
             'user' => $userModel->where('id', session()->get('id'))->first(),
         ];
 

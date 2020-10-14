@@ -42,8 +42,19 @@ navbar_child($nav_title);
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($account as $r) : ?>
-
+            <?php $i = 1; ?>
+            <?php foreach ($account as $a) : ?>
+                <tr>
+                    <td class="text-center"><?= $i++; ?></td>
+                    <td class="text-center"><?= $i++; ?></td>
+                    <td class="text-center"><?= $i++; ?></td>
+                    <td class="text-center"><?= $i++; ?></td>
+                    <td class="text-center"><?= $i++; ?></td>
+                    <td class="text-center"><?= $i++; ?></td>
+                    <td class="text-center"><?= $i++; ?></td>
+                    <td class="text-center"><?= $i++; ?></td>
+                    <td class="text-center"><?= $i++; ?></td>
+                </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
