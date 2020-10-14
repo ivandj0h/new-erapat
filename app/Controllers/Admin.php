@@ -29,7 +29,7 @@ class Admin extends BaseController
                 ->getRow()
         ];
 
-        return view('cpanel/user/view_admin', $data);
+        return view('cpanel/admin/view_admin', $data);
     }
 
     public function changepassword()
@@ -46,7 +46,7 @@ class Admin extends BaseController
                 ->getResultArray()
         ];
 
-        return view('cpanel/user/view_change_password', $data);
+        return view('cpanel/admin/view_change_password', $data);
     }
 
     public function edituser($code = '')
@@ -63,7 +63,7 @@ class Admin extends BaseController
                 ->getResultArray()
         ];
 
-        return view('cpanel/user/view_edit_admin', $data);
+        return view('cpanel/admin/view_edit_admin', $data);
     }
 
     public function updateuser()
