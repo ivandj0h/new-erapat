@@ -4,10 +4,6 @@ namespace App\Controllers;
 
 class Account extends BaseController
 {
-
-    protected $aktifkan;
-    protected $user;
-
     public function __construct()
     {
         $this->validation = \Config\Services::validation();
@@ -86,7 +82,12 @@ class Account extends BaseController
 
     public function aktifkan($id = '')
     {
-        $update = $this->account->update($id, ['is_active' => 1]);
+        $data = [
+            'is_active' => 1,
+            'blokir' => 0
+        ];
+
+        $update = $this->account->update($id, $data);
 
         if ($update) {
             session()->setFlashdata('message', 'Akun Berhasil di Aktifkan!');

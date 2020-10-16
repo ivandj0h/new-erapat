@@ -2,15 +2,10 @@
 
 namespace App\Controllers;
 
-use App\Models\Auth_model;
-
 class Login extends BaseController
 {
-
     public function __construct()
     {
-        $this->validation = \Config\Services::validation();
-        $this->auth = new Auth_model;
         $this->session = session();
         helper(['form', 'navbar', 'navbar_child', 'proses']);
     }
@@ -60,10 +55,22 @@ class Login extends BaseController
                                 return redirect()->route('user');
                             }
                         } else {
+                            $no = $user->blokir;
+                            $this->auth
+                                ->set(['blokir' => $no += 1])
+                                ->where('id', $user->id)
+                                ->update();
+
+                            if ($no == 2) {
+                                $this->auth
+                                    ->set(['is_active' => 0])
+                                    ->where('id', $user->id)
+                                    ->update();
+                            }
                             return redirect()->back()->withInput()->with('error', 'Password Salah!');
                         }
                     } else {
-                        return redirect()->back()->withInput()->with('error', 'Akun Anda Sedang di Blokir!');
+                        return redirect()->back()->withInput()->with('error', 'Maaf, Akun Anda Telah di Blokir! <br /> hubungi <strong>Administrator</strong>');
                     }
                 }
             } else {

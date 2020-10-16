@@ -47,10 +47,12 @@ class BaseController extends Controller
 		// The Model Collections
 		//--------------------------------------------------------------------
 
+		$this->validation = \Config\Services::validation();
 		$this->conn = \Config\Database::connect();
+		$this->auth = new \App\Models\AuthModel();
 		$this->user = new \App\Models\UserModel();
 		$this->account = new \App\Models\AccountModel();
-		$this->modelConnect = new \App\Models\DepartmentModel();
+		$this->department = new \App\Models\DepartmentModel();
 
 		//--------------------------------------------------------------------
 	}
