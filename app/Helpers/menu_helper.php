@@ -21,7 +21,7 @@ function userTabMenu($tabs)
                     $navtab = $tabs;
                     switch ($navtab) {
                         case "admin": ?>
-                            <li class="active"><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
+                            <li class="active"><a href="<?= base_url('admin') ?>"><span class="mif-user"></span> Profil</a></li>
                             <li><a href="<?= base_url('account') ?>"><span class="mif-stackoverflow"></span> Master Data</a></li>
                             <li><a href="<?= base_url('rapat') ?>"><span class="mif-stackoverflow"></span> Master Data Rapat</a></li>
                             <li><a href="<?= base_url('pembaharuan') ?>"><span class="mif-loop2"></span> Pembaharuan Data</a></li>
@@ -35,28 +35,44 @@ function userTabMenu($tabs)
                             <li><a href="<?= base_url('riwayat') ?>"><span class="mif-books"></span> Riwayat Rapat</a></li>
                         <?php break;
                         case "account": ?>
-                            <li><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
+                            <?php if (session()->get('role_id') == 1) : ?>
+                                <li><a href="<?= base_url('admin') ?>"><span class="mif-user"></span> Profil</a></li>
+                            <?php else : ?>
+                                <li><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
+                            <?php endif; ?>
                             <li class="active"><a href="<?= base_url('account') ?>"><span class="mif-stackoverflow"></span> Master Data</a></li>
                             <li><a href="<?= base_url('rapat') ?>"><span class="mif-stackoverflow"></span> Master Data Rapat</a></li>
                             <li><a href="<?= base_url('pembaharuan') ?>"><span class="mif-loop2"></span> Pembaharuan Data</a></li>
                             <li><a href="<?= base_url('riwayat') ?>"><span class="mif-books"></span> Riwayat Rapat</a></li>
                         <?php break;
                         case "rapat": ?>
-                            <li><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
+                            <?php if (session()->get('role_id') == 1) : ?>
+                                <li><a href="<?= base_url('admin') ?>"><span class="mif-user"></span> Profil</a></li>
+                            <?php else : ?>
+                                <li><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
+                            <?php endif; ?>
                             <li><a href="<?= base_url('account') ?>"><span class="mif-stackoverflow"></span> Master Data</a></li>
                             <li class="active"><a href="<?= base_url('rapat') ?>"><span class="mif-stackoverflow"></span> Master Data Rapat</a></li>
                             <li><a href="<?= base_url('pembaharuan') ?>"><span class="mif-loop2"></span> Pembaharuan Data</a></li>
                             <li><a href="<?= base_url('riwayat') ?>"><span class="mif-books"></span> Riwayat Rapat</a></li>
                         <?php break;
                         case "pembaharuan": ?>
-                            <li><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
+                            <?php if (session()->get('role_id') == 1) : ?>
+                                <li><a href="<?= base_url('admin') ?>"><span class="mif-user"></span> Profil</a></li>
+                            <?php else : ?>
+                                <li><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
+                            <?php endif; ?>
                             <li><a href="<?= base_url('account') ?>"><span class="mif-stackoverflow"></span> Master Data</a></li>
                             <li><a href="<?= base_url('rapat') ?>"><span class="mif-stackoverflow"></span> Master Data Rapat</a></li>
                             <li class="active"><a href="<?= base_url('pembaharuan') ?>"><span class="mif-loop2"></span> Pembaharuan Data</a></li>
                             <li><a href="<?= base_url('riwayat') ?>"><span class="mif-books"></span> Riwayat Rapat</a></li>
                         <?php break;
                         case "riwayat": ?>
-                            <li><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
+                            <?php if (session()->get('role_id') == 1) : ?>
+                                <li><a href="<?= base_url('admin') ?>"><span class="mif-user"></span> Profil</a></li>
+                            <?php else : ?>
+                                <li><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
+                            <?php endif; ?>
                             <li><a href="<?= base_url('account') ?>"><span class="mif-stackoverflow"></span> Master Data</a></li>
                             <li><a href="<?= base_url('rapat') ?>"><span class="mif-stackoverflow"></span> Master Data Rapat</a></li>
                             <li><a href="<?= base_url('pembaharuan') ?>"><span class="mif-loop2"></span> Pembaharuan Data</a></li>

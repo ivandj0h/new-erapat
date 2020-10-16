@@ -78,7 +78,7 @@
 
             setTimeout(function() {
                 $('#hideMe').slideUp("slow");
-            }, 3000);
+            }, 5000);
 
             //    Media types Add
             $("#type_id").change(function() {
