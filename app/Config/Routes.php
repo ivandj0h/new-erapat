@@ -81,7 +81,9 @@ $routes->get('/logout', 'Login::logout', ['filter' => 'ceklogin']);
  */
 
 $routes->get('/admin', 'Admin::index', ['filter' => 'ceklogin']);
-
+$routes->get('/editadmin/(:any)', 'Admin::editAdmin/$1', ['filter' => 'ceklogin']);
+$routes->post('/updateadmin/(:any)', 'Admin::updateadmin/$1', ['filter' => 'ceklogin']);
+$routes->get('/changeadminpassword/(:any)', 'Admin::changepassword/$1', ['filter' => 'ceklogin']);
 /**
  * --------------------------------------------------------------------
  * CPANEL Route Configuration 
@@ -139,6 +141,7 @@ $routes->get('/uploadtambahan3/(:any)', 'Rapat::uploadtambahan3/$1', ['filter' =
 $routes->get('/downloadundangan/(:any)', 'Rapat::downloadundangan/$1', ['filter' => 'ceklogin']);
 $routes->match(['get', 'post'], '/rapat/getmm', 'Rapat::get_media_meeting');
 $routes->match(['get', 'post'], '/rapat/getmmm', 'Rapat::get_zoomid');
+$routes->get('/rapatcancel', 'Rapat::rapatcancel', ['filter' => 'ceklogin']);
 
 /**
  * --------------------------------------------------------------------
@@ -173,7 +176,7 @@ $routes->match(['get', 'post'], '/getriwayatonline', 'Riwayat::gethistonline', [
  * --------------------------------------------------------------------
  */
 
-$routes->get('/rapatcancel', 'Rapat::rapatcancel', ['filter' => 'ceklogin']);
+
 
 
 

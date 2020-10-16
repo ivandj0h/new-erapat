@@ -56,13 +56,13 @@ class Login extends BaseController
                             }
                         } else {
                             $no = $user->blokir;
-                            $this->auth
+                            $this->auths
                                 ->set(['blokir' => $no += 1])
                                 ->where('id', $user->id)
                                 ->update();
 
                             if ($no == 2) {
-                                $this->auth
+                                $this->auths
                                     ->set(['is_active' => 0])
                                     ->where('id', $user->id)
                                     ->update();

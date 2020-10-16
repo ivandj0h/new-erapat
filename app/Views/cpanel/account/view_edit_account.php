@@ -32,7 +32,6 @@ navbar_child($nav_title);
                 </li>
             </ul>
         </div>
-
         <div class="toolbar my-4" style="margin-left: 293px;">
             <strong> Base Profile</strong> &nbsp;-&nbsp; <i><?= $account->name; ?></i>
         </div>
