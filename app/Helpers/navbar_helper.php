@@ -11,7 +11,6 @@ function navbar_($nav)
         <ul class="app-bar-menu">
             <?php
             $nav_title = $nav;
-
             switch ($nav_title) {
                 case "calendar": ?>
                     <li><a href="<?= base_url(); ?>" class="text-upper active text-bolds"><span class="icon mif-calendar"></span> kalender</a></li>
@@ -89,7 +88,6 @@ function navbar_($nav)
         <div class="app-bar-container ml-auto d-none d-flex-md">
             <?php
             $nav_title = $nav;
-
             switch ($nav_title) {
                 case "zohoconnect": ?>
                     <a href="<?= base_url('zohoconnect'); ?>" class="text-upper text-bolds" style="margin-right: 15px; vertical-align: sub; color: yellow; font-weight: bold;"><img src="<?= get_zoho_svg(); ?>" alt="Logo" class="image_svg_thumb_2" style="width: 20px;vertical-align: sub;"> ZOHO Form Builder</a>

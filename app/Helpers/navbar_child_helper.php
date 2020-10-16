@@ -2,18 +2,19 @@
 
 function navbar_child($nav)
 { ?>
-
     <div class="d-flex flex-row align-items-center p-3 px-md-4 shadow-sm fixed-top app-flatbar">
         <h5 class="my-0 mr-md-auto font-weight-normal font-h5">BADAN PENELITIAN DAN PENGEMBANGAN KEMENTRIAN PERHUBUNGAN</h5>
-
         <div class="app-bar-container ml-auto d-none d-flex-md">
             <?php
             $nav_title = $nav;
-
             switch ($nav_title) {
                 case "calendar": ?>
                     <?php if (session('logged_in')) : ?>
-                        <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                        <?php if (session()->get('role_id') == 1) : ?>
+                            <a href="<?= base_url('admin') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                        <?php else : ?>
+                            <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                        <?php endif; ?>
                         <a href="<?= base_url('logout') ?>" class="button alert outline text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
                     <?php else : ?>
                         <a href="<?= base_url('login') ?>" class="button button-outline-transparent text-upper aktif" style="margin-right: 5px;"><span class="icon mif-lock"></span> MASUK</a>
@@ -22,7 +23,11 @@ function navbar_child($nav)
                 <?php break;
                 case "dokumentasi": ?>
                     <?php if (session('logged_in')) : ?>
-                        <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                        <?php if (session()->get('role_id') == 1) : ?>
+                            <a href="<?= base_url('admin') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                        <?php else : ?>
+                            <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                        <?php endif; ?>
                         <a href="<?= base_url('logout') ?>" class="button alert outline text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
                     <?php else : ?>
                         <a href="<?= base_url('login') ?>" class="button button-outline-transparent text-upper aktif" style="margin-right: 5px;"><span class="icon mif-lock"></span> MASUK</a>
@@ -31,7 +36,11 @@ function navbar_child($nav)
                 <?php break;
                 case "zohoconnect": ?>
                     <?php if (session('logged_in')) : ?>
-                        <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                        <?php if (session()->get('role_id') == 1) : ?>
+                            <a href="<?= base_url('admin') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                        <?php else : ?>
+                            <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                        <?php endif; ?>
                         <a href="<?= base_url('logout') ?>" class="button alert outline text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
                     <?php else : ?>
                         <a href="<?= base_url('login') ?>" class="button button-outline-transparent text-upper aktif" style="margin-right: 5px;"><span class="icon mif-lock"></span> MASUK</a>
@@ -40,7 +49,11 @@ function navbar_child($nav)
                 <?php break;
                 case "erapatconnect": ?>
                     <?php if (session('logged_in')) : ?>
-                        <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                        <?php if (session()->get('role_id') == 1) : ?>
+                            <a href="<?= base_url('admin') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                        <?php else : ?>
+                            <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                        <?php endif; ?>
                         <a href="<?= base_url('logout') ?>" class="button alert outline text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
                     <?php else : ?>
                         <a href="<?= base_url('login') ?>" class="button button-outline-transparent text-upper aktif" style="margin-right: 5px;"><span class="icon mif-lock"></span> MASUK</a>
@@ -59,7 +72,11 @@ function navbar_child($nav)
                     <a href="#" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-lock"></span> UNLOCK PROCESS... <img src="<?= base_url('assets/locals/img/loading.gif'); ?>" style="width: 15px;"></a>
                 <?php break;
                 case "admin": ?>
-                    <a href="<?= base_url('admin') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php if (session()->get('role_id') == 1) : ?>
+                        <a href="<?= base_url('admin') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php else : ?>
+                        <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php endif; ?>
                     <a href="<?= base_url('logout') ?>" class="button alert outline text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
                 <?php break;
                 case "user": ?>
@@ -67,35 +84,67 @@ function navbar_child($nav)
                     <a href="<?= base_url('logout') ?>" class="button alert outline text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
                 <?php break;
                 case "account": ?>
-                    <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php if (session()->get('role_id') == 1) : ?>
+                        <a href="<?= base_url('admin') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php else : ?>
+                        <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php endif; ?>
                     <a href="<?= base_url('logout') ?>" class="button alert outline text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
                 <?php break;
                 case "rapat": ?>
-                    <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php if (session()->get('role_id') == 1) : ?>
+                        <a href="<?= base_url('admin') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php else : ?>
+                        <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php endif; ?>
                     <a href="<?= base_url('logout') ?>" class="button alert outline text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
                 <?php break;
                 case "baru": ?>
-                    <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php if (session()->get('role_id') == 1) : ?>
+                        <a href="<?= base_url('admin') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php else : ?>
+                        <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php endif; ?>
                     <a href="<?= base_url('logout') ?>" class="button alert outline text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
                 <?php break;
                 case "detail": ?>
-                    <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php if (session()->get('role_id') == 1) : ?>
+                        <a href="<?= base_url('admin') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php else : ?>
+                        <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php endif; ?>
                     <a href="<?= base_url('logout') ?>" class="button alert outline text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
                 <?php break;
                 case "pembaharuan": ?>
-                    <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php if (session()->get('role_id') == 1) : ?>
+                        <a href="<?= base_url('admin') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php else : ?>
+                        <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php endif; ?>
                     <a href="<?= base_url('logout') ?>" class="button alert outline text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
                 <?php break;
                 case "cekzoom": ?>
-                    <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php if (session()->get('role_id') == 1) : ?>
+                        <a href="<?= base_url('admin') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php else : ?>
+                        <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php endif; ?>
                     <a href="<?= base_url('logout') ?>" class="button alert outline text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
                 <?php break;
                 case "cekoffline": ?>
-                    <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php if (session()->get('role_id') == 1) : ?>
+                        <a href="<?= base_url('admin') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php else : ?>
+                        <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php endif; ?>
                     <a href="<?= base_url('logout') ?>" class="button alert outline text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
                 <?php break;
                 case "riwayat": ?>
-                    <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php if (session()->get('role_id') == 1) : ?>
+                        <a href="<?= base_url('admin') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php else : ?>
+                        <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php endif; ?>
                     <a href="<?= base_url('logout') ?>" class="button alert outline text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
                 <?php break;
                 default: ?>
