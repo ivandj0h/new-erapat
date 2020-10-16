@@ -88,9 +88,3 @@ function get_available_zoomid()
         }
     endforeach;
 }
-
-
-function get_csrf_token()
-{
-    $security = \Config\Services::security();
-}

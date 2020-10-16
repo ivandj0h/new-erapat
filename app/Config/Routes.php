@@ -94,8 +94,8 @@ $routes->get('/changeadminpassword/(:any)', 'Admin::changepassword/$1', ['filter
 $routes->get('/user', 'User::index', ['filter' => 'ceklogin']);
 $routes->post('/updateuser/(:any)', 'User::updateuser/$1', ['filter' => 'ceklogin']);
 $routes->post('/updatepassword', 'User::updatepassword', ['filter' => 'ceklogin']);
-$routes->match(['get', 'post'], '/edit/(:any)', 'User::edituser/$1', ['filter' => 'ceklogin']);
-$routes->get('/changepassword/(:any)', 'User::changepassword/$1', ['filter' => 'ceklogin']);
+$routes->get('/edituser/(:any)', 'User::edituser/$1', ['filter' => 'ceklogin']);
+$routes->get('/changeuserpassword/(:any)', 'User::changepassword/$1', ['filter' => 'ceklogin']);
 
 /**
  * --------------------------------------------------------------------

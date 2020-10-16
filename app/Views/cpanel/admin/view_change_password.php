@@ -36,7 +36,7 @@ navbar_child($nav_title);
                 <li class="active">
                     <a href="<?= base_url('changeadminpassword/' . $user->token); ?>">
                         <span class="icon"><span class="mif-key"></span></span>
-                        <span class="caption">Reset User Password</span>
+                        <span class="caption">Ganti Password</span>
                     </a>
                 </li>
             </ul>
@@ -85,8 +85,8 @@ navbar_child($nav_title);
                                     <tr>
                                         <td>&nbsp;</td>
                                         <td class="bg-light">
-                                            <button type="submit" id="btnSave" class="button success"><span class="mif-checkmark"></span> Ubah Account administrator</button>
-                                            <a href="<?= base_url('changeadminpassword/' . $user->token); ?>" class="button secondary"><span class="mif-not"></span> Batal</a>
+                                            <button type="submit" id="btnSave" class="button success"><span class="mif-checkmark"></span> Update Password</button>
+                                            <a href="<?= base_url('admin'); ?>" class="button secondary"><span class="mif-not"></span> Batal</a>
                                         </td>
                                     </tr>
                                 </tbody>
