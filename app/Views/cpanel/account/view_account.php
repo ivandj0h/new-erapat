@@ -29,35 +29,28 @@ navbar_child($nav_title);
     <table class="table table-condensed hover display order-column" id="rapat" cellspacing="0">
         <thead>
             <tr>
-                <th class="text-center w-5">No</th>
                 <th class="text-center w-20">Foto</th>
                 <th class="text-center w-20">Zoom Id</th>
                 <th class="text-center w-20">Nama Lengkap</th>
                 <th class="text-center w-20">Email</th>
                 <th class="text-center w-20">Role</th>
-                <th class="text-center w-20">Sekretariat</th>
-                <th class="text-center w-20">Bagian</th>
                 <th class="text-center w-20">Aktif</th>
                 <th class="text-center w-20">Aksi</th>
             </tr>
         </thead>
         <tbody>
-            <?php $i = 1; ?>
             <?php foreach ($account as $a) : ?>
                 <tr>
-                    <td class="text-center"><?= $i++; ?></td>
-                    <td class="text-center"><img src="<?= base_url('assets/data/profile/') . '/' . $a['image']; ?>" class="avatar" style="width: 80px;"></td>
+                    <td class="text-center"><img src="<?= base_url('assets/data/profile/') . '/' . $a['image']; ?>" class="avatar" style="width: 30px;"></td>
                     <td class="text-center"><?= $a['zoomid']; ?></td>
                     <td class="text-center"><?= $a['name']; ?></td>
                     <td class="text-center"><?= $a['email']; ?></td>
                     <td class="text-center"><?= $a['role']; ?></td>
-                    <td class="text-center"><?= $a['department_name']; ?></td>
-                    <td class="text-center"><?= $a['sub_department_name']; ?></td>
                     <td class="text-center">
                         <?php if ($a['is_active'] != 1) : ?>
-                            <a href="<?php echo base_url('aktifkan/' . $a['id']); ?>" class="button alert"><span class="mif-not"> Blokir</span></a>
+                            <a href="<?php echo base_url('aktifkan/' . $a['id']); ?>" class="fg-crimson"><span class="mif-not"> Blokir</span></a>
                         <?php else : ?>
-                            <a href="<?php echo base_url('blokir/' . $a['id']); ?>" class="button success"><span class="mif-checkmark"> Aktif</span></a>
+                            <a href="<?php echo base_url('blokir/' . $a['id']); ?>" class="fg-emerald"><span class="mif-checkmark"> Aktif</span></a>
                         <?php endif; ?>
                     </td>
                     <td>

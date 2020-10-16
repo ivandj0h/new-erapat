@@ -41,9 +41,7 @@ class Login extends BaseController
             if ($validate) {
                 $email = $this->request->getPost('email');
                 $password = $this->request->getPost('password');
-
-                $userModel = new \App\Models\UserModel;
-                $user = $userModel->asObject()->where('email', $email)->first();
+                $user = $this->user->asObject()->where('email', $email)->first();
                 if ($user) {
                     if (password_verify($password, $user->password)) {
                         session()->set([
@@ -59,9 +57,11 @@ class Login extends BaseController
                         } else {
                             return redirect()->route('user');
                         }
+                    } else {
+
+                        return redirect()->back()->withInput()->with('error', 'Password Salah!');
                     }
                 }
-                return redirect()->back()->withInput()->with('error', 'Username atau Password Salah!');
             } else {
                 return redirect()->back()->withInput()->with('validation', $this->validator);
             }
