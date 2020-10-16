@@ -86,7 +86,7 @@ navbar_child($nav_title);
                                         <li><a href="<?= base_url('reschedulle/' . $r['unique_code']); ?>"> Reschedule</a></li>
                                     <?php endif; ?>
                                 <?php else : ?>
-                                    <li><a href="<?= base_url('detail/' . $r['unique_code']); ?>"> Reschedule</a></li>
+                                    <li><a href="<?= base_url('reschedulle/' . $r['unique_code']); ?>"> Reschedule</a></li>
                                 <?php endif; ?>
                             </ul>
                         </div>

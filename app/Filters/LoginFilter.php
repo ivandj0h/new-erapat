@@ -12,7 +12,7 @@ class LoginFilter implements FilterInterface
     {
         $auth = 'logged_in';
         $isActive = 1;
-        if (!session($auth && $isActive)) {
+        if (!session($auth)) {
             return redirect('login');
         }
     }

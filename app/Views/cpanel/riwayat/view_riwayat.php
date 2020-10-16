@@ -58,7 +58,7 @@ navbar_child($nav_title);
         }
         ?>
         <div class="toolbar my-4" style="margin-left: 65px;">
-            <strong> Tabel Pembaharuan Rapat Hari ini</strong>
+            <strong> Tabel Riwayat Rapat Berdasarkan Range Tanggal</strong>
         </div>
         <div class="toolbar my-3 place-right">
             Tanggal : &nbsp;<strong><?= date("d-m-Y"); ?></strong>
