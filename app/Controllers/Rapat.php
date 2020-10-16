@@ -15,7 +15,7 @@ class Rapat extends BaseController
     {
         $this->session = session();
         $this->form_validation = \Config\Services::validation();
-        helper(['navbar', 'navbar_child', 'alerts', 'menu', 'zoom', 'form', 'date', 'myforms']);
+        helper(['navbar', 'navbar_child', 'alerts', 'menu', 'zoom', 'form', 'date', 'myforms', 'download']);
     }
 
     public function index()
@@ -297,6 +297,360 @@ class Rapat extends BaseController
 
         return view('errors/response/view_forbidden_cancel_meeting', $data);
     }
+
+    public function uploadundangan($code = '')
+    {
+        $rapatModel = new RapatModel();
+        $data = [
+            'page_title' => 'E-RAPAT - Rapat',
+            'nav_title' => 'rapat',
+            'tabs' => 'rapat',
+            'rapat' => $rapatModel
+                ->orderBy('id', 'DESC')
+                ->getWhere(['unique_code' => $code, 'user_id' => session()->get('id')])
+                ->getRow()
+        ];
+
+        return view('cpanel/rapat/view_upload_undangan', $data);
+    }
+
+    public function undanganaction()
+    {
+        $database = \Config\Database::connect();
+        $db = $database->table('meeting');
+
+        $code = $this->request->getPost('code');
+        $id = $this->request->getPost('id');
+        $name = $this->request->getPost('nama');
+
+        $input = $this->validate([
+            'file' => [
+                'uploaded[file]',
+                'mime_in[file,application/pdf,application/zip,application/msword,application/x-tar]',
+                'max_size[file,1024]',
+            ]
+        ]);
+
+        if (!$input) {
+            session()->setFlashdata('message', 'Undangan Gagal di Upload!');
+            session()->setFlashdata('alert-class', 'alert');
+
+            return redirect()->route('uploadundangan/' . $code)->withInput();
+        } else {
+            $img = $this->request->getFile('file');
+            $img->move(ROOTPATH . 'uploads');
+
+            $data = [
+                'files_upload' => str_replace(" ", "_", $img->getName()),
+                'type'  => $img->getClientMimeType()
+            ];
+
+            $db->set('files_upload', $data['files_upload']);
+            $db->where('id', $id);
+            $db->update();
+            session()->setFlashdata('message', 'Undangan Berhasil di Upload!');
+            session()->setFlashdata('alert-class', 'success');
+
+            return redirect()->to(base_url('rapat'));
+        }
+    }
+
+    public function uploadnotulen($code = '')
+    {
+        $rapatModel = new RapatModel();
+        $data = [
+            'page_title' => 'E-RAPAT - Rapat',
+            'nav_title' => 'rapat',
+            'tabs' => 'rapat',
+            'rapat' => $rapatModel
+                ->orderBy('id', 'DESC')
+                ->getWhere(['unique_code' => $code, 'user_id' => session()->get('id')])
+                ->getRow()
+        ];
+
+        return view('cpanel/rapat/view_upload_notulen', $data);
+    }
+
+    public function notulenaction()
+    {
+        $database = \Config\Database::connect();
+        $db = $database->table('meeting');
+
+        $code = $this->request->getPost('code');
+        $id = $this->request->getPost('id');
+
+        $input = $this->validate([
+            'file' => [
+                'uploaded[file]',
+                'mime_in[file,application/pdf,application/zip,application/msword,application/x-tar]',
+                'max_size[file,1024]',
+            ]
+        ]);
+
+        if (!$input) {
+            session()->setFlashdata('message', 'Notulen Gagal di Upload!');
+            session()->setFlashdata('alert-class', 'alert');
+
+            return redirect()->route('uploadnotulen/' . $code)->withInput();
+        } else {
+            $img = $this->request->getFile('file');
+            $img->move(ROOTPATH . 'uploads');
+
+            $data = [
+                'files_upload1' => str_replace(" ", "_", $img->getName()),
+                'type'  => $img->getClientMimeType()
+            ];
+
+            $db->set('files_upload1', $data['files_upload1']);
+            $db->where('id', $id);
+            $db->update();
+            session()->setFlashdata('message', 'Notulen Berhasil di Upload!');
+            session()->setFlashdata('alert-class', 'success');
+
+            return redirect()->to(base_url('rapat'));
+        }
+    }
+
+    public function uploadabsensi($code = '')
+    {
+        $rapatModel = new RapatModel();
+        $data = [
+            'page_title' => 'E-RAPAT - Rapat',
+            'nav_title' => 'rapat',
+            'tabs' => 'rapat',
+            'rapat' => $rapatModel
+                ->getWhere(['unique_code' => $code, 'user_id' => session()->get('id')])
+                ->getRow()
+        ];
+
+        return view('cpanel/rapat/view_upload_absensi', $data);
+    }
+
+    public function absensiaction()
+    {
+        $database = \Config\Database::connect();
+        $db = $database->table('meeting');
+
+        $code = $this->request->getPost('code');
+        $id = $this->request->getPost('id');
+        $idzoom = $this->request->getPost('idzoom');
+
+        $input = $this->validate([
+            'file' => [
+                'uploaded[file]',
+                'mime_in[file,application/pdf,application/zip,application/msword,application/x-tar]',
+                'max_size[file,1024]',
+            ]
+        ]);
+
+        if (!$input) {
+            session()->setFlashdata('message', 'Notulen Gagal di Upload!');
+            session()->setFlashdata('alert-class', 'alert');
+
+            return redirect()->route('uploadabsensi/' . $code)->withInput();
+        } else {
+            $img = $this->request->getFile('file');
+            $img->move(ROOTPATH . 'uploads');
+
+            $data = [
+                'files_upload2' =>  str_replace(" ", "_", $img->getName()),
+                'type'  => $img->getClientMimeType()
+            ];
+
+            $db->set('files_upload2', $data['files_upload2']);
+            $db->where('id', $id);
+            $db->update();
+            session()->setFlashdata('message', 'Notulen Berhasil di Upload!');
+            session()->setFlashdata('alert-class', 'success');
+
+            $db      = \Config\Database::connect();
+            $builder = $db->table('meeting_zoom');
+            $builder->set('status', 0);
+            $builder->where('idzoom', $idzoom);
+            $builder->update();
+
+            return redirect()->to(base_url('rapat'));
+        }
+    }
+
+    public function uploadtambahan1($code = '')
+    {
+        $rapatModel = new RapatModel();
+        $data = [
+            'page_title' => 'E-RAPAT - Rapat',
+            'nav_title' => 'rapat',
+            'tabs' => 'rapat',
+            'rapat' => $rapatModel
+                ->getWhere(['unique_code' => $code, 'user_id' => session()->get('id')])
+                ->getRow()
+        ];
+
+        return view('cpanel/rapat/view_upload_tambahan1', $data);
+    }
+
+    public function uploadtambahan2($code = '')
+    {
+        $rapatModel = new RapatModel();
+        $data = [
+            'page_title' => 'E-RAPAT - Rapat',
+            'nav_title' => 'rapat',
+            'tabs' => 'rapat',
+            'rapat' => $rapatModel
+                ->getWhere(['unique_code' => $code, 'user_id' => session()->get('id')])
+                ->getRow()
+        ];
+
+        return view('cpanel/rapat/view_upload_tambahan2', $data);
+    }
+
+    public function uploadtambahan3($code = '')
+    {
+        $rapatModel = new RapatModel();
+        $data = [
+            'page_title' => 'E-RAPAT - Rapat',
+            'nav_title' => 'rapat',
+            'tabs' => 'rapat',
+            'rapat' => $rapatModel
+                ->getWhere(['unique_code' => $code, 'user_id' => session()->get('id')])
+                ->getRow()
+        ];
+
+        return view('cpanel/rapat/view_upload_tambahan3', $data);
+    }
+
+    public function tambahanaction1($code = '')
+    {
+        $database = \Config\Database::connect();
+        $db = $database->table('meeting');
+
+        $code = $this->request->getPost('code');
+        $id = $this->request->getPost('id');
+
+        $input = $this->validate([
+            'file' => [
+                'uploaded[file]',
+                'mime_in[file,application/pdf,application/zip,application/msword,application/x-tar]',
+                'max_size[file,1024]',
+            ]
+        ]);
+
+        if (!$input) {
+            session()->setFlashdata('message', 'Notulen Gagal di Upload!');
+            session()->setFlashdata('alert-class', 'alert');
+
+            return redirect()->route('tambahanaction1/' . $code)->withInput();
+        } else {
+            $img = $this->request->getFile('file');
+            $img->move(ROOTPATH . 'uploads');
+
+            $data = [
+                'files_upload3' =>  str_replace(" ", "_", $img->getName()),
+                'type'  => $img->getClientMimeType()
+            ];
+
+            $db->set('files_upload3', $data['files_upload3']);
+            $db->where('id', $id);
+            $db->update();
+            session()->setFlashdata('message', 'Notulen Berhasil di Upload!');
+            session()->setFlashdata('alert-class', 'success');
+
+            return redirect()->to(base_url('detail/' . $code));
+        }
+    }
+
+    public function tambahanaction2($code = '')
+    {
+        $database = \Config\Database::connect();
+        $db = $database->table('meeting');
+
+        $code = $this->request->getPost('code');
+        $id = $this->request->getPost('id');
+
+        $input = $this->validate([
+            'file' => [
+                'uploaded[file]',
+                'mime_in[file,application/pdf,application/zip,application/msword,application/x-tar]',
+                'max_size[file,1024]',
+            ]
+        ]);
+
+        if (!$input) {
+            session()->setFlashdata('message', 'Notulen Gagal di Upload!');
+            session()->setFlashdata('alert-class', 'alert');
+
+            return redirect()->route('tambahanaction2/' . $code)->withInput();
+        } else {
+            $img = $this->request->getFile('file');
+            $img->move(ROOTPATH . 'uploads');
+
+            $data = [
+                'files_upload4' => str_replace(" ", "_", $img->getName()),
+                'type'  => $img->getClientMimeType()
+            ];
+
+            $db->set('files_upload4', $data['files_upload4']);
+            $db->where('id', $id);
+            $db->update();
+            session()->setFlashdata('message', 'Notulen Berhasil di Upload!');
+            session()->setFlashdata('alert-class', 'success');
+
+            return redirect()->to(base_url('detail/' . $code));
+        }
+    }
+
+    public function tambahanaction3($code = '')
+    {
+        $database = \Config\Database::connect();
+        $db = $database->table('meeting');
+
+        $code = $this->request->getPost('code');
+        $id = $this->request->getPost('id');
+
+        $input = $this->validate([
+            'file' => [
+                'uploaded[file]',
+                'mime_in[file,application/pdf,application/zip,application/msword,application/x-tar]',
+                'max_size[file,1024]',
+            ]
+        ]);
+
+        if (!$input) {
+            session()->setFlashdata('message', 'Notulen Gagal di Upload!');
+            session()->setFlashdata('alert-class', 'alert');
+
+            return redirect()->route('tambahanaction3/' . $code)->withInput();
+        } else {
+            $img = $this->request->getFile('file');
+            $img->move(ROOTPATH . 'uploads');
+
+            $data = [
+                'files_upload5' => str_replace(" ", "_", $img->getName()),
+                'type'  => $img->getClientMimeType()
+            ];
+
+            $db->set('files_upload5', $data['files_upload5']);
+            $db->where('id', $id);
+            $db->update();
+            session()->setFlashdata('message', 'Notulen Berhasil di Upload!');
+            session()->setFlashdata('alert-class', 'success');
+
+            return redirect()->to(base_url('rapat'));
+        }
+    }
+
+
+    public function downloadundangan($u = '')
+    {
+        $database = \Config\Database::connect();
+        $db = $database->table('meeting');
+        $result = $db->getWhere(['files_upload' => $u])->getRow();
+        if (count($result->getRowArray()) > 0) {
+            return $result->download('uploads/' . $result->files_upload, null);
+        } else {
+            return false;
+        }
+    }
+
 
     public function get_media_meeting()
     {

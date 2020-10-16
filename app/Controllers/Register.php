@@ -15,6 +15,6 @@ class Register extends BaseController
     public function index()
     {
         $data = ['page_title' => 'E-RAPAT - Register', 'nav_title' => 'register'];
-        return view('errors/response/view_unavailable', $data);
+        return view('errors/response/view_not_implemented', $data);
     }
 }

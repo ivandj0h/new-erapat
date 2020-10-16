@@ -19,6 +19,23 @@ navbar_child($nav_title);
     <div class="toolbar my-3 place-right">
         Data Rapat Tanggal : &nbsp;<strong><?= date("d-m-Y", strtotime($rapat->end_date)); ?></strong>
     </div>
+    <?php
+    $currenttime = date("H:i:s");
+    $starttime = date($rapat->start_time);
+    $endtime = date($rapat->end_time);
+
+    $endtime = $endtime <= $starttime ? $endtime + 2400 : $endtime;
+    if (($currenttime >= $starttime) && ($currenttime <= $endtime)) {
+        echo '';
+    } else { ?>
+        <div class="cell-sm-12">
+            <p class="remark dark">
+                <span class="mif-notification"></span> Maaf, <strong>Data Rapat</strong> ini tidak bisa di Re-schedulle, karena Rapat Tanggal <strong><?= date("d-m-Y", strtotime($rapat->end_date)); ?></strong> ini Telah Berakhir, Silahkan Klik <a href="<?= base_url('rapat') ?>"><strong>Disini</strong></a> untuk kembali ke Master Data Rapat.
+            </p>
+        </div>
+    <?php
+    }
+    ?>
     <div class="row detail-tab">
         <div class="col-md-2">
             <ul data-tabs-position="vertical h-100" data-role="tabs" data-expand="sm">
@@ -46,7 +63,7 @@ navbar_child($nav_title);
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <label class="cell-sm-2" style="padding: 10px;">Bagian</label>
+                        <label class="cell-sm-2" style="padding: 10px;">Nama Bagian</label>
                         <div class="cell-sm-10">
                             <?php if ($rapat->request_status == '1') : ?>
                                 <span class="remark dark" style="margin: 0;padding: 5px;color: black;">
@@ -178,6 +195,38 @@ navbar_child($nav_title);
                             ?>
                         </div>
                     </div>
+                    <div class="row mb-2">
+                        <label class="cell-sm-2" style="padding: 10px;">ID Media</label>
+                        <div class="cell-sm-10">
+                            <?php
+                            if ($rapat->request_status == '1') : ?>
+                                <span class="remark dark" style="margin: 0;padding: 5px;color: black;">
+                                    <strong><?= $rapat->meeting_subtype; ?></strong>.
+                                </span>
+                                <?php
+                            else :
+                                if ($rapat->type_id == 1) :
+                                    if ($rapat->sub_type_id == 1) : ?>
+                                        <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                            <strong><?= $rapat->zoomid; ?> - Zoom ID</strong>
+                                        </span>
+                                    <?php
+                                    else : ?>
+                                        <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                            <strong><?= $rapat->other_online_id; ?></strong>.
+                                        </span>
+                                    <?php endif; ?>
+                                <?php elseif ($rapat->type_id == 2) : ?>
+                                    <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
+                                        <strong> - </strong>.
+                                    </span>
+                                <?php else : ?>
+                            <?php
+                                endif;
+                            endif;
+                            ?>
+                        </div>
+                    </div>
                 </div>
                 <div id="_target_3">
                     <div class="row mb-2">
@@ -248,9 +297,11 @@ navbar_child($nav_title);
                         <div class="cell-sm-10">
                             <?php
                             if ($rapat->request_status == '1') : ?>
+
                                 <span class="remark dark" style="margin: 0;padding: 5px;color: black;">
                                     <strong><?= $rapat->agenda ?></strong>.
                                 </span>
+
                             <?php
                             else :
                             ?>
@@ -269,14 +320,18 @@ navbar_child($nav_title);
                         <div class="cell-sm-10">
                             <?php
                             if (empty($rapat->files_upload)) : ?>
-                                <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
-                                    File <strong>Undangan Rapat</strong> tidak ditemukan, Mohon segera dilengkapi.
-                                </span>
+                                <a href="<?= base_url('uploadundangan/' . $rapat->unique_code) ?>">
+                                    <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
+                                        File <strong>Undangan Rapat</strong> tidak ditemukan, Mohon segera dilengkapi.
+                                    </span>
+                                </a>
                             <?php
                             else : ?>
-                                <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                    <strong><?= $rapat->files_upload; ?></strong>.
-                                </span>
+                                <a href="<?= base_url('downloadundangan/' . $rapat->unique_code) ?>">
+                                    <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                        <strong><?= $rapat->files_upload; ?></strong>.
+                                    </span>
+                                </a>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -285,9 +340,11 @@ navbar_child($nav_title);
                         <div class="cell-sm-10">
                             <?php
                             if (empty($rapat->files_upload1)) : ?>
-                                <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
-                                    File <strong>Notulen Rapat</strong> tidak ditemukan, Mohon segera dilengkapi.
-                                </span>
+                                <a href="<?= base_url('uploadnotulen/' . $rapat->unique_code) ?>">
+                                    <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
+                                        File <strong>Notulen Rapat</strong> tidak ditemukan, Mohon segera dilengkapi.
+                                    </span>
+                                </a>
                             <?php
                             else : ?>
                                 <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
@@ -301,9 +358,11 @@ navbar_child($nav_title);
                         <div class="cell-sm-10">
                             <?php
                             if (empty($rapat->files_upload2)) : ?>
-                                <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
-                                    File <strong>Absensi Rapat</strong> tidak ditemukan, Mohon segera dilengkapi.
-                                </span>
+                                <a href="<?= base_url('uploadabsensi/' . $rapat->unique_code) ?>">
+                                    <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
+                                        File <strong>Absensi Rapat</strong> tidak ditemukan, Mohon segera dilengkapi.
+                                    </span>
+                                </a>
                             <?php
                             else : ?>
                                 <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
@@ -313,17 +372,55 @@ navbar_child($nav_title);
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <label class="cell-sm-2" style="padding: 10px;">File Pendukung Lainnya</label>
+                        <label class="cell-sm-2" style="padding: 10px;">File Tambahan 1</label>
                         <div class="cell-sm-10">
                             <?php
-                            if (empty($rapat->files_upload2)) : ?>
-                                <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
-                                    File <strong>Pendukung Lainnya</strong> tidak ditemukan, Mohon segera dilengkapi.
-                                </span>
+                            if (empty($rapat->files_upload3)) : ?>
+                                <a href="<?= base_url('uploadtambahan1/' . $rapat->unique_code) ?>">
+                                    <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
+                                        File <strong>Tambahan 1</strong> tidak ditemukan, Mohon segera dilengkapi.
+                                    </span>
+                                </a>
                             <?php
                             else : ?>
                                 <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                    <strong><?= $rapat->files_upload2; ?></strong>.
+                                    <strong><?= $rapat->files_upload3; ?></strong>.
+                                </span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="cell-sm-2" style="padding: 10px;">File Tambahan 2</label>
+                        <div class="cell-sm-10">
+                            <?php
+                            if (empty($rapat->files_upload4)) : ?>
+                                <a href="<?= base_url('uploadtambahan2/' . $rapat->unique_code) ?>">
+                                    <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
+                                        File <strong>Tambahan 2</strong> tidak ditemukan, Mohon segera dilengkapi.
+                                    </span>
+                                </a>
+                            <?php
+                            else : ?>
+                                <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                    <strong><?= $rapat->files_upload4; ?></strong>.
+                                </span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="cell-sm-2" style="padding: 10px;">File Tambahan 3</label>
+                        <div class="cell-sm-10">
+                            <?php
+                            if (empty($rapat->files_upload5)) : ?>
+                                <a href="<?= base_url('uploadtambahan3/' . $rapat->unique_code) ?>">
+                                    <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
+                                        File <strong>Tambahan 3</strong> tidak ditemukan, Mohon segera dilengkapi.
+                                    </span>
+                                </a>
+                            <?php
+                            else : ?>
+                                <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                    <strong><?= $rapat->files_upload5; ?></strong>.
                                 </span>
                             <?php endif; ?>
                         </div>

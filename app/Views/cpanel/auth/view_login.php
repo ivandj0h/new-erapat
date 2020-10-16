@@ -9,12 +9,27 @@ navbar_child($nav_title);
 
 <div class="container">
     <!-- start content here -->
+<<<<<<< HEAD
     <div class="grid ">
         <div class="row d-flex flex-column flex-justify-center h-vh-50 mt-10">
             <div class="cell-5 mx-auto block-shadow">
                 <h1><small><span class="icon mif-lock"></span> CPANEL LOGIN</small></h1>
                 <hr class="thin" />
                 <form data-role="validator" method="POST" action="<?= current_url('auth/login') ?>">
+=======
+    <div class="row d-flex flex-column flex-justify-center h-vh-100">
+        <div class="card animate__animated animate__fadeIn animate__delay-0s">
+            <div class="card-header">
+                <h5><span class="icon mif-lock"></span> CPANEL LOGIN</h5>
+            </div>
+            <div class="card-content p-2">
+                <?php if (session()->has('error')) : ?>
+                    <p class="remark alert text-center" id="hideMe"><?= session()->getFlashdata('error') ?></p>
+                <?php endif; ?>
+                <?php $validation = session()->getFlashdata('validation'); ?>
+                <form data-role="validator" action="<?= base_url('login/proses') ?>" method="POST">
+                    <?= csrf_field() ?>
+>>>>>>> 2712a80b515adce337fb2e53650390c6c24f8e8d
                     <div class="row mb-2">
                         <div class="cell-sm-10">
                             <input type="email" name="username" placeholder="Masukan Alamat Email" data-validate="required email" data-role="input" class="metro-input" autocomplete="off" autofocus>
@@ -77,6 +92,24 @@ navbar_child($nav_title);
                             </div>
                             <!-- end content here -->
                         </div>
+<<<<<<< HEAD
+=======
+                    </div>
+                    <div class="row">
+                        <div class="cell">
+                            <button type="submit" class="button loading-pulse block drop-shadow" onclick="Metro.activity.open({autoHide: 3000})"><span class="icon mif-lock"></span> Masuk</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div style="padding: 20px;text-align: center;">
+                <span class="fg-gray">Copyright &copy; <?= $footer_title; ?> <?= date('Y'); ?></span>
+            </div>
+        </div>
+    </div>
+    <!-- end content here -->
+</div>
+>>>>>>> 2712a80b515adce337fb2e53650390c6c24f8e8d
 
                         <?php
                         $this->endSection();

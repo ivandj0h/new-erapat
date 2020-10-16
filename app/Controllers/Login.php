@@ -41,33 +41,38 @@ class Login extends BaseController
             if ($validate) {
                 $email = $this->request->getPost('email');
                 $password = $this->request->getPost('password');
+                $user = $this->user->asObject()->where('email', $email)->first();
 
-                $userModel = new \App\Models\UserModel;
-                $user = $userModel->asObject()->where('email', $email)->first();
                 if ($user) {
-                    if (password_verify($password, $user->password)) {
-                        session()->set([
-                            'id' => $user->id,
-                            'fullName' => $user->name,
-                            'email' => $user->email,
-                            'role_id' => $user->role_id,
-                            'logged_in' => true
-                        ]);
-                        if (session()->get('role_id') == 1) {
-                            return redirect()->route('admin');
+                    if ($user->is_active == 1) {
+                        if (password_verify($password, $user->password)) {
+                            session()->set([
+                                'id' => $user->id,
+                                'fullName' => $user->name,
+                                'email' => $user->email,
+                                'role_id' => $user->role_id,
+                                'logged_in' => true,
+                                'is_active' => 1
+                            ]);
+                            if (session()->get('role_id') == 1) {
+                                return redirect()->route('admin');
+                            } else {
+                                return redirect()->route('user');
+                            }
                         } else {
-                            // return redirect()->route('cek');
-                            return redirect()->route('user');
+                            return redirect()->back()->withInput()->with('error', 'Password Salah!');
                         }
+                    } else {
+                        return redirect()->back()->withInput()->with('error', 'Akun Anda Sedang di Blokir!');
                     }
                 }
-                return redirect()->back()->withInput()->with('error', 'Username atau Password Salah!');
             } else {
                 return redirect()->back()->withInput()->with('validation', $this->validator);
             }
         }
         echo view('cpanel/auth/view_login', $data);
     }
+
 
     public function cek()
     {

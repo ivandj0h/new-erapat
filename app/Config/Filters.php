@@ -24,7 +24,7 @@ class Filters extends BaseConfig
 				'except' => [
 					'/rapat/getmm',
 					'/rapat/getmmm'
-				]
+				],
 			]
 		],
 		'after'  => [

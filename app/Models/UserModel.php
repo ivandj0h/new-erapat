@@ -8,6 +8,7 @@ class UserModel extends Model
 {
     protected $table = 'view_user_department';
     protected $primaryKey = 'id';
+    protected $allowedFields = ['email', 'zoomid'];
     protected $returnType = 'App\Entities\User';
     protected $useTimestamps = false;
 

@@ -59,13 +59,17 @@ navbar_child($nav_title);
                             <strong><span class="fg-black"> Rapat Dibatalkan</span></strong>
                         <?php else : ?>
                             <?php if (!empty($r['files_upload']) && !empty($r['files_upload1']) && !empty($r['files_upload2'])) : ?>
-                                <strong><span class="fg-emerald"> File Upload Komplit</span></strong>
+                                <a href="<?= base_url('detail/' . $r['unique_code']) ?>"><strong><span class="fg-emerald"> File Upload Komplit</span></strong></a>
                             <?php elseif (!empty($r['files_upload']) && empty($r['files_upload1']) && empty($r['files_upload2'])) : ?>
-                                <strong><span class="fg-red"> File Notulen belum ada</span></strong>
+                                <a href="<?= base_url('uploadnotulen/' . $r['unique_code']) ?>"><strong><span class="fg-red"> File Notulen belum ada</span></strong></a>
                             <?php elseif (!empty($r['files_upload']) && !empty($r['files_upload1']) && empty($r['files_upload2'])) : ?>
-                                <strong><span class="fg-red"> File Absensi belum ada</span></strong>
+                                <a href="<?= base_url('uploadabsensi/' . $r['unique_code']) ?>"><strong><span class="fg-red"> File Absensi belum ada</span></strong></a>
                             <?php else : ?>
+<<<<<<< HEAD
                                 <a href=""><strong><span class="fg-red"> Belum ada file yang diunggah</span></strong></a>
+=======
+                                <a href="<?= base_url('uploadundangan/' . $r['unique_code']) ?>"><strong><span class="fg-red"> Belum ada file yang diunggah</span></strong></a>
+>>>>>>> 2712a80b515adce337fb2e53650390c6c24f8e8d
                             <?php endif; ?>
                         <?php endif; ?>
                     </td>
@@ -73,8 +77,18 @@ navbar_child($nav_title);
                         <div class="split-button">
                             <?= change_status_button($r); ?>
                             <ul class="d-menu" data-role="dropdown">
-                                <?php if ($r['request_status'] == 1) : ?>
-                                    <li><a href="<?= base_url('/rapatcancel'); ?>"> Reschedule</a></li>
+                                <?php
+                                $currenttime = date("H:i:s");
+                                $starttime = date($r['start_time']);
+                                $endtime = date($r['end_time']);
+                                $endtime = $endtime <= $starttime ? $endtime + 2400 : $endtime;
+                                ?>
+                                <?php if (($currenttime >= $starttime) && ($currenttime <= $endtime)) : ?>
+                                    <?php if ($r['request_status'] == 1) : ?>
+                                        <li><a href="<?= base_url('/rapatcancel'); ?>"> Reschedule</a></li>
+                                    <?php else : ?>
+                                        <li><a href="<?= base_url('reschedulle/' . $r['unique_code']); ?>"> Reschedule</a></li>
+                                    <?php endif; ?>
                                 <?php else : ?>
                                     <li><a href="<?= base_url('reschedulle/' . $r['unique_code']); ?>"> Reschedule</a></li>
                                 <?php endif; ?>
@@ -88,7 +102,7 @@ navbar_child($nav_title);
                             <button class="split rounded dropdown-toggle"></button>
                             <ul class="d-menu place-right" data-role="dropdown">
                                 <li><a href="<?= base_url('detail/' . $r['unique_code']); ?>"><span class="mif-eye"></span> Detail</a></li>
-                                <li><a href="<?= base_url('edit/' . $r['unique_code']); ?>"><span class="mif-copy"></span> Ubah</a></li>
+                                <li><a href="<?= base_url('editrapat/' . $r['unique_code']); ?>"><span class="mif-copy"></span> Ubah</a></li>
                             </ul>
                         </div>
                     </td>

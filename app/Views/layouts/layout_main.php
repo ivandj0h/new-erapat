@@ -56,11 +56,20 @@
     <script>
         $(document).ready(function() {
 
-            var table = $("#rapat").DataTable();
+            var table = $("#rapat").DataTable({
+                responsive: true,
+            });
             table
                 .order([0, 'desc'], [5, 'desc'])
                 .draw();
 
+            $("#changeZoom").click(function() {
+                if ($(this).is(":checked")) {
+                    $('button[type=submit]').attr('disabled', false);
+                } else {
+                    $('button[type=submit]').attr('disabled', true);
+                }
+            });
 
             // Red Alert
             $("#hideEl").on('click', function() {

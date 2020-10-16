@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 use App\Models\RapatModel;
+use App\Models\SubtypeModel;
 use App\Models\RiwayatModel;
 
 class Riwayat extends BaseController
@@ -78,5 +79,110 @@ class Riwayat extends BaseController
 
             return view('cpanel/riwayat/view_riwayat', $data);
         }
+    }
+
+    public function cekhistoffline()
+    {
+        $subtypemodel = new SubtypeModel();
+        $rapatModel = new RapatModel();
+
+        $data = [
+            'page_title' => 'E-RAPAT - Riwayat',
+            'nav_title' => 'riwayat',
+            'tabs' => 'riwayat',
+            'tipe' => $subtypemodel
+                ->getWhere([
+                    'type_id' => 2
+                ])
+                ->getResultArray(),
+            'rapat' => $rapatModel
+                ->getWhere([
+                    'type_id' => 2,
+                    'email' => session()->get('email')
+                ])
+                ->getResultArray()
+        ];
+
+        return view('cpanel/riwayat/view_offline', $data);
+    }
+
+    public function gethistoffline()
+    {
+        $id = $this->request->getPost('id');
+        $subtypemodel = new SubtypeModel();
+        $rapatModel = new RapatModel();
+
+        $data = [
+            'page_title' => 'E-RAPAT - Riwayat',
+            'nav_title' => 'riwayat',
+            'tabs' => 'riwayat',
+            'tipe' => $subtypemodel
+                ->getWhere([
+                    'type_id' => 2
+                ])
+                ->getResultArray(),
+            'rapat' => $rapatModel
+                ->getWhere([
+                    'sub_type_id' => $id,
+                    'email' => session()->get('email')
+                ])
+                ->getResultArray()
+        ];
+
+        return view('cpanel/riwayat/view_offline', $data);
+    }
+
+    public function cekhistonline()
+    {
+        $now = date('Y-m-d');
+        $subtypemodel = new SubtypeModel();
+        $rapatModel = new RapatModel();
+
+        $data = [
+            'page_title' => 'E-RAPAT - Riwayat',
+            'nav_title' => 'riwayat',
+            'tabs' => 'riwayat',
+            'tipe' => $subtypemodel
+                ->getWhere([
+                    'type_id' => 1
+                ])
+                ->getResultArray(),
+            'rapat' => $rapatModel
+                ->getWhere([
+                    'type_id' => 1,
+                    'end_date' => $now,
+                    'email' => session()->get('email')
+                ])
+                ->getResultArray()
+        ];
+
+        return view('cpanel/riwayat/view_online', $data);
+    }
+
+
+    public function gethistonline()
+    {
+        $id = $this->request->getPost('id');
+        $subtypemodel = new SubtypeModel();
+        $rapatModel = new RapatModel();
+
+        $data = [
+            'page_title' => 'E-RAPAT - Riwayat',
+            'nav_title' => 'riwayat',
+            'tabs' => 'riwayat',
+            'tipe' => $subtypemodel
+                ->getWhere([
+                    'type_id' => 1
+                ])
+                ->getResultArray(),
+            'rapat' => $rapatModel
+                ->getWhere([
+                    'sub_type_id' => $id,
+                    'email' => session()->get('email')
+                ])
+                ->getResultArray()
+        ];
+
+        return view('cpanel/riwayat/view_online', $data);
     }
 }

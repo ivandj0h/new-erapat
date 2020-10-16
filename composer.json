@@ -6,7 +6,8 @@
 	"license": "MIT",
 	"require": {
 		"php": ">=7.2",
-		"codeigniter4/framework": "^4"
+		"codeigniter4/framework": "^4",
+		"firebase/php-jwt": "^5.2"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "^1.9@dev",
