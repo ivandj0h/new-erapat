@@ -10,7 +10,7 @@ navbar_child($nav_title);
 
 <div class="container">
     <!-- start content here -->
-    <div class="col-lg-12 animate__animated animate__fadeIn animate__delay-1s" style="float:none;margin:auto;">
+    <div class="col-lg-12 animate__animated animate__fadeIn animate__delay-0s" style="float:none;margin:auto;">
         <iframe src="http://localhost/calendar/" style="position: fixed; padding-top:90px; left:0;bottom:0; right: 0; width: 100%; height: 100%; border: none; margin:0; overflow-x: hidden; z-index:1;">
             Your browser doesn't support iframes
         </iframe>

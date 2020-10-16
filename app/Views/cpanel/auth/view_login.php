@@ -10,7 +10,7 @@ navbar_child($nav_title);
 <div class="container">
     <!-- start content here -->
     <div class="row d-flex flex-column flex-justify-center h-vh-100">
-        <div class="card animate__animated animate__fadeIn animate__delay-1s">
+        <div class="card animate__animated animate__fadeIn animate__delay-0s">
             <div class="card-header">
                 <h5><span class="icon mif-lock"></span> CPANEL LOGIN</h5>
             </div>
