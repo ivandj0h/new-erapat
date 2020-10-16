@@ -10,7 +10,6 @@ function userTabMenu($tabs)
                         <span id="github-owner">Selamat Datang <strong><?= session()->get('fullName') ?></strong> </span>
                     </div>
                 </div>
-
                 <div class="cell-md-8 text-center-fs text-right-md pt-2"></div>
             </div>
         </div>

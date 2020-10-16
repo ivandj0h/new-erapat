@@ -18,6 +18,7 @@ class Account extends BaseController
             'tabs' => 'account',
             'account' => $this->account
                 ->orderBy('id', 'DESC')
+                ->orderBy('is_active', 'DESC')
                 ->findAll(),
         ];
 
@@ -82,12 +83,11 @@ class Account extends BaseController
 
     public function aktifkan($id = '')
     {
-        $data = [
-            'is_active' => 1,
-            'blokir' => 0
-        ];
-
-        $update = $this->account->update($id, $data);
+        $update = $this->auths
+            ->set(['is_active' => 1])
+            ->set(['blokir' => 0])
+            ->where('id', $id)
+            ->update();
 
         if ($update) {
             session()->setFlashdata('message', 'Akun Berhasil di Aktifkan!');
@@ -104,7 +104,10 @@ class Account extends BaseController
 
     public function blokir($id = '')
     {
-        $update = $this->account->update($id, ['is_active' => 0]);
+        $update = $this->auths
+            ->set(['is_active' => 0])
+            ->where('id', $id)
+            ->update();
 
         if ($update) {
             session()->setFlashdata('message', 'Akun Berhasil di Aktifkan!');

@@ -11,7 +11,7 @@ class Admin extends BaseController
     public function __construct()
     {
         $this->session = session();
-        $this->validation = \Config\Services::validation();
+        // $this->validation = \Config\Services::validation();
         helper(['navbar', 'navbar_child', 'alerts', 'menu', 'form', 'url', 'unggah']);
     }
 
@@ -49,7 +49,7 @@ class Admin extends BaseController
         return view('cpanel/admin/view_change_password', $data);
     }
 
-    public function edituser($code = '')
+    public function editAdmin($code = '')
     {
         $userModel = new UserModel();
         $rapatModel = new RapatModel();
@@ -66,7 +66,7 @@ class Admin extends BaseController
         return view('cpanel/admin/view_edit_admin', $data);
     }
 
-    public function updateuser()
+    public function updateadmin()
     {
         $userModel = new UserModel();
 
@@ -81,12 +81,12 @@ class Admin extends BaseController
             ];
 
             if ($userModel->update($this->request->getPost('id'), $data)) {
-                session()->setFlashdata('message', 'Profile User Berhasil di Ubah!');
+                session()->setFlashdata('message', 'Profile Admin Berhasil di Ubah!');
                 session()->setFlashdata('alert-class', 'success');
 
                 return redirect()->to(base_url('admin'));
             } else {
-                session()->setFlashdata('message', 'Profile User Gagal disimpan!');
+                session()->setFlashdata('message', 'Profile Admin Gagal disimpan!');
                 session()->setFlashdata('alert-class', 'alert');
 
                 return redirect()->route('edit')->withInput();

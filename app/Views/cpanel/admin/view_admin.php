@@ -28,70 +28,73 @@ navbar_child($nav_title);
             </button>
             <ul class="navview-menu">
                 <li class="active">
-                    <a href="<?= base_url('user'); ?>">
+                    <a href="<?= base_url('admin'); ?>">
                         <span class="icon"><span class="mif-user-secret"></span></span>
                         <span class="caption">Base Profile</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('changepassword/' . $user->token); ?>">
+                    <a href="<?= base_url('changeadminpassword/' . $user->token); ?>">
                         <span class="icon"><span class="mif-key"></span></span>
                         <span class="caption">Ganti Password</span>
                     </a>
                 </li>
             </ul>
         </div>
-
         <div class="toolbar my-4" style="margin-left: 293px;">
-            <strong> Base Profile</strong> &nbsp;-&nbsp; <i><?= $user->name; ?></i>
+            <strong> Base Profile</strong> &nbsp;-&nbsp; <i><?= $user->name ?></i>
         </div>
         <div class="toolbar my-3 place-right">
             Tanggal : &nbsp;<strong><?= date("d-m-Y"); ?></strong>
         </div>
-
-        <div class="navview-content d-flex flex-align-center flex-justify-center h-500">
-            <div class="row">
-                <div class="cell order-1" style="margin-right: -365px;">
-                    <img src="<?= base_url('assets/data/profile/') . '/' . $user->image; ?>" class="avatar" style="width: 280px;">
-                </div>
-                <div class="cell order-2" style="margin-left: 18px;">
-                    <ul class="skills">
-                        <li>
-                            <div class="row">
-                                <label class="cell-sm-4" style="margin-right: -80px;">Nama User</label>
-                                <div class="cell-sm-8">
-                                    <strong><?= $user->name; ?></strong>
-                                </div>
-                                <label class="cell-sm-4" style="margin-right: -80px;">Email</label>
-                                <div class="cell-sm-8">
-                                    <strong><?= $user->email; ?></strong>
-                                </div>
-                                <label class="cell-sm-4" style="margin-right: -80px;">Zoom ID</label>
-                                <div class="cell-sm-8">
-                                    <strong><?= $user->zoomid; ?></strong>
-                                </div>
-                                <label class="cell-sm-4" style="margin-right: -80px;">Nama Bagian</label>
-                                <div class="cell-sm-8">
-                                    <strong><?= $user->sub_department_name; ?></strong>
-                                </div>
-                                <label class="cell-sm-4" style="margin-right: -80px;">&nbsp;</label>
-                                <div class="cell-sm-8">
-                                    <a class="button primary" href="<?= base_url('edit/' . $user->token) ?>" role="button"><span class="mif-wrench"></span> Edit Profile</a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+        <div class="navview-content d-flex h-500">
+            <div class="grid">
+                <div class="row">
+                    <div class="cell">
+                        <img src="<?= base_url('assets/data/profile/') . '/' . $user->image; ?>" class="avatar" style="width: 280px;">
+                    </div>
+                    <div class="cell">
+                        <table class="table cell-border table-border cell-media-table" style="width: 630px;">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 160px;">Nama User</td>
+                                    <td>
+                                        <input data-role="input" value="<?= $user->name ?>" disabled>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td>
+                                        <input data-role="input" value="<?= $user->email ?>" disabled>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Zoom ID</td>
+                                    <td>
+                                        <input data-role="input" value="<?= $user->zoomid ?>" disabled>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Nama Bagian</td>
+                                    <td>
+                                        <input data-role="input" value="<?= $user->sub_department_name ?>" disabled>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td><a class="button primary" href="<?= base_url('editadmin/' . $user->token) ?>" role="button"><span class="mif-wrench"></span> Edit Account <?= $user->name ?></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
+</div>
 </div>
 <!-- Start Main Content -->
 
 <!-- end content here -->
 <?php
-// foreach ($rapat as $r) :
-// echo empty_upload_alert($r['files_upload']);
-// endforeach;
 $this->endSection();

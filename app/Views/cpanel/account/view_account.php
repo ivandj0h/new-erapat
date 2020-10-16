@@ -26,7 +26,7 @@ navbar_child($nav_title);
     <div class="toolbar my-3 place-right">
         <a href="<?php echo base_url('baru') ?>" class="button success"><span class="mif-file-text"></span> Tambah Account Baru</a>
     </div>
-    <table class="table table-condensed hover display order-column" id="rapat" cellspacing="0">
+    <table class="table table-condensed hover display order-column" id="account" cellspacing="0">
         <thead>
             <tr>
                 <th class="text-center w-20">Foto</th>

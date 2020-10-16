@@ -53,15 +53,11 @@
     <!-- Custom Metro JS -->
     <script src="<?= base_url('assets/locals/js/custom-metro.js'); ?>"></script>
 
+    <!-- Custom DataTable JS -->
+    <script src="<?= base_url('assets/locals/js/custom-datatable.js'); ?>"></script>
+
     <script>
         $(document).ready(function() {
-
-            var table = $("#rapat").DataTable({
-                responsive: true,
-            });
-            table
-                .order([0, 'desc'], [5, 'desc'])
-                .draw();
 
             $("#changeZoom").click(function() {
                 if ($(this).is(":checked")) {

@@ -49,7 +49,7 @@ class BaseController extends Controller
 
 		$this->validation = \Config\Services::validation();
 		$this->conn = \Config\Database::connect();
-		$this->auth = new \App\Models\AuthModel();
+		$this->auths = new \App\Models\AuthModel();
 		$this->user = new \App\Models\UserModel();
 		$this->account = new \App\Models\AccountModel();
 		$this->department = new \App\Models\DepartmentModel();
