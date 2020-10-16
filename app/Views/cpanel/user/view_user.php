@@ -51,28 +51,30 @@ navbar_child($nav_title);
 
         <div class="navview-content d-flex flex-align-center flex-justify-center h-500">
             <div class="row">
-                <div class="cell order-2"><img src="<?= base_url('assets/data/profile/') . '/' . $user->image; ?>" class="avatar" style="width: 280px;"></div>
-                <div class="cell order-1" style="margin-left: 18px;">
+                <div class="cell order-1" style="margin-right: -365px;">
+                    <img src="<?= base_url('assets/data/profile/') . '/' . $user->image; ?>" class="avatar" style="width: 280px;">
+                </div>
+                <div class="cell order-2" style="margin-left: 18px;">
                     <ul class="skills">
                         <li>
                             <div class="row">
-                                <label class="cell-sm-4">Nama Sekretariat</label>
+                                <label class="cell-sm-4" style="margin-right: -80px;">Nama User</label>
                                 <div class="cell-sm-8">
-                                    <strong><?= $user->department_name; ?></strong>
+                                    <strong><?= $user->name; ?></strong>
                                 </div>
-                                <label class="cell-sm-4">Nama Bagian</label>
-                                <div class="cell-sm-8">
-                                    <strong><?= $user->sub_department_name; ?></strong>
-                                </div>
-                                <label class="cell-sm-4">Email</label>
+                                <label class="cell-sm-4" style="margin-right: -80px;">Email</label>
                                 <div class="cell-sm-8">
                                     <strong><?= $user->email; ?></strong>
                                 </div>
-                                <label class="cell-sm-4">Zoom ID</label>
+                                <label class="cell-sm-4" style="margin-right: -80px;">Zoom ID</label>
                                 <div class="cell-sm-8">
                                     <strong><?= $user->zoomid; ?></strong>
                                 </div>
-                                <label class="cell-sm-4">&nbsp;</label>
+                                <label class="cell-sm-4" style="margin-right: -80px;">Nama Bagian</label>
+                                <div class="cell-sm-8">
+                                    <strong><?= $user->sub_department_name; ?></strong>
+                                </div>
+                                <label class="cell-sm-4" style="margin-right: -80px;">&nbsp;</label>
                                 <div class="cell-sm-8">
                                     <a class="button primary" href="<?= base_url('edit/' . $user->token) ?>" role="button"><span class="mif-wrench"></span> Edit Profile</a>
                                 </div>

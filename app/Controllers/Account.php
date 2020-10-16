@@ -34,27 +34,45 @@ class Account extends BaseController
         }
     }
 
-    public function detailAccount($token)
+    public function detailAccount($token = '')
     {
         $data = [
             'page_title' => 'E-RAPAT - Account',
             'nav_title' => 'account',
             'tabs' => 'account',
             'account' => $this->account
-                ->where('token', $token)
-                ->findAll(),
+                ->getWhere(['token' => $token])
+                ->getRow()
         ];
 
         $user = $this->user->where('id', session()->get('id'))->first()->role_id;
 
         if ($user == 1) {
-            return view('cpanel/account/view_account', $data);
+            return view('cpanel/account/view_detail_account', $data);
         } else {
             return redirect()->to(base_url('restricted'));
         }
     }
 
+    public function editAccount($token = '')
+    {
+        $data = [
+            'page_title' => 'E-RAPAT - Account',
+            'nav_title' => 'account',
+            'tabs' => 'account',
+            'account' => $this->account
+                ->getWhere(['token' => $token])
+                ->getRow()
+        ];
 
+        $user = $this->user->where('id', session()->get('id'))->first()->role_id;
+
+        if ($user == 1) {
+            return view('cpanel/account/view_edit_account', $data);
+        } else {
+            return redirect()->to(base_url('restricted'));
+        }
+    }
 
     public function restricted_account()
     {
