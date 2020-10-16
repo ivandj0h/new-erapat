@@ -43,9 +43,21 @@ navbar_child($nav_title);
                 <tr>
                     <td class="text-center"><img src="<?= base_url('assets/data/profile/') . '/' . $a['image']; ?>" class="avatar" style="width: 30px;"></td>
                     <td class="text-center"><?= $a['zoomid']; ?></td>
-                    <td class="text-center"><?= $a['name']; ?></td>
+                    <td class="text-left"><?= $a['name']; ?></td>
                     <td class="text-center"><?= $a['email']; ?></td>
-                    <td class="text-center"><?= $a['role']; ?></td>
+                    <td class="text-left">
+                        <?php if ($a['role_id'] == 1) : ?>
+                            <strong class="fg-crimson"><span class="mif-user-secret"> <?= $a['role']; ?></span></strong>
+                        <?php elseif ($a['role_id'] == 2) : ?>
+                            <strong class="fg-brown"><span class="mif-user-secret"> <?= $a['role']; ?></span></strong>
+                        <?php elseif ($a['role_id'] == 3) : ?>
+                            <strong class="fg-orange"><span class="mif-user-secret"> <?= $a['role']; ?></span></strong>
+                        <?php elseif ($a['role_id'] == 4) : ?>
+                            <strong class="fg-emerald"><span class="mif-user-secret"> <?= $a['role']; ?></span></strong>
+                        <?php elseif ($a['role_id'] == 5) : ?>
+                            <strong class="fg-green"><span class="mif-user-secret"> <?= $a['role']; ?></span></strong>
+                        <?php endif; ?>
+                    </td>
                     <td class="text-center">
                         <?php if ($a['is_active'] != 1) : ?>
                             <a href="<?php echo base_url('aktifkan/' . $a['id']); ?>" class="fg-crimson"><span class="mif-not"> Blokir</span></a>
@@ -57,8 +69,9 @@ navbar_child($nav_title);
                         <div class="dropdown-button place-right">
                             <button class="button primary rounded dropdown-toggle">Aksi</button>
                             <ul class="d-menu place-right" data-role="dropdown">
-                                <li><a href="<?= base_url('detail/' . $a['id']); ?>"><span class="mif-eye"></span> Detail</a></li>
-                                <li><a href="<?= base_url('editrapat/' . $a['id']); ?>"><span class="mif-copy"></span> Ubah</a></li>
+                                <li><a href="<?= base_url('detailaccount/' . $a['token']); ?>"><span class="mif-eye"></span> Detail</a></li>
+                                <li><a href="<?= base_url('editaccount/' . $a['token']); ?>"><span class="mif-copy"></span> Ubah</a></li>
+                                <li><a href="<?= base_url('deleteaccount/' . $a['token']); ?>"><i class="fas fa-fw fa-trash"></i> Hapus</a></li>
                             </ul>
                         </div>
                     </td>

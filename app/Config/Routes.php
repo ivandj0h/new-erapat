@@ -103,6 +103,7 @@ $routes->get('/changepassword/(:any)', 'User::changepassword/$1', ['filter' => '
  */
 
 $routes->get('/account', 'Account::index', ['filter' => 'ceklogin']);
+$routes->get('/detailaccount/(:any)', 'Account::detailAccount/$1', ['filter' => 'ceklogin']);
 $routes->get('/restricted', 'Account::restricted_account', ['filter' => 'ceklogin']);
 $routes->get('/aktifkan/(:any)', 'Account::aktifkan/$1', ['filter' => 'ceklogin']);
 $routes->get('/blokir/(:any)', 'Account::blokir/$1', ['filter' => 'ceklogin']);
