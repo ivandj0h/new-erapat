@@ -43,7 +43,7 @@ navbar_child($nav_title);
                 <tr>
                     <td class="text-center"><img src="<?= base_url('assets/data/profile/') . '/' . $a['image']; ?>" class="avatar" style="width: 30px;"></td>
                     <td class="text-center"><?= $a['zoomid']; ?></td>
-                    <td class="text-left"><?= $a['name']; ?></td>
+                    <td class="text-left"><strong><?= $a['name']; ?></strong></td>
                     <td class="text-center"><?= $a['email']; ?></td>
                     <td class="text-left">
                         <?php if ($a['role_id'] == 1) : ?>
