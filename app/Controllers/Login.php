@@ -42,24 +42,28 @@ class Login extends BaseController
                 $email = $this->request->getPost('email');
                 $password = $this->request->getPost('password');
                 $user = $this->user->asObject()->where('email', $email)->first();
+
                 if ($user) {
-                    if (password_verify($password, $user->password)) {
-                        session()->set([
-                            'id' => $user->id,
-                            'fullName' => $user->name,
-                            'email' => $user->email,
-                            'role_id' => $user->role_id,
-                            'logged_in' => true,
-                            'is_active' => 1
-                        ]);
-                        if (session()->get('role_id') == 1) {
-                            return redirect()->route('admin');
+                    if ($user->is_active == 1) {
+                        if (password_verify($password, $user->password)) {
+                            session()->set([
+                                'id' => $user->id,
+                                'fullName' => $user->name,
+                                'email' => $user->email,
+                                'role_id' => $user->role_id,
+                                'logged_in' => true,
+                                'is_active' => 1
+                            ]);
+                            if (session()->get('role_id') == 1) {
+                                return redirect()->route('admin');
+                            } else {
+                                return redirect()->route('user');
+                            }
                         } else {
-                            return redirect()->route('user');
+                            return redirect()->back()->withInput()->with('error', 'Password Salah!');
                         }
                     } else {
-
-                        return redirect()->back()->withInput()->with('error', 'Password Salah!');
+                        return redirect()->back()->withInput()->with('error', 'Akun Anda Sedang di Blokir!');
                     }
                 }
             } else {
