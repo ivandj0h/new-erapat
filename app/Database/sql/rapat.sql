@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2020 at 07:26 AM
+-- Generation Time: Oct 17, 2020 at 12:15 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -195,6 +195,17 @@ CREATE TABLE `event` (
   `domain_sessionid` varchar(36) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 
+--
+-- Dumping data for table `event`
+--
+
+INSERT INTO `event` (`app_id`, `platform`, `etl_tstamp`, `collector_tstamp`, `dvce_tstamp`, `event`, `event_id`, `txn_id`, `name_tracker`, `v_tracker`, `v_collector`, `v_etl`, `user_id`, `user_ipaddress`, `user_fingerprint`, `domain_userid`, `domain_sessionidx`, `network_userid`, `geo_country`, `geo_region`, `geo_city`, `geo_zipcode`, `geo_latitude`, `geo_longitude`, `geo_region_name`, `page_url`, `page_title`, `page_referrer`, `page_urlscheme`, `page_urlhost`, `page_urlport`, `page_urlpath`, `page_urlquery`, `page_urlfragment`, `refr_urlscheme`, `refr_urlhost`, `refr_urlport`, `refr_urlpath`, `refr_urlquery`, `refr_urlfragment`, `refr_medium`, `refr_source`, `refr_term`, `mkt_medium`, `mkt_source`, `mkt_term`, `mkt_content`, `mkt_campaign`, `contexts`, `se_category`, `se_action`, `se_label`, `se_property`, `se_value`, `unstruct_event`, `tr_orderid`, `tr_affiliation`, `tr_total`, `tr_tax`, `tr_shipping`, `tr_city`, `tr_state`, `tr_country`, `ti_orderid`, `ti_sku`, `ti_name`, `ti_category`, `ti_price`, `ti_quantity`, `pp_xoffset_min`, `pp_xoffset_max`, `pp_yoffset_min`, `pp_yoffset_max`, `useragent`, `br_name`, `br_family`, `br_version`, `br_type`, `br_renderengine`, `br_lang`, `br_features_pdf`, `br_features_flash`, `br_features_java`, `br_features_director`, `br_features_quicktime`, `br_features_realplayer`, `br_features_windowsmedia`, `br_features_gears`, `br_features_silverlight`, `br_cookies`, `br_colordepth`, `br_viewwidth`, `br_viewheight`, `os_name`, `os_family`, `os_manufacturer`, `os_timezone`, `dvce_type`, `dvce_ismobile`, `dvce_screenwidth`, `dvce_screenheight`, `doc_charset`, `doc_width`, `doc_height`, `geo_timezone`, `mkt_clickid`, `mkt_network`, `etl_tags`, `dvce_sent_tstamp`, `domain_sessionid`) VALUES
+('21', 'web', NULL, 1602763085, 1602763085428, 'pv', '255ecb69-6092-43f4-a153-6d61a11881dc', NULL, 't21', 'js-2.6.1', '1.0', NULL, NULL, '81.2.69.160', '717864167', '3e344035-996b-4173-9d6c-ac8319d85f4b', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost/app/app/form?id=21&b=0', 'Contoh Form Absen', 'http://localhost/app/form/share?id=21', 'http', 'localhost', NULL, '/app/app/form', 'id=21&b=0', NULL, 'http', 'localhost', NULL, '/app/form/share', 'id=21', NULL, 'internal', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36', 'Chrome', 'Chrome', '86.0', 'browser', 'Blink', 'en-US', 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, '24', 1170, 626, 'Windows', 'Windows', '', 'Asia/Jakarta', 'desktop', 0, 1366, 768, 'UTF-8', 1170, 626, NULL, NULL, NULL, NULL, 1602763085435, 'b62d543a-d84b-44bd-a3b9-419ac1ea1e6c'),
+('21', 'web', NULL, 1602763090, 1602763090446, 'se', 'd451043d-0ceb-4e77-8198-eb49ad490d1d', NULL, 't21', 'js-2.6.1', '1.0', NULL, NULL, '81.2.69.160', '717864167', '3e344035-996b-4173-9d6c-ac8319d85f4b', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost/app/app/form?id=21&b=0', NULL, 'http://localhost/app/form/share?id=21', 'http', 'localhost', NULL, '/app/app/form', 'id=21&b=0', NULL, 'http', 'localhost', NULL, '/app/form/share', 'id=21', NULL, 'internal', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'form', 'fill', 'start', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36', 'Chrome', 'Chrome', '86.0', 'browser', 'Blink', 'en-US', 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, '24', 1170, 626, 'Windows', 'Windows', '', 'Asia/Jakarta', 'desktop', 0, 1366, 768, 'UTF-8', 1170, 626, NULL, NULL, NULL, NULL, 1602763090452, 'b62d543a-d84b-44bd-a3b9-419ac1ea1e6c'),
+('21', 'web', NULL, 1602763147, 1602763147436, 'pv', '00b23f1b-0434-4550-b92d-569a26a85797', NULL, 't21', 'js-2.6.1', '1.0', NULL, NULL, '81.2.69.160', '717864167', '3e344035-996b-4173-9d6c-ac8319d85f4b', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost/app/app/form?id=21&b=0', 'Contoh Form Absen', 'http://localhost/app/form/share?id=21', 'http', 'localhost', NULL, '/app/app/form', 'id=21&b=0', NULL, 'http', 'localhost', NULL, '/app/form/share', 'id=21', NULL, 'internal', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36', 'Chrome', 'Chrome', '86.0', 'browser', 'Blink', 'en-US', 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, '24', 1170, 726, 'Windows', 'Windows', '', 'Asia/Jakarta', 'desktop', 0, 1366, 768, 'UTF-8', 1170, 726, NULL, NULL, NULL, NULL, 1602763147442, 'b62d543a-d84b-44bd-a3b9-419ac1ea1e6c'),
+('21', 'web', NULL, 1602763163, 1602763162937, 'se', '42c7a10d-166e-41a1-8ef8-491a1c1d6ba1', NULL, 't21', 'js-2.6.1', '1.0', NULL, NULL, '81.2.69.160', '717864167', '3e344035-996b-4173-9d6c-ac8319d85f4b', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost/app/app/form?id=21&b=0', NULL, 'http://localhost/app/form/share?id=21', 'http', 'localhost', NULL, '/app/app/form', 'id=21&b=0', NULL, 'http', 'localhost', NULL, '/app/form/share', 'id=21', NULL, 'internal', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'form', 'fill', 'start', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36', 'Chrome', 'Chrome', '86.0', 'browser', 'Blink', 'en-US', 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, '24', 1170, 726, 'Windows', 'Windows', '', 'Asia/Jakarta', 'desktop', 0, 1366, 768, 'UTF-8', 1170, 726, NULL, NULL, NULL, NULL, 1602763162940, 'b62d543a-d84b-44bd-a3b9-419ac1ea1e6c'),
+('21', 'web', NULL, 1602763191, 1602763191552, 'se', 'ddc8806c-8372-42d7-b66d-6b573ed93c54', NULL, 't21', 'js-2.6.1', '1.0', NULL, NULL, '81.2.69.160', '717864167', '3e344035-996b-4173-9d6c-ac8319d85f4b', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://localhost/app/app/form?id=21&b=0', NULL, 'http://localhost/app/form/share?id=21', 'http', 'localhost', NULL, '/app/app/form', 'id=21&b=0', NULL, 'http', 'localhost', NULL, '/app/form/share', 'id=21', NULL, 'internal', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'form', 'submit', '19', 'time', 28617, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36', 'Chrome', 'Chrome', '86.0', 'browser', 'Blink', 'en-US', 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, '24', 1170, 726, 'Windows', 'Windows', '', 'Asia/Jakarta', 'desktop', 0, 1366, 768, 'UTF-8', 1170, 726, NULL, NULL, NULL, NULL, 1602763191557, 'b62d543a-d84b-44bd-a3b9-419ac1ea1e6c');
+
 -- --------------------------------------------------------
 
 --
@@ -237,6 +248,13 @@ CREATE TABLE `form` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `form`
+--
+
+INSERT INTO `form` (`id`, `name`, `slug`, `status`, `use_password`, `password`, `authorized_urls`, `urls`, `schedule`, `schedule_start_date`, `schedule_end_date`, `total_limit`, `total_limit_number`, `total_limit_period`, `ip_limit`, `ip_limit_number`, `ip_limit_period`, `submission_number`, `submission_number_prefix`, `submission_number_suffix`, `submission_number_width`, `save`, `resume`, `autocomplete`, `novalidate`, `analytics`, `honeypot`, `recaptcha`, `language`, `message`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(21, 'Contoh Form Absen', 'contoh-form-absen', 1, 0, NULL, 0, '', 0, NULL, NULL, 0, NULL, '', 0, NULL, '', 1, '', '', NULL, 1, 0, 1, 0, 1, 1, 0, 'id-ID', '', 1, 1, 1602761536, 1602762470);
 
 -- --------------------------------------------------------
 
@@ -283,6 +301,13 @@ CREATE TABLE `form_confirmation` (
   `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 
+--
+-- Dumping data for table `form_confirmation`
+--
+
+INSERT INTO `form_confirmation` (`id`, `form_id`, `type`, `message`, `url`, `send_email`, `mail_to`, `mail_from`, `mail_subject`, `mail_message`, `mail_from_name`, `mail_receipt_copy`, `created_at`, `updated_at`) VALUES
+(21, 21, 0, '', '', 0, NULL, '', '', '', '', 0, 1602761537, 1602763139);
+
 -- --------------------------------------------------------
 
 --
@@ -299,6 +324,13 @@ CREATE TABLE `form_data` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `form_data`
+--
+
+INSERT INTO `form_data` (`id`, `form_id`, `builder`, `fields`, `html`, `height`, `created_at`, `updated_at`) VALUES
+(21, 21, '{\"settings\":{\"name\":\"Contoh Form Absen\",\"canvas\":\"#canvas\",\"disabledFieldset\":false,\"layoutSelected\":\"\",\"layouts\":[{\"id\":\"\",\"name\":\"Vertical\"},{\"id\":\"form-horizontal\",\"name\":\"Horizontal\"},{\"id\":\"form-inline\",\"name\":\"Inline\"}],\"formSteps\":{\"title\":\"formSteps.title\",\"fields\":{\"id\":{\"label\":\"formSteps.id\",\"type\":\"input\",\"value\":\"formSteps\",\"name\":\"id\"},\"steps\":{\"label\":\"formSteps.steps\",\"type\":\"textarea-split\",\"value\":[],\"name\":\"steps\"},\"progressBar\":{\"label\":\"formSteps.progressBar\",\"type\":\"checkbox\",\"value\":false,\"name\":\"progressBar\"},\"noTitles\":{\"label\":\"formSteps.noTitles\",\"type\":\"checkbox\",\"value\":false,\"name\":\"noTitles\"},\"noStages\":{\"label\":\"formSteps.noStages\",\"type\":\"checkbox\",\"value\":false,\"name\":\"noStages\"},\"noSteps\":{\"label\":\"formSteps.noSteps\",\"type\":\"checkbox\",\"value\":false,\"name\":\"noSteps\"}}}},\"initForm\":[{\"name\":\"heading\",\"title\":\"heading.title\",\"fields\":{\"id\":{\"label\":\"component.id\",\"type\":\"input\",\"value\":\"heading_0\",\"name\":\"id\"},\"text\":{\"label\":\"component.text\",\"type\":\"input\",\"value\":\"Contoh Form Absen\",\"name\":\"text\"},\"type\":{\"label\":\"component.type\",\"type\":\"select\",\"value\":[{\"value\":\"h1\",\"selected\":false,\"label\":\"H1\"},{\"value\":\"h2\",\"selected\":false,\"label\":\"H2\"},{\"value\":\"h3\",\"selected\":true,\"label\":\"H3\"},{\"value\":\"h4\",\"selected\":false,\"label\":\"H4\"},{\"value\":\"h5\",\"selected\":false,\"label\":\"H5\"},{\"value\":\"h6\",\"selected\":false,\"label\":\"H6\"}],\"name\":\"type\"},\"cssClass\":{\"label\":\"component.cssClass\",\"type\":\"input\",\"value\":\"legend\",\"advanced\":true,\"name\":\"cssClass\"},\"containerClass\":{\"label\":\"component.containerClass\",\"type\":\"input\",\"value\":\"\",\"advanced\":true,\"name\":\"containerClass\"}},\"fresh\":false},{\"name\":\"paragraph\",\"title\":\"paragraph.title\",\"fields\":{\"id\":{\"label\":\"component.id\",\"type\":\"input\",\"value\":\"paragraph_0\",\"name\":\"id\"},\"text\":{\"label\":\"component.text\",\"type\":\"textarea\",\"value\":\"Contoh Sub-header \",\"name\":\"text\"},\"cssClass\":{\"label\":\"component.cssClass\",\"type\":\"input\",\"value\":\"\",\"advanced\":true,\"name\":\"cssClass\"},\"containerClass\":{\"label\":\"component.containerClass\",\"type\":\"input\",\"value\":\"\",\"advanced\":true,\"name\":\"containerClass\"}},\"fresh\":false},{\"name\":\"text\",\"title\":\"text.title\",\"fields\":{\"id\":{\"label\":\"component.id\",\"type\":\"input\",\"value\":\"text_557941\",\"name\":\"id\"},\"inputType\":{\"label\":\"component.inputType\",\"type\":\"select\",\"value\":[{\"value\":\"text\",\"selected\":true,\"label\":\"Text\"},{\"value\":\"tel\",\"selected\":false,\"label\":\"Tel\"},{\"value\":\"url\",\"selected\":false,\"label\":\"URL\"},{\"value\":\"color\",\"selected\":false,\"label\":\"Color\"},{\"value\":\"password\",\"selected\":false,\"label\":\"Password\"}],\"name\":\"inputType\"},\"label\":{\"label\":\"component.label\",\"type\":\"input\",\"value\":\"\",\"name\":\"label\"},\"placeholder\":{\"label\":\"component.placeholder\",\"type\":\"input\",\"value\":\"Nama Peserta\",\"name\":\"placeholder\"},\"required\":{\"label\":\"component.required\",\"type\":\"checkbox\",\"value\":true,\"name\":\"required\"},\"predefinedValue\":{\"label\":\"component.predefinedValue\",\"type\":\"input\",\"value\":\"\",\"advanced\":true,\"name\":\"predefinedValue\"},\"helpText\":{\"label\":\"component.helpText\",\"type\":\"textarea\",\"value\":\"\",\"advanced\":true,\"name\":\"helpText\"},\"pattern\":{\"label\":\"component.pattern\",\"type\":\"input\",\"value\":\"\",\"advanced\":true,\"name\":\"pattern\"},\"cssClass\":{\"label\":\"component.cssClass\",\"type\":\"input\",\"value\":\"form-control\",\"advanced\":true,\"name\":\"cssClass\"},\"labelClass\":{\"label\":\"component.labelClass\",\"type\":\"input\",\"value\":\"control-label\",\"advanced\":true,\"name\":\"labelClass\"},\"containerClass\":{\"label\":\"component.containerClass\",\"type\":\"input\",\"value\":\"col-xs-12\",\"advanced\":true,\"name\":\"containerClass\"},\"alias\":{\"label\":\"component.alias\",\"type\":\"input\",\"value\":\"\",\"advanced\":true,\"name\":\"alias\"},\"unique\":{\"label\":\"component.unique\",\"type\":\"checkbox\",\"value\":false,\"advanced\":true,\"name\":\"unique\"},\"readOnly\":{\"label\":\"component.readOnly\",\"type\":\"checkbox\",\"value\":false,\"advanced\":true,\"name\":\"readOnly\"},\"disabled\":{\"label\":\"component.disabled\",\"type\":\"checkbox\",\"value\":false,\"advanced\":true,\"name\":\"disabled\"}},\"fresh\":false},{\"name\":\"signature\",\"title\":\"signature.title\",\"fields\":{\"id\":{\"label\":\"component.id\",\"type\":\"input\",\"value\":\"signature_427491\",\"name\":\"id\"},\"label\":{\"label\":\"component.label\",\"type\":\"input\",\"value\":\"Signature\",\"name\":\"label\"},\"required\":{\"label\":\"component.required\",\"type\":\"checkbox\",\"value\":true,\"name\":\"required\"},\"clear\":{\"label\":\"component.clear\",\"type\":\"checkbox\",\"value\":true,\"name\":\"clear\"},\"undo\":{\"label\":\"component.undo\",\"type\":\"checkbox\",\"value\":false,\"name\":\"undo\"},\"helpText\":{\"label\":\"component.helpText\",\"type\":\"textarea\",\"value\":\"\",\"advanced\":true,\"name\":\"helpText\"},\"width\":{\"label\":\"component.width\",\"type\":\"input\",\"value\":\"400\",\"advanced\":true,\"name\":\"width\"},\"height\":{\"label\":\"component.height\",\"type\":\"input\",\"value\":\"200\",\"advanced\":true,\"name\":\"height\"},\"color\":{\"label\":\"component.color\",\"type\":\"input\",\"value\":\"black\",\"advanced\":true,\"name\":\"color\"},\"clearText\":{\"label\":\"component.clearText\",\"type\":\"input\",\"value\":\"Clear\",\"advanced\":true,\"name\":\"clearText\"},\"undoText\":{\"label\":\"component.undoText\",\"type\":\"input\",\"value\":\"Undo\",\"advanced\":true,\"name\":\"undoText\"},\"cssClass\":{\"label\":\"component.cssClass\",\"type\":\"input\",\"value\":\"\",\"advanced\":true,\"name\":\"cssClass\"},\"labelClass\":{\"label\":\"component.labelClass\",\"type\":\"input\",\"value\":\"control-label\",\"advanced\":true,\"name\":\"labelClass\"},\"containerClass\":{\"label\":\"component.containerClass\",\"type\":\"input\",\"value\":\"col-xs-12\",\"advanced\":true,\"name\":\"containerClass\"}},\"fresh\":false},{\"name\":\"button\",\"title\":\"button.title\",\"fields\":{\"id\":{\"label\":\"component.id\",\"type\":\"input\",\"value\":\"button_419174\",\"name\":\"id\"},\"inputType\":{\"label\":\"component.type\",\"type\":\"select\",\"value\":[{\"value\":\"submit\",\"label\":\"Submit\",\"selected\":true},{\"value\":\"reset\",\"label\":\"Reset\",\"selected\":false},{\"value\":\"image\",\"label\":\"Image\",\"selected\":false},{\"value\":\"button\",\"label\":\"Button\",\"selected\":false}],\"name\":\"inputType\"},\"buttonText\":{\"label\":\"component.buttonText\",\"type\":\"input\",\"value\":\"Submit\",\"name\":\"buttonText\"},\"label\":{\"label\":\"component.label\",\"type\":\"input\",\"value\":\"\",\"advanced\":true,\"name\":\"label\"},\"src\":{\"label\":\"component.src\",\"type\":\"input\",\"value\":\"\",\"advanced\":true,\"name\":\"src\"},\"cssClass\":{\"label\":\"component.cssClass\",\"type\":\"input\",\"value\":\"btn btn-primary\",\"advanced\":true,\"name\":\"cssClass\"},\"labelClass\":{\"label\":\"component.labelClass\",\"type\":\"input\",\"value\":\"control-label\",\"advanced\":true,\"name\":\"labelClass\"},\"containerClass\":{\"label\":\"component.containerClass\",\"type\":\"input\",\"value\":\"col-xs-12\",\"advanced\":true,\"name\":\"containerClass\"},\"readOnly\":{\"label\":\"component.readOnly\",\"type\":\"checkbox\",\"value\":false,\"advanced\":true,\"name\":\"readOnly\"},\"disabled\":{\"label\":\"component.disabled\",\"type\":\"checkbox\",\"value\":false,\"advanced\":true,\"name\":\"disabled\"}},\"fresh\":false}],\"height\":451}', '[{\"tagName\":\"input\",\"type\":\"text\",\"name\":\"text_557941\",\"id\":\"text_557941\",\"value\":\"\",\"class\":\"form-control\",\"lineNumber\":17,\"placeholder\":\"Nama Peserta\",\"required\":true,\"alias\":\"\"},{\"tagName\":\"input\",\"type\":\"hidden\",\"name\":\"hidden_signature_427491\",\"id\":\"hidden_signature_427491\",\"value\":\"\",\"lineNumber\":31,\"required\":true,\"data-label\":\"Signature\"},{\"tagName\":\"button\",\"type\":\"submit\",\"name\":\"button_419174\",\"id\":\"button_419174\",\"class\":\"btn btn-primary\",\"lineNumber\":35,\"value\":\"Submit\"}]', '&lt;form id=&quot;form-app&quot;&gt;\r\n&lt;fieldset class=&quot;row&quot;&gt;\r\n\r\n&lt;!-- Heading --&gt;\n&lt;div class=&quot;col-xs-12&quot;&gt;\n    &lt;h3 class=&quot;legend&quot;&gt;Contoh Form Absen&lt;/h3&gt;\n&lt;/div&gt;\n\n&lt;!-- Paragraph Text --&gt;\n&lt;div class=&quot;col-xs-12&quot;&gt;\n    &lt;p&gt;Contoh Sub-header &lt;/p&gt;\n&lt;/div&gt;\n\n&lt;!-- Text --&gt;\n&lt;div class=&quot;form-group required-control col-xs-12&quot;&gt;\n    \n    &lt;input type=&quot;text&quot; id=&quot;text_557941&quot; name=&quot;text_557941&quot; value=&quot;&quot; data-alias=&quot;&quot; placeholder=&quot;Nama Peserta&quot; class=&quot;form-control&quot; required=&quot;&quot;&gt;\n&lt;/div&gt;\n\n&lt;!-- Signature --&gt;\n&lt;div class=&quot;form-group required-control col-xs-12&quot;&gt;\n    &lt;label class=&quot;control-label&quot; for=&quot;signature_427491&quot;&gt;Signature&lt;/label&gt;\n    &lt;div class=&quot;signature-pad&quot;&gt;\n        &lt;canvas id=&quot;signature_427491&quot; width=&quot;400&quot; height=&quot;200&quot; data-color=&quot;black&quot;&gt;&lt;/canvas&gt;\n    &lt;/div&gt;\n    \n    &lt;div class=&quot;signature-pad-actions&quot;&gt;\n        &lt;button type=&quot;button&quot; id=&quot;clear_signature_427491&quot; name=&quot;clear_signature_427491&quot; class=&quot;btn btn-sm btn-default btn-clear&quot; data-exclude=&quot;true&quot;&gt;Clear&lt;/button&gt;\n        \n    &lt;/div&gt;\n    &lt;input type=&quot;hidden&quot; name=&quot;hidden_signature_427491&quot; id=&quot;hidden_signature_427491&quot; value=&quot;&quot; data-label=&quot;Signature&quot; required=&quot;&quot;&gt;\n&lt;/div&gt;\n &lt;!-- Button --&gt;\n&lt;div class=&quot;form-action col-xs-12&quot;&gt;\n    &lt;button type=&quot;submit&quot; id=&quot;button_419174&quot; name=&quot;button_419174&quot; class=&quot;btn btn-primary&quot;&gt;Submit&lt;/button&gt;\n&lt;/div&gt;\n\r\n&lt;/fieldset&gt;\r\n&lt;/form&gt;', 451, 1602761537, 1602763138);
 
 -- --------------------------------------------------------
 
@@ -321,6 +353,13 @@ CREATE TABLE `form_email` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `form_email`
+--
+
+INSERT INTO `form_email` (`id`, `form_id`, `to`, `from`, `cc`, `bcc`, `subject`, `type`, `message`, `plain_text`, `attach`, `created_at`, `updated_at`) VALUES
+(21, 21, '', 'admin@erapat.com', '', '', '', 0, '', 0, 1, 1602761537, 1602762470);
 
 -- --------------------------------------------------------
 
@@ -361,6 +400,13 @@ CREATE TABLE `form_submission` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `form_submission`
+--
+
+INSERT INTO `form_submission` (`id`, `form_id`, `number`, `status`, `new`, `important`, `sender`, `data`, `ip`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(19, 21, '1', 1, 0, 0, '{\"country\":\"\",\"city\":\"\",\"latitude\":\"\",\"longitude\":\"\",\"user_agent\":\"Mozilla\\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome\\/86.0.4240.75 Safari\\/537.36\"}', '{\"text_557941\":\"Ivandi\",\"hidden_signature_427491\":\"{\\\"data\\\":[{\\\"color\\\":\\\"black\\\",\\\"points\\\":[{\\\"time\\\":1602763161834,\\\"x\\\":178,\\\"y\\\":19},{\\\"time\\\":1602763161895,\\\"x\\\":171,\\\"y\\\":22},{\\\"time\\\":1602763161912,\\\"x\\\":156,\\\"y\\\":33},{\\\"time\\\":1602763161929,\\\"x\\\":144,\\\"y\\\":45},{\\\"time\\\":1602763161946,\\\"x\\\":133,\\\"y\\\":61},{\\\"time\\\":1602763161962,\\\"x\\\":129,\\\"y\\\":70},{\\\"time\\\":1602763161979,\\\"x\\\":127,\\\"y\\\":78},{\\\"time\\\":1602763161995,\\\"x\\\":126,\\\"y\\\":87},{\\\"time\\\":1602763162012,\\\"x\\\":126,\\\"y\\\":93},{\\\"time\\\":1602763162045,\\\"x\\\":131,\\\"y\\\":100},{\\\"time\\\":1602763162062,\\\"x\\\":153,\\\"y\\\":96},{\\\"time\\\":1602763162079,\\\"x\\\":207,\\\"y\\\":68},{\\\"time\\\":1602763162095,\\\"x\\\":240,\\\"y\\\":44},{\\\"time\\\":1602763162113,\\\"x\\\":255,\\\"y\\\":32},{\\\"time\\\":1602763162174,\\\"x\\\":247,\\\"y\\\":37},{\\\"time\\\":1602763162191,\\\"x\\\":238,\\\"y\\\":45},{\\\"time\\\":1602763162207,\\\"x\\\":220,\\\"y\\\":66},{\\\"time\\\":1602763162224,\\\"x\\\":206,\\\"y\\\":89},{\\\"time\\\":1602763162256,\\\"x\\\":206,\\\"y\\\":96},{\\\"time\\\":1602763162290,\\\"x\\\":217,\\\"y\\\":96},{\\\"time\\\":1602763162307,\\\"x\\\":228,\\\"y\\\":89},{\\\"time\\\":1602763162323,\\\"x\\\":238,\\\"y\\\":84},{\\\"time\\\":1602763162390,\\\"x\\\":237,\\\"y\\\":98},{\\\"time\\\":1602763162406,\\\"x\\\":232,\\\"y\\\":106},{\\\"time\\\":1602763162423,\\\"x\\\":231,\\\"y\\\":111},{\\\"time\\\":1602763162445,\\\"x\\\":244,\\\"y\\\":105},{\\\"time\\\":1602763162462,\\\"x\\\":264,\\\"y\\\":98},{\\\"time\\\":1602763162479,\\\"x\\\":274,\\\"y\\\":97},{\\\"time\\\":1602763162545,\\\"x\\\":267,\\\"y\\\":107},{\\\"time\\\":1602763162597,\\\"x\\\":263,\\\"y\\\":114},{\\\"time\\\":1602763162612,\\\"x\\\":268,\\\"y\\\":117},{\\\"time\\\":1602763162629,\\\"x\\\":281,\\\"y\\\":121},{\\\"time\\\":1602763162645,\\\"x\\\":294,\\\"y\\\":122},{\\\"time\\\":1602763162662,\\\"x\\\":299,\\\"y\\\":124},{\\\"time\\\":1602763162746,\\\"x\\\":305,\\\"y\\\":129},{\\\"time\\\":1602763162778,\\\"x\\\":327,\\\"y\\\":132},{\\\"time\\\":1602763162795,\\\"x\\\":359,\\\"y\\\":132},{\\\"time\\\":1602763162812,\\\"x\\\":378,\\\"y\\\":130},{\\\"time\\\":1602763162862,\\\"x\\\":370,\\\"y\\\":126},{\\\"time\\\":1602763162878,\\\"x\\\":340,\\\"y\\\":122},{\\\"time\\\":1602763162927,\\\"x\\\":345,\\\"y\\\":112}]}],\\\"dataURL\\\":\\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAADICAYAAADGFbfiAAAYCUlEQVR4Xu2da8h1RRmGbykqEjTtpGlY/akosyItxLIDhWFkhR0s00ypUEsTwQpLjQ5CP+xEdKAs0IwsrCQjK7TQJM3MytR+aCVoIWlRRHbQuGmNDetbe++1Z8+svdaaa+BDv/ddc3iuZ3373jPPzDM7iQIBCEAAAhBIILBTQh2qQAACEIAABISA8BJAAAIQgEASAQQkCRuVIAABCEAAAeEdgAAEIACBJAIISBI2KkEAAhCAAALCOwABCEAAAkkEEJAkbFSCAAQgAAEEhHcAAhCAAASSCCAgSdioBAEIQAACCAjvAAQgAAEIJBFAQJKwUQkCEIAABBAQ3gEIQAACEEgigIAkYaMSBCAAAQggILwDEIAABCCQRAABScJGJQhAAAIQQEB4ByAAAQhAIIkAApKEjUojI3ByM56PjmxcDAcCsyaAgMzavbM17rGSniPpeEnPj6x8o6TzZms1hkFgZAQQkJE5hOEsJPA4SUdI2lPSkZJ263jyrZI+C0MIQGAYAgjIMJzpJZ3A0yWd05pptFv7vqQLEY90yNSEQAoBBCSFGnWGIPAwSWdICvGNrj7PknTmEIOhDwhAYEcCCAhvxRgJOK5xriQvW3WV30g6vZl1jHH8jAkCVRBAQKpw82SM7DPruEHSiZIun4xVDBQCMyWAgMzUsRM0y7GOi5bMOmzSMZK+OEHbGDIEZkkAAZmlWydn1JuaQLlnIF3lm00s5LeTs4wBQ2DGBBCQGTt3IqY5CO5geVf5SyMczDom4kyGWRcBBKQuf4/NWgvD0UtmHZ6Z/Hlsg2Y8EIDA/wggILwJ2yKwSDx+J8nCQZB8W56hXwj0JICA9ATFY1kJOGfVSR0tOtbBrCMrahqDQDkCCEg5trTcTaBLPBzrsHB8A2gQgMB0CCAg0/HVHEb6EUmntgz5WHOanFjHcB52Esp3SrpZ0suG65ae5kYAAZmbR8dpT9cBQWYdw/rKPvCy4SmSdmm6vlrSs4cdBr3NiQACMidvjtMWf3D5gGCcdv1iSUexw2owh5m9E1L6sGYol0l6FT4YzAez7AgBmaVbR2OUc1n5gyrOacVp8uHcY+4+Y+P4UlxOkPSp4YZBT3MlgIDM1bPbt8vfdi0e4XS5l6xewfbcQRxj5j5fc7akhzQ93ifpn5IOwQeD+KCKThCQKtw8uJEWCmfTDeJxffMt+OeDj6S+Di3cZh8vV5mC08C8UhI+qO+dKGYxAlIMbbUNe7nEH2ChWDy8Bs8uq/KvxKKcYl+XdBw+KO+A2npAQGrzeFl7LRRetgrFBwM9G6GUJ9B1sv+eZtcV8Y7y/KvsAQGp0u1FjG7HPJh5FMG8Q6NeJrRox0tWjnfcJelZzdLVMCOhl+oIICDVubyIwf4QuzWKeXypyaLLslUR3Pc32iUe90r6kaQXlO2a1iFAMkXegTwEHJjdr2nKM492ADdPL7TSJhBzD787UtL5oILAEASYgQxBed59xGvvLFsN4+uuw5neJv08Sb8YZgj0AgFmILwDmxF4v6T3Nk04DbsD5mwT3YzpqtoWD5/kPyh68EZJB7LLahU6fp+bADOQ3ETraa+94+oZiMcgzm/vtrqyJSaDDIJOIGACCAjvQQqBdtD8CElfSWmIOmsRaIvHVc3MY61GeBgCuQggILlI1tNOe/3dacF9xwelLIG2eHgZ6+Vlu6R1CCwngIDwhqxLIL4QioOC69JLe74tHhdIen1aU9SCQD4CCEg+ljW0dHKTFty2suNqGI8jHsNwppcEAghIArRKq/hsx3WN7d4y6iA6O67Kvgzt6399QLOdmr3sCGgdAksIICC8Hn0IOO5h8Qj3ejirK/eX9yGX/oxTsZ8WVUc80llSsxABBKQQ2Jk1a7E4rLHJd5h7KYtSjsD7JJ0VNf/D5owNqWHKMaflBAIISAK0yqrE6dlJU1Le+R+X9PaoG2JN5ZnTQyIBBCQRXCXV4vMejns4DuKLiSj5CZj1JyW9AfHID5cWyxBAQMpwnUur8dIV5z3KedUbEhzj2EvSA5pu2KhQjjctZyKAgGQCOcNm4lQlXoP33yn5CZwh6UxJf5T0aMQjP2BaLEcAASnHduote6lqH0n+JuzdVwRw83o03F3+eElfk3Rs1Lzv8rg8b3e0BoH8BBCQ/Ezn0GIcOGfpKq9HHes4qZl1eGZ3epNd1z93OUaSDw9SIDB6AgjI6F00+ADjwLlTtIezH4MPZIYdxrMOb4W2UMSXQnHWY4ZOn7NJCMicvZtmW3yAjRTtaQy7aoVYh/OHWTy8RBifNCfOlI81LQ1EAAEZCPREuvHs4+5mrJdIOnQi4x7zMD3ruEjSbk0aknCC35dv+ecunun5OeJMY/YkY9uBAALCSxETiBP3eenKH2yUNAJxrMNLU551BIHgfE0aU2qNjAACMjKHbHE4cbJEp9Hw1lJKGoEw6/C/L29IaO+o8t8Pbppmx1UaY2qNgAACMgInjGQI4UONbbubOeScZrbRnnWEVuOU+Oxw24w1tbdMAAHZsgNG0n18aJDZR5pT4lmH4xtdqe7jWR47rtI4U2tEBBCQETlji0MJsw+27aY5wec6vKNqmSg47nGjpD0keSeWl7YImqfxptZICCAgI3HEFofhYPmtTf/MPtZzhNmdK8nbnS0Iy+5ICVt2b5P0NMRjPdA8PU4CCMg4/TLkqOKzCE6rQbbdfvSPk/S5nrOJOO7B2Zp+fHlqAgQQkAk4qfAQb5e0Z3PHudfoKcsJmJED5ftLOrFH2pE47sFNjrxdsyKAgMzKnWsbEwfPCeoux+cYhoXDS1V9YxjxVcDc5Lj260mFsRNAQMbuobLj8/q9PxBdSOK3mHUIknuLc8hh1cczYXMCtwr2ocUzkyOAgEzOZVkHfHWzFHONpAOytjyPxjxDs8g6WN531hEsjzMaE1uax/uAFS0CCEi9r0S8fPUpSSfUi2IHy8PuKjPy1mbPOpbtsGo34LjHZZK8hMXMjhdrtgQQkNm6dqVhTlXiDLEuFg+LSO3FH/hmYsFwWXSafBWnsHTlWYsPFVIgMEsCCMgs3drLKJ/9CHd9PErSnb1qzfchf9B7ucoi4lnHotPkqwiELbukhFlFit9PngACMnkXJhmwu6Q/RTVrfg+8TOVZR7jzfZP8VPGhTLbsJr2aVJoSgZo/OKbkp9xjjeMfV0h6bu4OJtCeP+wtHGEXmi908uyhK4dVX3PC0hWXQ/UlxnOTJoCATNp9yYO/UNLhTW1/YPp0dC0l3NNhsfD/e6lpVRqSPmziC6LYddWHGM9MngACMnkXJhkQXxz1BUnHJrUyvUo+z+HNAxYOFx/u899zJDV0Cph9JJFPbHrvBSNOJICAJIKbeDXPOvZrbKjhQqOjG6EImwZ8sM8zkPZFT6luDWc+uJo2lSD1JkkAAZmk2zYe9H1RC3MWEMd6nH4k5Pha9yR5X9Bh9sGZj77EeG4WBBCQWbhxLSPinUKuOMd3oL2zynamnulYBTeefYQZzqo6/B4CsyAwxw+PWTimoBHxDqy5XSDVJRw+zOflqlJp6rcx+/BW41ua9CoFXxWahsByAghIfW9IvFtoLttND2tEIpzlsFdtmwPkueIcXW/KELMP+8v2hdmN08jv3AyGsyb1/fsdlcUIyKjcMchg4hQmUxcQB8c9u4jvMckdIF/mlJKzjzgf16IxsONrkH8ydLKIAAJS37sRb+H9rqRDJobAW3D9jdxCGMccLBz+2TpJDzcxPSwFllgGjLMALxsjubY28SB1NyaAgGyMcHINfFnSEc2op/QBFBIdetkonOMIS1W+lnco4QgOD7OP3MtI8RJj6MszjbAU5y3Ydze/qO0Q6OT+sc19wAjI3D28o33xKfT3SPrwyBF4ecoHAEPKkTDcIWIci9CE2EfOJcBwQt6zqFC87dizkXZ6lSBefo5T7yN/gec8PARkzt7ttm0qZ0C6AuO2yNtxPePYJGfVpl6/TdLeGe/6sHhcLOmgaGDLLrCy/RZVF86ebOpN6icTQECS0U22YiwgY/R/+9S4QfubuJeo/O281Hbcvg59vaTzJd0g6al9Ky15zuJxUZQN2I+uSrESb4TgrvUMTqCJNAJj/ABJs4RafQmMcQbiYHjYURXHNxygdtDf37hz5Kvqy2jZcx+S9G5JOWIf3kHmjMCxzd+T9JIVA0VAcniSNjYmgIBsjHByDdwlabdm1J+R9LYtWrAsvrGNwPgqFI+U9LNm+eoJknwpV0pxDMVLUPH2Y7fTd1ODZ2Ne4nPZ5P6SlLFTBwL3E0BA6nsZbpL0xMbsmyU9aQsIlsU3POMoefhvE3PD1l2PzznE1intNPLtuo7ttDcKdLXvdsIuLP9+zrnM1uHLs1sggIBsAfqWu/yBpBc2Y/A3aH+THqIsOr/h+EZYptp2fGMVh1dL+mrz0IGSrlpVoVme8mwj3D/SrmL7vSTlGVefEnaAhWf5N9yHGs8UIcDLVwTrqBsNd3aHQXo5q2R8YdE3b8c3/KFp8SjZf25nxDGkVVtovbz05gXB9tT4Trx8lXMbcW5OtFcBAQSkAie3TPS6+3XRz3IEg9sUw2zD39gPbf3SH3pjjG/0fROulfTM6GFvJ7YIhm3F3hDgw4Be7oqD46GKhcMzDtdZt7SXr4ZMZeK+D45ss51eyvOf3SX9RJIPqVIqIoCAVOTsyFR/49+1+bs/+PxNOUfcIST+61rL9xr/mOMbfd+E9hJS33p+btOA99mSTos6LB3/CF8ELIZ94jMlvoysw5dnByaAgAwMfCTdxfmwwpAsID6Utk4cIv6AsXi0v3F7ff+SZturv3nPodhG2xpmGUGIF9n2N0nXSDplw8OP7tdnTx7TdPQvSQ8qANRi4U0OL5K0b0f7zjkWvmwcLmmv6BkEpIBDxtwkAjJm75QbW/tSqdDTvyVd0dFtiFH4vyGBof+76AIlC4eXqcZ0fqMUzVhMfCe6l+gswmF5Zx1BXjbG+PS5n7uydXI91T4vaVowLBxxOvy4PW8vduzFNsX2xF9EiMekemDC9RCQCTtvw6H7w8Jr8V7XzlVSA8O5+p9rO12Cn7p8FWaNy+I05mjRuFTStyUtmj2GpVB/YfAYp7QZYq7vyqB2ISCD4h5lZ+1dWSmDDN9QUwLDKf3VVqc9+1g3lhKLhoVjUQl+9GxjlRjEsaC+ByBr89vs7UVAZu/iXga+rgnw7inpXkleillW/I3UwXd/0PT5sOk1CB5aSCDOvrvO/SOeFThVSld8KnS2jmiEOm7XO/lCzIuEjpW+vAhIpY7H7MkQaO/66rN113WcW2xRTMOB8LCVetVMow3KonFZlIaF5avJvEr5B4qA5GdKixDIRaD9Td/tLjq8GA5sWjy6NjfkOPHvPjzziNvvI2i5eNDOyAggICNzCMOBQEPAswcfzPOyYiiL8mV5ierzzYG+NkDvjnJsatP4lEXDM49YPIh9VP66IiCVvwCYP1oC72rdFullJ4tKvOTkLbjnLFiqynnxlvu1AMWxsa7xjBYmAytDAAEpw5VWIbApgTjnlpNeOn1KEA9/oDvG0XU6/AJJx/fYRbXO+DzziOMpDuRbvNaNn6zTJ89OgAACMgEnMcTqCLxFku9qcXHGX19i9fAeOba8lJX7qt9fSXpK5IFfS3pDgX6qc/IcDEZA5uBFbJgTgQdL+nGUsNH3t6y6s8WB7BKn/p263gkxQ/Fy2bcy5U2bk8+qtQUBqdb1GD5SAuHSqj7Dc5yj1D3x8SzIY/FZFO8Ao0DgfgIICC8DBMZH4A5Je3QMy1txnY9qiAOc7bjHayRdOD5UjGibBBCQbdKnbwh0E7ha0v7Rr7Zxh0ocxE+5whffVkAAAanAyZg4OQLe4eQcZS7buEPFKfhfGlH7hKR3TI4iAy5OAAEpjpgOIDA5AvGFYx78ByWdPjkrGHBxAghIccR0AIHJEbhN0t7RqH8v6ajmrpPJGcOAyxFAQMqxpWUITJWAd3Y5i2+73NPkwvq0JO8Ao1ROAAGp/AXAfAgsILBIRMLjXuby2RMLSa5bF3HGxAggIBNzGMOFwIAELCKnStp5RZ9hW7GTK5LeZEAHbbsrBGTbHqB/CIybgLPvOufWk5utxasOE4a74C0mudOqjJtUhaNDQCp0OiZDYAMCFhTPTJx3a9cV7fjg4y8lOZ/WH5qlLs9Q/McJGVn62sARY6iKgIzBC4wBAtMj4MulLCL+c1ji8C0knqX4TxAWi4pF6nZJ10q6JbFtqg1AAAEZADJdQKACAs7h5T8+BOk/8d0hm5jvbMSXNrOeTdoZom64dCv0FWZYsVB65jWbpT0EZIjXij4gUB8Bz1D2lXSopH9E5vvnFhh/2K4jMl4O+6mkD4w4G7Bt8t0tq4oFJd54sOr50f4eARmtaxgYBKogEC6qClflWmCcSPKuJp1KfJGVgTihoxM7jrnYFv8JszH/d78FAw5i4s0Hznk2qbgQAjLm15CxQQACJnCnpEdEKHz/iQP5UyoWRouhY0a+TXJZsZiEZa/4uRAniu+l9+/dtou5DLqNGgGZ0ivIWCFQJwF/8J4naa/IfM9EzpX0nQki8Qe+t0Y7YeY6y3h9TLX4OAHnIGdyEJA+LuEZCEBg2wR8M6JvSGyXqaea9/KWxcQzk9xiYiFxpgAzKlIQkCJYaRQCEChAYFl6FQelvbvJH5bXD72Uk8nWsMEgxH0sLmF5alEXYVnrgOawZ9dzxzSzkkzD/H8zCEh2pDQIAQgUJOBv6r6rxFfuLitBTEJwetDYQEH7VzUdb6cO53NsuzMIZGeAgKxyB7+HAATGSGBVssf2mL27KRxaDEs63vU0x+Ig+8GSXizptZIeKOmvknbJbSwCkpso7UEAAkMRcBDaQrIqpcqq8bR3PPkU/O6Sbmp9a/dzFqL2N3mfUdnm4UDPOhw/8ZKXZ2jtXVq2/+89kmKu4rTD7xGQtZFRAQIQGBkBf2D6gzOcu1h05mJbww6CY/FxTMN/D7GN8P/h57bFP3tocwDz3h5xkC67PLvyTCvMuoqcL0FAtvVK0S8EIFCKQDhzEVKreDlnauU/zazBAhJmWJ7phOKfxQkpLTohE/JgsyEEZGqvFeOFAARSCIT0Kf6vSzgt3m7LH8R3NEFnL2GFZ9u7odZNxRL6iXeIeVbQzpfl54ptu00Bt6wOApKbKO1BAAIQqIQAAlKJozETAhCAQG4CCEhuorQHAQhAoBICCEgljsZMCEAAArkJICC5idIeBCAAgUoIICCVOBozIQABCOQmgIDkJkp7EIAABCohgIBU4mjMhAAEIJCbAAKSmyjtQQACEKiEAAJSiaMxEwIQgEBuAghIbqK0BwEIQKASAghIJY7GTAhAAAK5CSAguYnSHgQgAIFKCCAglTgaMyEAAQjkJoCA5CZKexCAAAQqIYCAVOJozIQABCCQmwACkpso7UEAAhCohAACUomjMRMCEIBAbgIISG6itAcBCECgEgIISCWOxkwIQAACuQkgILmJ0h4EIACBSgggIJU4GjMhAAEI5CaAgOQmSnsQgAAEKiGAgFTiaMyEAAQgkJsAApKbKO1BAAIQqIQAAlKJozETAhCAQG4CCEhuorQHAQhAoBICCEgljsZMCEAAArkJICC5idIeBCAAgUoIICCVOBozIQABCOQmgIDkJkp7EIAABCohgIBU4mjMhAAEIJCbAAKSmyjtQQACEKiEAAJSiaMxEwIQgEBuAghIbqK0BwEIQKASAghIJY7GTAhAAAK5CSAguYnSHgQgAIFKCCAglTgaMyEAAQjkJoCA5CZKexCAAAQqIYCAVOJozIQABCCQmwACkpso7UEAAhCohAACUomjMRMCEIBAbgIISG6itAcBCECgEgIISCWOxkwIQAACuQkgILmJ0h4EIACBSgggIJU4GjMhAAEI5CaAgOQmSnsQgAAEKiGAgFTiaMyEAAQgkJsAApKbKO1BAAIQqIQAAlKJozETAhCAQG4CCEhuorQHAQhAoBICCEgljsZMCEAAArkJICC5idIeBCAAgUoIICCVOBozIQABCOQmgIDkJkp7EIAABCohgIBU4mjMhAAEIJCbAAKSmyjtQQACEKiEAAJSiaMxEwIQgEBuAghIbqK0BwEIQKASAghIJY7GTAhAAAK5CSAguYnSHgQgAIFKCCAglTgaMyEAAQjkJoCA5CZKexCAAAQqIYCAVOJozIQABCCQmwACkpso7UEAAhCohAACUomjMRMCEIBAbgL/BVsdOvaRnmDRAAAAAElFTkSuQmCC\\\"}\"}', '81.2.69.160', 1, 1, 1602763190, 1602763299);
 
 -- --------------------------------------------------------
 
@@ -414,6 +460,13 @@ CREATE TABLE `form_ui` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `form_ui`
+--
+
+INSERT INTO `form_ui` (`id`, `form_id`, `theme_id`, `js_file`, `created_at`, `updated_at`) VALUES
+(21, 21, 4, '', 1602761537, 1602762470);
 
 -- --------------------------------------------------------
 
@@ -603,14 +656,6 @@ CREATE TABLE `meeting` (
   `meeting_status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `meeting`
---
-
-INSERT INTO `meeting` (`id`, `user_id`, `other_online_id`, `zoom_id`, `sub_type_id`, `speakers_name`, `members_name`, `files_upload`, `files_upload1`, `files_upload2`, `files_upload3`, `files_upload4`, `files_upload5`, `unique_code`, `agenda`, `date_requested`, `start_date`, `end_date`, `start_time`, `end_time`, `request_status`, `remark_status`, `meeting_status`) VALUES
-(1, 18, '', 2, 1, '', 'ivandi djoh gah', 'UNDANGAN_RAPAT.pdf', 'NOTULENSI_RAPAT.pdf', 'ABSENSI_RAPAT.pdf', 'Und_Kick_off_Meeting_Roadmap_Kerjasama_Balitbang_13_Agustus.pdf', '', '', '5f861a31915c9', 'but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '2020-10-14', '2020-10-14', '2020-10-14', '04:20:00', '05:20:00', 0, '', 0),
-(2, 18, '', 1, 1, '', 'dave', '', '', '', '', '', '', '5f861a8d6dd5b', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary,', '2020-10-14', '2020-10-14', '2020-10-14', '07:21:00', '08:21:00', 0, '', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -777,6 +822,7 @@ CREATE TABLE `meeting_users` (
   `password` varchar(256) NOT NULL,
   `role_id` int(11) NOT NULL,
   `is_active` int(1) NOT NULL,
+  `blokir` int(3) NOT NULL,
   `sub_department_id` int(11) NOT NULL,
   `date_created` int(11) NOT NULL,
   `date_updated` int(11) NOT NULL
@@ -786,15 +832,15 @@ CREATE TABLE `meeting_users` (
 -- Dumping data for table `meeting_users`
 --
 
-INSERT INTO `meeting_users` (`id`, `token`, `zoomid`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `sub_department_id`, `date_created`, `date_updated`) VALUES
-(14, '5f84b1d3f0336', '000 000 000 0000', 'administrator', 'admin@erapat.com', 'default.png', '$2y$10$pcXovYvhzZDvmXoOXEskcuHtdSvZOUBy6o9FXGRSrFsOAUfbhwdTS', 1, 1, 1, 1595188759, 1600115535),
-(15, '5f84b1f402199', '666 666 666 666', 'Admin Keuangan', 'keuangan@erapat.com', 'default.png', '$2y$10$icYu3J.bfvdocnSNdxPUheArwlUhq80r1N3T7p.ZzgJO48lB1ne6O', 2, 1, 2, 1595195583, 1597380790),
-(18, '5f84b2020a238', '555 555 555 5555', 'Admin Humas', 'humas@erapat.com', 'default.png', '$2y$10$vb9cPXqV9oKGCZCB9WvCau9RUn.cvaL5MjShKBHtg.ZHLWoTLEXre', 2, 1, 5, 1597213397, 1599549994),
-(19, '5f84b20f02ea5', '444 444 444 444', 'Admin Perencanaan', 'perencanaan@erapat.com', 'default.png', '$2y$10$X/U5/ZLzBP60TO6aDsqp3eWpXLevpxVvTSKy0nLGrzCa31osP4xoK', 2, 1, 3, 1598467083, 0),
-(20, '5f84b21a71601', '111 111 111 111', 'Kaban Litbang Perhubungan', 'kaban@erapat.com', 'default.png', '$2y$10$w5k9sGFC7SMC8whAPIp/dOknnlHLA.nOP1IypYw6JNVu2aDz0oEse', 4, 1, 14, 1599060092, 1599061311),
-(21, '5f84b22c21a4b', '222 222 222 222', 'Sesban Litbang Perhubungan', 'sesban@erapat.com', 'default.png', '$2y$10$7iKaePzZkNyVg37xciRbUOzFSQ58N92P8L95KwtgXGkzV8u8yBTge', 5, 1, 15, 1599060131, 1599061333),
-(22, '5f84b2396f330', '333 333 333 333', 'Admin LSDP', 'lsdp@erapat.com', 'default.png', '$2y$10$hNKFHzPaAMTJXuwscLTBEutZtQHxD1CHqJDgOY1Z7u2EJ/ARXPjpy', 2, 1, 9, 1599471171, 0),
-(23, '', '555 555 555 5555', '', 'humas@erapat.com', '', '', 0, 0, 0, 0, 0);
+INSERT INTO `meeting_users` (`id`, `token`, `zoomid`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `blokir`, `sub_department_id`, `date_created`, `date_updated`) VALUES
+(14, '5f84b1d3f0336', '000 000 000 0000', 'administrator', 'admin@erapat.com', 'default.png', '$2y$10$pcXovYvhzZDvmXoOXEskcuHtdSvZOUBy6o9FXGRSrFsOAUfbhwdTS', 1, 1, 0, 1, 1595188759, 1600115535),
+(15, '5f84b1f402199', '666 666 666 666', 'Admin Keuangan', 'keuangan@erapat.com', 'default.png', '$2y$10$icYu3J.bfvdocnSNdxPUheArwlUhq80r1N3T7p.ZzgJO48lB1ne6O', 2, 0, 0, 2, 1595195583, 1597380790),
+(18, '5f84b2020a238', '555 555 555 5555', 'Admin Humas', 'humas@erapat.com', 'default.png', '$2y$10$vb9cPXqV9oKGCZCB9WvCau9RUn.cvaL5MjShKBHtg.ZHLWoTLEXre', 2, 1, 0, 5, 1597213397, 1602750114),
+(19, '5f84b20f02ea5', '444 444 444 444', 'Admin Perencanaan', 'perencanaan@erapat.com', 'default.png', '$2y$10$X/U5/ZLzBP60TO6aDsqp3eWpXLevpxVvTSKy0nLGrzCa31osP4xoK', 2, 1, 0, 3, 1598467083, 0),
+(20, '5f84b21a71601', '111 111 111 111', 'Kaban Litbang Perhubungan', 'kaban@erapat.com', 'default.png', '$2y$10$w5k9sGFC7SMC8whAPIp/dOknnlHLA.nOP1IypYw6JNVu2aDz0oEse', 4, 1, 0, 14, 1599060092, 1599061311),
+(21, '5f84b22c21a4b', '222 222 222 222', 'Sesban Litbang Perhubungan', 'sesban@erapat.com', 'default.png', '$2y$10$7iKaePzZkNyVg37xciRbUOzFSQ58N92P8L95KwtgXGkzV8u8yBTge', 5, 1, 0, 15, 1599060131, 1599061333),
+(22, '5f84b2396f330', '333 333 333 3333', 'Admin LSDP', 'lsdp@erapat.com', 'default.png', '$2y$10$hNKFHzPaAMTJXuwscLTBEutZtQHxD1CHqJDgOY1Z7u2EJ/ARXPjpy', 2, 1, 0, 9, 1599471171, 0),
+(23, '', '555 555 555 5555', '', 'humas@erapat.com', '', '', 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -819,8 +865,8 @@ CREATE TABLE `meeting_zoom` (
 --
 
 INSERT INTO `meeting_zoom` (`id`, `user_id`, `pemakai_id`, `idzoom`, `date_activated`, `start_time`, `end_time`, `is_active`, `status`) VALUES
-(1, 19, 18, '444 444 444 444', '2020-10-14', '07:21:00', '08:21:00', 1, 1),
-(2, 18, 18, '555 555 555 555', '2020-10-14', '04:20:00', '05:20:00', 1, 0),
+(1, 19, 18, '444 444 444 444', '2020-10-14', '07:21:00', '08:21:00', 1, 0),
+(2, 18, 18, '555 555 555 555', '2020-10-18', '17:46:00', '18:46:00', 1, 0),
 (3, 15, 15, '666 666 666 666', '2020-10-05', '02:00:00', '03:00:00', 1, 0),
 (4, 22, 15, '333 333 333 333', '2020-09-24', '19:00:00', '20:00:00', 1, 0),
 (5, 14, 14, '000 000 000 000', '2020-09-18', '09:00:00', '10:00:00', 1, 0),
@@ -1165,7 +1211,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `role_id`, `status`, `email`, `username`, `password`, `auth_key`, `access_token`, `logged_in_ip`, `logged_in_at`, `created_ip`, `created_at`, `updated_at`, `banned_at`, `banned_reason`, `preferences`) VALUES
-(1, 1, 1, 'admin@erapat.com', 'admin', '$2y$13$hMNGKD7ImJLtU9O1oTewRu5qStpYEKGsMBI/dgmK6.UsP2uwjYDkW', 'pUSNgmzBP4YLg9eIjoDJ_MuOcMIlV8qx', 'taNrGcvfGQeCWfVrxhxepNyzQiPN_kKL', '::1', '2020-10-09 10:14:44', '::1', '2020-09-10 10:05:48', '2020-09-22 00:50:03', NULL, NULL, '{\"GridView\":{\"submissions\":{\"settings\":{\"2\":\"\",\"9\":\"{\\\"sort_attribute\\\":\\\"-created_at\\\",\\\"resizeColumns\\\":false,\\\"showColumns\\\":true,\\\"minimumCountColumns\\\":2,\\\"columns\\\":{\\\"text_680998\\\":false,\\\"number_63801\\\":false,\\\"date_748302\\\":true,\\\"hidden_signature_803792\\\":true}}\",\"18\":\"\",\"19\":\"{\\\"sort_attribute\\\":\\\"-created_at\\\",\\\"resizeColumns\\\":false,\\\"showColumns\\\":true,\\\"minimumCountColumns\\\":2,\\\"columns\\\":{\\\"text_442458\\\":true,\\\"text_51160\\\":true,\\\"text_671020\\\":false,\\\"text_932833\\\":false,\\\"text_814491\\\":false,\\\"email_754924\\\":false,\\\"hidden_signature_163216\\\":true}}\"}},\"pagination\":{\"pageSize\":\"500\"}},\"App\":{\"User\":{\"SessionTimeout\":{\"value\":\"86400000\"}}}}'),
+(1, 1, 1, 'admin@erapat.com', 'admin', '$2y$13$hMNGKD7ImJLtU9O1oTewRu5qStpYEKGsMBI/dgmK6.UsP2uwjYDkW', 'pUSNgmzBP4YLg9eIjoDJ_MuOcMIlV8qx', 'taNrGcvfGQeCWfVrxhxepNyzQiPN_kKL', '::1', '2020-10-15 03:57:54', '::1', '2020-09-10 10:05:48', '2020-09-22 00:50:03', NULL, NULL, '{\"GridView\":{\"submissions\":{\"settings\":{\"2\":\"\",\"9\":\"{\\\"sort_attribute\\\":\\\"-created_at\\\",\\\"resizeColumns\\\":false,\\\"showColumns\\\":true,\\\"minimumCountColumns\\\":2,\\\"columns\\\":{\\\"text_680998\\\":false,\\\"number_63801\\\":false,\\\"date_748302\\\":true,\\\"hidden_signature_803792\\\":true}}\",\"18\":\"\",\"19\":\"{\\\"sort_attribute\\\":\\\"-created_at\\\",\\\"resizeColumns\\\":false,\\\"showColumns\\\":true,\\\"minimumCountColumns\\\":2,\\\"columns\\\":{\\\"text_442458\\\":true,\\\"text_51160\\\":true,\\\"text_671020\\\":false,\\\"text_932833\\\":false,\\\"text_814491\\\":false,\\\"email_754924\\\":false,\\\"hidden_signature_163216\\\":true}}\"}},\"pagination\":{\"pageSize\":\"500\"}},\"App\":{\"User\":{\"SessionTimeout\":{\"value\":\"86400000\"}}}}'),
 (2, 2, 1, 'user@erapat.com', 'user', '$2y$13$ON/2lLk5YAq5DM2f2mww3.q2QdOM3rJpzL32COoUc7JoEhxP.IydC', NULL, NULL, '::1', '2020-09-14 04:44:59', NULL, '2020-09-10 11:09:47', '2020-09-14 04:47:32', NULL, NULL, NULL),
 (3, 3, 1, 'dave@erapat.com', 'dave', '$2y$13$vJZvD1UCh4yehfVCt4ANB.CpHnoQ0/tIcRXU1m3J0Zk3YozuiTqvu', NULL, NULL, '::1', '2020-09-14 04:42:42', NULL, '2020-09-10 11:16:29', '2020-09-10 13:54:17', NULL, NULL, NULL);
 
@@ -1263,7 +1309,8 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (35, 'Zoom'),
 (36, 'Feed'),
 (37, 'Form'),
-(38, 'Zoho');
+(38, 'Zoho'),
+(39, 'Dokumentasi');
 
 -- --------------------------------------------------------
 
@@ -1387,6 +1434,7 @@ CREATE TABLE `view_user_department` (
 ,`password` varchar(256)
 ,`role_id` int(11)
 ,`is_active` int(1)
+,`blokir` int(3)
 ,`date_created` int(11)
 ,`role` varchar(128)
 ,`date_updated` int(11)
@@ -1503,7 +1551,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_user_department`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_user_department`  AS  select `meeting_users`.`id` AS `id`,`meeting_users`.`token` AS `token`,`meeting_users`.`name` AS `name`,`meeting_users`.`email` AS `email`,`meeting_users`.`image` AS `image`,`meeting_users`.`password` AS `password`,`meeting_users`.`role_id` AS `role_id`,`meeting_users`.`is_active` AS `is_active`,`meeting_users`.`date_created` AS `date_created`,`user_role`.`role` AS `role`,`meeting_users`.`date_updated` AS `date_updated`,`meeting_users`.`sub_department_id` AS `sub_department_id`,`meeting_sub_department`.`sub_department_name` AS `sub_department_name`,`meeting_sub_department`.`department_id` AS `department_id`,`meeting_department`.`department_name` AS `department_name`,`meeting_users`.`zoomid` AS `zoomid` from (((`meeting_users` join `user_role` on(`meeting_users`.`role_id` = `user_role`.`id`)) join `meeting_sub_department` on(`meeting_users`.`sub_department_id` = `meeting_sub_department`.`id`)) join `meeting_department` on(`meeting_sub_department`.`department_id` = `meeting_department`.`id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_user_department`  AS  select `meeting_users`.`id` AS `id`,`meeting_users`.`token` AS `token`,`meeting_users`.`name` AS `name`,`meeting_users`.`email` AS `email`,`meeting_users`.`image` AS `image`,`meeting_users`.`password` AS `password`,`meeting_users`.`role_id` AS `role_id`,`meeting_users`.`is_active` AS `is_active`,`meeting_users`.`blokir` AS `blokir`,`meeting_users`.`date_created` AS `date_created`,`user_role`.`role` AS `role`,`meeting_users`.`date_updated` AS `date_updated`,`meeting_users`.`sub_department_id` AS `sub_department_id`,`meeting_sub_department`.`sub_department_name` AS `sub_department_name`,`meeting_sub_department`.`department_id` AS `department_id`,`meeting_department`.`department_name` AS `department_name`,`meeting_users`.`zoomid` AS `zoomid` from (((`meeting_users` join `user_role` on(`meeting_users`.`role_id` = `user_role`.`id`)) join `meeting_sub_department` on(`meeting_users`.`sub_department_id` = `meeting_sub_department`.`id`)) join `meeting_department` on(`meeting_sub_department`.`department_id` = `meeting_department`.`id`)) ;
 
 -- --------------------------------------------------------
 
@@ -1825,25 +1873,25 @@ ALTER TABLE `addon_webhooks`
 -- AUTO_INCREMENT for table `form`
 --
 ALTER TABLE `form`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `form_confirmation`
 --
 ALTER TABLE `form_confirmation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `form_data`
 --
 ALTER TABLE `form_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `form_email`
 --
 ALTER TABLE `form_email`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `form_rule`
@@ -1855,7 +1903,7 @@ ALTER TABLE `form_rule`
 -- AUTO_INCREMENT for table `form_submission`
 --
 ALTER TABLE `form_submission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `form_submission_comment`
@@ -1873,7 +1921,7 @@ ALTER TABLE `form_submission_file`
 -- AUTO_INCREMENT for table `form_ui`
 --
 ALTER TABLE `form_ui`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `mail_queue`
@@ -1885,7 +1933,7 @@ ALTER TABLE `mail_queue`
 -- AUTO_INCREMENT for table `meeting`
 --
 ALTER TABLE `meeting`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `meeting_department`
@@ -1993,7 +2041,7 @@ ALTER TABLE `user_auth`
 -- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `user_role`
