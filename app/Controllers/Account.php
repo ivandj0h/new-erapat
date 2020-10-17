@@ -80,6 +80,11 @@ class Account extends BaseController
         }
     }
 
+    public function updataccount()
+    {
+        echo 'updataccount';
+    }
+
     public function restricted_account()
     {
         $data = [
@@ -88,6 +93,54 @@ class Account extends BaseController
             'tabs' => 'account',
         ];
         return view('errors/response/view_restricted_cpanel_page', $data);
+    }
+
+    public function resetaccountpassword($id = '')
+    {
+        $password = "admin"; // $2y$10$rlSQG0XGwZnCtqv61NLKkONCAL1SUJdVeJ/95FFWOxSEeGJ9rqLwW
+        $update = $this->auths
+            ->set(['password' => password_hash($password, PASSWORD_DEFAULT)])
+            ->where('id', $id)
+            ->update();
+
+        if ($update) {
+            session()->setFlashdata('message', 'Password Berhasil di Reset!');
+            session()->setFlashdata('alert-class', 'success');
+
+            return redirect()->to(base_url('account'));
+        } else {
+            session()->setFlashdata('message', 'Password Gagal di di Reset!');
+            session()->setFlashdata('alert-class', 'alert');
+
+            return redirect()->to(base_url('account'));
+        }
+    }
+
+    public function leveluser($id = '', $roleid)
+    {
+        $data = [
+            'id' => $id,
+            'role_id' => $roleid
+        ];
+        var_dump($data);
+        die;
+
+        $update = $this->auths
+            ->set(['role_id' => $roleid])
+            ->where('id', $id)
+            ->update();
+
+        if ($update) {
+            session()->setFlashdata('message', 'Level User Berhasil di Update!');
+            session()->setFlashdata('alert-class', 'success');
+
+            return redirect()->to(base_url('account'));
+        } else {
+            session()->setFlashdata('message', 'Level User Gagal di di Update!');
+            session()->setFlashdata('alert-class', 'alert');
+
+            return redirect()->to(base_url('account'));
+        }
     }
 
     public function aktifkan($id = '')

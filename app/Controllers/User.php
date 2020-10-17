@@ -27,21 +27,17 @@ class User extends BaseController
     public function index()
     {
         $userModel = new UserModel();
-        $rapatModel = new RapatModel();
         $data = [
             'page_title' => 'E-RAPAT - User',
             'nav_title' => 'user',
             'tabs' => 'user',
-            'user' => $userModel->where('id', session()->get('id'))->first(),
-            'rapat' => $rapatModel
-                ->getWhere(['user_id' => session()->get('id')])
-                ->getRow()
+            'user' => $userModel->where('id', session()->get('id'))->first()
         ];
 
         return view('cpanel/user/view_user', $data);
     }
 
-    public function changepassword()
+    public function changeuserpassword()
     {
         $userModel = new UserModel();
         $rapatModel = new RapatModel();
@@ -103,22 +99,17 @@ class User extends BaseController
         }
     }
 
-    public function updatepassword()
+    public function updateuserpassword()
     {
 
         if ($this->request->getMethod() == 'post') {
 
             $pwd = $this->request->getPost('pass1');
             $password = password_hash($pwd, PASSWORD_DEFAULT);
-
-            $data = ['password' => $password];
-
-            $db      = \Config\Database::connect();
-            $builder = $db->table('meeting_users');
-
-            $builder->set('password', $data['password']);
-            $builder->where('id', session()->get('id'));
-            $updates = $builder->update();
+            $updates = $this->account
+                ->set(['password' => $password])
+                ->where('id', session()->get('id'))
+                ->update();
 
             if ($updates) {
                 session()->setFlashdata('message', 'Kata Sandi Berhasil di Ubah!');
@@ -129,7 +120,7 @@ class User extends BaseController
                 session()->setFlashdata('message', 'Kata Sandi Gagal disimpan!');
                 session()->setFlashdata('alert-class', 'alert');
 
-                return redirect()->route('changepassword')->withInput();
+                return redirect()->route('changeuserpassword')->withInput();
             }
         }
     }
