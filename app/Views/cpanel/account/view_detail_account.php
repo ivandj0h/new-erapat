@@ -36,7 +36,7 @@ navbar_child($nav_title);
             <strong> Base Profile</strong> &nbsp;-&nbsp; <i><?= $account->name; ?></i>
         </div>
         <div class="toolbar my-3 place-right">
-            Tanggal : &nbsp;<strong><?= date("d-m-Y"); ?></strong>
+            Tanggal : &nbsp;<strong><?= tanggal("d-m-Y"); ?></strong>
         </div>
         <div class="navview-content d-flex flex-align-center flex-justify-center h-500">
             <div class="row">

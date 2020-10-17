@@ -15,7 +15,18 @@ class Rapat extends BaseController
     {
         $this->session = session();
         $this->form_validation = \Config\Services::validation();
-        helper(['navbar', 'navbar_child', 'alerts', 'menu', 'zoom', 'form', 'date', 'myforms', 'download']);
+        helper([
+            'navbar',
+            'navbar_child',
+            'alerts',
+            'menu',
+            'zoom',
+            'form',
+            'date',
+            'myforms',
+            'download',
+            'tanggal'
+        ]);
     }
 
     public function index()

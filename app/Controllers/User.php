@@ -12,7 +12,16 @@ class User extends BaseController
     {
         $this->session = session();
         $this->validation = \Config\Services::validation();
-        helper(['navbar', 'navbar_child', 'alerts', 'menu', 'form', 'url', 'unggah']);
+        helper([
+            'navbar',
+            'navbar_child',
+            'alerts',
+            'menu',
+            'form',
+            'url',
+            'unggah',
+            'tanggal'
+        ]);
     }
 
     public function index()
