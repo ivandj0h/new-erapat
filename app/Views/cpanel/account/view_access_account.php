@@ -48,9 +48,16 @@ navbar_child($nav_title);
                         <table class="table cell-border table-border cell-media-table" style="width: 630px;z-index:999">
                             <tbody>
                                 <tr>
-                                    <td style="width: 160px;padding: 16px 16px 16px 0;">Nama Lengkap</td>
+                                    <td style="width: 160px;padding: 16px 16px 16px 0;">Level User</td>
                                     <td>
-                                        <strong><?= $account->name ?></strong>
+                                        <div class="dropdown-button">
+                                            <button class="button dropdown-toggle secondary outline rounded"><span class="mif-checkmark"></span> Level <?= $account->role ?></button>
+                                            <ul class="d-menu" data-role="dropdown" style="z-index: 100;">
+                                                <?php foreach ($roles as $rl) : ?>
+                                                    <li><a href="<?php echo base_url('leveluser/' . $account->id . '/' . $rl['id']); ?>" class="fg-emerald"><span class="mif-checkmark"> Level <?= $rl['role']; ?></span></a></li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -58,7 +65,7 @@ navbar_child($nav_title);
                                     <td>
                                         <div class="dropdown-button">
                                             <?php if ($account->is_active != 1) : ?>
-                                                <button class="button dropdown-toggle alert rounded"><span class="mif-not"></span> Blokir</button>
+                                                <button class="button dropdown-toggle outline alert rounded"><span class="mif-not"></span> Blokir</button>
                                             <?php else : ?>
                                                 <button class="button dropdown-toggle success rounded"><span class="mif-checkmark"></span> Aktif</button>
                                             <?php endif; ?>
@@ -73,16 +80,15 @@ navbar_child($nav_title);
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 160px;padding: 16px 16px 16px 0;">Level User</td>
+                                    <td style="width: 160px;padding: 16px 16px 16px 0;">Reset Password</td>
                                     <td>
-                                        <div class="dropdown-button">
-                                            <button class="button dropdown-toggle secondary outline rounded"><span class="mif-checkmark"></span> Level <?= $account->role ?></button>
-                                            <ul class="d-menu" data-role="dropdown">
-                                                <?php foreach ($roles as $rl) : ?>
-                                                    <li><a href="<?php echo base_url('aktifkan/' . $rl['id']); ?>" class="fg-emerald"><span class="mif-checkmark"> Level <?= $rl['role']; ?></span></a></li>
-                                                <?php endforeach; ?>
-                                            </ul>
-                                        </div>
+                                        <a href="<?= base_url('resetaccountpassword/' . $account->id) ?>" class="button outline info rounded"><span class="mif-redo"></span> Reset Password <strong><?= $account->name ?></strong></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 160px;padding: 16px 16px 16px 0;">&nbsp;</td>
+                                    <td>
+                                        <a href="<?= base_url('account') ?>" class="button secondary"><span class="mif-not"></span> Batal</a>
                                     </td>
                                 </tr>
                             </tbody>

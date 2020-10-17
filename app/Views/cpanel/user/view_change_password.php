@@ -54,7 +54,7 @@ navbar_child($nav_title);
                         <img src="<?= base_url('assets/data/profile/') . '/' . $user->image; ?>" class="avatar" style="width: 280px;">
                     </div>
                     <div class="cell">
-                        <form data-role="validator" action="<?= base_url('updateadmin/' . $user->token) ?>" method="POST">
+                        <form data-role="validator" action="<?= base_url('updateuserpassword') ?>" method="POST">
                             <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
                             <input type="hidden" name="token" value="<?= $user->token ?>" />
                             <input type="hidden" name="id" value="<?= $user->id ?>" />
