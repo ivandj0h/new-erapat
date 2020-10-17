@@ -18,13 +18,13 @@ navbar_child($nav_title);
                 <span class="default-icon-menu"></span>
             </button>
             <ul class="navview-menu">
-                <li class="active">
+                <li>
                     <a href="<?= base_url('detailaccount/' . $account->token); ?>">
                         <span class="icon"><span class="mif-user-secret"></span></span>
                         <span class="caption">Base Profile</span>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="<?= base_url('accountaccess/' . $account->token); ?>">
                         <span class="icon"><span class="mif-cog"></span></span>
                         <span class="caption">Manage Access</span>
@@ -33,7 +33,7 @@ navbar_child($nav_title);
             </ul>
         </div>
         <div class="toolbar my-4" style="margin-left: 293px;">
-            <strong> Base Profile</strong> &nbsp;-&nbsp; <i><?= $account->name ?></i>
+            <strong> Manage Access</strong> &nbsp;-&nbsp; <i><?= $account->name ?></i>
         </div>
         <div class="toolbar my-3 place-right">
             Tanggal : &nbsp;<strong><?= tanggal("d-m-Y"); ?></strong>
@@ -45,7 +45,7 @@ navbar_child($nav_title);
                         <img src="<?= base_url('assets/data/profile/') . '/' . $account->image; ?>" class="avatar" style="width: 280px;">
                     </div>
                     <div class="cell">
-                        <table class="table cell-border table-border cell-media-table" style="width: 630px;">
+                        <table class="table cell-border table-border cell-media-table" style="width: 630px;z-index:999">
                             <tbody>
                                 <tr>
                                     <td style="width: 160px;padding: 16px 16px 16px 0;">Nama Lengkap</td>
@@ -54,27 +54,35 @@ navbar_child($nav_title);
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 160px;padding: 16px 16px 16px 0;">Email</td>
+                                    <td style="width: 160px;padding: 16px 16px 16px 0;">Status Akun</td>
                                     <td>
-                                        <strong><?= $account->email ?></strong>
+                                        <div class="dropdown-button">
+                                            <?php if ($account->is_active != 1) : ?>
+                                                <button class="button dropdown-toggle alert rounded"><span class="mif-not"></span> Blokir</button>
+                                            <?php else : ?>
+                                                <button class="button dropdown-toggle success rounded"><span class="mif-checkmark"></span> Aktif</button>
+                                            <?php endif; ?>
+                                            <ul class="d-menu" data-role="dropdown">
+                                                <?php if ($account->is_active != 1) : ?>
+                                                    <li><a href="<?php echo base_url('aktifkan/' . $account->id); ?>" class="fg-emerald"><span class="mif-checkmark"> Aktif</span></a></li>
+                                                <?php else : ?>
+                                                    <li><a href="<?php echo base_url('blokir/' . $account->id); ?>" class="fg-crimson"><span class="mif-not"> Blokir</span></a></li>
+                                                <?php endif; ?>
+                                            </ul>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 160px;padding: 16px 16px 16px 0;">Zoom ID</td>
+                                    <td style="width: 160px;padding: 16px 16px 16px 0;">Level User</td>
                                     <td>
-                                        <strong><?= $account->zoomid ?></strong>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 160px;padding: 16px 16px 16px 0;">Sekretariat</td>
-                                    <td>
-                                        <strong><?= $account->department_name ?></strong>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 160px;padding: 16px 16px 16px 0;">Nama Bagian</td>
-                                    <td>
-                                        <strong><?= $account->sub_department_name ?></strong>
+                                        <div class="dropdown-button">
+                                            <button class="button dropdown-toggle secondary outline rounded"><span class="mif-checkmark"></span> Level <?= $account->role ?></button>
+                                            <ul class="d-menu" data-role="dropdown">
+                                                <?php foreach ($roles as $rl) : ?>
+                                                    <li><a href="<?php echo base_url('aktifkan/' . $rl['id']); ?>" class="fg-emerald"><span class="mif-checkmark"> Level <?= $rl['role']; ?></span></a></li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>
@@ -84,7 +92,6 @@ navbar_child($nav_title);
             </div>
         </div>
     </div>
-</div>
 </div>
 <!-- Start Main Content -->
 

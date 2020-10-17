@@ -42,7 +42,7 @@ navbar_child($nav_title);
         <tbody>
             <?php foreach ($rapat as $r) : ?>
                 <tr>
-                    <td class="text-center"><?= tanggal("d-m-Y", strtotime($r['end_date'])); ?></td>
+                    <td class="text-center"><strong><?= tanggal("d-m-Y", strtotime($r['end_date'])); ?></strong></td>
                     <td class="text-center"><?= date("H:i", strtotime($r['start_time'])); ?></td>
                     <td class="text-center"><?= date("H:i", strtotime($r['end_time'])); ?></td>
                     <td><?= $r['sub_department_name']; ?></td>
@@ -92,10 +92,8 @@ navbar_child($nav_title);
                         </div>
                     </td>
                     <td class="text-center">
-                        <div class="split-button">
-                            <button class="button"><span class="mif-sort-desc"></span> Aksi</button>
-                            <!-- <span class="fg-red"> Aksi</span> -->
-                            <button class="split rounded dropdown-toggle"></button>
+                        <div class="dropdown-button">
+                            <button class="button secondary outline rounded dropdown-toggle"><span class="mif-cog"> Aksi</button>
                             <ul class="d-menu place-right" data-role="dropdown">
                                 <li><a href="<?= base_url('detail/' . $r['unique_code']); ?>"><span class="mif-eye"></span> Detail</a></li>
                                 <li><a href="<?= base_url('editrapat/' . $r['unique_code']); ?>"><span class="mif-copy"></span> Ubah</a></li>

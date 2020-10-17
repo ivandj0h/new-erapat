@@ -53,6 +53,7 @@ class BaseController extends Controller
 		$this->user = new \App\Models\UserModel();
 		$this->account = new \App\Models\AccountModel();
 		$this->department = new \App\Models\DepartmentModel();
+		$this->roles = new \App\Models\RoleModel();
 
 		//--------------------------------------------------------------------
 	}
