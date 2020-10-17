@@ -28,13 +28,13 @@ navbar_child($nav_title);
             </button>
             <ul class="navview-menu">
                 <li>
-                    <a href="<?= base_url('admin'); ?>">
+                    <a href="<?= base_url('user'); ?>">
                         <span class="icon"><span class="mif-user-secret"></span></span>
                         <span class="caption">Base Profile</span>
                     </a>
                 </li>
                 <li class="active">
-                    <a href="<?= base_url('changeadminpassword/' . $user->token); ?>">
+                    <a href="<?= base_url('changeuserpassword/' . $user->token); ?>">
                         <span class="icon"><span class="mif-key"></span></span>
                         <span class="caption">Ganti Password</span>
                     </a>
@@ -45,7 +45,7 @@ navbar_child($nav_title);
             <strong> Base Profile</strong> &nbsp;-&nbsp; <i><?= $user->name ?></i>
         </div>
         <div class="toolbar my-3 place-right">
-            Tanggal : &nbsp;<strong><?= date("d-m-Y"); ?></strong>
+            Tanggal : &nbsp;<strong><?= tanggal("d-m-Y"); ?></strong>
         </div>
         <div class="navview-content d-flex h-500">
             <div class="grid">

@@ -11,8 +11,16 @@ class Pembaharuan extends BaseController
     public function __construct()
     {
         $this->session = session();
-        helper(['navbar', 'navbar_child', 'alerts', 'menu', 'date', 'form']);
         $this->form_validation = \Config\Services::validation();
+        helper([
+            'navbar',
+            'navbar_child',
+            'alerts',
+            'menu',
+            'date',
+            'form',
+            'tanggal'
+        ]);
     }
 
     public function index()

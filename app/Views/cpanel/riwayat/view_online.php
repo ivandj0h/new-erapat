@@ -43,7 +43,7 @@ navbar_child($nav_title);
             <strong> Tabel Data Rapat Online</strong>
         </div>
         <div class="toolbar my-3 place-right">
-            Tanggal : &nbsp;<strong><?= date("d-m-Y"); ?></strong>
+            Tanggal : &nbsp;<strong><?= tanggal("d-m-Y"); ?></strong>
         </div>
         <?= form_open('getriwayatonline'); ?>
         <div class="d-flex flex-nowrap" style="margin-left: 62px;margin-top: -8px;margin-bottom: 25px;">
@@ -77,7 +77,7 @@ navbar_child($nav_title);
                 <tbody>
                     <?php foreach ($rapat as $r) : ?>
                         <tr>
-                            <td class="text-center"><?= date("d-m-Y", strtotime($r['end_date'])); ?></td>
+                            <td class="text-center"><?= tanggal("d-m-Y", strtotime($r['end_date'])); ?></td>
                             <td class="text-center"><?= date("H:i", strtotime($r['start_time'])); ?></td>
                             <td class="text-center"><?= date("H:i", strtotime($r['end_time'])); ?></td>
                             <td class="text-center"><?= $r['sub_department_name']; ?></td>

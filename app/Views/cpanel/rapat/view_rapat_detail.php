@@ -17,7 +17,7 @@ navbar_child($nav_title);
         <strong> Tabel Detail Rapat</strong>&nbsp; - &nbsp;<i><?= $rapat->sub_department_name ?></i>
     </div>
     <div class="toolbar my-3 place-right">
-        Data Rapat Tanggal : &nbsp;<strong><?= date("d-m-Y", strtotime($rapat->end_date)); ?></strong>
+        Data Rapat Tanggal : &nbsp;<strong><?= tanggal("d-m-Y", strtotime($rapat->end_date)); ?></strong>
     </div>
     <div class="row detail-tab">
         <div class="col-md-2">
@@ -117,11 +117,11 @@ navbar_child($nav_title);
                         <div class="cell-sm-10">
                             <?php if ($rapat->request_status == '1') : ?>
                                 <span class="remark dark" style="margin: 0;padding: 5px;color: black;">
-                                    <strong><?= date("d-m-Y", strtotime($rapat->date_requested)) ?></strong>.
+                                    <strong><?= tanggal("d-m-Y", strtotime($rapat->date_requested)) ?></strong>.
                                 </span>
                             <?php else : ?>
                                 <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                    <strong><?= date("d-m-Y", strtotime($rapat->date_requested)); ?></strong>.
+                                    <strong><?= tanggal("d-m-Y", strtotime($rapat->date_requested)); ?></strong>.
                                 </span>
                             <?php endif; ?>
                         </div>
@@ -224,12 +224,12 @@ navbar_child($nav_title);
                             else :
                                 if ($rapat->type_id == 1) : ?>
                                     <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                        <strong><?= date("d-m-Y", strtotime($rapat->end_date)); ?></strong>
+                                        <strong><?= tanggal("d-m-Y", strtotime($rapat->end_date)); ?></strong>
                                     </span>
                                 <?php
                                 else : ?>
                                     <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                        <strong><?= date("d-m-Y", strtotime($rapat->end_date)); ?></strong>.
+                                        <strong><?= tanggal("d-m-Y", strtotime($rapat->end_date)); ?></strong>.
                                     </span>
                             <?php
                                 endif;
