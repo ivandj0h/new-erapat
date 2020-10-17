@@ -43,6 +43,7 @@ $routes->setAutoRoute(false);
 $routes->get('/', 'Main::calendar');
 $routes->get('/documentation', 'Documentation::index');
 
+
 /**
  * --------------------------------------------------------------------
  * ZOHO Route Configuration
@@ -53,6 +54,7 @@ $routes->get('/zohoconnect', 'ZohoConnect::index');
 $routes->get('/zohoforms', 'ZohoConnect::zohoforms');
 $routes->get('/zohoreports', 'ZohoConnect::zohoreports');
 
+
 /**
  * --------------------------------------------------------------------
  * E-RAPAT Route Configuration
@@ -60,6 +62,7 @@ $routes->get('/zohoreports', 'ZohoConnect::zohoreports');
  */
 
 $routes->get('/erapatconnect', 'ErapatFormConnect::index');
+
 
 /**
  * --------------------------------------------------------------------
@@ -73,6 +76,7 @@ $routes->post('login/proses', 'Login::proses');
 $routes->match(['get', 'post'], '/cek', 'Login::cek', ['filter' => 'ceklogin']);
 $routes->get('/logout', 'Login::logout', ['filter' => 'ceklogin']);
 
+
 /**
  * --------------------------------------------------------------------
  * CPANEL Route Configuration
@@ -84,6 +88,8 @@ $routes->get('/admin', 'Admin::index', ['filter' => 'ceklogin']);
 $routes->get('/editadmin/(:any)', 'Admin::editAdmin/$1', ['filter' => 'ceklogin']);
 $routes->post('/updateadmin/(:any)', 'Admin::updateadmin/$1', ['filter' => 'ceklogin']);
 $routes->get('/changeadminpassword/(:any)', 'Admin::changepassword/$1', ['filter' => 'ceklogin']);
+
+
 /**
  * --------------------------------------------------------------------
  * CPANEL Route Configuration 
@@ -92,15 +98,16 @@ $routes->get('/changeadminpassword/(:any)', 'Admin::changepassword/$1', ['filter
  */
 
 $routes->get('/user', 'User::index', ['filter' => 'ceklogin']);
+$routes->get('/edituser/(:any)', 'User::edituser/$1', ['filter' => 'ceklogin']);
 $routes->post('/updateuser/(:any)', 'User::updateuser/$1', ['filter' => 'ceklogin']);
 $routes->post('/updatepassword', 'User::updatepassword', ['filter' => 'ceklogin']);
-$routes->get('/edituser/(:any)', 'User::edituser/$1', ['filter' => 'ceklogin']);
 $routes->get('/changeuserpassword/(:any)', 'User::changepassword/$1', ['filter' => 'ceklogin']);
+
 
 /**
  * --------------------------------------------------------------------
  * CPANEL Route Configuration
- * ADMIN SECTION
+ * ACCOUNT SECTION
  * --------------------------------------------------------------------
  */
 
@@ -110,6 +117,7 @@ $routes->get('/editaccount/(:any)', 'Account::editAccount/$1', ['filter' => 'cek
 $routes->get('/restricted', 'Account::restricted_account', ['filter' => 'ceklogin']);
 $routes->get('/aktifkan/(:any)', 'Account::aktifkan/$1', ['filter' => 'ceklogin']);
 $routes->get('/blokir/(:any)', 'Account::blokir/$1', ['filter' => 'ceklogin']);
+
 
 /**
  * --------------------------------------------------------------------
@@ -143,6 +151,7 @@ $routes->match(['get', 'post'], '/rapat/getmm', 'Rapat::get_media_meeting');
 $routes->match(['get', 'post'], '/rapat/getmmm', 'Rapat::get_zoomid');
 $routes->get('/rapatcancel', 'Rapat::rapatcancel', ['filter' => 'ceklogin']);
 
+
 /**
  * --------------------------------------------------------------------
  * CPANEL Route Configuration
@@ -154,6 +163,7 @@ $routes->get('/pembaharuan', 'Pembaharuan::index', ['filter' => 'ceklogin']);
 $routes->get('/cekzoom', 'Pembaharuan::cekzoom', ['filter' => 'ceklogin']);
 $routes->get('/cekoffline', 'Pembaharuan::cekoffline', ['filter' => 'ceklogin']);
 $routes->post('/cekrapatoffline', 'Pembaharuan::cekrapatoffline');
+
 
 /**
  * --------------------------------------------------------------------
@@ -168,6 +178,7 @@ $routes->match(['get', 'post'], '/riwayatoffline', 'Riwayat::cekhistoffline', ['
 $routes->match(['get', 'post'], '/getriwayatoffline', 'Riwayat::gethistoffline', ['filter' => 'ceklogin']);
 $routes->match(['get', 'post'], '/riwayatonline', 'Riwayat::cekhistonline', ['filter' => 'ceklogin']);
 $routes->match(['get', 'post'], '/getriwayatonline', 'Riwayat::gethistonline', ['filter' => 'ceklogin']);
+
 
 /**
  * --------------------------------------------------------------------

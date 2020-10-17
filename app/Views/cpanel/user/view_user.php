@@ -59,25 +59,25 @@ navbar_child($nav_title);
                                 <tr>
                                     <td style="width: 160px;">Nama User</td>
                                     <td>
-                                        <input data-role="input" value="<?= $user->name ?>" disabled>
+                                        <strong><?= $user->name ?></strong>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Email</td>
                                     <td>
-                                        <input data-role="input" value="<?= $user->email ?>" disabled>
+                                        <strong><?= $user->email ?></strong>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Zoom ID</td>
                                     <td>
-                                        <input data-role="input" value="<?= $user->zoomid ?>" disabled>
+                                        <strong><?= $user->zoomid ?></strong>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Nama Bagian</td>
                                     <td>
-                                        <input data-role="input" value="<?= $user->sub_department_name ?>" disabled>
+                                        <strong><?= $user->sub_department_name ?></strong>
                                     </td>
                                 </tr>
                                 <tr>
