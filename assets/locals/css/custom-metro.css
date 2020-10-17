@@ -19,6 +19,10 @@ a:hover {
   border: 0px #dfdfdf solid !important;
 }
 
+.pad {
+  padding: 16px !important;
+}
+
 .red-div-alert {
   margin: 0 auto !important;
   left: 68px !important;

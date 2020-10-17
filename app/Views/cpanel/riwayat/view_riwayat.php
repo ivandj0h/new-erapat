@@ -85,12 +85,12 @@ navbar_child($nav_title);
                 <tbody>
                     <?php foreach ($riwayat as $r) : ?>
                         <tr>
-                            <td><?= tanggal("d-m-Y", strtotime($r['end_date'])); ?></td>
-                            <td><?= date("H:i", strtotime($r['start_time'])); ?></td>
-                            <td><?= date("H:i", strtotime($r['end_time'])); ?></td>
-                            <td><?= $r['sub_department_name']; ?></td>
-                            <td><?= $r['meeting_subtype']; ?></td>
-                            <td>
+                            <td class="text-center"><strong><?= tanggal("d-m-Y", strtotime($r['end_date'])); ?></strong></td>
+                            <td class="text-center"><?= date("H:i", strtotime($r['start_time'])); ?></td>
+                            <td class="text-center"><?= date("H:i", strtotime($r['end_time'])); ?></td>
+                            <td class="text-center"><?= $r['sub_department_name']; ?></td>
+                            <td class="text-center"><?= $r['meeting_subtype']; ?></td>
+                            <td class="text-center">
                                 <?php
                                 if ($r['type_id'] == 1) {
                                     if ($r['sub_type_id'] == 1) {
@@ -103,9 +103,9 @@ navbar_child($nav_title);
                                 }
                                 ?>
                             </td>
-                            <td>
+                            <td class="text-center">
                                 <div class="dropdown-button">
-                                    <a href="<?= base_url('detail/' . $r['unique_code']); ?>" class="button"><span class="mif-eye"></span> Detail</a>
+                                    <a href="<?= base_url('detail/' . $r['unique_code']); ?>" class="button secondary outline rounded"><span class="mif-eye"></span> Detail</a>
                                 </div>
                             </td>
                         </tr>

@@ -26,7 +26,7 @@ navbar_child($nav_title);
     <div class="toolbar my-3 place-right">
         <a href="<?php echo base_url('baru') ?>" class="button success"><span class="mif-file-text"></span> Tambah Account Baru</a>
     </div>
-    <table class="table table-condensed hover display order-column" id="account" cellspacing="0">
+    <table class="table hover display order-column" id="account" cellspacing="0">
         <thead>
             <tr>
                 <th class="text-center w-20">Foto</th>
@@ -65,9 +65,9 @@ navbar_child($nav_title);
                             <a href="<?php echo base_url('blokir/' . $a['id']); ?>" class="fg-emerald"><span class="mif-checkmark"> Aktif</span></a>
                         <?php endif; ?>
                     </td>
-                    <td>
-                        <div class="dropdown-button place-right">
-                            <button class="button primary rounded dropdown-toggle">Aksi</button>
+                    <td class="text-center">
+                        <div class="dropdown-button">
+                            <button class="button secondary outline rounded dropdown-toggle">Aksi</button>
                             <ul class="d-menu place-right" data-role="dropdown">
                                 <li><a href="<?= base_url('detailaccount/' . $a['token']); ?>"><span class="mif-eye"></span> Detail</a></li>
                                 <li><a href="<?= base_url('editaccount/' . $a['token']); ?>"><span class="mif-copy"></span> Ubah</a></li>
