@@ -25,7 +25,7 @@ navbar_child($nav_title);
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('changepassword/' . $account->token); ?>">
+                    <a href="<?= base_url('changeadminpassword/' . $account->token); ?>">
                         <span class="icon"><span class="mif-key"></span></span>
                         <span class="caption">Ganti Password</span>
                     </a>
@@ -33,60 +33,58 @@ navbar_child($nav_title);
             </ul>
         </div>
         <div class="toolbar my-4" style="margin-left: 293px;">
-            <strong> Base Profile</strong> &nbsp;-&nbsp; <i><?= $account->name; ?></i>
+            <strong> Base Profile</strong> &nbsp;-&nbsp; <i><?= $account->name ?></i>
         </div>
         <div class="toolbar my-3 place-right">
             Tanggal : &nbsp;<strong><?= tanggal("d-m-Y"); ?></strong>
         </div>
-        <div class="navview-content d-flex flex-align-center flex-justify-center h-500">
-            <div class="row">
-                <div class="cell order-1" style="margin-right: -365px;">
-                    <img src="<?= base_url('assets/data/profile/') . '/' . $account->image; ?>" class="avatar" style="width: 280px;">
-                </div>
-                <div class="cell order-2" style="margin-left: 18px;">
-                    <form data-role="validator" action="<?= base_url('updateaccount/' . $account->token) ?>" method="POST">
-                        <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
-                        <input type="hidden" name="token" value="<?= $account->token ?>" />
-                        <input type="hidden" name="id" value="<?= $account->id ?>" />
-                        <ul class="skills">
-                            <li>
-                                <div class="row">
-                                    <label class="cell-sm-4" style="margin-right: -80px;">Nama User</label>
-                                    <div class="cell-sm-8">
-                                        <strong><?= $account->name; ?></strong>
-                                    </div>
-                                    <label class="cell-sm-4" style="margin-right: -80px;">Email</label>
-                                    <div class="cell-sm-8">
-                                        <input data-role="input" data-validate="required email" type="email" name="email" value="<?= $account->email ?>" placeholder="isikan Email">
-                                        <span class="invalid_feedback">
-                                            Inputan Email tidak boleh Kosong!
-                                        </span>
-                                    </div>
-                                    <label class="cell-sm-4" style="margin-right: -80px;">Zoom ID</label>
-                                    <div class="cell-sm-8">
-                                        <input data-role="input" data-validate="required" type="text" name="zoomid" value="<?= $account->zoomid ?>" placeholder="Zoom ID">
-                                        <span class="invalid_feedback">
-                                            Inputan Zoom ID tidak boleh Kosong dan Harus Angka!
-                                        </span>
-                                    </div>
-                                    <label class="cell-sm-4" style="margin-right: -80px;">Nama Bagian</label>
-                                    <div class="cell-sm-8">
-                                        <strong><?= $account->sub_department_name; ?></strong>
-                                    </div>
-                                    <label class="cell-sm-4" style="margin-right: -80px;">&nbsp;</label>
-                                    <div class="cell-sm-8">
-                                        <button type="submit" id="btnSave" class="button success"><span class="mif-checkmark"></span> Ubah Account <?= $account->name ?></button>
-                                        <a href="<?= base_url('detailaccount/' . $account->token); ?>" class="button secondary"><span class="mif-not"></span> Batal</a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </form>
+        <div class="navview-content d-flex h-500">
+            <div class="grid">
+                <div class="row">
+                    <div class="cell">
+                        <img src="<?= base_url('assets/data/profile/') . '/' . $account->image; ?>" class="avatar" style="width: 280px;">
+                    </div>
+                    <div class="cell">
+                        <table class="table cell-border table-border cell-media-table" style="width: 630px;">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 160px;">Nama Lengkap</td>
+                                    <td>
+                                        <input data-role="input" value="<?= $account->name ?>" disabled>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td>
+                                        <input data-role="input" value="<?= $account->email ?>" disabled>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Zoom ID</td>
+                                    <td>
+                                        <input data-role="input" value="<?= $account->zoomid ?>" disabled>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Sekretariat</td>
+                                    <td>
+                                        <input data-role="input" value="<?= $account->department_name ?>" disabled>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Nama Bagian</td>
+                                    <td>
+                                        <input data-role="input" value="<?= $account->sub_department_name ?>" disabled>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
+</div>
 </div>
 <!-- Start Main Content -->
 

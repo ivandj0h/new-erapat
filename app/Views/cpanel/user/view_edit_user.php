@@ -62,29 +62,29 @@ navbar_child($nav_title);
                                 <tbody>
                                     <tr>
                                         <td style="width: 160px;">Nama User</td>
-                                        <td class="bg-light">
-                                            <input data-role="input" value="<?= $user->name ?>" disabled>
+                                        <td>
+                                            <strong><?= $user->name ?></strong>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Email</td>
+                                        <td class="bg-light">Email</td>
                                         <td class="bg-light">
                                             <input data-role="input" data-validate="required email" type="email" name="email" value="<?= $user->email ?>" placeholder="isikan Email">
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Zoom ID</td>
+                                        <td class="bg-light">Zoom ID</td>
                                         <td class="bg-light">
                                             <input data-role="input" data-validate="required" type="text" name="zoomid" value="<?= $user->zoomid ?>" placeholder="Zoom ID">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Nama Bagian</td>
-                                        <td class="bg-light"><strong><?= $user->sub_department_name; ?></strong></td>
+                                        <td><strong><?= $user->sub_department_name; ?></strong></td>
                                     </tr>
                                     <tr>
                                         <td>&nbsp;</td>
-                                        <td class="bg-light">
+                                        <td>
                                             <button type="submit" id="btnSave" class="button success"><span class="mif-checkmark"></span> Ubah Account User</button>
                                             <a href="<?= base_url('user') ?>" class="button secondary"><span class="mif-not"></span> Batal</a>
                                         </td>
