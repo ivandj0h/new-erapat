@@ -69,7 +69,7 @@ class Account extends BaseController
             'account' => $this->account
                 ->getWhere(['token' => $token])
                 ->getRow(),
-            'department' => $this->department->findAll(),
+            'sekretariat' => $this->sekretariat->findAll(),
             'subdepartment' => $this->subdepartment->findAll()
         ];
 

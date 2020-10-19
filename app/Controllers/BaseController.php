@@ -52,10 +52,9 @@ class BaseController extends Controller
 		$this->auths = new \App\Models\AuthModel();
 		$this->user = new \App\Models\UserModel();
 		$this->account = new \App\Models\AccountModel();
-		$this->department = new \App\Models\DepartmentModel();
 		$this->roles = new \App\Models\RoleModel();
 		$this->rapats = new \App\Models\RapatModel();
-		$this->department = new \App\Models\DepartmentModel();
+		$this->sekretariat = new \App\Models\SekretariatModel();
 		$this->subdepartment = new \App\Models\SubDepartmentModel();
 
 		//--------------------------------------------------------------------

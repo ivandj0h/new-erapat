@@ -130,22 +130,26 @@ $routes->get('/changeuserspassword/(:any)', 'Account::changeuserspassword/$1', [
 /**
  * --------------------------------------------------------------------
  * CPANEL Route Configuration
- * ACCOUNT SECTION
+ * SEKRETARIAT SECTION
  * --------------------------------------------------------------------
  */
 
-$routes->get('/sekretariat', 'Pembaharuan::index', ['filter' => 'ceklogin']);
-
+$routes->get('/sekretariat', 'Sekretariat::index', ['filter' => 'ceklogin']);
+$routes->get('/addsekretariat', 'Sekretariat::addsekretariat', ['filter' => 'ceklogin']);
+$routes->post('/storesekretariat', 'Sekretariat::storesekretariat', ['filter' => 'ceklogin']);
+$routes->get('/editsekretariat/(:any)', 'Sekretariat::editsekretariat/$1', ['filter' => 'ceklogin']);
+$routes->post('/updatesekretariat', 'Sekretariat::updatesekretariat', ['filter' => 'ceklogin']);
+$routes->get('/deletesekretariat/(:any)', 'Sekretariat::deletesekretariat/$1', ['filter' => 'ceklogin']);
 
 
 /**
  * --------------------------------------------------------------------
  * CPANEL Route Configuration
- * ACCOUNT SECTION
+ * BAGIAN SECTION
  * --------------------------------------------------------------------
  */
 
-$routes->get('/bagian', 'Pembaharuan::index', ['filter' => 'ceklogin']);
+$routes->get('/bagian', 'Bagian::index', ['filter' => 'ceklogin']);
 
 
 
