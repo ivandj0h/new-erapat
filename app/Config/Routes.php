@@ -126,6 +126,30 @@ $routes->get('/leveluser/(:any)/(:any)', 'Account::leveluser/$1/$2', ['filter' =
 $routes->get('/changeuserspassword/(:any)', 'Account::changeuserspassword/$1', ['filter' => 'ceklogin']);
 
 
+
+/**
+ * --------------------------------------------------------------------
+ * CPANEL Route Configuration
+ * ACCOUNT SECTION
+ * --------------------------------------------------------------------
+ */
+
+$routes->get('/sekretariat', 'Pembaharuan::index', ['filter' => 'ceklogin']);
+
+
+
+/**
+ * --------------------------------------------------------------------
+ * CPANEL Route Configuration
+ * ACCOUNT SECTION
+ * --------------------------------------------------------------------
+ */
+
+$routes->get('/bagian', 'Pembaharuan::index', ['filter' => 'ceklogin']);
+
+
+
+
 /**
  * --------------------------------------------------------------------
  * CPANEL Route Configuration
