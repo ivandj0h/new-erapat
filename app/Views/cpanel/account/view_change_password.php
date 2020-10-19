@@ -27,14 +27,14 @@ navbar_child($nav_title);
                 <span class="default-icon-menu"></span>
             </button>
             <ul class="navview-menu">
-                <li class="active">
-                    <a href="<?= base_url('user'); ?>">
+                <li>
+                    <a href="<?= base_url('detailaccount/' . $user->token); ?>">
                         <span class="icon"><span class="mif-user-secret"></span></span>
                         <span class="caption">Base Profile</span>
                     </a>
                 </li>
-                <li>
-                    <a href="<?= base_url('changeuserpassword/' . $user->token); ?>">
+                <li class="active">
+                    <a href="<?= base_url('changeuserspassword/' . $user->token); ?>">
                         <span class="icon"><span class="mif-key"></span></span>
                         <span class="caption">Ganti Password</span>
                     </a>
@@ -54,7 +54,7 @@ navbar_child($nav_title);
                         <img src="<?= base_url('assets/data/profile/') . '/' . $user->image; ?>" class="avatar" style="width: 280px;">
                     </div>
                     <div class="cell">
-                        <form data-role="validator" action="<?= base_url('updateadmin/' . $user->token) ?>" method="POST">
+                        <form data-role="validator" action="<?= base_url('updateuserpassword') ?>" method="POST">
                             <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
                             <input type="hidden" name="token" value="<?= $user->token ?>" />
                             <input type="hidden" name="id" value="<?= $user->id ?>" />
@@ -63,19 +63,19 @@ navbar_child($nav_title);
                                     <tr>
                                         <td style="width: 160px;">Nama User</td>
                                         <td>
-                                            <input data-role="input" data-validate="required" type="text" name="name" value="<?= $user->name ?>" placeholder="isikan Nama">
+                                            <strong><?= $user->name ?></strong>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="bg-light">Email</td>
+                                        <td class="bg-light">Password Baru</td>
                                         <td class="bg-light">
-                                            <input data-role="input" data-validate="required email" type="email" name="email" value="<?= $user->email ?>" placeholder="isikan Email">
+                                            <input data-role="input" data-validate="required" type="password" name="pass1" placeholder="isikan Password Baru">
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="bg-light">Zoom ID</td>
+                                        <td class="bg-light">Ulangi Password Baru</td>
                                         <td class="bg-light">
-                                            <input data-role="input" data-validate="required" type="text" name="zoomid" value="<?= $user->zoomid ?>" placeholder="Zoom ID">
+                                            <input data-role="input" data-validate="required compare=pass1" type="password" name="pass2" placeholder="Ulangi Password Baru">
                                         </td>
                                     </tr>
                                     <tr>
@@ -85,8 +85,8 @@ navbar_child($nav_title);
                                     <tr>
                                         <td>&nbsp;</td>
                                         <td>
-                                            <button type="submit" id="btnSave" class="button success"><span class="mif-checkmark"></span> Ubah Account User</button>
-                                            <a href="<?= base_url('user') ?>" class="button secondary"><span class="mif-not"></span> Batal</a>
+                                            <button type="submit" id="btnSave" class="button success"><span class="mif-checkmark"></span> Update Password</button>
+                                            <a href="<?= base_url('user'); ?>" class="button secondary"><span class="mif-not"></span> Batal</a>
                                         </td>
                                     </tr>
                                 </tbody>

@@ -20,7 +20,7 @@ navbar_child($nav_title);
     <?php
     }
     ?>
-    <div class="toolbar my-5">
+    <div class="toolbar my-4" style="left: 20px !important;">
         <strong> Tabel Master Data Rapat</strong>
     </div>
     <div class="toolbar my-3 place-right">

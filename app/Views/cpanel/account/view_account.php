@@ -20,11 +20,11 @@ navbar_child($nav_title);
     <?php
     }
     ?>
-    <div class="toolbar my-5">
+    <div class="toolbar my-4" style="left: 20px !important;">
         <strong> Tabel Master Data Account</strong>
     </div>
     <div class="toolbar my-3 place-right">
-        <a href="<?php echo base_url('baru') ?>" class="button success"><span class="mif-file-text"></span> Tambah Account Baru</a>
+        <a href="<?php echo base_url('addaccount') ?>" class="button success"><span class="mif-file-text"></span> Tambah Account Baru</a>
     </div>
     <table class="table hover display order-column" id="account" cellspacing="0">
         <thead>
@@ -45,19 +45,7 @@ navbar_child($nav_title);
                     <td class="text-center"><?= $a['zoomid']; ?></td>
                     <td class="text-left"><strong><?= $a['name']; ?></strong></td>
                     <td class="text-center"><?= $a['email']; ?></td>
-                    <td class="text-left">
-                        <?php if ($a['role_id'] == 1) : ?>
-                            <strong class="fg-crimson"><span class="mif-user-secret"> <?= $a['role']; ?></span></strong>
-                        <?php elseif ($a['role_id'] == 2) : ?>
-                            <strong class="fg-brown"><span class="mif-user-secret"> <?= $a['role']; ?></span></strong>
-                        <?php elseif ($a['role_id'] == 3) : ?>
-                            <strong class="fg-orange"><span class="mif-user-secret"> <?= $a['role']; ?></span></strong>
-                        <?php elseif ($a['role_id'] == 4) : ?>
-                            <strong class="fg-emerald"><span class="mif-user-secret"> <?= $a['role']; ?></span></strong>
-                        <?php elseif ($a['role_id'] == 5) : ?>
-                            <strong class="fg-green"><span class="mif-user-secret"> <?= $a['role']; ?></span></strong>
-                        <?php endif; ?>
-                    </td>
+                    <td class="text-center"><strong><?= $a['role']; ?></strong></td>
                     <td class="text-center">
                         <?php if ($a['is_active'] != 1) : ?>
                             <a href="<?php echo base_url('aktifkan/' . $a['id']); ?>" class="fg-crimson"><span class="mif-not"> Blokir</span></a>

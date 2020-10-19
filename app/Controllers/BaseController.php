@@ -55,6 +55,8 @@ class BaseController extends Controller
 		$this->department = new \App\Models\DepartmentModel();
 		$this->roles = new \App\Models\RoleModel();
 		$this->rapats = new \App\Models\RapatModel();
+		$this->department = new \App\Models\DepartmentModel();
+		$this->subdepartment = new \App\Models\SubDepartmentModel();
 
 		//--------------------------------------------------------------------
 	}

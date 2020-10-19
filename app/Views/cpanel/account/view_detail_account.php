@@ -77,6 +77,13 @@ navbar_child($nav_title);
                                         <strong><?= $account->sub_department_name ?></strong>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td style="width: 160px;padding: 16px 16px 16px 0;">&nbsp;</td>
+                                    <td>
+                                        <a href="<?= base_url('editaccount/' . $account->token); ?>" class="button success"><span class="mif-checkmark"></span> Ubah Account <?= $account->name ?></a>
+                                        <a href="<?= base_url('account'); ?>" class="button secondary"><span class="mif-not"></span> Batal</a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

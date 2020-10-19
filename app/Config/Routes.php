@@ -112,15 +112,18 @@ $routes->get('/changeuserpassword/(:any)', 'User::changeuserpassword/$1', ['filt
  */
 
 $routes->get('/account', 'Account::index', ['filter' => 'ceklogin']);
+$routes->get('/addaccount', 'Account::addaccount', ['filter' => 'ceklogin']);
+$routes->post('/storeaccount', 'Account::storeaccount', ['filter' => 'ceklogin']);
 $routes->get('/detailaccount/(:any)', 'Account::detailAccount/$1', ['filter' => 'ceklogin']);
 $routes->get('/editaccount/(:any)', 'Account::editAccount/$1', ['filter' => 'ceklogin']);
-$routes->post('/updataccount/(:any)', 'Account::updataccount/$1', ['filter' => 'ceklogin']);
+$routes->post('/updateaccount', 'Account::updateaccount', ['filter' => 'ceklogin']);
 $routes->get('/restricted', 'Account::restricted_account', ['filter' => 'ceklogin']);
 $routes->get('/aktifkan/(:any)', 'Account::aktifkan/$1', ['filter' => 'ceklogin']);
 $routes->get('/blokir/(:any)', 'Account::blokir/$1', ['filter' => 'ceklogin']);
 $routes->get('/accountaccess/(:any)', 'Account::accountaccess/$1', ['filter' => 'ceklogin']);
 $routes->get('/resetaccountpassword/(:any)', 'Account::resetaccountpassword/$1', ['filter' => 'ceklogin']);
 $routes->get('/leveluser/(:any)/(:any)', 'Account::leveluser/$1/$2', ['filter' => 'ceklogin']);
+$routes->get('/changeuserspassword/(:any)', 'Account::changeuserspassword/$1', ['filter' => 'ceklogin']);
 
 
 /**
