@@ -73,19 +73,29 @@ class User extends BaseController
 
     public function updateuser()
     {
-        $userModel = new UserModel();
-
+        // $userModel = new UserModel();
+        $name = $this->request->getPost('name');
+        $id = $this->request->getPost('id');
         $email  = $this->request->getPost('email');
         $zoomid = htmlspecialchars(strip_tags($this->request->getPost('zoomid')));
 
         if ($this->request->getMethod() == 'post') {
 
             $data = [
+                'name' => $name,
                 'email' => $email,
                 'zoomid' => $zoomid
             ];
 
-            if ($userModel->update($this->request->getPost('id'), $data)) {
+            $update = $this->auths
+                ->set('name', $name)
+                ->set('email', $email)
+                ->set('zoomid', $zoomid)
+                ->where('id', $id)
+                ->update();
+
+
+            if ($update) {
                 session()->setFlashdata('message', 'Profile User Berhasil di Ubah!');
                 session()->setFlashdata('alert-class', 'success');
 

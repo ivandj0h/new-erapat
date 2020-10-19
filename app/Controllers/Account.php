@@ -68,8 +68,13 @@ class Account extends BaseController
             'tabs' => 'account',
             'account' => $this->account
                 ->getWhere(['token' => $token])
-                ->getRow()
+                ->getRow(),
+            'department' => $this->department->findAll(),
+            'subdepartment' => $this->subdepartment->findAll()
         ];
+
+        // var_dump($data);
+        // die;
 
         $user = $this->user->where('id', session()->get('id'))->first()->role_id;
 
@@ -80,9 +85,90 @@ class Account extends BaseController
         }
     }
 
-    public function updataccount()
+    public function addaccount()
     {
-        echo 'updataccount';
+        $data = [
+            'page_title' => 'E-RAPAT - Account',
+            'nav_title' => 'account',
+            'tabs' => 'account',
+            'account' => $this->account
+                ->where('id', session()->get('id'))->first(),
+            'subdepartment' => $this->subdepartment
+                ->findAll()
+        ];
+
+        $user = $this->user->where('id', session()->get('id'))->first()->role_id;
+        if ($user == 1) {
+            return view('cpanel/account/view_add_account', $data);
+        } else {
+            return redirect()->to(base_url('restricted'));
+        }
+    }
+
+    public function storeaccount()
+    {
+        $data = [
+            'token' => uniqid(),
+            'zoomid' => htmlspecialchars(strip_tags($this->request->getPost('zoomid'))),
+            'name'  => $this->request->getPost('name'),
+            'email'  => $this->request->getPost('email'),
+            'image' => 'default.png',
+            'password' => password_hash('admin', PASSWORD_DEFAULT),
+            'roleid'  => 2,
+            'active'  => 1,
+            'blokir'  => 0,
+            'sub_department_id'  => intval($this->request->getPost('sub_department_id')),
+        ];
+
+        $add = $this->auths->insert($data);
+        if ($add) {
+            session()->setFlashdata('message', 'Akun Berhasil di Tambah!');
+            session()->setFlashdata('alert-class', 'success');
+
+            return redirect()->to(base_url('account'));
+        } else {
+            session()->setFlashdata('message', 'Akun Gagal di Tambah!');
+            session()->setFlashdata('alert-class', 'alert');
+
+            return redirect()->to(base_url('account'));
+        }
+    }
+
+    public function updateaccount()
+    {
+        $db      = \Config\Database::connect();
+        $id  = $this->request->getPost('id');
+        $roleid  = $this->request->getPost('role_id');
+        $token = uniqid();
+        $password = password_hash('admin', PASSWORD_DEFAULT);
+        $email  = $this->request->getPost('email');
+        $name  = $this->request->getPost('name');
+        $sub_department_id  = $this->request->getPost('sub_department_id');
+        $zoomid = htmlspecialchars(strip_tags($this->request->getPost('zoomid')));
+
+        $builder = $db->table('meeting_users');
+        $builder->set('token', $token);
+        $builder->set('zoomid', $zoomid);
+        $builder->set('name', $name);
+        $builder->set('email', $email);
+        $builder->set('password', $password);
+        $builder->set('role_id', $roleid);
+        $builder->set('is_active', 1);
+        $builder->set('sub_department_id', $sub_department_id);
+        $builder->where('id', $id);
+        $updates = $builder->update();
+
+        if ($updates) {
+            session()->setFlashdata('message', 'Akun Berhasil di Update!');
+            session()->setFlashdata('alert-class', 'success');
+
+            return redirect()->to(base_url('account'));
+        } else {
+            session()->setFlashdata('message', 'Akun Gagal di Update!');
+            session()->setFlashdata('alert-class', 'alert');
+
+            return redirect()->to(base_url('account'));
+        }
     }
 
     public function restricted_account()
@@ -118,13 +204,6 @@ class Account extends BaseController
 
     public function leveluser($id = '', $roleid)
     {
-        $data = [
-            'id' => $id,
-            'role_id' => $roleid
-        ];
-        var_dump($data);
-        die;
-
         $update = $this->auths
             ->set(['role_id' => $roleid])
             ->where('id', $id)
@@ -205,5 +284,18 @@ class Account extends BaseController
         } else {
             return redirect()->to(base_url('restricted'));
         }
+    }
+
+
+    public function changeuserspassword()
+    {
+        $data = [
+            'page_title' => 'E-RAPAT - Account',
+            'nav_title' => 'account',
+            'tabs' => 'account',
+            'user' => $this->user->where('id', session()->get('id'))->first(),
+        ];
+
+        return view('cpanel/account/view_change_password', $data);
     }
 }

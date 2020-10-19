@@ -19,6 +19,10 @@ a:hover {
   border: 0px #dfdfdf solid !important;
 }
 
+.row-height-sm {
+  height: 1500px !important;
+}
+
 .pad {
   padding: 16px !important;
 }
