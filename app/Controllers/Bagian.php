@@ -6,6 +6,8 @@ class Bagian extends BaseController
 {
     public function __construct()
     {
+        // $db      = \Config\Database::connect();
+        // $builder = $db->table('meeting_department');
         $this->validation = \Config\Services::validation();
         helper([
             'navbar',
@@ -14,63 +16,84 @@ class Bagian extends BaseController
             'menu',
             'form',
             'url',
-            'unggah',
             'tanggal'
         ]);
     }
 
     public function index()
     {
+        $query = $this->conn->query("SELECT `meeting_sub_department`.`id` AS `id`,`meeting_sub_department`.`department_id` AS `department_id`,`meeting_sub_department`.`sub_department_name` AS `sub_department_name`,`meeting_department`.`department_name` AS `department_name`,`meeting_sub_department`.`is_active` AS `is_active` FROM (`meeting_sub_department` JOIN `meeting_department` on(`meeting_sub_department`.`department_id` = `meeting_department`.`id`))");
+
+
         $data = [
-            'page_title' => 'E-RAPAT - Account',
-            'nav_title' => 'account',
-            'tabs' => 'account',
-            'account' => $this->account
-                ->orderBy('id', 'DESC')
-                ->orderBy('is_active', 'DESC')
-                ->findAll(),
+            'page_title' => 'E-RAPAT - Bagian',
+            'nav_title' => 'bagian',
+            'tabs' => 'bagian',
+            'bagian' => $query->getResult()
         ];
 
         $user = $this->user->where('id', session()->get('id'))->first()->role_id;
 
         if ($user == 1) {
-            return view('cpanel/account/view_account', $data);
+            return view('cpanel/bagian/view_bagian', $data);
         } else {
             return redirect()->to(base_url('restricted'));
         }
     }
 
-    public function detailAccount($token = '')
+    public function addbagian()
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('meeting_department');
+        $data = [
+            'page_title' => 'E-RAPAT - Bagian',
+            'nav_title' => 'bagian',
+            'tabs' => 'bagian',
+            'sekretariat' => $builder->get()
+        ];
+        $user = $this->user->where('id', session()->get('id'))->first()->role_id;
+        if ($user == 1) {
+            return view('cpanel/bagian/view_add_bagian', $data);
+        } else {
+            return redirect()->to(base_url('restricted'));
+        }
+    }
+
+    public function storebagian()
     {
         $data = [
-            'page_title' => 'E-RAPAT - Account',
-            'nav_title' => 'account',
-            'tabs' => 'account',
-            'account' => $this->account
-                ->getWhere(['token' => $token])
-                ->getRow()
+            'department_id' => intval($this->request->getPost('depid')),
+            'sub_department_name' => htmlspecialchars(strip_tags($this->request->getPost('subdepname'))),
+            'is_active' => 1
         ];
 
-        $user = $this->user->where('id', session()->get('id'))->first()->role_id;
+        $add = $this->subdepartment->insert($data);
+        if ($add) {
+            session()->setFlashdata('message', 'Data bagian Berhasil di Tambah!');
+            session()->setFlashdata('alert-class', 'success');
 
-        if ($user == 1) {
-            return view('cpanel/account/view_detail_account', $data);
+            return redirect()->to(base_url('bagian'));
         } else {
-            return redirect()->to(base_url('restricted'));
+            session()->setFlashdata('message', 'Data bagian Gagal di Tambah!');
+            session()->setFlashdata('alert-class', 'alert');
+
+            return redirect()->to(base_url('bagian'));
         }
     }
 
-    public function editAccount($token = '')
+    public function editbagian($id = '')
     {
+        $query = $this->conn->query("SELECT `meeting_sub_department`.`id` AS `id`,`meeting_sub_department`.`department_id` AS `department_id`,`meeting_sub_department`.`sub_department_name` AS `sub_department_name`,`meeting_department`.`department_name` AS `department_name`,`meeting_sub_department`.`is_active` AS `is_active` FROM (`meeting_sub_department` JOIN `meeting_department` on(`meeting_sub_department`.`department_id` = `meeting_department`.`id`))");
+        $bagian = $this->conn->where('id', $id);
+
+
+        $builder = $this->conn->table('meeting_department');
         $data = [
-            'page_title' => 'E-RAPAT - Account',
-            'nav_title' => 'account',
-            'tabs' => 'account',
-            'account' => $this->account
-                ->getWhere(['token' => $token])
-                ->getRow(),
-            'department' => $this->department->findAll(),
-            'subdepartment' => $this->subdepartment->findAll()
+            'page_title' => 'E-RAPAT - Bagian',
+            'nav_title' => 'bagian',
+            'tabs' => 'bagian',
+            'sekretariat' => $builder->get(),
+            'bagian' => $bagian
         ];
 
         // var_dump($data);
@@ -79,223 +102,46 @@ class Bagian extends BaseController
         $user = $this->user->where('id', session()->get('id'))->first()->role_id;
 
         if ($user == 1) {
-            return view('cpanel/account/view_edit_account', $data);
+            return view('cpanel/bagian/view_edit_bagian', $data);
         } else {
             return redirect()->to(base_url('restricted'));
         }
     }
 
-    public function addaccount()
+    public function updatebagian()
     {
-        $data = [
-            'page_title' => 'E-RAPAT - Account',
-            'nav_title' => 'account',
-            'tabs' => 'account',
-            'account' => $this->account
-                ->where('id', session()->get('id'))->first(),
-            'subdepartment' => $this->subdepartment
-                ->findAll()
-        ];
-
-        $user = $this->user->where('id', session()->get('id'))->first()->role_id;
-        if ($user == 1) {
-            return view('cpanel/account/view_add_account', $data);
-        } else {
-            return redirect()->to(base_url('restricted'));
-        }
-    }
-
-    public function storeaccount()
-    {
-        $data = [
-            'token' => uniqid(),
-            'zoomid' => htmlspecialchars(strip_tags($this->request->getPost('zoomid'))),
-            'name'  => $this->request->getPost('name'),
-            'email'  => $this->request->getPost('email'),
-            'image' => 'default.png',
-            'password' => password_hash('admin', PASSWORD_DEFAULT),
-            'roleid'  => 2,
-            'active'  => 1,
-            'blokir'  => 0,
-            'sub_department_id'  => intval($this->request->getPost('sub_department_id')),
-        ];
-
-        $add = $this->auths->insert($data);
-        if ($add) {
-            session()->setFlashdata('message', 'Akun Berhasil di Tambah!');
-            session()->setFlashdata('alert-class', 'success');
-
-            return redirect()->to(base_url('account'));
-        } else {
-            session()->setFlashdata('message', 'Akun Gagal di Tambah!');
-            session()->setFlashdata('alert-class', 'alert');
-
-            return redirect()->to(base_url('account'));
-        }
-    }
-
-    public function updateaccount()
-    {
-        $db      = \Config\Database::connect();
         $id  = $this->request->getPost('id');
-        $roleid  = $this->request->getPost('role_id');
-        $token = uniqid();
-        $password = password_hash('admin', PASSWORD_DEFAULT);
-        $email  = $this->request->getPost('email');
-        $name  = $this->request->getPost('name');
-        $sub_department_id  = $this->request->getPost('sub_department_id');
-        $zoomid = htmlspecialchars(strip_tags($this->request->getPost('zoomid')));
+        $data = [
+            'department_name' => htmlspecialchars(strip_tags($this->request->getPost('sekretariat')))
+        ];
 
-        $builder = $db->table('meeting_users');
-        $builder->set('token', $token);
-        $builder->set('zoomid', $zoomid);
-        $builder->set('name', $name);
-        $builder->set('email', $email);
-        $builder->set('password', $password);
-        $builder->set('role_id', $roleid);
-        $builder->set('is_active', 1);
-        $builder->set('sub_department_id', $sub_department_id);
-        $builder->where('id', $id);
-        $updates = $builder->update();
-
+        $updates = $this->sekretariat->update($id, $data);
         if ($updates) {
-            session()->setFlashdata('message', 'Akun Berhasil di Update!');
+            session()->setFlashdata('message', 'Data Sekretariat Berhasil di Update!');
             session()->setFlashdata('alert-class', 'success');
 
-            return redirect()->to(base_url('account'));
+            return redirect()->to(base_url('sekretariat'));
         } else {
-            session()->setFlashdata('message', 'Akun Gagal di Update!');
+            session()->setFlashdata('message', 'Data Sekretariat Gagal di Update!');
             session()->setFlashdata('alert-class', 'alert');
 
-            return redirect()->to(base_url('account'));
+            return redirect()->to(base_url('sekretariat'));
         }
     }
 
-    public function restricted_account()
+    public function deletebagian($id = '')
     {
-        $data = [
-            'page_title' => 'E-RAPAT - Account',
-            'nav_title' => 'account',
-            'tabs' => 'account',
-        ];
-        return view('errors/response/view_restricted_cpanel_page', $data);
-    }
-
-    public function resetaccountpassword($id = '')
-    {
-        $password = "admin"; // $2y$10$rlSQG0XGwZnCtqv61NLKkONCAL1SUJdVeJ/95FFWOxSEeGJ9rqLwW
-        $update = $this->auths
-            ->set(['password' => password_hash($password, PASSWORD_DEFAULT)])
-            ->where('id', $id)
-            ->update();
-
-        if ($update) {
-            session()->setFlashdata('message', 'Password Berhasil di Reset!');
+        $deletes = $this->subdepartment->where('id', $id)->delete();
+        if ($deletes) {
+            session()->setFlashdata('message', 'Data Bagian Berhasil di Hapus!');
             session()->setFlashdata('alert-class', 'success');
 
-            return redirect()->to(base_url('account'));
+            return redirect()->to(base_url('bagian'));
         } else {
-            session()->setFlashdata('message', 'Password Gagal di di Reset!');
+            session()->setFlashdata('message', 'Data Bagian Gagal di Hapus!');
             session()->setFlashdata('alert-class', 'alert');
 
-            return redirect()->to(base_url('account'));
+            return redirect()->to(base_url('bagian'));
         }
-    }
-
-    public function leveluser($id = '', $roleid)
-    {
-        $update = $this->auths
-            ->set(['role_id' => $roleid])
-            ->where('id', $id)
-            ->update();
-
-        if ($update) {
-            session()->setFlashdata('message', 'Level User Berhasil di Update!');
-            session()->setFlashdata('alert-class', 'success');
-
-            return redirect()->to(base_url('account'));
-        } else {
-            session()->setFlashdata('message', 'Level User Gagal di di Update!');
-            session()->setFlashdata('alert-class', 'alert');
-
-            return redirect()->to(base_url('account'));
-        }
-    }
-
-    public function aktifkan($id = '')
-    {
-        $update = $this->auths
-            ->set(['is_active' => 1])
-            ->set(['blokir' => 0])
-            ->where('id', $id)
-            ->update();
-
-        if ($update) {
-            session()->setFlashdata('message', 'Akun Berhasil di Aktifkan!');
-            session()->setFlashdata('alert-class', 'success');
-
-            return redirect()->to(base_url('account'));
-        } else {
-            session()->setFlashdata('message', 'Akun Berhasil di Blokir!');
-            session()->setFlashdata('alert-class', 'alert');
-
-            return redirect()->to(base_url('account'));
-        }
-    }
-
-    public function blokir($id = '')
-    {
-        $update = $this->auths
-            ->set(['is_active' => 0])
-            ->where('id', $id)
-            ->update();
-
-        if ($update) {
-            session()->setFlashdata('message', 'Akun Berhasil di Aktifkan!');
-            session()->setFlashdata('alert-class', 'success');
-
-            return redirect()->to(base_url('account'));
-        } else {
-            session()->setFlashdata('message', 'Akun Berhasil di Blokir!');
-            session()->setFlashdata('alert-class', 'alert');
-
-            return redirect()->to(base_url('account'));
-        }
-    }
-
-    public function accountaccess($token = '')
-    {
-        $data = [
-            'page_title' => 'E-RAPAT - Account',
-            'nav_title' => 'account',
-            'tabs' => 'account',
-            'roles' => $this->roles
-                ->orderBy('id', 'DESC')
-                ->findAll(),
-            'account' => $this->account
-                ->getWhere(['token' => $token])
-                ->getRow()
-        ];
-
-        $user = $this->user->where('id', session()->get('id'))->first()->role_id;
-
-        if ($user == 1) {
-            return view('cpanel/account/view_access_account', $data);
-        } else {
-            return redirect()->to(base_url('restricted'));
-        }
-    }
-
-
-    public function changeuserspassword()
-    {
-        $data = [
-            'page_title' => 'E-RAPAT - Account',
-            'nav_title' => 'account',
-            'tabs' => 'account',
-            'user' => $this->user->where('id', session()->get('id'))->first(),
-        ];
-
-        return view('cpanel/account/view_change_password', $data);
     }
 }

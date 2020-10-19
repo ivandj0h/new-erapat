@@ -9,6 +9,8 @@ class SubDepartmentModel extends Model
     protected $table = 'meeting_sub_department';
     protected $primaryKey = "id";
     protected $allowedFields = [
-        'sub_department_name'
+        'department_id',
+        'sub_department_name',
+        'is_active'
     ];
 }
