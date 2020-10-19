@@ -150,6 +150,11 @@ $routes->get('/deletesekretariat/(:any)', 'Sekretariat::deletesekretariat/$1', [
  */
 
 $routes->get('/bagian', 'Bagian::index', ['filter' => 'ceklogin']);
+$routes->get('/addbagian', 'Bagian::addbagian', ['filter' => 'ceklogin']);
+$routes->post('/storebagian', 'Bagian::storebagian', ['filter' => 'ceklogin']);
+$routes->get('/editbagian/(:any)', 'Bagian::editbagian/$1', ['filter' => 'ceklogin']);
+$routes->post('/updatebagian', 'Bagian::updatebagian', ['filter' => 'ceklogin']);
+$routes->get('/deletebagian/(:any)', 'Bagian::deletebagian/$1', ['filter' => 'ceklogin']);
 
 
 

@@ -59,7 +59,6 @@ navbar_child($nav_title);
                             <ul class="d-menu place-right" data-role="dropdown">
                                 <li><a href="<?= base_url('detailaccount/' . $a['token']); ?>"><span class="mif-eye"></span> Detail</a></li>
                                 <li><a href="<?= base_url('editaccount/' . $a['token']); ?>"><span class="mif-copy"></span> Ubah</a></li>
-                                <li><a href="<?= base_url('deleteaccount/' . $a['token']); ?>"><i class="fas fa-fw fa-trash"></i> Hapus</a></li>
                             </ul>
                         </div>
                     </td>

@@ -20,8 +20,8 @@ class Sekretariat extends BaseController
 
     public function index()
     {
-        $db      = \Config\Database::connect();
-        $builder = $db->table('meeting_department');
+        // $db      = \Config\Database::connect();
+        $builder = $this->conn->table('meeting_department');
 
         $data = [
             'page_title' => 'E-RAPAT - Sekretariat',
