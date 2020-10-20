@@ -56,6 +56,8 @@ class BaseController extends Controller
 		$this->rapats = new \App\Models\RapatModel();
 		$this->sekretariat = new \App\Models\SekretariatModel();
 		$this->subdepartment = new \App\Models\SubDepartmentModel();
+		$this->zooms = new \App\Models\ZoomModel();
+		$this->zommz = new \App\Models\ZoomsModel();
 
 		//--------------------------------------------------------------------
 	}

@@ -158,6 +158,23 @@ $routes->get('/deletebagian/(:any)', 'Bagian::deletebagian/$1', ['filter' => 'ce
 
 
 
+/**
+ * --------------------------------------------------------------------
+ * CPANEL Route Configuration
+ * BAGIAN SECTION
+ * --------------------------------------------------------------------
+ */
+
+$routes->get('/zoom', 'Zoom::index', ['filter' => 'ceklogin']);
+$routes->get('/addzoom', 'Zoom::addzoom', ['filter' => 'ceklogin']);
+$routes->post('/storezoom', 'Zoom::storezoom', ['filter' => 'ceklogin']);
+$routes->get('/editzoom/(:any)', 'Zoom::editzoom/$1', ['filter' => 'ceklogin']);
+$routes->post('/updatezoom', 'Zoom::updatezoom', ['filter' => 'ceklogin']);
+$routes->get('/deletezoom/(:any)', 'Zoom::deletezoom/$1', ['filter' => 'ceklogin']);
+$routes->get('/offline/(:any)', 'Zoom::Offline/$1', ['filter' => 'ceklogin']);
+$routes->get('/online/(:any)', 'Zoom::Online/$1', ['filter' => 'ceklogin']);
+
+
 
 /**
  * --------------------------------------------------------------------

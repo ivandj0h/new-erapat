@@ -24,6 +24,7 @@ function userTabMenu($tabs)
                             <li><a href="<?= base_url('account') ?>"><span class="mif-organization"></span> Master Account</a></li>
                             <li><a href="<?= base_url('sekretariat') ?>"><span class="mif-library"></span> Master Sekretariat</a></li>
                             <li><a href="<?= base_url('bagian') ?>"><span class="mif-home"></span> Master Bagian</a></li>
+                            <li><a href="<?= base_url('zoom') ?>"><span class="mif-video-camera"></span> Master Zoom</a></li>
                             <li><a href="<?= base_url('rapat') ?>"><span class="mif-stackoverflow"></span> Master Data Rapat</a></li>
                             <li><a href="<?= base_url('pembaharuan') ?>"><span class="mif-loop2"></span> Pembaharuan Data</a></li>
                             <li><a href="<?= base_url('riwayat') ?>"><span class="mif-books"></span> Riwayat Rapat</a></li>
@@ -40,6 +41,7 @@ function userTabMenu($tabs)
                                 <li class="active"><a href="<?= base_url('account') ?>"><span class="mif-organization"></span> Master Account</a></li>
                                 <li><a href="<?= base_url('sekretariat') ?>"><span class="mif-library"></span> Master Sekretariat</a></li>
                                 <li><a href="<?= base_url('bagian') ?>"><span class="mif-home"></span> Master Bagian</a></li>
+                                <li><a href="<?= base_url('zoom') ?>"><span class="mif-video-camera"></span> Master Zoom</a></li>
                             <?php else : ?>
                                 <li><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
                             <?php endif; ?>
@@ -53,6 +55,7 @@ function userTabMenu($tabs)
                                 <li><a href="<?= base_url('account') ?>"><span class="mif-organization"></span> Master Account</a></li>
                                 <li class="active"><a href="<?= base_url('sekretariat') ?>"><span class="mif-library"></span> Master Sekretariat</a></li>
                                 <li><a href="<?= base_url('bagian') ?>"><span class="mif-home"></span> Master Bagian</a></li>
+                                <li><a href="<?= base_url('zoom') ?>"><span class="mif-video-camera"></span> Master Zoom</a></li>
                             <?php else : ?>
                                 <li><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
                             <?php endif; ?>
@@ -66,6 +69,21 @@ function userTabMenu($tabs)
                                 <li><a href="<?= base_url('account') ?>"><span class="mif-organization"></span> Master Account</a></li>
                                 <li><a href="<?= base_url('sekretariat') ?>"><span class="mif-library"></span> Master Sekretariat</a></li>
                                 <li class="active"><a href="<?= base_url('bagian') ?>"><span class="mif-home"></span> Master Bagian</a></li>
+                                <li><a href="<?= base_url('zoom') ?>"><span class="mif-video-camera"></span> Master Zoom</a></li>
+                            <?php else : ?>
+                                <li><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
+                            <?php endif; ?>
+                            <li><a href="<?= base_url('rapat') ?>"><span class="mif-stackoverflow"></span> Master Data Rapat</a></li>
+                            <li><a href="<?= base_url('pembaharuan') ?>"><span class="mif-loop2"></span> Pembaharuan Data</a></li>
+                            <li><a href="<?= base_url('riwayat') ?>"><span class="mif-books"></span> Riwayat Rapat</a></li>
+                        <?php break;
+                        case "zoom": ?>
+                            <?php if (session()->get('role_id') == 1) : ?>
+                                <li><a href="<?= base_url('admin') ?>"><span class="mif-user"></span> Profil</a></li>
+                                <li><a href="<?= base_url('account') ?>"><span class="mif-organization"></span> Master Account</a></li>
+                                <li><a href="<?= base_url('sekretariat') ?>"><span class="mif-library"></span> Master Sekretariat</a></li>
+                                <li><a href="<?= base_url('bagian') ?>"><span class="mif-home"></span> Master Bagian</a></li>
+                                <li class="active"><a href="<?= base_url('zoom') ?>"><span class="mif-video-camera"></span> Master Zoom</a></li>
                             <?php else : ?>
                                 <li><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
                             <?php endif; ?>
@@ -79,6 +97,7 @@ function userTabMenu($tabs)
                                 <li><a href="<?= base_url('account') ?>"><span class="mif-organization"></span> Master Account</a></li>
                                 <li><a href="<?= base_url('sekretariat') ?>"><span class="mif-library"></span> Master Sekretariat</a></li>
                                 <li><a href="<?= base_url('bagian') ?>"><span class="mif-home"></span> Master Bagian</a></li>
+                                <li><a href="<?= base_url('zoom') ?>"><span class="mif-video-camera"></span> Master Zoom</a></li>
                             <?php else : ?>
                                 <li><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
                             <?php endif; ?>
@@ -92,6 +111,7 @@ function userTabMenu($tabs)
                                 <li><a href="<?= base_url('account') ?>"><span class="mif-organization"></span> Master Account</a></li>
                                 <li><a href="<?= base_url('sekretariat') ?>"><span class="mif-library"></span> Master Sekretariat</a></li>
                                 <li><a href="<?= base_url('bagian') ?>"><span class="mif-home"></span> Master Bagian</a></li>
+                                <li><a href="<?= base_url('zoom') ?>"><span class="mif-video-camera"></span> Master Zoom</a></li>
                             <?php else : ?>
                                 <li><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
                             <?php endif; ?>
@@ -105,6 +125,7 @@ function userTabMenu($tabs)
                                 <li><a href="<?= base_url('account') ?>"><span class="mif-organization"></span> Master Account</a></li>
                                 <li><a href="<?= base_url('sekretariat') ?>"><span class="mif-library"></span> Master Sekretariat</a></li>
                                 <li><a href="<?= base_url('bagian') ?>"><span class="mif-home"></span> Master Bagian</a></li>
+                                <li><a href="<?= base_url('zoom') ?>"><span class="mif-video-camera"></span> Master Zoom</a></li>
                             <?php else : ?>
                                 <li><a href="<?= base_url('user') ?>"><span class="mif-user"></span> Profil</a></li>
                             <?php endif; ?>
