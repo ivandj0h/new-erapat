@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2020 at 12:15 AM
+-- Generation Time: Oct 20, 2020 at 08:59 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -672,7 +672,7 @@ CREATE TABLE `meeting_department` (
 --
 
 INSERT INTO `meeting_department` (`id`, `department_name`) VALUES
-(1, 'Super Admin'),
+(1, 'Administrator'),
 (2, 'Sekretariat Badan Litbang Perhubungan'),
 (3, 'Pusat Penelitian dan Pengembangan Transportasi Udara'),
 (4, 'Pusat Penelitian dan Pengembangan Transportasi LSDP'),
@@ -834,13 +834,13 @@ CREATE TABLE `meeting_users` (
 
 INSERT INTO `meeting_users` (`id`, `token`, `zoomid`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `blokir`, `sub_department_id`, `date_created`, `date_updated`) VALUES
 (14, '5f84b1d3f0336', '000 000 000 0000', 'administrator', 'admin@erapat.com', 'default.png', '$2y$10$pcXovYvhzZDvmXoOXEskcuHtdSvZOUBy6o9FXGRSrFsOAUfbhwdTS', 1, 1, 0, 1, 1595188759, 1600115535),
-(15, '5f84b1f402199', '666 666 666 666', 'Admin Keuangan', 'keuangan@erapat.com', 'default.png', '$2y$10$icYu3J.bfvdocnSNdxPUheArwlUhq80r1N3T7p.ZzgJO48lB1ne6O', 2, 0, 0, 2, 1595195583, 1597380790),
-(18, '5f84b2020a238', '555 555 555 5555', 'Admin Humas', 'humas@erapat.com', 'default.png', '$2y$10$vb9cPXqV9oKGCZCB9WvCau9RUn.cvaL5MjShKBHtg.ZHLWoTLEXre', 2, 1, 0, 5, 1597213397, 1602750114),
-(19, '5f84b20f02ea5', '444 444 444 444', 'Admin Perencanaan', 'perencanaan@erapat.com', 'default.png', '$2y$10$X/U5/ZLzBP60TO6aDsqp3eWpXLevpxVvTSKy0nLGrzCa31osP4xoK', 2, 1, 0, 3, 1598467083, 0),
-(20, '5f84b21a71601', '111 111 111 111', 'Kaban Litbang Perhubungan', 'kaban@erapat.com', 'default.png', '$2y$10$w5k9sGFC7SMC8whAPIp/dOknnlHLA.nOP1IypYw6JNVu2aDz0oEse', 4, 1, 0, 14, 1599060092, 1599061311),
+(15, '5f84b1f402199', '666 666 666 666', 'Admin Keuangan', 'keuangan@erapat.com', 'default.png', '$2y$10$icYu3J.bfvdocnSNdxPUheArwlUhq80r1N3T7p.ZzgJO48lB1ne6O', 2, 1, 0, 2, 1595195583, 1597380790),
+(19, '5f84b20f02ea5', '444 444 444 4444', 'Admin Perencanaan', 'perencanaan@erapat.com', 'default.png', '$2y$10$X/U5/ZLzBP60TO6aDsqp3eWpXLevpxVvTSKy0nLGrzCa31osP4xoK', 2, 1, 0, 3, 1598467083, 0),
+(20, '5f84b21a71601', '111 111 111 111', 'Kaban Litbang Perhubungan', 'kaban@erapat.com', 'default.png', '$2y$10$cZjEwU5tnXcuC6O47ttk4e9B/4W/p9VnV4UoqLjHBS7yfqeybnp4C', 4, 1, 0, 14, 1599060092, 1599061311),
 (21, '5f84b22c21a4b', '222 222 222 222', 'Sesban Litbang Perhubungan', 'sesban@erapat.com', 'default.png', '$2y$10$7iKaePzZkNyVg37xciRbUOzFSQ58N92P8L95KwtgXGkzV8u8yBTge', 5, 1, 0, 15, 1599060131, 1599061333),
 (22, '5f84b2396f330', '333 333 333 3333', 'Admin LSDP', 'lsdp@erapat.com', 'default.png', '$2y$10$hNKFHzPaAMTJXuwscLTBEutZtQHxD1CHqJDgOY1Z7u2EJ/ARXPjpy', 2, 1, 0, 9, 1599471171, 0),
-(23, '', '555 555 555 5555', '', 'humas@erapat.com', '', '', 0, 0, 0, 0, 0, 0);
+(23, '5f8cf0493a423', '555 555 555 5555', 'Admin Humas', 'humas@erapat.com', 'default.png', '$2y$10$LTjdNwmUzLJ4kBALjQ.6/uNG5Jn3LBJPYpT.DEkQ4xUhRI2.8YE5K', 2, 1, 0, 5, 0, 0),
+(24, '5f8d00da9be10', '123 123 123 1234', 'Admin Kepegawaian', 'kepegawaian@erapat.com', 'default.png', '$2y$10$5/4L4dtxHjPaMwT5EyyeqOGAiDlNr9UEI5AHd38wJ5WanNFKLvRli', 2, 1, 0, 4, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -866,7 +866,7 @@ CREATE TABLE `meeting_zoom` (
 
 INSERT INTO `meeting_zoom` (`id`, `user_id`, `pemakai_id`, `idzoom`, `date_activated`, `start_time`, `end_time`, `is_active`, `status`) VALUES
 (1, 19, 18, '444 444 444 444', '2020-10-14', '07:21:00', '08:21:00', 1, 0),
-(2, 18, 18, '555 555 555 555', '2020-10-18', '17:46:00', '18:46:00', 1, 0),
+(2, 18, 18, '555 555 555 555', '2020-10-17', '02:54:00', '03:54:00', 1, 1),
 (3, 15, 15, '666 666 666 666', '2020-10-05', '02:00:00', '03:00:00', 1, 0),
 (4, 22, 15, '333 333 333 333', '2020-09-24', '19:00:00', '20:00:00', 1, 0),
 (5, 14, 14, '000 000 000 000', '2020-09-18', '09:00:00', '10:00:00', 1, 0),
@@ -1939,7 +1939,7 @@ ALTER TABLE `meeting`
 -- AUTO_INCREMENT for table `meeting_department`
 --
 ALTER TABLE `meeting_department`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `meeting_place`
@@ -1957,7 +1957,7 @@ ALTER TABLE `meeting_status`
 -- AUTO_INCREMENT for table `meeting_sub_department`
 --
 ALTER TABLE `meeting_sub_department`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `meeting_sub_type`
@@ -1975,7 +1975,7 @@ ALTER TABLE `meeting_type`
 -- AUTO_INCREMENT for table `meeting_users`
 --
 ALTER TABLE `meeting_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `meeting_zoom`

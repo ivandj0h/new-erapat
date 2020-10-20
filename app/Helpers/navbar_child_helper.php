@@ -107,6 +107,14 @@ function navbar_child($nav)
                     <?php endif; ?>
                     <a href="<?= base_url('logout') ?>" class="button alert outline text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
                 <?php break;
+                case "zoom": ?>
+                    <?php if (session()->get('role_id') == 1) : ?>
+                        <a href="<?= base_url('admin') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php else : ?>
+                        <a href="<?= base_url('user') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
+                    <?php endif; ?>
+                    <a href="<?= base_url('logout') ?>" class="button alert outline text-upper" style="margin-right: 5px;"><span class="icon mif-switch"></span> LOGOUT</a>
+                <?php break;
                 case "rapat": ?>
                     <?php if (session()->get('role_id') == 1) : ?>
                         <a href="<?= base_url('admin') ?>" class="button button-outline-transparent text-upper cpanel-aktif" style="margin-right: 5px;"><span class="icon mif-done"></span> CPANEL <?= session('fullName'); ?></a>
