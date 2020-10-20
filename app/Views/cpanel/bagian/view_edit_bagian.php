@@ -42,7 +42,18 @@ navbar_child($nav_title);
                                     <tr>
                                         <td style="width: 160px;padding: 16px 16px 16px 0;">Nama Bagian</td>
                                         <td>
-                                            <input data-role="input" data-validate="required" type="text" name="sekretariat" value="<?= $bagian['sub_department_name'] ?>" placeholder="isikan Nama Bagian">
+                                            <input data-role="input" data-validate="required" type="text" name="subdepartmentname" value="<?= $bagian['sub_department_name'] ?>" placeholder="isikan Nama Bagian">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 160px;padding: 16px 16px 16px 0;">Aktif</td>
+                                        <td>
+                                            <input type="radio" data-role="radio" data-style="2" name="isactive" value="1" <?php
+                                                                                                                            echo set_value('is_active', $bagian['is_active']) == 1 ? "checked" : "";
+                                                                                                                            ?> /> YA
+                                            <input type="radio" data-role="radio" data-style="2" name="isactive" value="0" <?php
+                                                                                                                            echo set_value('is_active', $bagian['is_active']) == 0 ? "checked" : "";
+                                                                                                                            ?> /> TIDAK
                                         </td>
                                     </tr>
                                     <tr>

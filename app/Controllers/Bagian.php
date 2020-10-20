@@ -91,11 +91,10 @@ class Bagian extends BaseController
             'nav_title' => 'bagian',
             'tabs' => 'bagian',
             'sekretariat' => $builder->get(),
-            'bagian' => $subdeptmodel->where('id', $id)->first()
+            'bagian' => $subdeptmodel
+                ->where('id', $id)
+                ->first()
         ];
-
-        // var_dump($data);
-        // die;
 
         $user = $this->user->where('id', session()->get('id'))->first()->role_id;
 
@@ -110,20 +109,25 @@ class Bagian extends BaseController
     {
         $id  = $this->request->getPost('id');
         $data = [
-            'department_name' => htmlspecialchars(strip_tags($this->request->getPost('sekretariat')))
+            'department_id' => $this->request->getPost('depid'),
+            'sub_department_name' => htmlspecialchars(strip_tags($this->request->getPost('subdepartmentname'))),
+            'is_active' => $this->request->getPost('isactive'),
         ];
 
-        $updates = $this->sekretariat->update($id, $data);
+        // var_dump($data);
+        // die;
+
+        $updates = $this->subdepartment->update($id, $data);
         if ($updates) {
-            session()->setFlashdata('message', 'Data Sekretariat Berhasil di Update!');
+            session()->setFlashdata('message', 'Data Bagian Berhasil di Update!');
             session()->setFlashdata('alert-class', 'success');
 
-            return redirect()->to(base_url('sekretariat'));
+            return redirect()->to(base_url('bagian'));
         } else {
-            session()->setFlashdata('message', 'Data Sekretariat Gagal di Update!');
+            session()->setFlashdata('message', 'Data Bagian Gagal di Update!');
             session()->setFlashdata('alert-class', 'alert');
 
-            return redirect()->to(base_url('sekretariat'));
+            return redirect()->to(base_url('bagian'));
         }
     }
 
