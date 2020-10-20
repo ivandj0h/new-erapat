@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class SubDepartmentModel extends Model
 {
-    protected $table = 'meeting_sub_department';
+    protected $table = 'view_sub_department';
     protected $primaryKey = "id";
     protected $allowedFields = [
         'department_id',
