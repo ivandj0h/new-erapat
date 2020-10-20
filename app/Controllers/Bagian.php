@@ -2,12 +2,12 @@
 
 namespace App\Controllers;
 
+use App\Models\SubDepartmentModel;
+
 class Bagian extends BaseController
 {
     public function __construct()
     {
-        // $db      = \Config\Database::connect();
-        // $builder = $db->table('meeting_department');
         $this->validation = \Config\Services::validation();
         helper([
             'navbar',
@@ -83,17 +83,15 @@ class Bagian extends BaseController
 
     public function editbagian($id = '')
     {
-        $query = $this->conn->query("SELECT `meeting_sub_department`.`id` AS `id`,`meeting_sub_department`.`department_id` AS `department_id`,`meeting_sub_department`.`sub_department_name` AS `sub_department_name`,`meeting_department`.`department_name` AS `department_name`,`meeting_sub_department`.`is_active` AS `is_active` FROM (`meeting_sub_department` JOIN `meeting_department` on(`meeting_sub_department`.`department_id` = `meeting_department`.`id`))");
-        $bagian = $this->conn->where('id', $id);
-
-
-        $builder = $this->conn->table('meeting_department');
+        $db      = \Config\Database::connect();
+        $builder = $db->table('meeting_department');
+        $subdeptmodel = new SubDepartmentModel();
         $data = [
             'page_title' => 'E-RAPAT - Bagian',
             'nav_title' => 'bagian',
             'tabs' => 'bagian',
             'sekretariat' => $builder->get(),
-            'bagian' => $bagian
+            'bagian' => $subdeptmodel->where('id', $id)->first()
         ];
 
         // var_dump($data);

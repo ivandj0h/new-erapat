@@ -25,14 +25,14 @@ navbar_child($nav_title);
                     <div class="cell">
                         <form data-role="validator" action="<?= base_url('updatebagian') ?>" method="POST">
                             <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
-                            <input type="text" name="id" value="<?= $bagian->id ?>" />
+                            <input type="hidden" name="id" value="<?= $bagian['id'] ?>" />
                             <table class="table cell-border table-border cell-media-table" style="width: 630px;left: -260px;">
                                 <tbody>
                                     <tr>
                                         <td style="width: 160px;padding: 16px 16px 16px 0;">Nama Sekretariat</td>
                                         <td>
                                             <select data-role="select" name="depid" data-validate="required not=-1">
-                                                <option value=""><?= $bagian->department_name; ?></option>
+                                                <option value="<?= $bagian['department_id'] ?>"><?= $bagian['department_name'] ?></option>
                                                 <?php foreach ($sekretariat->getResult() as $s) : ?>
                                                     <option value="<?= $s->id; ?>"><?= $s->department_name; ?></option>>
                                                 <?php endforeach; ?>
@@ -42,14 +42,14 @@ navbar_child($nav_title);
                                     <tr>
                                         <td style="width: 160px;padding: 16px 16px 16px 0;">Nama Bagian</td>
                                         <td>
-                                            <input data-role="input" data-validate="required" type="text" name="sekretariat" value="<?= $bagian->sub_department_name ?>" placeholder="isikan Nama Bagian">
+                                            <input data-role="input" data-validate="required" type="text" name="sekretariat" value="<?= $bagian['sub_department_name'] ?>" placeholder="isikan Nama Bagian">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style="width: 160px;padding: 16px 16px 16px 0;">&nbsp;</td>
                                         <td>
                                             <button type="submit" id="btnSave" class="button success"><span class="mif-checkmark"></span> Update Data</button>
-                                            <a href="<?= base_url('sekretariat'); ?>" class="button secondary"><span class="mif-not"></span> Batal</a>
+                                            <a href="<?= base_url('bagian'); ?>" class="button secondary"><span class="mif-not"></span> Batal</a>
                                         </td>
                                     </tr>
                                     <tr>
