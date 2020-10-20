@@ -40,8 +40,20 @@ navbar_child($nav_title);
             <?php foreach ($bagian as $a) : ?>
                 <tr>
                     <td class="text-center"><?= $no++; ?></td>
-                    <td class="text-left"><strong><?= $a->department_name; ?></strong></td>
-                    <td class="text-left"><strong><?= $a->sub_department_name; ?></strong></td>
+                    <td class="text-left">
+                        <?php if ($a->is_active == 0) : ?>
+                            <strong><span class="fg-red"><?= $a->department_name; ?></span></strong>
+                        <?php else : ?>
+                            <strong><?= $a->department_name; ?></strong>
+                        <?php endif; ?>
+                    </td>
+                    <td class="text-left">
+                        <?php if ($a->is_active == 0) : ?>
+                            <strong><span class="fg-red"><?= $a->sub_department_name; ?></span></strong>
+                        <?php else : ?>
+                            <strong><?= $a->sub_department_name; ?></strong>
+                        <?php endif; ?>
+                    </td>
                     <td class="text-center">
                         <div class="dropdown-button">
                             <button class="button secondary outline rounded dropdown-toggle">Aksi</button>
