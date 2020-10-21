@@ -37,7 +37,7 @@ function get_available_zoomid()
     }
     foreach ($zoomid as $zm) :
 
-        if ($zm['user_id'] == '20' || $zm['user_id'] == '21' || $zm['user_id'] == '14') {
+        if ($zm['role_id'] == '1' || $zm['role_id'] == '4' || $zm['role_id'] == '5') {
         ?>
             <li class="pz">
                 <label class="radio-inline">
