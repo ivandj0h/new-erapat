@@ -747,7 +747,6 @@ class Rapat extends BaseController
         }
     }
 
-
     public function downloadundangan($code = '')
     {
         $data = ['rapat' => $this->rapats->getWhere(['unique_code' => $code])];
@@ -781,12 +780,38 @@ class Rapat extends BaseController
         }
     }
 
+    public function downloadtambahan1($code = '')
+    {
+        $data = ['rapat' => $this->rapats->getWhere(['unique_code' => $code])];
 
+        if (count($row = $data['rapat']->getRowArray()) > 0) {
+            download_files($row['files_upload3']);
+        } else {
+            return false;
+        }
+    }
 
+    public function downloadtambahan2($code = '')
+    {
+        $data = ['rapat' => $this->rapats->getWhere(['unique_code' => $code])];
 
+        if (count($row = $data['rapat']->getRowArray()) > 0) {
+            download_files($row['files_upload4']);
+        } else {
+            return false;
+        }
+    }
 
+    public function downloadtambahan3($code = '')
+    {
+        $data = ['rapat' => $this->rapats->getWhere(['unique_code' => $code])];
 
-
+        if (count($row = $data['rapat']->getRowArray()) > 0) {
+            download_files($row['files_upload5']);
+        } else {
+            return false;
+        }
+    }
 
     public function get_media_meeting()
     {

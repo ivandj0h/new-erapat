@@ -370,9 +370,11 @@ navbar_child($nav_title);
                                 </a>
                             <?php
                             else : ?>
-                                <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                    <strong><?= $rapat->files_upload3; ?></strong>.
-                                </span>
+                                <a href="<?= base_url('downloadtambahan1/' . $rapat->unique_code) ?>">
+                                    <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                        <strong><?= $rapat->files_upload3; ?></strong>.
+                                    </span>
+                                </a>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -388,9 +390,11 @@ navbar_child($nav_title);
                                 </a>
                             <?php
                             else : ?>
-                                <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                    <strong><?= $rapat->files_upload4; ?></strong>.
-                                </span>
+                                <a href="<?= base_url('downloadtambahan2/' . $rapat->unique_code) ?>">
+                                    <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                        <strong><?= $rapat->files_upload4; ?></strong>.
+                                    </span>
+                                </a>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -406,9 +410,11 @@ navbar_child($nav_title);
                                 </a>
                             <?php
                             else : ?>
-                                <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                    <strong><?= $rapat->files_upload5; ?></strong>.
-                                </span>
+                                <a href="<?= base_url('downloadtambahan3/' . $rapat->unique_code) ?>">
+                                    <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                        <strong><?= $rapat->files_upload5; ?></strong>.
+                                    </span>
+                                </a>
                             <?php endif; ?>
                         </div>
                     </div>
