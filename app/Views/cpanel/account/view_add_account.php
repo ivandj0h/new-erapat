@@ -32,11 +32,7 @@ navbar_child($nav_title);
                                         <td>
                                             <select data-role="select" name="sub_department_id" data-validate="required not=-1">
                                                 <?php foreach ($subdepartment as $s) : ?>
-                                                    <?php if ($s['id'] == '1') : ?>
-                                                        <option value="-1" disabled><?= $s['sub_department_name']; ?></option>
-                                                    <?php else : ?>
-                                                        <option value="<?= $s['id']; ?>"><?= $s['sub_department_name']; ?></option>
-                                                    <?php endif; ?>
+                                                    <option value="<?= $s['id']; ?>"><?= $s['sub_department_name']; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </td>
