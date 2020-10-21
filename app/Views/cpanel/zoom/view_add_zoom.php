@@ -23,35 +23,35 @@ navbar_child($nav_title);
             <div class="grid">
                 <div class="row">
                     <div class="cell">
-                        <form data-role="validator" action="<?= base_url('storebagian') ?>" method="POST">
+                        <form data-role="validator" action="<?= base_url('storezoom') ?>" method="POST">
                             <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
                             <table class="table cell-border table-border cell-media-table" style="width: 630px;left: -260px;">
                                 <tbody>
                                     <tr>
-                                        <td style="width: 160px;padding: 16px 16px 16px 0;">Nama Sekretariat</td>
+                                        <td style="width: 160px;padding: 16px 16px 16px 0;">Nama Pemilik Zoom ID</td>
                                         <td>
-                                            <select data-role="select" name="depid" data-validate="required not=-1">
-                                                <?php foreach ($sekretariat->getResult() as $s) : ?>
-                                                    <?php if ($s->department_name == 'Administrator' || $s->id == 1) : ?>
-                                                        <option value="" disabled>Administrator</option>
+                                            <select data-role="select" name="userid" data-validate="required not=-1">
+                                                <?php foreach ($user->getResult() as $s) : ?>
+                                                    <?php if ($s->name == 'administrator') : ?>
+                                                        <option value="<?= $s->id; ?>" disabled><?= $s->name; ?></option>>
                                                     <?php else : ?>
-                                                        <option value="<?= $s->id; ?>"><?= $s->department_name; ?></option>
+                                                        <option value="<?= $s->id; ?>"><?= $s->name; ?></option>>
                                                     <?php endif; ?>
                                                 <?php endforeach; ?>
                                             </select>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="width: 160px;padding: 16px 16px 16px 0;">Nama Bagian</td>
+                                        <td style="width: 160px;padding: 16px 16px 16px 0;">Nama Zoom ID</td>
                                         <td>
-                                            <input data-role="input" data-validate="required" type="text" name="subdepname" placeholder="isikan Nama Bagian">
+                                            <input data-role="input" data-validate="required" type="text" name="zoomname" placeholder="isikan Nama Zoom ID">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style="width: 160px;padding: 16px 16px 16px 0;">&nbsp;</td>
                                         <td>
                                             <button type="submit" id="btnSave" class="button success"><span class="mif-checkmark"></span> Simpan</button>
-                                            <a href="<?= base_url('bagian'); ?>" class="button secondary"><span class="mif-not"></span> Batal</a>
+                                            <a href="<?= base_url('zoom'); ?>" class="button secondary"><span class="mif-not"></span> Batal</a>
                                         </td>
                                     </tr>
                                     <tr>

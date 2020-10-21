@@ -114,14 +114,27 @@ class Account extends BaseController
             'email'  => $this->request->getPost('email'),
             'image' => 'default.png',
             'password' => password_hash('admin', PASSWORD_DEFAULT),
-            'roleid'  => 2,
-            'active'  => 1,
+            'role_id'  => 2,
+            'is_active'  => 1,
             'blokir'  => 0,
             'sub_department_id'  => intval($this->request->getPost('sub_department_id')),
         ];
 
         $add = $this->auths->insert($data);
+
+        $builder = $this->zommz->table('meeting_zoom');
+        $zoomd = [
+            'user_id' => $this->auths->insertID(),
+            'idzoom' => htmlspecialchars(strip_tags($this->request->getPost('zoomid'))),
+            'date_activated' => date('Y-m-d'),
+            'start_time' => date("H:i:s"),
+            'end_time' => date("H:i:s"),
+            'is_active' => 1,
+            'status' => 0
+        ];
+
         if ($add) {
+            $builder->insert($zoomd);
             session()->setFlashdata('message', 'Akun Berhasil di Tambah!');
             session()->setFlashdata('alert-class', 'success');
 
@@ -158,7 +171,13 @@ class Account extends BaseController
         $builder->where('id', $id);
         $updates = $builder->update();
 
+
         if ($updates) {
+            $db      = \Config\Database::connect();
+            $build = $db->table('meeting_zoom');
+            $build->set('idzoom', $zoomid);
+            $build->where('user_id', $id);
+            $build->update();
             session()->setFlashdata('message', 'Akun Berhasil di Update!');
             session()->setFlashdata('alert-class', 'success');
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2020 at 08:59 AM
+-- Generation Time: Oct 21, 2020 at 12:26 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -833,14 +833,7 @@ CREATE TABLE `meeting_users` (
 --
 
 INSERT INTO `meeting_users` (`id`, `token`, `zoomid`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `blokir`, `sub_department_id`, `date_created`, `date_updated`) VALUES
-(14, '5f84b1d3f0336', '000 000 000 0000', 'administrator', 'admin@erapat.com', 'default.png', '$2y$10$pcXovYvhzZDvmXoOXEskcuHtdSvZOUBy6o9FXGRSrFsOAUfbhwdTS', 1, 1, 0, 1, 1595188759, 1600115535),
-(15, '5f84b1f402199', '666 666 666 666', 'Admin Keuangan', 'keuangan@erapat.com', 'default.png', '$2y$10$icYu3J.bfvdocnSNdxPUheArwlUhq80r1N3T7p.ZzgJO48lB1ne6O', 2, 1, 0, 2, 1595195583, 1597380790),
-(19, '5f84b20f02ea5', '444 444 444 4444', 'Admin Perencanaan', 'perencanaan@erapat.com', 'default.png', '$2y$10$X/U5/ZLzBP60TO6aDsqp3eWpXLevpxVvTSKy0nLGrzCa31osP4xoK', 2, 1, 0, 3, 1598467083, 0),
-(20, '5f84b21a71601', '111 111 111 111', 'Kaban Litbang Perhubungan', 'kaban@erapat.com', 'default.png', '$2y$10$cZjEwU5tnXcuC6O47ttk4e9B/4W/p9VnV4UoqLjHBS7yfqeybnp4C', 4, 1, 0, 14, 1599060092, 1599061311),
-(21, '5f84b22c21a4b', '222 222 222 222', 'Sesban Litbang Perhubungan', 'sesban@erapat.com', 'default.png', '$2y$10$7iKaePzZkNyVg37xciRbUOzFSQ58N92P8L95KwtgXGkzV8u8yBTge', 5, 1, 0, 15, 1599060131, 1599061333),
-(22, '5f84b2396f330', '333 333 333 3333', 'Admin LSDP', 'lsdp@erapat.com', 'default.png', '$2y$10$hNKFHzPaAMTJXuwscLTBEutZtQHxD1CHqJDgOY1Z7u2EJ/ARXPjpy', 2, 1, 0, 9, 1599471171, 0),
-(23, '5f8cf0493a423', '555 555 555 5555', 'Admin Humas', 'humas@erapat.com', 'default.png', '$2y$10$LTjdNwmUzLJ4kBALjQ.6/uNG5Jn3LBJPYpT.DEkQ4xUhRI2.8YE5K', 2, 1, 0, 5, 0, 0),
-(24, '5f8d00da9be10', '123 123 123 1234', 'Admin Kepegawaian', 'kepegawaian@erapat.com', 'default.png', '$2y$10$5/4L4dtxHjPaMwT5EyyeqOGAiDlNr9UEI5AHd38wJ5WanNFKLvRli', 2, 1, 0, 4, 0, 0);
+(14, '5f84b1d3f0336', '000 000 000 0000', 'administrator', 'admin@erapat.com', 'default.png', '$2y$10$pcXovYvhzZDvmXoOXEskcuHtdSvZOUBy6o9FXGRSrFsOAUfbhwdTS', 1, 1, 0, 1, 1595188759, 1600115535);
 
 -- --------------------------------------------------------
 
@@ -859,19 +852,6 @@ CREATE TABLE `meeting_zoom` (
   `is_active` int(11) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `meeting_zoom`
---
-
-INSERT INTO `meeting_zoom` (`id`, `user_id`, `pemakai_id`, `idzoom`, `date_activated`, `start_time`, `end_time`, `is_active`, `status`) VALUES
-(1, 19, 18, '444 444 444 444', '2020-10-14', '07:21:00', '08:21:00', 1, 0),
-(2, 18, 18, '555 555 555 555', '2020-10-17', '02:54:00', '03:54:00', 1, 1),
-(3, 15, 15, '666 666 666 666', '2020-10-05', '02:00:00', '03:00:00', 1, 0),
-(4, 22, 15, '333 333 333 333', '2020-09-24', '19:00:00', '20:00:00', 1, 0),
-(5, 14, 14, '000 000 000 000', '2020-09-18', '09:00:00', '10:00:00', 1, 0),
-(6, 20, 20, '111 111 111 111', '2020-09-18', '05:00:00', '06:00:00', 1, 0),
-(7, 21, 21, '222 222 222 222', '2020-09-18', '06:00:00', '07:00:00', 1, 0);
 
 --
 -- Triggers `meeting_zoom`
@@ -1500,11 +1480,11 @@ CREATE TABLE `view_zoom_meeting` (
 ,`pemilik_zoom` varchar(128)
 ,`pemakai_zoom` varchar(128)
 ,`date_activated` date
-,`status` int(11)
 ,`start_time` time
 ,`end_time` time
 ,`meeting_status` int(11)
 ,`type_id` int(11)
+,`status` int(11)
 );
 
 -- --------------------------------------------------------
@@ -1569,7 +1549,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_zoom_meeting`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_zoom_meeting`  AS  select `meeting_zoom`.`user_id` AS `user_id`,`view_user_meeting`.`zoomid` AS `zoomid`,`meeting_users`.`name` AS `pemilik_zoom`,`view_user_meeting`.`name` AS `pemakai_zoom`,`meeting_zoom`.`date_activated` AS `date_activated`,`meeting_zoom`.`status` AS `status`,`view_user_meeting`.`start_time` AS `start_time`,`view_user_meeting`.`end_time` AS `end_time`,`view_user_meeting`.`meeting_status` AS `meeting_status`,`view_user_meeting`.`type_id` AS `type_id` from ((`meeting_zoom` join `meeting_users` on(`meeting_zoom`.`user_id` = `meeting_users`.`id`)) join `view_user_meeting` on(`meeting_zoom`.`id` = `view_user_meeting`.`zoom_id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_zoom_meeting`  AS  select `meeting_zoom`.`user_id` AS `user_id`,`view_user_meeting`.`zoomid` AS `zoomid`,`meeting_users`.`name` AS `pemilik_zoom`,`view_user_meeting`.`name` AS `pemakai_zoom`,`meeting_zoom`.`date_activated` AS `date_activated`,`view_user_meeting`.`start_time` AS `start_time`,`view_user_meeting`.`end_time` AS `end_time`,`view_user_meeting`.`meeting_status` AS `meeting_status`,`view_user_meeting`.`type_id` AS `type_id`,`meeting_zoom`.`status` AS `status` from ((`meeting_zoom` join `meeting_users` on(`meeting_zoom`.`user_id` = `meeting_users`.`id`)) join `view_user_meeting` on(`meeting_zoom`.`id` = `view_user_meeting`.`zoom_id`)) ;
 
 -- --------------------------------------------------------
 
@@ -1975,13 +1955,13 @@ ALTER TABLE `meeting_type`
 -- AUTO_INCREMENT for table `meeting_users`
 --
 ALTER TABLE `meeting_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `meeting_zoom`
 --
 ALTER TABLE `meeting_zoom`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `profile`
