@@ -8,5 +8,13 @@ class ZoomsModel extends Model
 {
     protected $table = "meeting_zoom";
     protected $primaryKey = "id";
-    protected $allowedFields = ['status'];
+    protected $allowedFields = [
+        'user_id',
+        'idzoom',
+        'date_activated',
+        'start_time',
+        'end_time',
+        'is_active',
+        'status'
+    ];
 }

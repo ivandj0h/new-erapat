@@ -23,9 +23,7 @@ navbar_child($nav_title);
     <div class="toolbar my-4" style="left: 20px !important;">
         <strong> Tabel Master Data Zoom ID</strong>
     </div>
-    <div class="toolbar my-3 place-right">
-        <a href="<?php echo base_url('addbagian') ?>" class="button success"><span class="mif-file-text"></span> Tambah Zoom ID Baru</a>
-    </div>
+
     <table class="table hover display order-column" id="account" cellspacing="0">
         <thead>
             <tr>
@@ -34,7 +32,6 @@ navbar_child($nav_title);
                 <th class="text-center w-20">Nama Pemilik Zoom ID</th>
                 <th class="text-center w-20">Aktif</th>
                 <th class="text-center w-20">Status</th>
-                <th class="text-center w-20">Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -63,19 +60,11 @@ navbar_child($nav_title);
                         <?php endif; ?>
                     </td>
                     <td class="text-center">
-                        <?php if ($a->status == 1) : ?>
-                            <a href="<?php echo base_url('offline/' . $a->id); ?>" class="fg-crimson"><span class="mif-not"> Sedang Online</span></a>
-                        <?php else : ?>
+                        <?php if ($a->status == 0) : ?>
                             <a href="<?php echo base_url('online/' . $a->id); ?>" class="fg-emerald"><span class="mif-checkmark"> Tersedia</span></a>
+                        <?php else : ?>
+                            <a href="<?php echo base_url('offline/' . $a->id); ?>" class="fg-crimson"><span class="mif-not"> Sedang Online</span></a>
                         <?php endif; ?>
-                    </td>
-                    <td class="text-center">
-                        <div class="dropdown-button">
-                            <button class="button secondary outline rounded dropdown-toggle">Aksi</button>
-                            <ul class="d-menu place-right" data-role="dropdown">
-                                <li><a href="<?= base_url('editzoom/' . $a->token); ?>"><span class="mif-copy"></span> Ubah</a></li>
-                            </ul>
-                        </div>
                     </td>
                 </tr>
             <?php endforeach; ?>
