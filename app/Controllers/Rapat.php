@@ -36,24 +36,26 @@ class Rapat extends BaseController
     {
 
         $userModel = new UserModel();
-        $rapatModel = new RapatModel();
         $dataadmin = [
             'page_title' => 'E-RAPAT - Rapat',
             'nav_title' => 'rapat',
             'tabs' => 'rapat',
             'user' => $this->userModel,
-            'rapat' => $rapatModel->orderBy('id', 'DESC')->findAll()
+            'rapat' => $this->rapatonoff->orderBy('id', 'DESC')->findAll()
         ];
         $data = [
             'page_title' => 'E-RAPAT - Rapat',
             'nav_title' => 'rapat',
             'tabs' => 'rapat',
             'user' => $userModel,
-            'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->orderBy('id', 'DESC')
                 ->getWhere(['user_id' => session()->get('id')])
                 ->getResultArray()
         ];
+
+        // var_dump($data['rapat']);
+        // die;
 
         if (session()->get('role_id') == 1) {
             return view('cpanel/rapat/view_rapat', $dataadmin);
@@ -152,17 +154,23 @@ class Rapat extends BaseController
         $typemodel = new TypeModel();
         $subtypemodel = new SubtypeModel();
         $data = [
-            'page_title' => 'E-RAPAT - Detail',
-            'nav_title' => 'detail',
+            'page_title' => 'E-RAPAT - Edit',
+            'nav_title' => 'edit',
             'tabs' => 'rapat',
             'types' => $typemodel->orderBy('id', 'ASC')->findAll(),
             'subtypes' => $subtypemodel->orderBy('id', 'ASC')->findAll(),
-            'rapat' => $rapatModel
+            // 'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->getWhere(['unique_code' => $code])
                 ->getRow()
         ];
 
-        return view('cpanel/rapat/view_rapat_edit', $data);
+        $q = $this->rapatonoff->getWhere(['unique_code' => $code])->getRow();
+        if ($q->request_status == 1) {
+            return view('errors/response/view_forbidden_cancel_meeting_edit', $data);
+        } else {
+            return view('cpanel/rapat/view_rapat_edit', $data);
+        }
     }
 
     public function save($id = 0, $code = '')
@@ -209,7 +217,7 @@ class Rapat extends BaseController
             'page_title' => 'E-RAPAT - Detail',
             'nav_title' => 'detail',
             'tabs' => 'rapat',
-            'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->getWhere(['unique_code' => $code])
                 ->getRow()
         ];
@@ -219,100 +227,105 @@ class Rapat extends BaseController
 
     public function reschedulle($code = '')
     {
-        $rapatModel = new RapatModel();
         $data = [
             'page_title' => 'E-RAPAT - Detail',
             'nav_title' => 'detail',
             'tabs' => 'rapat',
-            'rapat' => $rapatModel
+            'status' => $this->status->orderBy('id', 'DESC')->findAll(),
+            'rapat' => $this->rapatonoff
                 ->getWhere(['unique_code' => $code])
                 ->getRow()
         ];
 
-        return view('cpanel/rapat/view_rapat_reschedulle', $data);
+        $q = $this->rapatonoff->getWhere(['unique_code' => $code])->getRow();
+        if ($q->request_status == 1) {
+            return view('errors/response/view_forbidden_cancel_meeting_reschedulle', $data);
+        } else {
+            return view('cpanel/rapat/view_rapat_reschedulle', $data);
+        }
     }
 
     public function updatestatus($id = 0, $code = '')
     {
         if ($this->request->getMethod() == 'post') {
 
-            $input = $this->validate(['remark_status' => 'required']);
+            // $input = $this->validate(['remark_status' => 'required']);
 
-            if (!$input) {
-                return redirect()->route('reschedulle/' . $code)->withInput()->with('validation', $this->validator);
+            // if (!$input) {
+            //     return redirect()->route('reschedulle/' . $code)->withInput()->with('validation', $this->validator);
+            // } else {
+
+            $db      = \Config\Database::connect();
+            $id = $this->request->getPost('id');
+            $zoomid = $this->request->getPost('zoomid');
+            $subtypeid = $this->request->getPost('sub_type_id');
+            $request_status = '3';
+            $datenow = strtotime(date('Y-m-d'));
+            $timenow = strtotime(date("H:i:s"));
+            $end_date = strtotime($this->request->getPost('end_date'));
+            $end_time = strtotime($this->request->getPost('start_time'));
+            $end_time = strtotime($this->request->getPost('end_time'));
+
+            if ($datenow >= $end_date && $timenow >= $end_time) {
+                $data = [
+                    'request_status' => $request_status,
+                    'end_date' => $this->request->getPost('end_date'),
+                    'start_time' => $this->request->getPost('start_time'),
+                    'end_time' => $this->request->getPost('end_time'),
+                    'remark_status' => htmlspecialchars(strip_tags($this->request->getPost('remark_status'))),
+                ];
             } else {
+                $data = [
+                    'request_status' => $this->request->getPost('request_status'),
+                    'end_date' => $this->request->getPost('end_date'),
+                    'start_time' => $this->request->getPost('start_time'),
+                    'end_time' => $this->request->getPost('end_time'),
+                    'remark_status' => htmlspecialchars(strip_tags($this->request->getPost('remark_status'))),
+                ];
+            }
 
-                $db      = \Config\Database::connect();
-                $id = $this->request->getPost('id');
-                $zoomid = $this->request->getPost('zoomid');
-                $subtypeid = $this->request->getPost('sub_type_id');
-                $request_status = '3';
-                $datenow = strtotime(date('Y-m-d'));
-                $timenow = strtotime(date("H:i:s"));
-                $end_date = strtotime($this->request->getPost('end_date'));
-                $end_time = strtotime($this->request->getPost('start_time'));
-                $end_time = strtotime($this->request->getPost('end_time'));
-
-                if ($datenow >= $end_date && $timenow >= $end_time) {
-                    $data = [
-                        'request_status' => $request_status,
-                        'end_date' => $this->request->getPost('end_date'),
-                        'start_time' => $this->request->getPost('start_time'),
-                        'end_time' => $this->request->getPost('end_time'),
-                        'remark_status' => htmlspecialchars(strip_tags($this->request->getPost('remark_status'))),
-                    ];
+            if ($subtypeid == 1) {
+                if ($data['request_status'] == 1) {
+                    $builder = $db->table('meeting_zoom');
+                    $builder->set('pemakai_id', session()->get('id'));
+                    $builder->set('date_activated', $data['end_date']);
+                    $builder->set('start_time', $data['start_time']);
+                    $builder->set('end_time', $data['end_time']);
+                    $builder->set('status', 0);
+                    $builder->where('idzoom', $zoomid);
+                    $builder->update();
                 } else {
-                    $data = [
-                        'request_status' => $this->request->getPost('request_status'),
-                        'end_date' => $this->request->getPost('end_date'),
-                        'start_time' => $this->request->getPost('start_time'),
-                        'end_time' => $this->request->getPost('end_time'),
-                        'remark_status' => htmlspecialchars(strip_tags($this->request->getPost('remark_status'))),
-                    ];
-                }
-
-                if ($subtypeid == 1) {
-                    if ($data['request_status'] == 1) {
-                        $builder = $db->table('meeting_zoom');
-                        $builder->set('pemakai_id', session()->get('id'));
-                        $builder->set('date_activated', $data['end_date']);
-                        $builder->set('start_time', $data['start_time']);
-                        $builder->set('end_time', $data['end_time']);
-                        $builder->set('status', 0);
-                        $builder->where('idzoom', $zoomid);
-                        $builder->update();
-                    } else {
-                        $builder = $db->table('meeting_zoom');
-                        $builder->set('pemakai_id', session()->get('id'));
-                        $builder->set('date_activated', $data['end_date']);
-                        $builder->set('start_time', $data['start_time']);
-                        $builder->set('end_time', $data['end_time']);
-                        $builder->where('idzoom', $zoomid);
-                        $builder->update();
-                    }
-                }
-
-                $builder = $db->table('meeting');
-                $builder->set('request_status', $data['request_status']);
-                $builder->set('start_date', $data['end_date']);
-                $builder->set('end_date', $data['end_date']);
-                $builder->set('start_time', $data['start_time']);
-                $builder->set('end_time', $data['end_time']);
-                $builder->set('remark_status', $data['remark_status']);
-                $builder->where('id', $id);
-                $updates = $builder->update();
-                if ($updates) {
-                    session()->setFlashdata('message', 'Reschedulle Rapat Berhasil di Update!');
-                    session()->setFlashdata('alert-class', 'success');
-
-                    return redirect()->to(base_url('rapat'));
-                } else {
-                    session()->setFlashdata('message', 'Data Gagal disimpan!');
-                    session()->setFlashdata('alert-class', 'alert');
-
-                    return redirect()->route('reschedulle/' . $code)->withInput();
+                    $builder = $db->table('meeting_zoom');
+                    $builder->set('pemakai_id', session()->get('id'));
+                    $builder->set('date_activated', $data['end_date']);
+                    $builder->set('start_time', $data['start_time']);
+                    $builder->set('end_time', $data['end_time']);
+                    $builder->where('idzoom', $zoomid);
+                    $builder->update();
                 }
             }
+
+            $builder = $db->table('meeting');
+            $builder->set('request_status', $data['request_status']);
+            $builder->set('start_date', $data['end_date']);
+            $builder->set('end_date', $data['end_date']);
+            $builder->set('start_time', $data['start_time']);
+            $builder->set('end_time', $data['end_time']);
+            $builder->set('remark_status', $data['remark_status']);
+            $builder->where('id', $id);
+            $updates = $builder->update();
+            if ($updates) {
+                session()->setFlashdata('message', 'Reschedulle Rapat Berhasil di Update!');
+                session()->setFlashdata('alert-class', 'success');
+
+                return redirect()->to(base_url('rapat'));
+            } else {
+                session()->setFlashdata('message', 'Data Gagal disimpan!');
+                session()->setFlashdata('alert-class', 'alert');
+
+                return redirect()->route('reschedulle/' . $code)->withInput();
+            }
+            // }
         }
     }
 
@@ -332,7 +345,7 @@ class Rapat extends BaseController
             'nav_title' => 'rapat',
             'tabs' => 'rapat',
             'user' => $userModel,
-            'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->getWhere(['unique_code' => $code])
                 ->getRow()
         ];
@@ -340,7 +353,7 @@ class Rapat extends BaseController
             'page_title' => 'E-RAPAT - Rapat',
             'nav_title' => 'rapat',
             'tabs' => 'rapat',
-            'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->orderBy('id', 'DESC')
                 ->getWhere(['unique_code' => $code, 'user_id' => session()->get('id')])
                 ->getRow()
@@ -403,7 +416,7 @@ class Rapat extends BaseController
             'nav_title' => 'rapat',
             'tabs' => 'rapat',
             'user' => $userModel,
-            'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->getWhere(['unique_code' => $code])
                 ->getRow()
         ];
@@ -411,7 +424,7 @@ class Rapat extends BaseController
             'page_title' => 'E-RAPAT - Rapat',
             'nav_title' => 'rapat',
             'tabs' => 'rapat',
-            'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->orderBy('id', 'DESC')
                 ->getWhere(['unique_code' => $code, 'user_id' => session()->get('id')])
                 ->getRow()
@@ -473,7 +486,7 @@ class Rapat extends BaseController
             'nav_title' => 'rapat',
             'tabs' => 'rapat',
             'user' => $userModel,
-            'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->getWhere(['unique_code' => $code])
                 ->getRow()
         ];
@@ -481,7 +494,7 @@ class Rapat extends BaseController
             'page_title' => 'E-RAPAT - Rapat',
             'nav_title' => 'rapat',
             'tabs' => 'rapat',
-            'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->getWhere(['unique_code' => $code, 'user_id' => session()->get('id')])
                 ->getRow()
         ];
@@ -549,7 +562,7 @@ class Rapat extends BaseController
             'nav_title' => 'rapat',
             'tabs' => 'rapat',
             'user' => $userModel,
-            'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->getWhere(['unique_code' => $code])
                 ->getRow()
         ];
@@ -557,7 +570,7 @@ class Rapat extends BaseController
             'page_title' => 'E-RAPAT - Rapat',
             'nav_title' => 'rapat',
             'tabs' => 'rapat',
-            'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->getWhere(['unique_code' => $code, 'user_id' => session()->get('id')])
                 ->getRow()
         ];
@@ -578,7 +591,7 @@ class Rapat extends BaseController
             'nav_title' => 'rapat',
             'tabs' => 'rapat',
             'user' => $userModel,
-            'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->getWhere(['unique_code' => $code])
                 ->getRow()
         ];
@@ -586,7 +599,7 @@ class Rapat extends BaseController
             'page_title' => 'E-RAPAT - Rapat',
             'nav_title' => 'rapat',
             'tabs' => 'rapat',
-            'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->getWhere(['unique_code' => $code, 'user_id' => session()->get('id')])
                 ->getRow()
         ];
@@ -607,7 +620,7 @@ class Rapat extends BaseController
             'nav_title' => 'rapat',
             'tabs' => 'rapat',
             'user' => $userModel,
-            'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->getWhere(['unique_code' => $code])
                 ->getRow()
         ];
@@ -615,7 +628,7 @@ class Rapat extends BaseController
             'page_title' => 'E-RAPAT - Rapat',
             'nav_title' => 'rapat',
             'tabs' => 'rapat',
-            'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->getWhere(['unique_code' => $code, 'user_id' => session()->get('id')])
                 ->getRow()
         ];

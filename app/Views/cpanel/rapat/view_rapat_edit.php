@@ -33,7 +33,7 @@ navbar_child($nav_title);
                 <div class="row mb-4">
                     <label class="cell-sm-2">Narasumber</label>
                     <div class="cell-sm-4">
-                        <input type="text" data-validate="required" data-role="tagsinput min=2" data-tag-trigger="Space" name="speakers_name" id="speakers_name" value="<?= $rapat->speakers_name ?>" placeholder="Tambah Narasumber">
+                        <input type="text" data-role="tagsinput min=2" data-tag-trigger="Space" name="speakers_name" id="speakers_name" value="<?= $rapat->speakers_name ?>" placeholder="Tambah Narasumber">
                         <span style="color: red;"><small>Jika Narasumber lebih dari 1 orang, maka tambahkan koma(,) diakhir nama dan tambahkan spasi</small></span>
                     </div>
                 </div>

@@ -3,9 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
-use App\Models\RapatModel;
 use App\Models\SubtypeModel;
-use App\Models\RiwayatModel;
 
 class Riwayat extends BaseController
 {
@@ -29,14 +27,13 @@ class Riwayat extends BaseController
     {
 
         $userModel = new UserModel();
-        $rapatModel = new RapatModel();
 
         $data = [
             'page_title' => 'E-RAPAT - Riwayat',
             'nav_title' => 'riwayat',
             'tabs' => 'riwayat',
             'user' => $userModel,
-            'riwayat' => $rapatModel
+            'riwayat' =>  $this->rapatonoff
                 ->getWhere([
                     'user_id' => session()->get('id')
                 ])
@@ -57,13 +54,12 @@ class Riwayat extends BaseController
 
             session()->setFlashdata('inputs', $this->request->getPost());
             session()->setFlashdata('errors', $this->form_validation->getErrors());
-            $rapatModel = new RapatModel();
 
             $data = [
                 'page_title' => 'E-RAPAT - Riwayat',
                 'nav_title' => 'riwayat',
                 'tabs' => 'riwayat',
-                'riwayat' => $rapatModel
+                'riwayat' => $this->rapatonoff
                     ->getWhere([
                         'user_id' => session()->get('id')
                     ])
@@ -72,12 +68,11 @@ class Riwayat extends BaseController
 
             return view('cpanel/riwayat/view_riwayat', $data);
         } else {
-            $riwayatModel = new RiwayatModel();
             $data = [
                 'page_title' => 'E-RAPAT - Riwayat',
                 'nav_title' => 'riwayat',
                 'tabs' => 'riwayat',
-                'riwayat' => $riwayatModel
+                'riwayat' => $this->rapatonoff
                     ->getWhere([
                         'end_date' => $where['from_date'],
                         'end_date' => $where['to_date'],
@@ -92,7 +87,6 @@ class Riwayat extends BaseController
     public function cekhistoffline()
     {
         $subtypemodel = new SubtypeModel();
-        $rapatModel = new RapatModel();
 
         $data = [
             'page_title' => 'E-RAPAT - Riwayat',
@@ -103,7 +97,7 @@ class Riwayat extends BaseController
                     'type_id' => 2
                 ])
                 ->getResultArray(),
-            'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->getWhere([
                     'type_id' => 2,
                     'email' => session()->get('email')
@@ -118,7 +112,6 @@ class Riwayat extends BaseController
     {
         $id = $this->request->getPost('id');
         $subtypemodel = new SubtypeModel();
-        $rapatModel = new RapatModel();
 
         $data = [
             'page_title' => 'E-RAPAT - Riwayat',
@@ -129,7 +122,7 @@ class Riwayat extends BaseController
                     'type_id' => 2
                 ])
                 ->getResultArray(),
-            'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->getWhere([
                     'sub_type_id' => $id,
                     'email' => session()->get('email')
@@ -144,7 +137,6 @@ class Riwayat extends BaseController
     {
         $now = date('Y-m-d');
         $subtypemodel = new SubtypeModel();
-        $rapatModel = new RapatModel();
 
         $data = [
             'page_title' => 'E-RAPAT - Riwayat',
@@ -155,7 +147,7 @@ class Riwayat extends BaseController
                     'type_id' => 1
                 ])
                 ->getResultArray(),
-            'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->getWhere([
                     'type_id' => 1,
                     'end_date' => $now,
@@ -172,7 +164,6 @@ class Riwayat extends BaseController
     {
         $id = $this->request->getPost('id');
         $subtypemodel = new SubtypeModel();
-        $rapatModel = new RapatModel();
 
         $data = [
             'page_title' => 'E-RAPAT - Riwayat',
@@ -183,7 +174,7 @@ class Riwayat extends BaseController
                     'type_id' => 1
                 ])
                 ->getResultArray(),
-            'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->getWhere([
                     'sub_type_id' => $id,
                     'email' => session()->get('email')

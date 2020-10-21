@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\SubtypeModel;
-use App\Models\RapatModel;
 
 class Pembaharuan extends BaseController
 {
@@ -27,16 +26,14 @@ class Pembaharuan extends BaseController
     {
 
         $now = date('Y-m-d');
-
-        $db      = \Config\Database::connect();
-        $builder = $db->table('view_user_meeting');
-        $result = $builder->where(['end_date' => $now])->get();
-
         $data = [
             'page_title' => 'E-RAPAT - Pembaharuan',
             'nav_title' => 'pembaharuan',
             'tabs' => 'pembaharuan',
-            'rapat' => $result->getResultArray()
+            'rapat' => $this->rapatonoff
+                ->orderBy('id', 'DESC')
+                ->getWhere(['end_date' => $now])
+                ->getResultArray()
         ];
 
         return view('cpanel/pembaharuan/view_pembaharuan', $data);
@@ -67,7 +64,6 @@ class Pembaharuan extends BaseController
     {
         $now = date('Y-m-d');
         $subtypemodel = new SubtypeModel();
-        $rapatModel = new RapatModel();
 
         $data = [
             'page_title' => 'E-RAPAT - Pembaharuan',
@@ -78,7 +74,7 @@ class Pembaharuan extends BaseController
                     'type_id' => 2
                 ])
                 ->getResultArray(),
-            'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->getWhere([
                     'type_id' => 2,
                     'end_date' => $now,
@@ -94,7 +90,6 @@ class Pembaharuan extends BaseController
     {
         $id = $this->request->getPost('id');
         $subtypemodel = new SubtypeModel();
-        $rapatModel = new RapatModel();
 
         $data = [
             'page_title' => 'E-RAPAT - Pembaharuan',
@@ -105,7 +100,7 @@ class Pembaharuan extends BaseController
                     'type_id' => 2
                 ])
                 ->getResultArray(),
-            'rapat' => $rapatModel
+            'rapat' =>  $this->rapatonoff
                 ->getWhere([
                     'sub_type_id' => $id,
                     'email' => session()->get('email')

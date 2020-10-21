@@ -54,10 +54,13 @@ class BaseController extends Controller
 		$this->account = new \App\Models\AccountModel();
 		$this->roles = new \App\Models\RoleModel();
 		$this->rapats = new \App\Models\RapatModel();
+		$this->allrapat = new \App\Models\AllRapatModel();
+		$this->rapatonoff = new \App\Models\RapatOnOffModel();
 		$this->sekretariat = new \App\Models\SekretariatModel();
 		$this->subdepartment = new \App\Models\SubDepartmentModel();
 		$this->zooms = new \App\Models\ZoomModel();
 		$this->zommz = new \App\Models\ZoomsModel();
+		$this->status = new \App\Models\RapatStatusModel();
 
 		//--------------------------------------------------------------------
 	}

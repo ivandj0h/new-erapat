@@ -72,7 +72,7 @@ navbar_child($nav_title);
                 <div class="row mb-4">
                     <label class="cell-sm-2">Keterangan Status</label>
                     <div class="cell-sm-10">
-                        <textarea name="remark_status" data-validate="required" id="context-form" placeholder="Tuliskan Keterangan Statusnya disini..."><?= $rapat->remark_status; ?></textarea>
+                        <textarea name="remark_status" id="context-form" placeholder="Tuliskan Keterangan Statusnya disini..."><?= $rapat->remark_status; ?></textarea>
                     </div>
                 </div>
                 <div class="row">
