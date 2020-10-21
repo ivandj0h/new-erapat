@@ -11,6 +11,7 @@ use App\Models\SubtypeModel;
 class Rapat extends BaseController
 {
 
+    public $userModel;
     public function __construct()
     {
         $this->session = session();
@@ -25,8 +26,10 @@ class Rapat extends BaseController
             'date',
             'myforms',
             'download',
-            'tanggal'
+            'tanggal',
+            'download'
         ]);
+        $this->userModel = new UserModel();
     }
 
     public function index()
@@ -34,6 +37,13 @@ class Rapat extends BaseController
 
         $userModel = new UserModel();
         $rapatModel = new RapatModel();
+        $dataadmin = [
+            'page_title' => 'E-RAPAT - Rapat',
+            'nav_title' => 'rapat',
+            'tabs' => 'rapat',
+            'user' => $this->userModel,
+            'rapat' => $rapatModel->orderBy('id', 'DESC')->findAll()
+        ];
         $data = [
             'page_title' => 'E-RAPAT - Rapat',
             'nav_title' => 'rapat',
@@ -45,7 +55,11 @@ class Rapat extends BaseController
                 ->getResultArray()
         ];
 
-        return view('cpanel/rapat/view_rapat', $data);
+        if (session()->get('role_id') == 1) {
+            return view('cpanel/rapat/view_rapat', $dataadmin);
+        } else {
+            return view('cpanel/rapat/view_rapat', $data);
+        }
     }
 
     public function baru()
@@ -311,7 +325,17 @@ class Rapat extends BaseController
 
     public function uploadundangan($code = '')
     {
+        $userModel = new UserModel();
         $rapatModel = new RapatModel();
+        $dataadmin = [
+            'page_title' => 'E-RAPAT - Rapat',
+            'nav_title' => 'rapat',
+            'tabs' => 'rapat',
+            'user' => $userModel,
+            'rapat' => $rapatModel
+                ->getWhere(['unique_code' => $code])
+                ->getRow()
+        ];
         $data = [
             'page_title' => 'E-RAPAT - Rapat',
             'nav_title' => 'rapat',
@@ -322,7 +346,11 @@ class Rapat extends BaseController
                 ->getRow()
         ];
 
-        return view('cpanel/rapat/view_upload_undangan', $data);
+        if (session()->get('role_id') == 1) {
+            return view('cpanel/rapat/view_upload_undangan', $dataadmin);
+        } else {
+            return view('cpanel/rapat/view_upload_undangan', $data);
+        }
     }
 
     public function undanganaction()
@@ -368,7 +396,17 @@ class Rapat extends BaseController
 
     public function uploadnotulen($code = '')
     {
+        $userModel = new UserModel();
         $rapatModel = new RapatModel();
+        $dataadmin = [
+            'page_title' => 'E-RAPAT - Rapat',
+            'nav_title' => 'rapat',
+            'tabs' => 'rapat',
+            'user' => $userModel,
+            'rapat' => $rapatModel
+                ->getWhere(['unique_code' => $code])
+                ->getRow()
+        ];
         $data = [
             'page_title' => 'E-RAPAT - Rapat',
             'nav_title' => 'rapat',
@@ -379,7 +417,11 @@ class Rapat extends BaseController
                 ->getRow()
         ];
 
-        return view('cpanel/rapat/view_upload_notulen', $data);
+        if (session()->get('role_id') == 1) {
+            return view('cpanel/rapat/view_upload_notulen', $dataadmin);
+        } else {
+            return view('cpanel/rapat/view_upload_notulen', $data);
+        }
     }
 
     public function notulenaction()
@@ -424,7 +466,17 @@ class Rapat extends BaseController
 
     public function uploadabsensi($code = '')
     {
+        $userModel = new UserModel();
         $rapatModel = new RapatModel();
+        $dataadmin = [
+            'page_title' => 'E-RAPAT - Rapat',
+            'nav_title' => 'rapat',
+            'tabs' => 'rapat',
+            'user' => $userModel,
+            'rapat' => $rapatModel
+                ->getWhere(['unique_code' => $code])
+                ->getRow()
+        ];
         $data = [
             'page_title' => 'E-RAPAT - Rapat',
             'nav_title' => 'rapat',
@@ -434,7 +486,11 @@ class Rapat extends BaseController
                 ->getRow()
         ];
 
-        return view('cpanel/rapat/view_upload_absensi', $data);
+        if (session()->get('role_id') == 1) {
+            return view('cpanel/rapat/view_upload_absensi', $dataadmin);
+        } else {
+            return view('cpanel/rapat/view_upload_absensi', $data);
+        }
     }
 
     public function absensiaction()
@@ -486,7 +542,17 @@ class Rapat extends BaseController
 
     public function uploadtambahan1($code = '')
     {
+        $userModel = new UserModel();
         $rapatModel = new RapatModel();
+        $dataadmin = [
+            'page_title' => 'E-RAPAT - Rapat',
+            'nav_title' => 'rapat',
+            'tabs' => 'rapat',
+            'user' => $userModel,
+            'rapat' => $rapatModel
+                ->getWhere(['unique_code' => $code])
+                ->getRow()
+        ];
         $data = [
             'page_title' => 'E-RAPAT - Rapat',
             'nav_title' => 'rapat',
@@ -496,12 +562,26 @@ class Rapat extends BaseController
                 ->getRow()
         ];
 
-        return view('cpanel/rapat/view_upload_tambahan1', $data);
+        if (session()->get('role_id') == 1) {
+            return view('cpanel/rapat/view_upload_tambahan1', $dataadmin);
+        } else {
+            return view('cpanel/rapat/view_upload_tambahan1', $data);
+        }
     }
 
     public function uploadtambahan2($code = '')
     {
+        $userModel = new UserModel();
         $rapatModel = new RapatModel();
+        $dataadmin = [
+            'page_title' => 'E-RAPAT - Rapat',
+            'nav_title' => 'rapat',
+            'tabs' => 'rapat',
+            'user' => $userModel,
+            'rapat' => $rapatModel
+                ->getWhere(['unique_code' => $code])
+                ->getRow()
+        ];
         $data = [
             'page_title' => 'E-RAPAT - Rapat',
             'nav_title' => 'rapat',
@@ -511,12 +591,26 @@ class Rapat extends BaseController
                 ->getRow()
         ];
 
-        return view('cpanel/rapat/view_upload_tambahan2', $data);
+        if (session()->get('role_id') == 1) {
+            return view('cpanel/rapat/view_upload_tambahan2', $dataadmin);
+        } else {
+            return view('cpanel/rapat/view_upload_tambahan2', $data);
+        }
     }
 
     public function uploadtambahan3($code = '')
     {
+        $userModel = new UserModel();
         $rapatModel = new RapatModel();
+        $dataadmin = [
+            'page_title' => 'E-RAPAT - Rapat',
+            'nav_title' => 'rapat',
+            'tabs' => 'rapat',
+            'user' => $userModel,
+            'rapat' => $rapatModel
+                ->getWhere(['unique_code' => $code])
+                ->getRow()
+        ];
         $data = [
             'page_title' => 'E-RAPAT - Rapat',
             'nav_title' => 'rapat',
@@ -526,7 +620,11 @@ class Rapat extends BaseController
                 ->getRow()
         ];
 
-        return view('cpanel/rapat/view_upload_tambahan3', $data);
+        if (session()->get('role_id') == 1) {
+            return view('cpanel/rapat/view_upload_tambahan3', $dataadmin);
+        } else {
+            return view('cpanel/rapat/view_upload_tambahan3', $data);
+        }
     }
 
     public function tambahanaction1($code = '')
@@ -650,17 +748,44 @@ class Rapat extends BaseController
     }
 
 
-    public function downloadundangan($u = '')
+    public function downloadundangan($code = '')
     {
-        $database = \Config\Database::connect();
-        $db = $database->table('meeting');
-        $result = $db->getWhere(['files_upload' => $u])->getRow();
-        if (count($result->getRowArray()) > 0) {
-            return $result->download('uploads/' . $result->files_upload, null);
+        $data = ['rapat' => $this->rapats->getWhere(['unique_code' => $code])];
+
+        if (count($row = $data['rapat']->getRowArray()) > 0) {
+            download_files($row['files_upload']);
         } else {
             return false;
         }
     }
+
+    public function downloadnotulen($code = '')
+    {
+        $data = ['rapat' => $this->rapats->getWhere(['unique_code' => $code])];
+
+        if (count($row = $data['rapat']->getRowArray()) > 0) {
+            download_files($row['files_upload1']);
+        } else {
+            return false;
+        }
+    }
+
+    public function downloadabsensi($code = '')
+    {
+        $data = ['rapat' => $this->rapats->getWhere(['unique_code' => $code])];
+
+        if (count($row = $data['rapat']->getRowArray()) > 0) {
+            download_files($row['files_upload2']);
+        } else {
+            return false;
+        }
+    }
+
+
+
+
+
+
 
 
     public function get_media_meeting()

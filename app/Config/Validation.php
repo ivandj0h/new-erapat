@@ -133,4 +133,14 @@ class Validation
 			'required' => 'Kata sandi tidak sama.'
 		]
 	];
+
+	public $cek_row_accounts = [
+		'sub_department_name' => 'required|is_unique[view_user_department.sub_department_name]',
+	];
+
+	public $cek_row_accounts_errors = [
+		'sub_department_name' => [
+			'required'    => 'User ini sudah ada dalam database.',
+		],
+	];
 }

@@ -6,7 +6,7 @@ class Account extends BaseController
 {
     public function __construct()
     {
-        $this->validation = \Config\Services::validation();
+
         helper([
             'navbar',
             'navbar_child',
@@ -107,6 +107,7 @@ class Account extends BaseController
 
     public function storeaccount()
     {
+        $validation =  \Config\Services::validation();
         $data = [
             'token' => uniqid(),
             'zoomid' => htmlspecialchars(strip_tags($this->request->getPost('zoomid'))),
@@ -119,6 +120,7 @@ class Account extends BaseController
             'blokir'  => 0,
             'sub_department_id'  => intval($this->request->getPost('sub_department_id')),
         ];
+
 
         $add = $this->auths->insert($data);
 

@@ -53,7 +53,7 @@ navbar_child($nav_title);
                 <div class="row mb-2">
                     <label class="cell-sm-2">&nbsp;</label>
                     <div class="cell-sm-10">
-                        <button type="submit" class="button secondary"><span class="mif-cloud-upload"></span> Upload Undangan</button>
+                        <button type="submit" class="button secondary"><span class="mif-cloud-upload"></span> Upload File Tambahan 1</button>
                         <a href="<?= base_url('detail/' . $rapat->unique_code) ?>" class="button dark"><span class="mif-undo"></span> Kembali</a>
                     </div>
                 </div>
