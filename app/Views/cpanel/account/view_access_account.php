@@ -36,7 +36,7 @@ navbar_child($nav_title);
             <strong> Manage Access</strong> &nbsp;-&nbsp; <i><?= $account->name ?></i>
         </div>
         <div class="toolbar my-3 place-right">
-            Tanggal : &nbsp;<strong><?= tanggal("d-m-Y"); ?></strong>
+            Tanggal : &nbsp;<strong><?= date("d-m-Y"); ?></strong>
         </div>
         <div class="navview-content d-flex h-500">
             <div class="grid">
