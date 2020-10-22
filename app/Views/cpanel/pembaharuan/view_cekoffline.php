@@ -43,7 +43,7 @@ navbar_child($nav_title);
             <strong> Tabel Data Rapat Offline Hari ini</strong>
         </div>
         <div class="toolbar my-3 place-right">
-            Tanggal : &nbsp;<strong><?= tanggal("d-m-Y"); ?></strong>
+            Tanggal : &nbsp;<strong><?= date("d-m-Y"); ?></strong>
         </div>
         <?= form_open('cekrapatoffline'); ?>
         <div class="d-flex flex-nowrap" style="margin-left: 62px;margin-top: -8px;margin-bottom: 25px;">

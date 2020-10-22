@@ -9,7 +9,7 @@ class Main extends BaseController
 		helper(['navbar', 'navbar_child']);
 		$data = ['page_title' => 'E-RAPAT - Home', 'nav_title' => 'main'];
 
-		return view('view_main', $data);
+		return view('view_calendar', $data);
 	}
 
 	public function calendar()
