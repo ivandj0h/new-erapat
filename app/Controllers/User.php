@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
-use App\Models\RapatModel;
 
 class User extends BaseController
 {
@@ -40,13 +39,12 @@ class User extends BaseController
     public function changeuserpassword()
     {
         $userModel = new UserModel();
-        $rapatModel = new RapatModel();
         $data = [
             'page_title' => 'E-RAPAT - User',
             'nav_title' => 'user',
             'tabs' => 'user',
             'user' => $userModel->where('id', session()->get('id'))->first(),
-            'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->getWhere(['user_id' => session()->get('id')])
                 ->getResultArray()
         ];
@@ -57,13 +55,12 @@ class User extends BaseController
     public function edituser($code = '')
     {
         $userModel = new UserModel();
-        $rapatModel = new RapatModel();
         $data = [
             'page_title' => 'E-RAPAT - User',
             'nav_title' => 'user',
             'tabs' => 'user',
             'user' => $userModel->where('id', session()->get('id'))->first(),
-            'rapat' => $rapatModel
+            'rapat' => $this->rapatonoff
                 ->getWhere(['user_id' => session()->get('id')])
                 ->getResultArray()
         ];
@@ -73,7 +70,6 @@ class User extends BaseController
 
     public function updateuser()
     {
-        // $userModel = new UserModel();
         $name = $this->request->getPost('name');
         $id = $this->request->getPost('id');
         $email  = $this->request->getPost('email');
