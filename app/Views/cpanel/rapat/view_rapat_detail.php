@@ -17,7 +17,7 @@ navbar_child($nav_title);
         <strong> Tabel Detail Rapat</strong>&nbsp; - &nbsp;<i><?= $rapat->sub_department_name ?></i>
     </div>
     <div class="toolbar my-3 place-right">
-        Data Rapat Tanggal : &nbsp;<strong><?= tanggal("d-m-Y", strtotime($rapat->end_date)); ?></strong>
+        Data Rapat Tanggal : &nbsp;<strong><?= date("d-m-Y", strtotime($rapat->end_date)); ?></strong>
     </div>
     <div class="row detail-tab">
         <div class="col-md-2">
