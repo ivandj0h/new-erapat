@@ -77,7 +77,7 @@ navbar_child($nav_title);
                 <tbody>
                     <?php foreach ($rapat as $r) : ?>
                         <tr>
-                            <td class="text-center"><?= tanggal("d-m-Y", strtotime($r['end_date'])); ?></td>
+                            <td class="text-center"><?= date("d-m-Y", strtotime($r['end_date'])); ?></td>
                             <td class="text-center"><?= date("H:i", strtotime($r['start_time'])); ?></td>
                             <td class="text-center"><?= date("H:i", strtotime($r['end_time'])); ?></td>
                             <td class="text-center"><?= $r['sub_department_name']; ?></td>
