@@ -90,7 +90,7 @@ class Pembaharuan extends BaseController
     {
         $id = $this->request->getPost('id');
         $subtypemodel = new SubtypeModel();
-
+        $now = date('Y-m-d');
         $data = [
             'page_title' => 'E-RAPAT - Pembaharuan',
             'nav_title' => 'pembaharuan',
@@ -103,6 +103,7 @@ class Pembaharuan extends BaseController
             'rapat' =>  $this->rapatonoff
                 ->getWhere([
                     'sub_type_id' => $id,
+                    'end_date' => $now,
                     'email' => session()->get('email')
                 ])
                 ->getResultArray()
