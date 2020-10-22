@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\ZoomModel;
-
 class Zoom extends BaseController
 {
     public function __construct()
