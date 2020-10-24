@@ -25,14 +25,11 @@ class Riwayat extends BaseController
 
     public function index()
     {
-
-        $userModel = new UserModel();
-
         $data = [
             'page_title' => 'E-RAPAT - Riwayat',
             'nav_title' => 'riwayat',
             'tabs' => 'riwayat',
-            'user' => $userModel,
+            'user' => $this->user,
             'riwayat' =>  $this->rapatonoff
                 ->getWhere([
                     'user_id' => session()->get('id')
