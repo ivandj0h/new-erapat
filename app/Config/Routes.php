@@ -240,11 +240,11 @@ $routes->match(['get', 'post'], '/getriwayatonline', 'Riwayat::gethistonline', [
 /**
  * --------------------------------------------------------------------
  * CPANEL Route Configuration
- * ERROR HANDLING SECTION
+ * CETAK SECTION
  * --------------------------------------------------------------------
  */
 
-
+$routes->get('/cetak', 'Cetak::index', ['filter' => 'ceklogin']);
 
 
 

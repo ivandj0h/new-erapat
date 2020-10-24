@@ -95,6 +95,10 @@ function navbar_($nav)
                 case "riwayat": ?>
                     <li><a href="<?= base_url(); ?>" class="text-upper"><span class="icon mif-calendar"></span> kalender</a></li>
                     <li><a href="<?= base_url('documentation'); ?>" class="text-upper"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
+                <?php break;
+                case "cetak": ?>
+                    <li><a href="<?= base_url(); ?>" class="text-upper"><span class="icon mif-calendar"></span> kalender</a></li>
+                    <li><a href="<?= base_url('documentation'); ?>" class="text-upper"><span class="icon mif-file-empty"></span> dokumentasi</a></li>
             <?php break;
                 default:
                     echo "Menu tidak Aktif!";
