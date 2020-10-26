@@ -18,21 +18,21 @@ navbar_child($nav_title);
             </button>
             <ul class="navview-menu">
                 <li class="active">
-                    <a href="<?= base_url('riwayat'); ?>">
+                    <a href="<?= base_url('cetak'); ?>">
                         <span class="icon"><span class="mif-clipboard"></span></span>
-                        <span class="caption">Riwayat Rapat</span>
+                        <span class="caption">Cetak Rapat</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('riwayatoffline'); ?>">
+                    <a href="<?= base_url('cetakoffline'); ?>">
                         <span class="icon"><span class="mif-wifi-off"></span></span>
-                        <span class="caption">Riwayat Rapat Offline</span>
+                        <span class="caption">Cetak Rapat Offline</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('riwayatonline'); ?>">
+                    <a href="<?= base_url('cetakonline'); ?>">
                         <span class="icon"><span class="mif-wifi-full"></span></span>
-                        <span class="caption">Riwayat Rapat Online</span>
+                        <span class="caption">Cetak Rapat Online</span>
                     </a>
                 </li>
             </ul>
@@ -66,7 +66,11 @@ navbar_child($nav_title);
         <div class="d-flex flex-nowrap" style="margin-left: 62px;margin-top: -8px;margin-bottom: 2px;">
             <div class="order-1"><input type="text" name="from_date" data-role="calendarpicker" data-dialog-mode="true"></div>
             <div class="order-2 ml-2"><input type="text" name="to_date" data-role="calendarpicker" data-dialog-mode="true"></div>
-            <div class="order-3 ml-2"><button type="submit" class="button primary"><span class="mif-search"></span> Cari Data Rapat</button></div>
+            <div class="order-3 ml-2">
+                <button type="submit" class="button primary"><span class="mif-search"></span> Cari Data Rapat</button>
+            </div>
+            <button class="tool-button secondary" style="width: 36px;height: 36px;" onclick="printContents(id)"><span class="mif-printer"></span></button>
+            <button class="tool-button alert" style="width: 36px;height: 36px;padding: 1px 1px 1px 4px;"><span class="mif-file-pdf"></span></button> &nbsp;
         </div>
         <?= form_close(); ?>
         <div class="navview-content d-flex flex-align-center flex-justify-center h-500">
@@ -83,7 +87,7 @@ navbar_child($nav_title);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($riwayat as $r) : ?>
+                    <?php foreach ($cetak as $r) : ?>
                         <tr>
                             <td class="text-center"><strong><?= date("d-m-Y", strtotime($r['end_date'])); ?></strong></td>
                             <td class="text-center"><?= date("H:i", strtotime($r['start_time'])); ?></td>
@@ -118,7 +122,6 @@ navbar_child($nav_title);
     </div>
 </div>
 
-
 <!-- end content here -->
 <?php
 $this->endSection();
@@ -126,4 +129,23 @@ $this->endSection();
 
 <script>
     $(".red").css("color", "red");
+
+    // Print Div
+    function printContents(id) {
+        var contents = $("#" + id).html();
+
+        if ($("#printDiv").length == 0) {
+            var printDiv = null;
+            printDiv = document.createElement('div');
+            printDiv.setAttribute('id', 'printDiv');
+            printDiv.setAttribute('class', 'printable');
+            $(printDiv).appendTo('body');
+        }
+
+        $("#printDiv").html(contents);
+
+        window.print();
+
+        $("#printDiv").remove();
+    }
 </script>

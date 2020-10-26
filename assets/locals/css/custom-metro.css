@@ -520,3 +520,16 @@ li.active {
   -ms-overflow-style: -ms-autohiding-scrollbar;
   overflow: -moz-scrollbars-none;
 }
+
+/* Print DIV */
+@media print {
+  .non-printable,
+  .fancybox-outer {
+    display: none;
+  }
+  .printable,
+  #printDiv {
+    display: block;
+    font-size: 26pt;
+  }
+}
