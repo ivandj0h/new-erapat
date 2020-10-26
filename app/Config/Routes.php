@@ -191,6 +191,7 @@ $routes->post('/tambahanaction3', 'Rapat::tambahanaction3', ['filter' => 'ceklog
 $routes->post('/updatestatus/(:any)', 'Rapat::updatestatus/$1', ['filter' => 'ceklogin']);
 $routes->get('/editrapat/(:any)', 'Rapat::edit/$1', ['filter' => 'ceklogin']);
 $routes->get('/detail/(:any)', 'Rapat::detail/$1', ['filter' => 'ceklogin']);
+$routes->get('/cetakdetail/(:any)', 'Rapat::cetakdetail/$1', ['filter' => 'ceklogin']);
 $routes->get('/reschedulle/(:any)', 'Rapat::reschedulle/$1', ['filter' => 'ceklogin']);
 $routes->get('/uploadundangan/(:any)', 'Rapat::uploadundangan/$1', ['filter' => 'ceklogin']);
 $routes->get('/uploadnotulen/(:any)', 'Rapat::uploadnotulen/$1', ['filter' => 'ceklogin']);

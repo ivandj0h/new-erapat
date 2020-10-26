@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
-use App\Models\RapatModel;
+use TCPDF;
 use App\Models\RapatAddModel;
 use App\Models\TypeModel;
 use App\Models\SubtypeModel;
@@ -207,7 +207,6 @@ class Rapat extends BaseController
 
     public function detail($code = '')
     {
-        $rapatModel = new RapatModel();
         $data = [
             'page_title' => 'E-RAPAT - Detail',
             'nav_title' => 'detail',
@@ -841,5 +840,39 @@ class Rapat extends BaseController
         } else {
             return false;
         }
+    }
+
+    public function cetakdetail($code = '')
+    {
+
+        $html = view('cpanel/rapat/view_cetak_detail', [
+            'page_title' => 'E-RAPAT - Cetak Detail',
+            'nav_title' => 'detail',
+            'tabs' => 'rapat',
+            'rapat' => $this->rapatonoff
+                ->getWhere(['unique_code' => $code])
+                ->getRow()
+        ]);
+
+
+        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+
+        $pdf->SetCreator(PDF_CREATOR);
+        $pdf->SetFont('helvetica', 10);
+        $pdf->SetAuthor('Ivandi Djoh Gah');
+        $pdf->SetTitle('E-RAPAT - Cetak Detail');
+        $pdf->SetSubject('E-RAPAT - Cetak Detail');
+
+        $pdf->setPrintHeader(false);
+        $pdf->setPrintFooter(false);
+
+        $pdf->addPage();
+
+        $pdf->writeHTML($html, true, false, true, false, '');
+        $this->response->setContentType('application/pdf');
+        $pdf->Output('view_cetak_detail.pdf', 'I');
+
+        // return view('cpanel/rapat/view_cetak_detail', $data);
     }
 }
