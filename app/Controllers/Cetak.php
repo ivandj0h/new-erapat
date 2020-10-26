@@ -27,7 +27,7 @@ class Cetak extends BaseController
             'nav_title' => 'cetak',
             'tabs' => 'cetak',
             'user' => $this->user,
-            'riwayat' =>  $this->rapatonoff
+            'cetak' =>  $this->rapatonoff
                 ->getWhere([
                     'user_id' => session()->get('id')
                 ])
