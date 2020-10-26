@@ -23,40 +23,13 @@ navbar_child($nav_title);
                         <span class="caption">Cetak Rapat</span>
                     </a>
                 </li>
-                <li>
-                    <a href="<?= base_url('cetakoffline'); ?>">
-                        <span class="icon"><span class="mif-wifi-off"></span></span>
-                        <span class="caption">Cetak Rapat Offline</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?= base_url('cetakonline'); ?>">
-                        <span class="icon"><span class="mif-wifi-full"></span></span>
-                        <span class="caption">Cetak Rapat Online</span>
-                    </a>
-                </li>
             </ul>
         </div>
 
         <!-- <div class="row"> -->
         <!-- <div class="col-md-12"> -->
-        <?= form_open('riwayats'); ?>
-        <!-- cek validasi -->
-        <?php
-        $inputs = session()->getFlashdata('inputs');
-        $errors = session()->getFlashdata('errors');
-        $success = session()->getFlashdata('success');
-        if (!empty($errors)) { ?>
-            <div id='hideMe'>
-                <ul>
-                    <?php foreach ($errors as $error) : ?>
-                        <div class="red">ff</div>
-                    <?php endforeach ?>
-                </ul>
-            </div>
-        <?php
-        }
-        ?>
+        <?= form_open('cetaks'); ?>
+
         <div class="toolbar my-4" style="margin-left: 65px;">
             <strong> Tabel Riwayat Rapat Berdasarkan Range Tanggal</strong>
         </div>
@@ -69,8 +42,7 @@ navbar_child($nav_title);
             <div class="order-3 ml-2">
                 <button type="submit" class="button primary"><span class="mif-search"></span> Cari Data Rapat</button>
             </div>
-            <button class="tool-button secondary" style="width: 36px;height: 36px;" onclick="printContents(id)"><span class="mif-printer"></span></button>
-            <button class="tool-button alert" style="width: 36px;height: 36px;padding: 1px 1px 1px 4px;"><span class="mif-file-pdf"></span></button> &nbsp;
+            <a href="<?= base_url('cetakperdate') ?>" class="tool-button alert" style="width: 36px;height: 36px;padding: 1px 1px 1px 4px;" target="_blank"><span class="mif-file-pdf"></span></a> &nbsp;
         </div>
         <?= form_close(); ?>
         <div class="navview-content d-flex flex-align-center flex-justify-center h-500">
@@ -126,26 +98,3 @@ navbar_child($nav_title);
 <?php
 $this->endSection();
 ?>
-
-<script>
-    $(".red").css("color", "red");
-
-    // Print Div
-    function printContents(id) {
-        var contents = $("#" + id).html();
-
-        if ($("#printDiv").length == 0) {
-            var printDiv = null;
-            printDiv = document.createElement('div');
-            printDiv.setAttribute('id', 'printDiv');
-            printDiv.setAttribute('class', 'printable');
-            $(printDiv).appendTo('body');
-        }
-
-        $("#printDiv").html(contents);
-
-        window.print();
-
-        $("#printDiv").remove();
-    }
-</script>
