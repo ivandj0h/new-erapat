@@ -26,6 +26,7 @@ navbar_child($nav_title);
                 <li><a href="#_target_2"><span class="mif-windows"></span> Media Rapat</a></li>
                 <li><a href="#_target_3"><span class="mif-stackoverflow"></span> Data Rapat</a></li>
                 <li><a href="#_target_4"><span class="mif-file-upload"></span> File Pendukung</a></li>
+                <li><a href="#_target_5"><span class="mif-file-pdf"></span> Export Pdf</a></li>
             </ul>
         </div>
         <div class="col-md-10">
@@ -117,11 +118,11 @@ navbar_child($nav_title);
                         <div class="cell-sm-10">
                             <?php if ($rapat->request_status == '1') : ?>
                                 <span class="remark dark" style="margin: 0;padding: 5px;color: black;">
-                                    <strong><?= tanggal("d-m-Y", strtotime($rapat->date_requested)) ?></strong>.
+                                    <strong><?= date("d-m-Y", strtotime($rapat->date_requested)) ?></strong>.
                                 </span>
                             <?php else : ?>
                                 <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                    <strong><?= tanggal("d-m-Y", strtotime($rapat->date_requested)); ?></strong>.
+                                    <strong><?= date("d-m-Y", strtotime($rapat->date_requested)); ?></strong>.
                                 </span>
                             <?php endif; ?>
                         </div>
@@ -224,12 +225,12 @@ navbar_child($nav_title);
                             else :
                                 if ($rapat->type_id == 1) : ?>
                                     <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                        <strong><?= tanggal("d-m-Y", strtotime($rapat->end_date)); ?></strong>
+                                        <strong><?= date("d-m-Y", strtotime($rapat->end_date)); ?></strong>
                                     </span>
                                 <?php
                                 else : ?>
                                     <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
-                                        <strong><?= tanggal("d-m-Y", strtotime($rapat->end_date)); ?></strong>.
+                                        <strong><?= date("d-m-Y", strtotime($rapat->end_date)); ?></strong>.
                                     </span>
                             <?php
                                 endif;
@@ -416,6 +417,27 @@ navbar_child($nav_title);
                                     </span>
                                 </a>
                             <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+                <div id="_target_5">
+                    <div class="row mb-2">
+                        <label class="cell-sm-2" style="padding: 10px;">Cetak ke Pdf</label>
+                        <div class="cell-sm-10">
+                            <?php
+                            if (empty($rapat->agenda)) : ?>
+                                <span class="remark alert" style="margin: 0;padding: 5px;color: brown;">
+                                    <strong>Tidak ada File </strong> yang akan di cetak ke pdf.
+                                </span>
+                            <?php
+                            else : ?>
+                                <a href="<?= base_url('cetakdetail/' . $rapat->unique_code) ?>" target="_blank">
+                                    <span class="remark success" style="margin: 0;padding: 5px;color: darkgreen;">
+                                        <span class="mif-file-pdf"></span> <strong><?= $rapat->agenda; ?></strong>.
+                                    </span>
+                                </a>
+                            <?php endif; ?>
+                            <br /><br /><br /><br /><br /><br />
                         </div>
                     </div>
                 </div>
