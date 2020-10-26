@@ -191,6 +191,7 @@ $routes->post('/tambahanaction3', 'Rapat::tambahanaction3', ['filter' => 'ceklog
 $routes->post('/updatestatus/(:any)', 'Rapat::updatestatus/$1', ['filter' => 'ceklogin']);
 $routes->get('/editrapat/(:any)', 'Rapat::edit/$1', ['filter' => 'ceklogin']);
 $routes->get('/detail/(:any)', 'Rapat::detail/$1', ['filter' => 'ceklogin']);
+$routes->get('/cetakperdate', 'Rapat::cetakperdate', ['filter' => 'ceklogin']);
 $routes->get('/cetakdetail/(:any)', 'Rapat::cetakdetail/$1', ['filter' => 'ceklogin']);
 $routes->get('/reschedulle/(:any)', 'Rapat::reschedulle/$1', ['filter' => 'ceklogin']);
 $routes->get('/uploadundangan/(:any)', 'Rapat::uploadundangan/$1', ['filter' => 'ceklogin']);
@@ -208,6 +209,7 @@ $routes->get('/downloadtambahan3/(:any)', 'Rapat::downloadtambahan3/$1', ['filte
 $routes->match(['get', 'post'], '/rapat/getmm', 'Rapat::get_media_meeting');
 $routes->match(['get', 'post'], '/rapat/getmmm', 'Rapat::get_zoomid');
 $routes->get('/rapatcancel', 'Rapat::rapatcancel', ['filter' => 'ceklogin']);
+$routes->match(['get', 'post'], '/cetaks', 'Rapat::get_cetaks', ['filter' => 'ceklogin']);
 
 
 /**

@@ -842,6 +842,82 @@ class Rapat extends BaseController
         }
     }
 
+    public function get_cetaks()
+    {
+        $where = array(
+            'from_date' => $this->request->getPost('from_date'),
+            'to_date' => $this->request->getPost('to_date')
+        );
+
+        if ($this->form_validation->run($where, 'riwayat') == FALSE) {
+
+            session()->setFlashdata('inputs', $this->request->getPost());
+            session()->setFlashdata('errors', $this->form_validation->getErrors());
+
+            $data = [
+                'page_title' => 'E-RAPAT - Cetak Per-date',
+                'nav_title' => 'cetak',
+                'tabs' => 'cetak',
+                'cetak' => $this->rapatonoff
+                    ->getWhere([
+                        'user_id' => session()->get('id')
+                    ])
+                    ->getResultArray()
+            ];
+
+            return view('cpanel/cetak/view_cetak', $data);
+        } else {
+            $data = [
+                'page_title' => 'E-RAPAT - Cetak Per-date',
+                'nav_title' => 'cetak',
+                'tabs' => 'cetak',
+                'cetak' => $this->rapatonoff
+                    ->getWhere([
+                        'end_date' => $where['from_date'],
+                        'end_date' => $where['to_date'],
+                        'email' => session()->get('email')
+                    ])->getResultArray(),
+            ];
+
+            return view('cpanel/cetak/view_cetak', $data);
+        }
+    }
+
+
+    public function cetakperdate()
+    {
+
+        $html = view('cpanel/rapat/view_cetak_perdate', [
+            'page_title' => 'E-RAPAT - Cetak Detail',
+            'nav_title' => 'detail',
+            'tabs' => 'rapat',
+            'rapat' =>  $this->rapatonoff
+                ->getWhere([
+                    'user_id' => session()->get('id')
+                ])
+                ->getResultArray()
+        ]);
+
+
+        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+
+        $pdf->SetCreator(PDF_CREATOR);
+        $pdf->SetFont('helvetica', 8);
+        $pdf->SetAuthor('Ivandi Djoh Gah');
+        $pdf->SetTitle('E-RAPAT - Cetak Detail');
+        $pdf->SetSubject('E-RAPAT - Cetak Detail');
+
+        $pdf->setPrintHeader(false);
+        $pdf->setPrintFooter(false);
+
+        $pdf->addPage();
+
+        $pdf->writeHTML($html, true, false, true, false, '');
+        $this->response->setContentType('application/pdf');
+        $pdf->Output('view_cetak_detail.pdf', 'I');
+    }
+
     public function cetakdetail($code = '')
     {
 

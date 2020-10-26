@@ -9,8 +9,6 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="<?= base_url('assets/locals/img/transport.svg'); ?>">
 
-    <!-- Metro 4 Base CSS -->
-    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
 </head>
 
 <body>
